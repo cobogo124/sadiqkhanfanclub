@@ -22,6 +22,7 @@
 @prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
 @prefix dbo:    <http://dbpedia.org/ontology/> .
+@prefix gtfs:   <http://vocab.gtfs.org/terms#> .
 @prefix dcterms:<http://purl.org/dc/terms/> .
 
 #################################################################
@@ -45,7 +46,8 @@
 
 # SUBCLASS 1 of 4 (Schema.org): schema:CivicStructure -> :TransitStop
 :TransitStop rdf:type owl:Class ;
-    rdfs:subClassOf schema:CivicStructure ;
+    rdfs:subClassOf schema:CivicStructure ,
+        gtfs:Stop ;
     rdfs:label "Transit Stop"@en ;
     rdfs:comment "Any physical boarding/alighting location in the TfL network (station, bus stop, tram stop, cable car pier). Subclass of schema:CivicStructure."@en .
 
@@ -75,19 +77,22 @@
 
 # SUBCLASS 3 of 4 (DBpedia): dbo:RouteOfTransportation -> :TfLLine
 :TfLLine rdf:type owl:Class ;
-    rdfs:subClassOf dbo:RouteOfTransportation ;
+    rdfs:subClassOf dbo:RouteOfTransportation ,
+        gtfs:Route ;
     rdfs:label "TfL Line"@en ;
     rdfs:comment "A public transport route managed or franchised by TfL and payable by Oyster. Subclass of dbo:RouteOfTransportation."@en .
 
 # SUBCLASS 4 of 4 (DBpedia): dbo:Organisation -> :TransportOperator
 :TransportOperator rdf:type owl:Class ;
-    rdfs:subClassOf dbo:Organisation ;
+    rdfs:subClassOf dbo:Organisation ,
+        gtfs:Agency ;
     rdfs:label "Transport Operator"@en ;
     rdfs:comment "A company that runs TfL services under direct management or franchise. Subclass of dbo:Organisation."@en .
 
 # SUBPROPERTY 3 of 4 (DBpedia): dbo:operator -> :operatedBy
 :operatedBy rdf:type owl:ObjectProperty ;
-    rdfs:subPropertyOf dbo:operator ;
+    rdfs:subPropertyOf dbo:operator ,
+        gtfs:agency ;
     rdfs:domain :TfLLine ;
     rdfs:range :TransportOperator ;
     rdfs:label "operated by"@en ;
@@ -236,7 +241,8 @@
     rdfs:comment "A stop on the London Tramlink network."@en .
 
 :InterchangeStation rdf:type owl:Class ;
-    rdfs:subClassOf :TransitStop ;
+    rdfs:subClassOf :TransitStop ,
+        gtfs:Station ;
     rdfs:label "Interchange Station"@en ;
     rdfs:comment "A station where passengers can change between two or more lines or modes."@en .
 
@@ -335,6 +341,7 @@
 # Line relations
 
 :hasStop rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf gtfs:stop ;
     rdfs:domain :TfLLine ;
     rdfs:range :TransitStop ;
     rdfs:label "has stop"@en ;
@@ -375,6 +382,7 @@
 # Stop relations
 
 :inFareZone rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf gtfs:zone ;
     rdfs:domain :TransitStop ;
     rdfs:range :FareZone ;
     rdfs:label "in fare zone"@en ;
@@ -386,6 +394,12 @@
     rdfs:range :TransitStop ;
     rdfs:label "connects to"@en ;
     rdfs:comment "Symmetric property indicating a direct interchange between two stops."@en .
+
+:hasAvailableMode rdf:type owl:ObjectProperty ;
+    rdfs:domain :TransitStop ;
+    rdfs:range :TransportMode ;
+    rdfs:label "has available mode"@en ;
+    rdfs:comment "Links a stop or hub to each transport mode available there for interchange or boarding."@en .
 
 # Disruption relations
 
@@ -520,6 +534,24 @@
     rdfs:range xsd:boolean ;
     rdfs:label "is step-free"@en ;
     rdfs:comment "True if the stop has any level of step-free access from street to platform or train."@en .
+
+:hasPublicToilets rdf:type owl:DatatypeProperty ;
+    rdfs:domain :TransitStop ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "has public toilets"@en ;
+    rdfs:comment "True if public restroom facilities are available at the stop or station."@en .
+
+:hasCarParking rdf:type owl:DatatypeProperty ;
+    rdfs:domain :TransitStop ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "has car parking"@en ;
+    rdfs:comment "True if public car parking is available at the stop or station."@en .
+
+:stepFreeAccessNote rdf:type owl:DatatypeProperty ;
+    rdfs:domain :TransitStop ;
+    rdfs:range xsd:string ;
+    rdfs:label "step-free access note"@en ;
+    rdfs:comment "Free-text note about step-free access extracted from the TfL step-free guide or station information."@en .
 
 :hasWifi rdf:type owl:DatatypeProperty ;
     rdfs:domain :TransitStop ;

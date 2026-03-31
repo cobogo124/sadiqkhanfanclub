@@ -1,0 +1,16 @@
+@prefix gtfs: <http://vocab.gtfs.org/terms#> .
+@prefix lt: <http://kcl.ac.uk/ontology/london-transport#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+lt:InterchangeStation rdfs:subClassOf gtfs:Station .
+
+lt:TfLLine rdfs:subClassOf gtfs:Route .
+
+lt:TransitStop rdfs:subClassOf gtfs:Stop .
+
+lt:TransportOperator rdfs:subClassOf gtfs:Agency .
+
+lt:hasStop rdfs:subPropertyOf gtfs:stop .
+
+lt:inFareZone rdfs:subPropertyOf gtfs:zone .
+
