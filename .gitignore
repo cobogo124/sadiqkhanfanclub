@@ -2,3 +2,4 @@
 downloads/
 .venv
 .worktrees/
+__pycache__/
