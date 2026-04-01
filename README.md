@@ -18,6 +18,15 @@ This generates:
 
 - `ontologies/london-transport-instances.ttl`
 - `ontologies/london-transport-kg.ttl`
+- `ontologies/london-transport-protege.owl`
 - `ontologies/gtfs-alignment.ttl`
 - `docs/generated/tfl-sources.md`
 - `docs/generated/tfl-sources.json`
+
+## Open In Protégé
+
+Open:
+
+`ontologies/london-transport-protege.owl`
+
+That file is a self-contained OWL export of the generated knowledge graph and is the easiest bundle to inspect in Protégé.

@@ -4,11 +4,18 @@ from rdflib import Graph
 
 
 KG_PATH = Path("ontologies/london-transport-kg.ttl")
+PROTEGE_PATH = Path("ontologies/london-transport-protege.owl")
 
 
 def load_graph() -> Graph:
     assert KG_PATH.exists(), "expected generated graph at ontologies/london-transport-kg.ttl"
     return Graph().parse(KG_PATH, format="turtle")
+
+
+def test_protege_bundle_exists_and_is_parseable() -> None:
+    assert PROTEGE_PATH.exists(), "expected Protégé bundle at ontologies/london-transport-protege.owl"
+    graph = Graph().parse(PROTEGE_PATH)
+    assert len(graph) > 0
 
 
 def test_victoria_line_has_expected_termini() -> None:

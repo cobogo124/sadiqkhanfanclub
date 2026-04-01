@@ -373,6 +373,7 @@ def write_graph_outputs(repo: Path, instance_graph: Graph, alignment_graph: Grap
     ontology_graph = Graph().parse(repo / "ontologies" / "london-transport-ontology.ttl", format="turtle")
     instance_path = repo / "ontologies" / "london-transport-instances.ttl"
     kg_path = repo / "ontologies" / "london-transport-kg.ttl"
+    protege_path = repo / "ontologies" / "london-transport-protege.owl"
     alignment_path = repo / "ontologies" / "gtfs-alignment.ttl"
 
     instance_graph.serialize(instance_path, format="turtle")
@@ -380,6 +381,7 @@ def write_graph_outputs(repo: Path, instance_graph: Graph, alignment_graph: Grap
 
     merged = ontology_graph + instance_graph
     merged.serialize(kg_path, format="turtle")
+    merged.serialize(protege_path, format="pretty-xml")
 
 
 def main(snapshot_date: str | None = None) -> None:
