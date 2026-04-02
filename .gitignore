@@ -1,4 +1,5 @@
 .env
-downloads/
+downloads/processed/*
+downloads/raw/*
 .venv
 .worktrees/
