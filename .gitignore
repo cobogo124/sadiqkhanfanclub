@@ -3,3 +3,4 @@ downloads/processed/*
 downloads/raw/*
 .venv
 .worktrees/
+__pycache__/

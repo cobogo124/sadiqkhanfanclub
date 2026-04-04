@@ -5,3 +5,5 @@ pandas
 spacy
 transformers
 python-dotenv
+pypdf
+pytest
