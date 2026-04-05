@@ -1,0 +1,1185 @@
+@prefix : <http://vocab.gtfs.org/terms#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gtfs: <http://vocab.gtfs.org/terms#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix schema: <http://schema.org/> .
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix transit: <http://vocab.org/transit/terms/> .
+@base <http://vocab.gtfs.org/terms#> .
+
+<http://vocab.gtfs.org/terms#> rdf:type owl:Ontology ;
+                                dct:creator [ foaf:mbox "Pieter.Colpaert@UGent.be" ;
+                                              foaf:name "Pieter Colpaert"
+                                            ] ,
+                                            [ foaf:mbox "abyrd@conveyal.com" ;
+                                              foaf:name "Andrew Byrd"
+                                            ] ;
+                                dct:description "Esta ontología es una traducción de la Especificación General de Feeds de Transporte Público a URIs. El objetivo es crear una plataforma de intercambio donde el modelo Linked GTFS pueda usarse para obtener los datos correctos en el formato adecuado. Para la especificación semántica de clases y propiedades, visite https://developers.google.com/transit/gtfs/reference."@es ,
+                                                "This ontology is a translation of the General Transit Feed Specification towards URIs. Its intended use is creating an exchange platform where the Linked GTFS model can be used as a start to get the right data into the right format. For semantics of the classes and properties, see https://developers.google.com/transit/gtfs/reference."@en ;
+                                vann:preferredNamespacePrefix "gtfs" ;
+                                vann:preferredNamespaceUri "http://vocab.gtfs.org/terms#" ;
+                                rdfs:label "Especificación General de Feeds de Transporte Público"@es ,
+                                           "General Transit Feed Specification"@en ;
+                                rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://creativecommons.org/ns#license
+cc:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dct:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dct:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/hasFormat
+dct:hasFormat rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dct:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dct:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/rights
+dct:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dct:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://vocab.gtfs.org/terms#comment
+gtfs:comment rdfs:comment "A comment on the relation between the RDFS ontology and the CSV specification."@en ,
+                          "Un comentario entre la relación entre la ontología RDFS y la especificación CSV."@es ;
+             rdfs:label "Comentario de enlace"@es ,
+                        "Mapping comment"@en ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en ;
+             rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf rdfs:comment .
+
+
+###  http://vocab.gtfs.org/terms#fareUrl
+gtfs:fareUrl rdfs:comment "La URL de una página web que permite a un usuario comprar online billetes u otros productos de transporte de esa empresa"@es ,
+                          "The URL of a web page that allows a rider to purchase tickets or other fare instruments for that agency online"@en ;
+             rdfs:label "URL de tarifas"@es ,
+                        "fare URL"@en ;
+             rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#agency_fields> ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en ;
+             rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf foaf:page ;
+             rdfs:domain gtfs:Agency .
+
+
+###  http://vocab.gtfs.org/terms#longName
+gtfs:longName rdfs:comment "Long name given to a route"@en ,
+                           "Nombre completo de una ruta"@es ;
+              rdfs:label "Long name"@en ,
+                         "nombre completo"@es ;
+              rdfs:seeAlso <https://developers.google.com/transit/gtfs/examples/display-to-users#RouteLongName> ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en ;
+              rdf:type owl:AnnotationProperty ;
+              rdfs:subPropertyOf dct:title ;
+              rdfs:domain gtfs:Route .
+
+
+###  http://vocab.gtfs.org/terms#shortName
+gtfs:shortName rdfs:comment "Nombre corto dado a una ruta o viaje"@es ,
+                            "Short name given to a route or a trip"@en ;
+               rdfs:label "Short name"@en ,
+                          "nombre corto"@es ;
+               rdfs:seeAlso <https://developers.google.com/transit/gtfs/examples/display-to-users#RouteShortName> ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en ;
+               rdf:type owl:AnnotationProperty ;
+               rdfs:subPropertyOf dct:title ;
+               rdfs:domain gtfs:Route ,
+                           gtfs:Trip .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+status:term_status rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/mbox
+foaf:mbox rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/name
+foaf:name rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/page
+foaf:page rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/primaryTopic
+foaf:primaryTopic rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#duration
+xsd:duration rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://vocab.gtfs.org/terms#agency
+gtfs:agency rdf:type owl:ObjectProperty ;
+            rdfs:range gtfs:Agency ;
+            rdfs:comment "Enlaza a una agencia de la que este concepto es parte."@es ,
+                         "links to an agency that this is part of."@en ;
+            rdfs:label "agency"@en ,
+                       "empresa"@es ;
+            status:term_status "inestable"@es ,
+                               "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#destinationStop
+gtfs:destinationStop rdf:type owl:ObjectProperty ;
+                     rdfs:range gtfs:Stop ;
+                     gtfs:comment "Conectado a to_stop_id en transfers.txt"@es ,
+                                  "Map from to_stop_id in transfers.txt"@en ;
+                     rdfs:comment "Enlace al gtfs:Stop hacia el que va el viaje"@es ,
+                                  "Link to gtfs:Stop to go to"@en ;
+                     rdfs:label "Destination Stop"@en ,
+                                "parada de destino"@es ;
+                     status:term_status "inestable"@es ,
+                                        "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#originStop
+gtfs:originStop rdf:type owl:ObjectProperty ;
+                rdfs:range gtfs:Stop ;
+                gtfs:comment "Conectado a from_stop_id en transfers.txt"@es ,
+                             "Map from from_stop_id in transfers.txt"@en ;
+                rdfs:comment "Enlace al gtfs:Stop desde el que empieza el viaje"@es ,
+                             "Link to gtfs:Stop to start from"@en ;
+                rdfs:label "Origin Stop"@en ,
+                           "parada de origen"@es ;
+                status:term_status "inestable"@es ,
+                                   "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#parentStation
+gtfs:parentStation rdf:type owl:ObjectProperty ;
+                   rdfs:domain gtfs:Stop ;
+                   rdfs:range gtfs:Station ;
+                   gtfs:comment "Enlaza a una línea en stop.txt donde locationType=1."@es ,
+                                "Links to a row in stop.txt where locationType=1."@en ;
+                   rdfs:comment "gtfs:parentStation identifica la estación asociada a la parada"@es ,
+                                "gtfs:parentStation identifies the station associated with the stop"@en ;
+                   rdfs:label "Parent Station"@en ,
+                              "estación matriz"@es ;
+                   status:term_status "inestable"@es ,
+                                      "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#paymentMethod
+gtfs:paymentMethod rdf:type owl:ObjectProperty ;
+                   rdfs:domain gtfs:FareClass ;
+                   rdfs:range gtfs:PaymentMethod ;
+                   gtfs:comment "Campo payment_method en fare_attributes. Si es 0, use gtfs:OnBoard; si es 1, use gtfs:BeforeBoarding"@es ,
+                                "payment_method field in fare_attributes. If 0, use gtfs:OnBoard; if 1, use gtfs:BeforeBoarding"@en ;
+                   rdfs:comment "The payment method"@en ,
+                                "el método de pago"@es ;
+                   rdfs:label "Método de pago"@es ,
+                              "Payment method"@en ;
+                   status:term_status "inestable"@es ,
+                                      "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#route
+gtfs:route rdf:type owl:ObjectProperty ;
+           rdfs:domain gtfs:Trip ;
+           rdfs:range gtfs:FareRule ,
+                      gtfs:Route ;
+           rdfs:comment "Este viaje forma parte de esta gtfs:Route"@es ,
+                        "This thing is applicable to this gtfs:Route"@en ;
+           rdfs:label "Route"@en ,
+                      "ruta"@es ;
+           status:term_status "inestable"@es ,
+                              "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#routeType
+gtfs:routeType rdf:type owl:ObjectProperty ;
+               rdfs:domain gtfs:Route ;
+               rdfs:range gtfs:RouteType ;
+               rdfs:comment "Enlaza al tipo de vehículo que opera en esta ruta"@es ,
+                            "Links to the type of vehicle operating on this route"@en ;
+               rdfs:label "Route type"@en ,
+                          "tipo de ruta"@es ;
+               rdfs:seeAlso <https://developers.google.com/transit/gtfs/examples/display-to-users#RouteType> ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#service
+gtfs:service rdf:type owl:ObjectProperty ;
+             rdfs:range gtfs:Service ;
+             rdfs:comment "Cumple este gtfs:Service."@es ,
+                          "Follows this gtfs:Service."@en ;
+             rdfs:label "Service"@en ,
+                        "Servicio"@es ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#serviceRule
+gtfs:serviceRule rdf:type owl:ObjectProperty ;
+                 rdfs:domain gtfs:Service ;
+                 rdfs:range gtfs:ServiceRule ;
+                 rdfs:comment "Reglas de servicio que definen un conjunto de fechas"@es ,
+                              "Service rules which define together a set of dates"@en ;
+                 rdfs:label "Service rule"@en ,
+                            "regla de servicio"@es ;
+                 status:term_status "inestable"@es ,
+                                    "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#stop
+gtfs:stop rdf:type owl:ObjectProperty ;
+          rdfs:range gtfs:Stop ;
+          rdfs:comment "Indica que este concepto tiene cierta parada."@es ,
+                       "Indicates that this has a certain stop."@en ;
+          rdfs:label "Stop"@en ,
+                     "parada"@es ;
+          status:term_status "inestable"@es ,
+                             "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#transferType
+gtfs:transferType rdf:type owl:ObjectProperty ;
+                  rdfs:domain gtfs:Transfer ;
+                  rdfs:label "Transfer Type"@en ,
+                             "tipo de transbordo"@es ;
+                  status:term_status "inestable"@es ,
+                                     "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#transfers
+gtfs:transfers rdf:type owl:ObjectProperty ;
+               rdfs:domain gtfs:FareClass ;
+               gtfs:comment "Map to 0 to gtfs:NoTransfersAllowed, 1 to gtfs:OneTransferAllowed, 2 to gtfs:TwoTransfersAllowed and empty to gtfs:UnlimitedTransfersAllowed"@en ,
+                            "Valor 0 si no se permite ningún transbordo (gtfs:NoTransfersAllowed), 1 si se puede realizar un transbordo (gtfs:OneTransferAllowed), 2 si se pueden realizar dos transbordos (gtfs:TwoTransfersAllowed) y deje el campo vacío si se permite una cantidad ilimitada de transbordos (gtfs:UnlimitedTransfersAllowed)"@es ;
+               rdfs:comment "The validity of the ticket when transferring"@en ,
+                            "Validez del ticket para transbordos"@es ;
+               rdfs:label "Transfers"@en ,
+                          "transbordos"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#trip
+gtfs:trip rdf:type owl:ObjectProperty ;
+          rdfs:range gtfs:Trip ;
+          rdfs:comment "Indica que este concepto es parte de cierto gtfs:Trip"@es ,
+                       "Indicates that this is part of a certain gtfs:Trip"@en ;
+          rdfs:label "Trip"@en ,
+                     "viaje"@es ;
+          status:term_status "inestable"@es ,
+                             "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#wheelchairAccessible
+gtfs:wheelchairAccessible rdf:type owl:ObjectProperty ;
+                          rdfs:domain gtfs:Station ,
+                                      gtfs:Stop ;
+                          rdfs:range gtfs:WheelchairBoardingStatus ;
+                          gtfs:comment "Si wheelchair_accessible es 0, mapee a gtfs:CheckParentStation; si es 1, mapee a gtfs:WheelchairAccessible; si es 2, mapee a gtfs:NotWheelchairAccessible."@es ,
+                                       "When wheelchair_accessible is 0, map to gtfs:CheckParentStation; if 1 map to gtfs:WheelchairAccessible; if 2 map to gtfs:NotWheelchairAccessible."@en ;
+                          rdfs:comment "La parada o estación específica es accesible para silla de ruedas. Si esta parada es parte de una estación, hay también una ruta accesible desde el exterior de la estación hasta la parada."@es ,
+                                       "Wheelchair boardings are possible from the specified stop or station. If this stop is part of a station, there is also a wheelchair accessible path from outside the station towards the stop."@en ;
+                          rdfs:label "accesible para silla de ruedas"@es ,
+                                     "wheelchair boarding"@en ;
+                          status:term_status "inestable"@es ,
+                                             "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#zone
+gtfs:zone rdf:type owl:ObjectProperty ;
+          rdfs:range gtfs:Zone ;
+          gtfs:comment "Puede crear una nueva URI por zona, o simplemente referenciarla con un número entero."@es ,
+                       "You can create a new URI per zone, or just keep it an integer as per your own taste."@en ;
+          rdfs:comment "A gtfs:Stop defines the fare zone. Zones are required if you want to provide fare information using gtfs:FareClass."@en ,
+                       "Un gtfs:Stop define la zona tarifaria. Las zonas son necesarias si quiere proporcionar información de tarifas usando gtfs:FareClass."@es ;
+          rdfs:label "Zone"@en ,
+                     "zona"@es ;
+          status:term_status "inestable"@es ,
+                             "unstable"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://vocab.gtfs.org/terms#arrivalTime
+gtfs:arrivalTime rdf:type owl:DatatypeProperty ;
+                 rdfs:domain gtfs:StopTime ;
+                 rdfs:range xsd:duration ;
+                 rdfs:comment "Check the original specification for special cases"@en ,
+                              "Compruebe la especificación original para casos especiales"@es ;
+                 rdfs:label "Arrival time"@en ,
+                            "hora de llegada"@es ;
+                 rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stop_times_fields> ;
+                 status:term_status "inestable"@es ,
+                                    "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#bikesAllowed
+gtfs:bikesAllowed rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:label "Bikes allowed"@en ,
+                             "bicicletas permitidas"@es ;
+                  status:term_status "inestable"@es ,
+                                     "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#block
+gtfs:block rdf:type owl:DatatypeProperty ;
+           rdfs:domain gtfs:Trip ;
+           rdfs:range xsd:nonNegativeInteger ;
+           rdfs:comment "Identifica el bloque al que pertenece el viaje. Un bloque consta de dos o más viajes secuenciales realizados en el mismo vehículo, en los que un pasajero puede cambiar de viaje si simplemente permanece en el vehículo."@es ,
+                        "Identifies the block to which the trip within this feed belongs. A block consists of two or more sequential trips made using the same vehicle, where a passenger can transfer from one trip to the next just by staying in the vehicle."@en ;
+           rdfs:label "Block"@en ,
+                      "Bloque"@es ;
+           status:term_status "inestable"@es ,
+                              "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#color
+gtfs:color rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:string ;
+           rdfs:comment "A 6 character hexidecimal color (without #)"@en ,
+                        "Un color expresado con 6 caracteres hexadecimales (sin #)"@es ;
+           rdfs:label "Color"@en ,
+                      "color"@es ;
+           status:term_status "inestable"@es ,
+                              "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#dateAddition
+gtfs:dateAddition rdf:type owl:DatatypeProperty ;
+                  rdfs:domain gtfs:CalendarDateRule ;
+                  rdfs:range xsd:boolean ;
+                  gtfs:comment "El campo exception_type en calendar_dates.txt - 1 es cierto, 2 es falso."@es ,
+                               "The exception_type field in calendar_dates.txt - 1 is true, 2 is false."@en ;
+                  rdfs:comment "A boolean whether to add (true) or remove (false) a date"@en ,
+                               "Booleano que indica si el servicio se ha agregado (cierto) o suprimido (falso) en la fecha especificada"@es ;
+                  rdfs:label "Date Addition"@en ,
+                             "incorporación de fecha"@es ;
+                  status:term_status "inestable"@es ,
+                                     "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#departureTime
+gtfs:departureTime rdf:type owl:DatatypeProperty ;
+                   rdfs:domain gtfs:StopTime ;
+                   rdfs:range xsd:duration ;
+                   rdfs:comment "Check the original specification for special cases"@en ,
+                                "Compruebe la especificación original para casos especiales"@es ;
+                   rdfs:label "Departure time"@en ,
+                              "hora de salida"@es ;
+                   rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stop_times_fields> ;
+                   status:term_status "inestable"@es ,
+                                      "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#direction
+gtfs:direction rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:boolean ;
+               rdfs:comment "A binary property to indicate the direction the trip is going (e.g., outbound/inbound, center/airport)"@en ,
+                            "Apunta a un valor binario que indica la dirección del viaje (e.g., ida/vuelta, centro/aeropuerto)"@es ;
+               rdfs:label "Direction"@en ,
+                          "dirección"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#distanceTraveled
+gtfs:distanceTraveled rdf:type owl:DatatypeProperty ;
+                      rdfs:domain gtfs:StopTime ;
+                      rdfs:range xsd:nonNegativeInteger ;
+                      rdfs:comment "Indica la distancia a una parada desde el primer punto del recorrido. Representa una distancia de viaje real durante la ruta en unidades expresadas como pies o kilómetros. Esta información permite que quien planifica el viaje determine la porción de la forma que se debe trazar al mostrar parte de un viaje en el mapa. Los valores utilizados para gtfs:distanceTraveled se deben incrementar junto con los de gtfs:stopSequence, es decir, no se pueden usar para mostrar el recorrido inverso a lo largo de una ruta."@es ,
+                                   "Positions a stop as a distance from the first shape point. It represents a real distance traveled along the route in units such as feet or kilometers. This information allows the trip planner to determine how much of the shape to draw when showing part of a trip on the map. The values used for gtfs:distanceTraveled must increase along with gtfs:stopSequence: they cannot be used to show reverse travel along a route."@en ;
+                      rdfs:label "Distance Traveled"@en ,
+                                 "distancia recorrida"@es ;
+                      status:term_status "inestable"@es ,
+                                         "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#endTime
+gtfs:endTime rdf:type owl:DatatypeProperty ;
+             rdfs:domain gtfs:Frequency ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Define la hora a la que el servicio cambia de frecuencia (o bien finaliza) en la primera parada del viaje."@es ,
+                          "Indicates the time at which service changes to a different frequency (or ceases) at the first stop in the trip."@en ;
+             rdfs:label "End Time"@en ,
+                        "hora final"@es ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#friday
+gtfs:friday rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:boolean ;
+            rdfs:comment "Service is available on Friday"@en ,
+                         "Servicio disponible los viernes"@es ;
+            rdfs:label "Friday"@en ,
+                       "viernes"@es ;
+            status:term_status "inestable"@es ,
+                               "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#headsign
+gtfs:headsign rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Esta propiedad apunta al texto que indica el destino del viaje a los pasajeros."@es ,
+                           "The gtfs:headsign property contains the text that appears on a sign that identifies the trip's destination to passengers."@en ;
+              rdfs:label "Headsign"@en ,
+                         "destino del viaje"@es ;
+              rdfs:seeAlso <https://developers.google.com/transit/gtfs/examples/display-to-users#TripHeadsign> ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#headwaySeconds
+gtfs:headwaySeconds rdf:type owl:DatatypeProperty ;
+                    rdfs:domain gtfs:Frequency ;
+                    rdfs:range xsd:nonNegativeInteger ;
+                    rdfs:comment "Indica el período de tiempo (en segundos) entre salidas desde la misma parada (tiempo entre viajes) para este tipo de viaje, durante el intervalo de tiempo especificado mediante start_time y end_time."@es ,
+                                 "Indicates the time between departures from the same stop (headway) for this trip type, during the time interval specified by gtfs:startTime and gtfs:endTime."@en ;
+                    rdfs:label "Headway Seconds"@en ,
+                               "tiempo entre viajes"@es ;
+                    status:term_status "inestable"@es ,
+                                       "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#minimumTransferTime
+gtfs:minimumTransferTime rdf:type owl:DatatypeProperty ;
+                         rdfs:domain gtfs:TransferRule ;
+                         rdfs:range xsd:nonNegativeInteger ;
+                         rdfs:comment "El tiempo mínimo de transbordo cuando gtfs:transferType es gtfs:MinimumTimeTransfer."@es ,
+                                      "The minimum transfer time when the gtfs:transferType is gtfs:MinimumTimeTransfer."@en ;
+                         rdfs:label "Minimum Transfer Time"@en ,
+                                    "Tiempo mínimo de transbordo"@es ;
+                         status:term_status "inestable"@es ,
+                                            "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#monday
+gtfs:monday rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:boolean ;
+            rdfs:comment "Service is available on Monday"@en ,
+                         "Servicio disponible los lunes"@es ;
+            rdfs:label "Monday"@en ,
+                       "lunes"@es ;
+            status:term_status "inestable"@es ,
+                               "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#pointSequence
+gtfs:pointSequence rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:nonNegativeInteger ;
+                   rdfs:comment "El campo shape_pt_sequence asocia la latitud y longitud de un punto de recorrido con su orden de secuencia en el recorrido. Los valores para shape_pt_sequence deben ser números enteros positivos y crecientes conforme avanza el viaje."@es ,
+                                "The shape_pt_sequence field associates the latitude and longitude of a shape point with its sequence order along the shape. The values for shape_pt_sequence must be non-negative integers, and they must increase along the trip."@en ;
+                   rdfs:label "Point Sequence"@en ,
+                              "secuencia de puntos"@es ;
+                   status:term_status "inestable"@es ,
+                                      "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#saturday
+gtfs:saturday rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:boolean ;
+              rdfs:comment "Service is available on Saturday"@en ,
+                           "Servicio disponible los sábados"@es ;
+              rdfs:label "Saturday"@en ,
+                         "sábado"@es ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#startTime
+gtfs:startTime rdf:type owl:DatatypeProperty ;
+               rdfs:domain gtfs:Frequency ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Define la hora a la que empieza el servicio con la frecuencia especificada"@es ,
+                            "Specifies the time at which service begins with the specified frequency"@en ;
+               rdfs:label "Start Time"@en ,
+                          "hora de inicio"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#stopSequence
+gtfs:stopSequence rdf:type owl:DatatypeProperty ;
+                  rdfs:domain gtfs:StopTime ;
+                  rdfs:range xsd:nonNegativeInteger ;
+                  rdfs:comment "Indica el orden de paradas para un viaje concreto. Los valores de gtfs:stopSequence deben ser enteros no negativos, deben aumentar durante el viaje referenciado por la propiedad gtfs:trip."@es ,
+                               "The stopSequence property identifies the order of the stops for a particular trip. The values must increase along the gtfs:Trip referenced in the gtfs:trip property."@en ;
+                  rdfs:label "Stop sequence"@en ,
+                             "secuencia de paradas"@es ;
+                  status:term_status "inestable"@es ,
+                                     "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#sunday
+gtfs:sunday rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:boolean ;
+            rdfs:comment "Service is available on Sunday"@en ,
+                         "Servicio disponible los domingos"@es ;
+            rdfs:label "Sunday"@en ,
+                       "domingos"@es ;
+            status:term_status "inestable"@es ,
+                               "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#textColor
+gtfs:textColor rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string ;
+               rdfs:comment "A 6 character hexidecimal color (without #) asigned to a text label."@en ,
+                            "Un color expresado con 6 caracteres hexadecimales (sin #) asignado a una etiqueta de texto."@es ;
+               rdfs:label "Text color"@en ,
+                          "color de texto"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#thursday
+gtfs:thursday rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:boolean ;
+              rdfs:comment "Service is available on Thursday"@en ,
+                           "Servicio disponible los jueves"@es ;
+              rdfs:label "Thursday"@en ,
+                         "jueves"@es ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#tuesday
+gtfs:tuesday rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:boolean ;
+             rdfs:comment "Service is available on Tuesday"@en ,
+                          "Servicio disponible los martes"@es ;
+             rdfs:label "Tuesday"@en ,
+                        "martes"@es ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#usesExactTimes
+gtfs:usesExactTimes rdf:type owl:DatatypeProperty ;
+                    rdfs:domain gtfs:Frequency ;
+                    rdfs:range xsd:boolean ;
+                    gtfs:comment "Determina si los viajes basados en frecuencias deben estar programados de manera exacta según la información especificada de tiempo entre viajes. Falso cuando exact_times es 0 (o vacío), verdadero cuando es uno 1"@es ,
+                                 "This is false when exact_times for this row is 0 or empty, true when it is 1"@en ;
+                    rdfs:label "Frequency uses exact times"@en ,
+                               "Viajes basados en frecuencias programados de manera exacta"@es ;
+                    status:term_status "inestable"@es ,
+                                       "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#wednesday
+gtfs:wednesday rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:boolean ;
+               rdfs:comment "Service is available on Wednesday"@en ,
+                            "Servicio disponible los miércoles"@es ;
+               rdfs:label "Wednesday"@en ,
+                          "miércoles"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://schema.org/PriceSpecification
+schema:PriceSpecification rdf:type owl:Class .
+
+
+###  http://vocab.gtfs.org/terms#Agency
+gtfs:Agency rdf:type owl:Class ;
+            rdfs:subClassOf foaf:Agent ;
+            rdfs:comment "An agency operates a certain schedule based transport mode"@en ,
+                         "Una empresa opera un cierto modo de transporte de manera programada"@es ;
+            rdfs:label "Agency"@en ,
+                       "Empresa"@es ;
+            rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#agency_fields> ;
+            status:term_status "estable"@es ,
+                               "stable"@en .
+
+
+###  http://vocab.gtfs.org/terms#CalendarDateRule
+gtfs:CalendarDateRule rdf:type owl:Class ;
+                      rdfs:subClassOf gtfs:ServiceRule ;
+                      gtfs:comment "a row from calendar_dates.txt"@en ,
+                                   "una línea en calendar_dates.txt"@es ;
+                      rdfs:comment "Defines service availability for a specific date"@en ,
+                                   "Indica la disponibilidad de servicio para una fecha concreta"@es ;
+                      rdfs:label "Calendar date rule"@en ,
+                                 "Regla de fecha de calendario"@es ;
+                      rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#calendar_dates_fields> ;
+                      status:term_status "inestable"@es ,
+                                         "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#CalendarRule
+gtfs:CalendarRule rdf:type owl:Class ;
+                  rdfs:subClassOf gtfs:ServiceRule ;
+                  gtfs:comment "a row from calendar.txt"@en ,
+                               "una línea de calendar.txt"@es ;
+                  rdfs:comment "Define en qué días de la semana el servicio está disponible para un periodo concreto."@es ,
+                               "Defines on which days of the week for a certain period the service is available."@en ;
+                  rdfs:label "Calendar rule"@en ,
+                             "Regla de calendario"@es ;
+                  status:term_status "inestable"@es ,
+                                     "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#FareClass
+gtfs:FareClass rdf:type owl:Class ;
+               rdfs:subClassOf schema:PriceSpecification ;
+               gtfs:comment "A gtfs:FareClass corresponds to a row in the fare_attributes.txt file."@en ,
+                            "Una gtfs:FareClass corresponde a una línea en fare_attributes.txt."@es ;
+               rdfs:comment "A class describing how the fare is calculated."@en ,
+                            "Describe como se calcula la tarifa."@es ;
+               rdfs:label "Clase tarifaria"@es ,
+                          "Fare Class"@en ;
+               rdfs:seeAlso <https://code.google.com/p/googletransitdatafeed/wiki/FareExamples> ,
+                            <https://developers.google.com/transit/gtfs/reference#fare_attributes_fields> ,
+                            <https://developers.google.com/transit/gtfs/reference#fare_rules_fields> ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#FareRule
+gtfs:FareRule rdf:type owl:Class ;
+              rdfs:comment "A rule which binds a gtfs:FareClass to a part of the network."@en ,
+                           "Una regla que enlaza una clase tarifaria (gtfs:FareClass) a un zona de la red de transporte."@es ;
+              rdfs:label "Fare Rule"@en ,
+                         "Regla tarifaria"@es ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Frequency
+gtfs:Frequency rdf:type owl:Class ;
+               rdfs:comment "An alternative to defining departures and arrivals as StopTimes: define frequencies for transit vehicle"@en ,
+                            "Una alternativa a definir salidas y llegadas como StopTimes: definir frecuencias para vehículos de transporte público"@es ;
+               rdfs:label "Frecuencia"@es ,
+                          "Frequency"@en ;
+               rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#frequencies_fields> ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#PaymentMethod
+gtfs:PaymentMethod rdf:type owl:Class ;
+                   rdfs:comment "Method to pay for the public transit service"@en ,
+                                "Método de pago para el servicio de transporte público"@es ;
+                   rdfs:label "Método de pago"@es ,
+                              "Payment Method"@en ;
+                   status:term_status "inestable"@es ,
+                                      "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Route
+gtfs:Route rdf:type owl:Class ;
+           rdfs:comment "A gtfs:Route is a commercial route followed entirely or partly by gtfs:Trips"@en ,
+                        "Una gtfs:Route es un grupo de viajes (gtfs:Trips) que se muestran a los usuarios como servicio independiente"@es ;
+           rdfs:label "Route"@en ,
+                      "Ruta"@es ;
+           rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#routes_fields> ;
+           status:term_status "inestable"@es ,
+                              "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#RouteType
+gtfs:RouteType rdf:type owl:Class ;
+               rdfs:comment "Describe el tipo de transporte usado en una ruta"@es ,
+                            "Describes the type of transportation used on a route"@en ;
+               rdfs:label "Route type"@en ,
+                          "Tipo de ruta"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Service
+gtfs:Service rdf:type owl:Class ;
+             gtfs:comment "A gtfs:Service is a set of gtfs:ServiceRules which can be found in both calendar.txt as calendar_dates.txt"@en ,
+                          "Un gtfs:Service es un conjunto de gtfs:ServiceRules que pueden ser encontradas en calendar.txt y calendar_dates.txt"@es ;
+             rdfs:comment "A gtfs:Service identifies a set of dates when a service is available for one or more routes"@en ,
+                          "Un gtfs:Service indica el conjunto de fechas en el que el servicio está disponible para una o más rutas"@es ;
+             rdfs:label "Service"@en ,
+                        "Servicio"@es ;
+             rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#calendar_dates_fields> ,
+                          <https://developers.google.com/transit/gtfs/reference#calendar_fields> ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#ServiceRule
+gtfs:ServiceRule rdf:type owl:Class ;
+                 rdfs:comment "One or more service rules define a set of dates"@en ,
+                              "Una o más reglas de servicio definen un conjunto de fechas"@es ;
+                 rdfs:label "Regla de servicio"@es ,
+                            "Service rule"@en ;
+                 status:term_status "inestable"@es ,
+                                    "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Station
+gtfs:Station rdf:type owl:Class ;
+             gtfs:comment "Map a row in stops.txt to gtfs:Station when the location_type is 1."@en ,
+                          "Mapee una línea en stops.txt a gtfs:Station cuando location_type sea 1."@es ;
+             rdfs:comment "A physical structure or area that contains one or more stop."@en ,
+                          "Estructura física o área que contiene una o más paradas."@es ;
+             rdfs:label "Estación"@es ,
+                        "Station"@en ;
+             rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stops_fields> ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Stop
+gtfs:Stop rdf:type owl:Class ;
+          rdfs:comment "A location where passengers board or disembark from a transit vehicle."@en ,
+                       "Un lugar donde los pasajeros suben o bajan de un vehículo de transporte público."@es ;
+          rdfs:label "Parada"@es ,
+                     "Stop"@en ;
+          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stops_fields> ;
+          status:term_status "estable"@es ,
+                             "stable"@en .
+
+
+###  http://vocab.gtfs.org/terms#StopTime
+gtfs:StopTime rdf:type owl:Class ;
+              rdfs:comment "Describe una hora de parada como parte de un viaje"@es ,
+                           "Describes a stop time as part of a trip"@en ;
+              rdfs:label "Hora de parada"@es ,
+                         "Stop time"@en ;
+              rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stop_times_fields> ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Transfer
+gtfs:Transfer rdf:type owl:Class .
+
+
+###  http://vocab.gtfs.org/terms#TransferRule
+gtfs:TransferRule rdf:type owl:Class ;
+                  rdfs:comment "Define additional rules for making connections between routes."@en ,
+                               "Define reglas adicionales para transbordos entre rutas."@es ;
+                  rdfs:label "Regla de transbordo"@es ,
+                             "Transfer Rule"@en ;
+                  rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#transfers_fields> ;
+                  status:term_status "inestable"@es ,
+                                     "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Trip
+gtfs:Trip rdf:type owl:Class ;
+          rdfs:comment "A collection of gtfs:StopTimes followed by a transit vehicle"@en ,
+                       "Trayecto de dos o más paradas realizadas por un vehículo que se produce a una gtfs:StopTime"@es ;
+          rdfs:label "Trip"@en ,
+                     "Viaje"@es ;
+          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#trips_fields> ;
+          status:term_status "inestable"@es ,
+                             "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#WheelchairBoardingStatus
+gtfs:WheelchairBoardingStatus rdf:type owl:Class ;
+                              rdfs:comment "A class whom's instances indicate how accessible a gtfs:Trip, gtfs:Stop or gtfs:Station is."@en ,
+                                           "Las instancias de esta clase indican como de accesible es un gtfs:Trip, un gtfs:Stop o una gtfs:Station."@es ;
+                              rdfs:label "Información de accesibilidad para silla de ruedas"@es ,
+                                         "Wheelchair Boarding Information"@en ;
+                              rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stops_fields> ;
+                              status:term_status "inestable"@es ,
+                                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Zone
+gtfs:Zone rdf:type owl:Class ;
+          rdfs:comment "Las zonas son necesarias si quiere proporcionar información de tarifas usando gtfs:FareClass"@es ,
+                       "Zones are required if you want to provide fare information using gtfs:FareClass"@en ;
+          rdfs:label "Zona"@es ,
+                     "Zone"@en ;
+          status:term_status "inestable"@es ,
+                             "unstable"@en .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+foaf:Agent rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://vocab.gtfs.org/terms#BeforeBoarding
+gtfs:BeforeBoarding rdf:type owl:NamedIndividual ,
+                             gtfs:PaymentMethod ;
+                    rdfs:comment "La tarifa se debe pagar antes de subir a bordo"@es ,
+                                 "Ticket should be bought before boarding"@en ;
+                    rdfs:label "Antes de subir a bordo"@es ,
+                               "Before Boarding"@en ;
+                    status:term_status "inestable"@es ,
+                                       "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Bus
+gtfs:Bus rdf:type owl:NamedIndividual ,
+                  gtfs:RouteType ;
+         rdfs:comment "Used for short- and long-distance bus routes."@en ,
+                      "Utilizado para rutas en autobús de corta y larga distancia."@es ;
+         rdfs:label "Autobús"@es ,
+                    "Bus"@en ;
+         status:term_status "inestable"@es ,
+                            "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#CableCar
+gtfs:CableCar rdf:type owl:NamedIndividual ,
+                       gtfs:RouteType ;
+              rdfs:comment "Used for street-level cable cars where the cable runs beneath the car."@en ,
+                           "Utilizado para funiculares en superficie en donde el cable pasa por debajo del vehículo."@es ;
+              rdfs:label "Cable car"@en ,
+                         "Funicular"@es ;
+              status:term_status "inestable"@es ,
+                                 "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#CheckParentStation
+gtfs:CheckParentStation rdf:type owl:NamedIndividual ,
+                                 gtfs:WheelchairBoardingStatus ;
+                        gtfs:comment "Corresponde a wheelchair_accessible con valor 0."@es ,
+                                     "Corresponds with wheelchair_accessible being 0."@en ;
+                        rdfs:comment "Check the (parent) station for accessibility information."@en ,
+                                     "Compruebe la estación (matriz) para información de accesibilidad."@es ;
+                        rdfs:label "Check the parent station"@en ,
+                                   "Compruebe la estación matriz"@es ;
+                        status:term_status "inestable"@es ,
+                                           "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Ferry
+gtfs:Ferry rdf:type owl:NamedIndividual ,
+                    gtfs:RouteType ;
+           rdfs:comment "Used for short- and long-distance boat service."@en ,
+                        "Utilizado para servicio de transporte público fluvial o marítimo de corta y larga distancia."@es ;
+           rdfs:label "Ferry"@en ,
+                      "Ferry, transbordador"@es ;
+           status:term_status "inestable"@es ,
+                              "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Funicular
+gtfs:Funicular rdf:type owl:NamedIndividual ,
+                        gtfs:RouteType ;
+               rdfs:comment "Any rail system designed for steep inclines."@en ,
+                            "Cualquier sistema por raíl diseñado para recorridos con una gran inclinación."@es ;
+               rdfs:label "Funicular"@en ,
+                          "Funicular"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Gondola
+gtfs:Gondola rdf:type owl:NamedIndividual ,
+                      gtfs:RouteType ;
+             rdfs:comment "Gondola, Suspended cable car. Typically used for aerial cable cars where the car is suspended from the cable."@en ,
+                          "Normalmente se utiliza para medios de transporte público por cable en donde el vehículo queda suspendido de un cable."@es ;
+             rdfs:label "Gondola, Suspended cable car"@en ,
+                        "Teleférico, telecabina"@es ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#LightRail
+gtfs:LightRail rdf:type owl:NamedIndividual ,
+                        gtfs:RouteType ;
+               rdfs:comment "Any light rail or street level system within a metropolitan area."@en ,
+                            "Cualquier metro ligero o sistema ferroviario en superficie dentro de un área metropolitana."@es ;
+               rdfs:label "Tram, Streetcar, Light rail"@en ,
+                          "Tranvía, metro ligero"@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#NotWheelchairAccessible
+gtfs:NotWheelchairAccessible rdf:type owl:NamedIndividual ,
+                                      gtfs:WheelchairBoardingStatus ;
+                             gtfs:comment "Corresponde a wheelchair_accessible con valor 2"@es ,
+                                          "Corresponds to a wheelchair_accessible column being 2"@en ;
+                             rdfs:comment "No riders in wheelchairs can be accommodated on this trip or wheelchair boarding is not possible at this stop and/or there exists no accessible path from outside the station to the specific stop."@en ,
+                                          "Pasajeros en silla de ruedas no pueden acceder a este viaje o el acceso con silla de ruedas no es posible en esta parada y/o no hay una ruta accesible desde el exterior de la estación hasta la parada."@es ;
+                             rdfs:label "No accesible para silla de ruedas"@es ,
+                                        "Not wheelchair accessible"@en ;
+                             status:term_status "inestable"@es ,
+                                                "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#OnBoard
+gtfs:OnBoard rdf:type owl:NamedIndividual ,
+                      gtfs:PaymentMethod ;
+             rdfs:comment "Fare should be bought on board"@en ,
+                          "La tarifa se paga a bordo"@es ;
+             rdfs:label "A bordo"@es ,
+                        "On Board"@en ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Rail
+gtfs:Rail rdf:type owl:NamedIndividual ,
+                   gtfs:RouteType ;
+          rdfs:comment "Used for intercity or long-distance travel."@en ,
+                       "Utilizado para viajes de cercanías, interurbanos o de larga distancia."@es ;
+          rdfs:label "Rail"@en ,
+                     "Tren"@es ;
+          status:term_status "inestable"@es ,
+                             "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#Subway
+gtfs:Subway rdf:type owl:NamedIndividual ,
+                     gtfs:RouteType ;
+            rdfs:comment "Any underground rail system within a metropolitan area."@en ,
+                         "Cualquier sistema ferroviario subterráneo dentro de un área metropolitana."@es ;
+            rdfs:label "Subterráneo, metro"@es ,
+                       "Subway, Metro"@en ;
+            status:term_status "inestable"@es ,
+                               "unstable"@en .
+
+
+###  http://vocab.gtfs.org/terms#WheelchairAccessible
+gtfs:WheelchairAccessible rdf:type owl:NamedIndividual ,
+                                   gtfs:WheelchairBoardingStatus ;
+                          gtfs:comment "Corresponde a wheelchair_accessible con valor 1"@es ,
+                                       "Corresponds to a wheelchair_accessible column being 1"@en ;
+                          rdfs:comment "Indica que el vehículo usado en este viaje es accesible para, al menos, un pasajero en silla de ruedas, o indica que la parada específica está habilitada para sillas de ruedas, que algunos viajes desde esta parada son accesibles para silla de ruedas y si esta parada tiene una estación matriz, que hay alguna ruta accesible desde el exterior de la estación hasta la parada."@es ,
+                                       "Indicates that the vehicle being used on this particular trip can accommodate at least one rider in a wheelchair, or identifies that wheelchair boardings are possible from the specified stop, some trips at this stop are accessible by wheelchair and if this stop has a parentStation, there exists some accessible path from outside the station to the specific stop."@en ;
+                          rdfs:label "Accesible para silla de ruedas"@es ,
+                                     "Wheelchair accessible"@en ;
+                          status:term_status "inestable"@es ,
+                                             "unstable"@en .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://vocab.gtfs.org/terms> cc:license <http://creativecommons.org/licenses/by/3.0/> ;
+                              dct:hasFormat <https://raw.githubusercontent.com/OpenTransport/vocabulary/master/gtfs/gtfs.ttl> ;
+                              dct:issued "2014-10-23"^^xsd:date ;
+                              dct:modified "2014-10-27"^^xsd:date ;
+                              dct:rights "Copyright 2014 - Open Transport contributors" ;
+                              foaf:primaryTopic <http://vocab.gtfs.org/terms#> .
+
+
+gtfs:EnsuredTransfer rdfs:comment "Este es un punto de transbordo sincronizado entre dos rutas. El vehículo que sale espera al que llega, dejando tiempo suficiente para que un pasajero haga transbordo entre rutas."@es ,
+                                  "This is a timed transfer point between two routes. The departing vehicle is expected to wait for the arriving one, with sufficient time for a passenger to transfer between routes."@en ;
+                     rdfs:label "Ensured Transfer"@en ,
+                                "Punto de transbordo sincronizado"@es ;
+                     status:term_status "inestable"@es ,
+                                        "unstable"@en .
+
+
+gtfs:MinimumTimeTransfer rdfs:comment "Este transbordo requiere una cantidad mínima de tiempo entre la llegada y la salida para garantizar la conexión. El tiempo necesario para el transbordo se especifica mediante min_transfer_time"@es ,
+                                      "This transfer requires a minimum amount of time between arrival and departure to ensure a connection. The time required to transfer is specified by gtfs:minimumTransferTime"@en ;
+                         rdfs:label "Minimum Time Transfer"@en ,
+                                    "Mínimo tiempo de transbordo"@es ;
+                         status:term_status "inestable"@es ,
+                                            "unstable"@en .
+
+
+gtfs:MustCoordinateWithDriver rdfs:label "Must coordinate with driver to arrange pickup or drop off"@en ,
+                                         "Se debe pedir al conductor que pare."@es ;
+                              status:term_status "inestable"@es ,
+                                                 "unstable"@en .
+
+
+gtfs:MustPhone rdfs:label "Must phone agency to arrange pickup or drop off"@en ,
+                          "Se debe llamar a la empresa para organizar la parada."@es ;
+               status:term_status "inestable"@es ,
+                                  "unstable"@en .
+
+
+gtfs:NoTransfer rdfs:comment "No es posible realizar transbordos entre rutas en esta ubicación."@es ,
+                             "Transfers are not possible between routes at this location."@en ;
+                rdfs:label "No Transfer"@en ,
+                           "Sin transbordo"@es ;
+                status:term_status "inestable"@es ,
+                                   "unstable"@en .
+
+
+gtfs:NoTransfersAllowed rdfs:comment "Indica que el pasajero debe comprar un nuevo billete para realizar un transbordo"@es ,
+                                     "Indicate that a passenger should buy a new ticket when transferring"@en ;
+                        rdfs:label "No se permiten transbordos"@es ,
+                                   "No transfers allowed"@en ;
+                        status:term_status "inestable"@es ,
+                                           "unstable"@en .
+
+
+gtfs:NotAvailable rdfs:label "Pickup or drop off not available"@en ,
+                             "Sin parada disponible"@es ;
+                  status:term_status "inestable"@es ,
+                                     "unstable"@en .
+
+
+gtfs:OneTransfersAllowed rdfs:comment "Indica que el pasajero puede hacer un transbordo con su billete"@es ,
+                                      "Indicate that a passenger should buy a new ticket when transferring a second time"@en ;
+                         rdfs:label "One transfer allowed"@en ,
+                                    "Un transbordo permitido"@es ;
+                         status:term_status "inestable"@es ,
+                                            "unstable"@en .
+
+
+gtfs:RecommendedTransfer rdfs:comment "Este es un punto de transbordo recomendado entre dos rutas"@es ,
+                                      "This is a recommended transfer point between two routes"@en ;
+                         rdfs:label "Punto de transbordo recomendado"@es ,
+                                    "Recommended Transfer"@en ;
+                         status:term_status "inestable"@es ,
+                                            "unstable"@en .
+
+
+gtfs:Regular gtfs:comment "If no pickup_type or drop_off_type given in stop_times.txt, map to this one."@en ,
+                          "Si no se incluye pickup_type o drop_off_type en stop_times.txt, mapee a este concepto."@es ;
+             rdfs:label "Parada programada regularmente"@es ,
+                        "Regularly scheduled pickup or drop off"@en ;
+             status:term_status "inestable"@es ,
+                                "unstable"@en .
+
+
+gtfs:TwoTransfersAllowed rdfs:comment "Indica que el pasajero puede hacer dos transbordos con su billete"@es ,
+                                      "Indicate that a passenger should buy a new ticket when transferring for the third time"@en ;
+                         rdfs:label "Dos transbordos permitidos"@es ,
+                                    "Two transfers allowed"@en ;
+                         status:term_status "inestable"@es ,
+                                            "unstable"@en .
+
+
+gtfs:UnlimitedTransfersAllowed rdfs:comment "Indica que el billete permite una cantidad de transbordos ilimitada"@es ,
+                                            "Indicate that unlimited transfers are permitted"@en ;
+                               rdfs:label "Transbordos ilimitados"@es ,
+                                          "Unlimited transfers allowed"@en ;
+                               status:term_status "inestable"@es ,
+                                                  "unstable"@en .
+
+
+gtfs:code gtfs:comment "This is the stop_code field"@en ;
+          rdfs:comment "A gtfs:code predicate defines the stop code for a stop."@en ;
+          rdfs:label "Stop Code"@en ;
+          rdfs:seeAlso <https://developers.google.com/transit/gtfs/reference#stops_fields> ;
+          status:term_status "unstable"@en .
+
+
+gtfs:destinationZone rdfs:comment "La zona de destino donde una clase tarifaria se aplica"@en ,
+                                  "The destination zone where this applies"@en ;
+                     rdfs:label "Destination Zone"@en ,
+                                "zona de destino"@es ;
+                     status:term_status "inestable"@es ,
+                                        "unstable"@en .
+
+
+gtfs:dropOffType rdfs:comment "Indica si los pasajeros se bajan en una parada como parte del horario normal o si no pueden bajar en esa parada."@es ,
+                              "Which type of drop off"@en ;
+                 rdfs:label "Drop off type"@en ,
+                            "tipo de bajada"@es ;
+                 status:term_status "inestable"@es ,
+                                    "unstable"@en .
+
+
+gtfs:originZone rdfs:comment "La zona de origen donde una clase tarifaria se aplica"@es ,
+                             "The origin zone where this applies"@en ;
+                rdfs:label "Origin Zone"@en ,
+                           "zona de origen"@es ;
+                status:term_status "inestable"@es ,
+                                   "unstable"@en .
+
+
+gtfs:pickupType rdfs:comment "Indica si se recogen los pasajeros en una parada como parte del horario normal o si su recogida en dicha parada no se encuentra disponible."@es ,
+                             "Which type of pickup"@en ;
+                rdfs:label "Pickup type"@en ,
+                           "tipo de recogida"@es ;
+                status:term_status "inestable"@es ,
+                                   "unstable"@en .
+
+
+gtfs:shape rdfs:comment "Un enlace al recorrido que sigue el viaje."@es ,
+                        "a link to a shape the trip follows."@en ;
+           rdfs:label "Shape"@en ,
+                      "forma del recorrido, trayecto, itinerario"@es ;
+           status:term_status "inestable"@es ,
+                              "unstable"@en .
+
+
+gtfs:shapePoint rdfs:comment "Enlaza a gtfs:ShapePoint"@es ,
+                             "Links to a gtfs:ShapePoint"@en ;
+                rdfs:label "Shape Point"@en ,
+                           "punto de recorrido"@es ;
+                status:term_status "inestable"@es ,
+                                   "unstable"@en .
+
+
+gtfs:timeZone rdfs:comment "La zona horaria donde una persona u organización está situada."@es ,
+                           "The timezone where a person or organisation is located."@en ;
+              rdfs:label "Time zone"@en ,
+                         "zona horaria"@es ;
+              rdfs:seeAlso <http://en.wikipedia.org/wiki/List_of_tz_database_time_zones> ;
+              status:term_status "prueba"@es ,
+                                 "testing"@en .
+
+
+gtfs:transferExpiryTime rdfs:comment "El tiempo que el billete es válido desde que se abandona el vehículo para hacer un transbordo"@es ,
+                                     "The time a ticket remains valid when having left the previous vehicle"@en ;
+                        rdfs:label "Tiempo de validez para el transbordo"@es ,
+                                   "Transfer Expiry Time"@en ;
+                        status:term_status "inestable"@es ,
+                                           "unstable"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

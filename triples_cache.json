@@ -1,0 +1,226 @@
+{
+  "425d2cb1b53178976a8064da73f2c9db": [
+    {
+      "subject": "London Underground",
+      "predicate": "operated",
+      "object": "1960s_and_1970s"
+    },
+    {
+      "subject": "London Underground",
+      "predicate": "becameAccessibleForDisabledPeople",
+      "object": "1993"
+    },
+    {
+      "subject": "Underground_lines",
+      "predicate": "wereBannedForWheelchairUsers",
+      "object": "before_1993"
+    },
+    {
+      "subject": "Transport_for_London",
+      "predicate": "operates",
+      "object": "London Underground"
+    },
+    {
+      "subject": "London Underground",
+      "predicate": "type",
+      "object": "Deep-level tunnel"
+    },
+    {
+      "subject": "Wheelchair_users",
+      "predicate": "wereBannedFromDeepLevelTunnels",
+      "object": "before_1993"
+    }
+  ],
+  "81fc6b678654f2167095e3db0f4d2ae7": [
+    {
+      "subject": "DLR",
+      "predicate": "openedIn",
+      "object": "1987"
+    },
+    {
+      "subject": "Jubilee line",
+      "predicate": "extendedIn",
+      "object": "1999"
+    },
+    {
+      "subject": "Low-floor buses",
+      "predicate": "introducedIn",
+      "object": "1993"
+    },
+    {
+      "subject": "AEC Routemaster buses",
+      "predicate": "withdrawnFromServiceIn",
+      "object": "late 2005"
+    }
+  ],
+  "d6c694c7c1e459b0d929e26b9592877c": [
+    {
+      "subject": "TfL",
+      "predicate": "operatesOn",
+      "object": "Underground"
+    },
+    {
+      "subject": "TfL",
+      "predicate": "operatesOn",
+      "object": "Overground"
+    },
+    {
+      "subject": "Elizabeth line",
+      "predicate": "operatesOn",
+      "object": "Rail"
+    },
+    {
+      "subject": "Docklands Light Railway",
+      "predicate": "operatesOn",
+      "object": "DLR"
+    },
+    {
+      "subject": "Tramlink",
+      "predicate": "operatesOn",
+      "object": "Tram"
+    },
+    {
+      "subject": "Underground stations",
+      "predicate": "hasStepFreeAccess",
+      "object": "true"
+    },
+    {
+      "subject": "Overground stations",
+      "predicate": "hasStepFreeAccess",
+      "object": "true"
+    },
+    {
+      "subject": "Every stop or station on Elizabeth line",
+      "predicate": "hasStepFreeAccess",
+      "object": "true"
+    },
+    {
+      "subject": "Every stop on Docklands Light Railway",
+      "predicate": "hasStepFreeAccess",
+      "object": "true"
+    },
+    {
+      "subject": "Every station on Tramlink",
+      "predicate": "hasStepFreeAccess",
+      "object": "true"
+    }
+  ],
+  "19a7d4f2cad0dc58c979ecdbe23c203d": [],
+  "02c5647e5d9930222373b04da260c5c3": [],
+  "5112713175e31d6c50fd8c1c2b499ac4": [],
+  "67ec482fa88a9dbe105d31d1b6fb15e9": [
+    {
+      "subject": "Deep Tube lines",
+      "predicate": "permittedWheelchairUseDuringOffPeakHours",
+      "object": "1982"
+    },
+    {
+      "subject": "District, Circle, Metropolitan lines",
+      "predicate": "allowedWheelchairPassengersToUse",
+      "object": "1982"
+    }
+  ],
+  "d17aca60dab9d3b3b31563432da06ec1": [
+    {
+      "subject": "London Regional Transport (LRT)",
+      "predicate": "obligedToProvide",
+      "object": "publicTransportServicesForTheDisabled"
+    },
+    {
+      "subject": "London Transport Unit for Disabled Passengers",
+      "predicate": "establishedIn",
+      "object": "1984"
+    },
+    {
+      "subject": "New LRT buildings",
+      "predicate": "includedFeature",
+      "object": "disabled toilet"
+    },
+    {
+      "subject": "New LRT buildings",
+      "predicate": "includedFeature",
+      "object": "dropped kerbs"
+    },
+    {
+      "subject": "Training",
+      "predicate": "introducedFor",
+      "object": "staff on helping passengers with disabilities"
+    }
+  ],
+  "56e820fbb4c0d9e97934b9cd41b1d38c": [],
+  "c5b1053ed8bb7bdb5464b87c63205679": [],
+  "3aaebd4eb73b6e5f5bfdcc8db17db665": [
+    {
+      "subject": "DLR",
+      "predicate": "openedIn",
+      "object": "1987"
+    }
+  ],
+  "3c81be0860a60cc4b0bfd246a40bd3cd": [],
+  "5e693db5f78d682a57ce7dd48f7e0a43": [
+    {
+      "subject": "London Underground",
+      "predicate": "operatedJubileeLine",
+      "object": "NONE"
+    },
+    {
+      "subject": "London Underground's conditions of carriage",
+      "predicate": "changedOn",
+      "object": "1st October 1993"
+    },
+    {
+      "subject": "Stationlink",
+      "predicate": "usesWheelchairLifts",
+      "object": "Midibuses"
+    },
+    {
+      "subject": "Central London mainline railway stations",
+      "predicate": "connectedBy",
+      "object": "Stationlink"
+    }
+  ],
+  "bf30b23850d37ce75f2b3c663d59216a": [],
+  "50504eb044c28835a856a6bfb6773419": [],
+  "52eb6b3c527c16fbf847a5af3734736a": [
+    {
+      "subject": "JubileeLineExtension",
+      "predicate": "openedIn",
+      "object": "1999"
+    },
+    {
+      "subject": "JubileeLineExtension",
+      "predicate": "providesAccessFor",
+      "object": "Disabled"
+    },
+    {
+      "subject": "Underground",
+      "predicate": "hasNumberOfAccessibleStationsAfterExtension",
+      "object": "34"
+    },
+    {
+      "subject": "Underground",
+      "predicate": "containsStationsWithLiftsAcross",
+      "object": "11"
+    },
+    {
+      "subject": "JubileeLineExtension",
+      "predicate": "hasArchitecturePraised",
+      "object": "True"
+    },
+    {
+      "subject": "DisabilityCampaigners",
+      "predicate": "notesConcernsRegardingLackOfColourContrastAndSlightGapsBetweenTrainAndPlatform",
+      "object": "JubileeLineExtension"
+    },
+    {
+      "subject": "UndergroundSpokesperson",
+      "predicate": "admitsNotEnoughAttentionWasPaidToNeedsOfDisabledDuringDesignOfExtension",
+      "object": "True"
+    },
+    {
+      "subject": "LondonTransport",
+      "predicate": "expressesDesireToIncreaseNumberOfAccessibleStationsOverTime",
+      "object": "True"
+    }
+  ]
+}
