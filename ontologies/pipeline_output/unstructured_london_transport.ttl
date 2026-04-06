@@ -101,11 +101,6 @@ lt:aec_routemaster a lt:TransportOperator ;
 lt:africa a lt:Location ;
     rdfs:label "Africa" .
 
-lt:after_midnight rdfs:label "After Midnight" ;
-    lt:operatesOn "Saturday nights between 00:00 and 06:00 Sunday morning" ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_service_(public_transport)> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
-
 lt:afterbus a lt:TransportOperator ;
     rdfs:label "Afterbus" .
 
@@ -185,9 +180,6 @@ lt:american_express a lt:TransportOperator ;
 lt:american_express_expresspay a lt:TransportOperator ;
     rdfs:label "American Express Expresspay" .
 
-lt:amsterdam a lt:Location ;
-    rdfs:label "Amsterdam" .
-
 lt:android a lt:Location,
         lt:TransportOperator ;
     rdfs:label "Android" .
@@ -247,12 +239,6 @@ lt:astoria a lt:Location ;
 
 lt:atac a lt:TransportOperator ;
     rdfs:label "ATAC" .
-
-lt:athens a lt:Location ;
-    rdfs:label "Athens" .
-
-lt:athens_international_airport a lt:TransitStop ;
-    rdfs:label "Athens International Airport" .
 
 lt:atlanta a lt:Location ;
     rdfs:label "Atlanta" .
@@ -430,15 +416,6 @@ lt:beckton_bus_station rdfs:label "Beckton bus station" ;
 lt:becontree_heath a lt:TransportOperator ;
     rdfs:label "Becontree Heath" .
 
-lt:beijing a lt:Location ;
-    rdfs:label "Beijing" .
-
-lt:beijing_bus a lt:TransportOperator ;
-    rdfs:label "Beijing Bus" .
-
-lt:beijing_subways a lt:TransitStop ;
-    rdfs:label "Beijing Subway's" .
-
 lt:belarus a lt:Location ;
     rdfs:label "Belarus" .
 
@@ -468,9 +445,6 @@ lt:berkeley_square a lt:TransitStop ;
 
 lt:berkeley_square_oxford_circus a lt:TransportOperator ;
     rdfs:label "Berkeley Square Oxford Circus" .
-
-lt:berlin a lt:Location ;
-    rdfs:label "Berlin" .
 
 lt:bet a lt:TransportOperator ;
     rdfs:label "BET" .
@@ -652,9 +626,6 @@ lt:broxbourne a lt:Location ;
 lt:brt a lt:TransportOperator ;
     rdfs:label "BRT" .
 
-lt:brussels a lt:Location ;
-    rdfs:label "Brussels" .
-
 lt:bso a lt:TransportOperator ;
     rdfs:label "BSO" .
 
@@ -669,12 +640,6 @@ lt:buckingham_palace a lt:TransitStop ;
 
 lt:buckinghamshire a lt:Location ;
     rdfs:label "Buckinghamshire" .
-
-lt:budapest a lt:Location ;
-    rdfs:label "Budapest" .
-
-lt:buenos_aires a lt:Location ;
-    rdfs:label "Buenos Aires" .
 
 lt:bulgaria a lt:Location ;
     rdfs:label "Bulgaria" .
@@ -736,9 +701,6 @@ lt:caa a lt:TransportOperator ;
 lt:caen a lt:Location,
         lt:TransportOperator ;
     rdfs:label "Caen" .
-
-lt:cairo a lt:Location ;
-    rdfs:label "Cairo" .
 
 lt:caledonian_road a lt:TransitStop ;
     rdfs:label "Caledonian Road" .
@@ -845,11 +807,6 @@ lt:central a lt:TransportOperator,
 
 lt:central_and_eastern_europe a lt:Location ;
     rdfs:label "Central and Eastern Europe" .
-
-lt:central_line_jubilee_line_northern_line_piccadilly_line rdfs:label "Central line, Jubilee line, Northern line, Piccadilly line" ;
-    lt:partOf lt:night_tube ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_Tube> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
 
 lt:central_london_mainline_railway_stations rdfs:label "Central London mainline railway stations" ;
     lt:connectsTo lt:stationlink ;
@@ -1046,13 +1003,6 @@ lt:connex a lt:TransportOperator ;
 lt:connex_to_travel_london a lt:TransportOperator ;
     rdfs:label "Connex to Travel London" .
 
-lt:connexxion a lt:TransportOperator ;
-    rdfs:label "Connexxion" ;
-    lt:operatesOn "N30",
-        "N97" ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_service_(public_transport)> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
-
 lt:construction_news a lt:TransportOperator ;
     rdfs:label "Construction News" .
 
@@ -1094,11 +1044,6 @@ lt:coombe_junction_halt a lt:TransportOperator ;
 
 lt:cornwall_atlantic_transport_historical_publishers a lt:TransportOperator ;
     rdfs:label "Cornwall: Atlantic Transport & Historical Publishers" .
-
-lt:cost_for_making_langley_taplow_iver_accessible rdfs:label "Cost for making Langley, Taplow, Iver accessible" ;
-    lt:fareAmount "£14 million" ;
-    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
 
 lt:coventry a lt:TransportOperator ;
     rdfs:label "Coventry" .
@@ -1424,7 +1369,7 @@ lt:east_croydon_railway_station rdfs:label "East Croydon railway station" ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
 
 lt:east_london_line_windrush_line rdfs:label "East London line (Windrush line)" ;
-    lt:isNightService "December 15, 2017" ;
+    lt:openedDate "December 15, 2017"^^xsd:gYear ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_Tube> ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
 
@@ -1502,9 +1447,6 @@ lt:elizabethline rdfs:label "ElizabethLine" ;
         lt:tfl ;
     dcterms:source <https://en.wikipedia.org/wiki/Transport_for_London> ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
-
-lt:emt_madrid a lt:TransportOperator ;
-    rdfs:label "EMT Madrid" .
 
 lt:emv a lt:TransportOperator ;
     rdfs:label "EMV" .
@@ -1811,9 +1753,6 @@ lt:great_portland_street a lt:TransitStop ;
 lt:great_portland_street_mornington_crescent a lt:TransportOperator ;
     rdfs:label "Great Portland Street Mornington Crescent" .
 
-lt:greater_buenos_aires a lt:TransitStop ;
-    rdfs:label "Greater Buenos Aires" .
-
 lt:greater_cleveland_regional_transit_authority a lt:TransportOperator ;
     rdfs:label "Greater Cleveland Regional Transit Authority" .
 
@@ -1889,11 +1828,6 @@ lt:hamburg a lt:Location ;
 lt:hammersmith a lt:TransportOperator ;
     rdfs:label "Hammersmith" .
 
-lt:hammersmith_and_fulham_council_leader_stephen_greenhalgh rdfs:label "Hammersmith and Fulham Council Leader Stephen Greenhalgh" ;
-    lt:criticisedBy "inconceivableNotToInstallStepFreeAccessIn21stCentury" ;
-    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
-
 lt:hammersmith_bridge a lt:TransportOperator ;
     rdfs:label "Hammersmith Bridge" .
 
@@ -1963,15 +1897,6 @@ lt:heathrow_terminal_5 a lt:TransportOperator ;
 
 lt:heighington a lt:TransportOperator ;
     rdfs:label "Heighington" .
-
-lt:helsinki a lt:Location ;
-    rdfs:label "Helsinki" .
-
-lt:helsinki_central_station a lt:TransportOperator ;
-    rdfs:label "Helsinki Central Station" .
-
-lt:helsinki_region_transport a lt:TransportOperator ;
-    rdfs:label "Helsinki Region Transport" .
 
 lt:hendon a lt:TransportOperator ;
     rdfs:label "Hendon" .
@@ -2355,8 +2280,7 @@ lt:kingsbury a lt:TransportOperator ;
 
 lt:kingscrossstpancrastubestation rdfs:label "King'sCrossStPancrasTubeStation" ;
     lt:connectsTo lt:six_underground_lines,
-        lt:street_level,
-        "Kings Cross and St Pancras railway stations" ;
+        lt:street_level ;
     lt:hasAccessibilityFeature "10" ;
     dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
@@ -2533,9 +2457,6 @@ lt:lioness a lt:TransportOperator ;
 lt:lirr a lt:TransportOperator ;
     rdfs:label "LIRR" .
 
-lt:lisbon a lt:Location ;
-    rdfs:label "Lisbon" .
-
 lt:lithuania_vilnius_vilniaus a lt:TransportOperator ;
     rdfs:label "Lithuania Vilnius: Vilniaus" .
 
@@ -2579,7 +2500,6 @@ lt:london_bus_services_limited_ a lt:TransportOperator ;
 
 lt:london_buses_accessibility_features rdfs:label "London Buses Accessibility Features" ;
     lt:contains lt:ability_to_kneel,
-        lt:electric_powered_retractable_wheelchair_ramp,
         "dedicated wheelchair space on each bus" ;
     dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
@@ -2676,11 +2596,6 @@ lt:london_taxis a lt:TransportOperator ;
 
 lt:london_transport_museum_tfl a lt:TransportOperator ;
     rdfs:label "London Transport Museum TfL" .
-
-lt:london_transport_unit_for_disabled_passengers rdfs:label "London Transport Unit for Disabled Passengers" ;
-    lt:openedDate "1984"^^xsd:gYear ;
-    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
 
 lt:london_travelcard a lt:TransportOperator ;
     rdfs:label "London Travelcard" .
@@ -2809,9 +2724,6 @@ lt:macau a lt:Location ;
 
 lt:macau_tcm_transport_company_macau a lt:TransportOperator ;
     rdfs:label "Macau TCM (Transport Company Macau" .
-
-lt:madrid a lt:Location ;
-    rdfs:label "Madrid" .
 
 lt:maestro a lt:Location ;
     rdfs:label "Maestro" .
@@ -2964,18 +2876,6 @@ lt:metrorail a lt:TransitStop ;
 lt:metrosur a lt:TransportOperator ;
     rdfs:label "MetroSur" .
 
-lt:mexico a lt:Location ;
-    rdfs:label "Mexico" .
-
-lt:mexico_city a lt:Location ;
-    rdfs:label "Mexico City" .
-
-lt:mexico_city_metro a lt:Location ;
-    rdfs:label "Mexico City Metro" .
-
-lt:mexico_mexico_city a lt:Location ;
-    rdfs:label "Mexico Mexico City" .
-
 lt:mfo a lt:TransportOperator ;
     rdfs:label "MFO" .
 
@@ -3076,9 +2976,6 @@ lt:motorola a lt:TransportOperator ;
 lt:mount_clare a lt:Location ;
     rdfs:label "Mount Clare" .
 
-lt:movia a lt:Location ;
-    rdfs:label "Movia" .
-
 lt:mrt a lt:Location,
         lt:TransitStop,
         lt:TransportOperator ;
@@ -3104,9 +3001,6 @@ lt:mts a lt:TransportOperator ;
 
 lt:mulhouse a lt:Location ;
     rdfs:label "Mulhouse" .
-
-lt:mumbai a lt:Location ;
-    rdfs:label "Mumbai" .
 
 lt:mumbles a lt:Location ;
     rdfs:label "Mumbles" .
@@ -4069,11 +3963,6 @@ lt:nice a lt:Location ;
 lt:nigeria a lt:Location ;
     rdfs:label "Nigeria" .
 
-lt:night_bus_or_specific_routes_like_n14 rdfs:label "Night Bus (or specific routes like N14)" ;
-    lt:operatedBy "private operators under contract to London Buses" ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
-
 lt:night_buses a lt:TransportOperator ;
     rdfs:label "Night Buses" .
 
@@ -4165,8 +4054,8 @@ lt:northern_ireland_railways a lt:Location ;
     rdfs:label "Northern Ireland Railways" .
 
 lt:northern_line rdfs:label "Northern line" ;
-    lt:isNightService "November 18, 2016" ;
     lt:isStepFree lt:bank ;
+    lt:openedDate "November 18, 2016"^^xsd:gYear ;
     lt:operatedBy lt:transport_for_london ;
     dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
         <https://en.wikipedia.org/wiki/Night_Tube>,
@@ -4272,9 +4161,6 @@ lt:one_day_travelcard_off-peak rdfs:label "One Day Travelcard (off-peak)" ;
 
 lt:onepulse a lt:TransportOperator ;
     rdfs:label "OnePulse" .
-
-lt:ontario a lt:Location ;
-    rdfs:label "Ontario" .
 
 lt:opencorporates a lt:TransportOperator ;
     rdfs:label "OpenCorporates" .
@@ -4407,14 +4293,8 @@ lt:paralympics a lt:TransportOperator ;
 lt:paralympics_games a lt:TransportEvent ;
     rdfs:label "Paralympics Games" .
 
-lt:paris a lt:Location ;
-    rdfs:label "Paris" .
-
 lt:paris-gare_de_lyon a lt:TransportOperator ;
     rdfs:label "Paris-Gare de Lyon" .
-
-lt:paris_métro a lt:TransportOperator ;
-    rdfs:label "Paris Métro" .
 
 lt:park_lane_goods_station a lt:TransitStop ;
     rdfs:label "Park Lane Goods Station" .
@@ -4532,9 +4412,6 @@ lt:ppp a lt:TransportOperator ;
 
 lt:practice a lt:TransportOperator ;
     rdfs:label "Practice" .
-
-lt:prague a lt:Location ;
-    rdfs:label "Prague" .
 
 lt:prepaid a lt:Location ;
     rdfs:label "Prepaid" .
@@ -4657,12 +4534,6 @@ lt:rer a lt:TransportOperator ;
 lt:resna a lt:TransportOperator ;
     rdfs:label "Resna" .
 
-lt:ret a lt:TransportOperator ;
-    rdfs:label "RET" ;
-    lt:isNightService lt:metrolines ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_service_(public_transport)> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
-
 lt:revenue_protection_inspectors a lt:TransportOperator ;
     rdfs:label "Revenue Protection Inspectors" .
 
@@ -4679,13 +4550,6 @@ lt:rfid a lt:TransportOperator,
 
 lt:richmond a lt:Location ;
     rdfs:label "Richmond" .
-
-lt:rio a lt:Location,
-        lt:TransportOperator ;
-    rdfs:label "Rio" .
-
-lt:rio_de_janeiro a lt:Location ;
-    rdfs:label "Rio de Janeiro" .
 
 lt:riocard_rio_de_janeiro a lt:TransportOperator ;
     rdfs:label "RioCard (Rio de Janeiro" .
@@ -4712,9 +4576,6 @@ lt:road_accidents a lt:TransportOperator ;
 
 lt:road_transport a lt:TransportOperator ;
     rdfs:label "Road Transport" .
-
-lt:rome a lt:Location ;
-    rdfs:label "Rome" .
 
 lt:romford a lt:Location ;
     rdfs:label "Romford" .
@@ -4867,8 +4728,7 @@ lt:route_n3 a lt:TransitStop ;
         lt:penge,
         lt:piccadilly_circus_station,
         lt:trafalgar_square,
-        lt:westminster_station,
-        "Beckenham War Memorial Clock House station" ;
+        lt:westminster_station ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
 
@@ -5315,15 +5175,6 @@ lt:seatac_airport a lt:TransitStop ;
 lt:seattle a lt:Location ;
     rdfs:label "Seattle" .
 
-lt:seoul a lt:Location ;
-    rdfs:label "Seoul" .
-
-lt:seoul_metro a lt:TransportOperator ;
-    rdfs:label "Seoul Metro" .
-
-lt:seoul_subway_line a lt:TransitStop ;
-    rdfs:label "Seoul Subway Line" .
-
 lt:septa a lt:TransportOperator ;
     rdfs:label "SEPTA" .
 
@@ -5338,9 +5189,6 @@ lt:serfaus a lt:TransportOperator ;
 
 lt:sfr a lt:TransportOperator ;
     rdfs:label "SFR" .
-
-lt:shanghai a lt:Location ;
-    rdfs:label "Shanghai" .
 
 lt:sheffield a lt:Location ;
     rdfs:label "Sheffield" .
@@ -5578,9 +5426,6 @@ lt:stjohnswoodstation rdfs:label "StJohnsWoodStation" ;
 lt:sto a lt:TransportOperator ;
     rdfs:label "STO" .
 
-lt:stockholm a lt:Location ;
-    rdfs:label "Stockholm" .
-
 lt:stonebridge_park a lt:TransitStop ;
     rdfs:label "Stonebridge Park" .
 
@@ -5664,14 +5509,8 @@ lt:swisscottagestation rdfs:label "SwissCottageStation" ;
 lt:switzerland a lt:Location ;
     rdfs:label "Switzerland" .
 
-lt:sydney a lt:Location ;
-    rdfs:label "Sydney" .
-
 lt:syntagma_-_piraeus a lt:TransportOperator ;
     rdfs:label "Syntagma - Piraeus" .
-
-lt:são_paulo a lt:Location ;
-    rdfs:label "São Paulo" .
 
 lt:t3 a lt:Location ;
     rdfs:label "T3" .
@@ -5836,12 +5675,6 @@ lt:the_armed_forces a lt:TransportOperator ;
 lt:the_associated_society_of_locomotive_engineers_and_firemen a lt:TransportOperator ;
     rdfs:label "the Associated Society of Locomotive Engineers and Firemen" .
 
-lt:the_athens_metropolitan_area a lt:TransportOperator ;
-    rdfs:label "the Athens Metropolitan Area" .
-
-lt:the_athens_transport_authority a lt:TransportOperator ;
-    rdfs:label "The Athens Transport Authority" .
-
 lt:the_australian_stgeorge_bank a lt:TransportOperator ;
     rdfs:label "The Australian St.George Bank" .
 
@@ -5853,12 +5686,6 @@ lt:the_bedford_jjl a lt:TransportOperator ;
 
 lt:the_bee_network a lt:TransportOperator ;
     rdfs:label "the Bee Network" .
-
-lt:the_beijing_subway a lt:TransitStop ;
-    rdfs:label "the Beijing Subway" .
-
-lt:the_berlin_u-bahn a lt:TransitStop ;
-    rdfs:label "the Berlin U-Bahn" .
 
 lt:the_blackwall_tunnel a lt:TransportOperator ;
     rdfs:label "the Blackwall Tunnel" .
@@ -5878,9 +5705,6 @@ lt:the_british_transport_commission a lt:TransportOperator ;
 
 lt:the_british_transport_police a lt:TransportOperator ;
     rdfs:label "the British Transport Police" .
-
-lt:the_brussels_intercommunal_transport_company a lt:TransportOperator ;
-    rdfs:label "the Brussels Intercommunal Transport Company" .
 
 lt:the_caledonian_sleeper a lt:TransportOperator ;
     rdfs:label "the Caledonian Sleeper" .
@@ -5972,9 +5796,6 @@ lt:the_east_london_line a lt:TransportOperator ;
 
 lt:the_east_west_line a lt:Location ;
     rdfs:label "the East West Line" .
-
-lt:the_empresa_municipal_de_transportes_de_madrid a lt:TransportOperator ;
-    rdfs:label "the Empresa Municipal de Transportes de Madrid" .
 
 lt:the_english_housing_survey a lt:TransportOperator ;
     rdfs:label "The English Housing Survey" .
@@ -6367,10 +6188,6 @@ lt:the_palace_of_westminster a lt:TransitStop ;
 lt:the_paralympic_games a lt:TransportEvent ;
     rdfs:label "the Paralympic Games" .
 
-lt:the_paris_métro a lt:TransitStop,
-        lt:TransportOperator ;
-    rdfs:label "the Paris Métro" .
-
 lt:the_pennsylvania_railroad a lt:TransportOperator ;
     rdfs:label "the Pennsylvania Railroad" .
 
@@ -6466,13 +6283,6 @@ lt:the_second_world_war a lt:TransportEvent ;
 lt:the_seddon_pennine a lt:TransportOperator ;
     rdfs:label "the Seddon Pennine" .
 
-lt:the_seoul_metropolitan_government a lt:TransportOperator ;
-    rdfs:label "The Seoul Metropolitan Government",
-        "the Seoul Metropolitan Government" .
-
-lt:the_shanghai_metro a lt:TransitStop ;
-    rdfs:label "the Shanghai Metro" .
-
 lt:the_simple_wikipedia a lt:TransportOperator ;
     rdfs:label "the 'Simple Wikipedia" .
 
@@ -6508,9 +6318,6 @@ lt:the_statutory_quality_bus_partnership a lt:TransportOperator ;
 
 lt:the_supreme_court a lt:TransportOperator ;
     rdfs:label "the Supreme Court" .
-
-lt:the_sydney_light_rail a lt:TransportOperator ;
-    rdfs:label "the Sydney Light Rail" .
 
 lt:the_taipei_joint_bus_systems a lt:TransportOperator ;
     rdfs:label "The Taipei Joint Bus System's" .
@@ -6658,9 +6465,6 @@ lt:tmb a lt:TransportOperator ;
 lt:tocu a lt:TransportOperator ;
     rdfs:label "TOCU" .
 
-lt:tokyo a lt:Location ;
-    rdfs:label "Tokyo" .
-
 lt:toplak a lt:TransportService ;
     rdfs:label "Toplak" .
 
@@ -6696,12 +6500,6 @@ lt:traffic_commissioner a lt:TransportOperator ;
 lt:traffic_enforcement a lt:TransportOperator ;
     rdfs:label "Traffic Enforcement" .
 
-lt:train_operating_companies rdfs:label "Train operating companies" ;
-    lt:operatesOn "Installing Oyster readers at certain stations",
-        "Providing warnings about Oyster validity on routes" ;
-    dcterms:source <https://en.wikipedia.org/wiki/Oyster_card> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
-
 lt:tramway a lt:Location ;
     rdfs:label "Tramway" .
 
@@ -6723,11 +6521,6 @@ lt:transport_for_greater_manchester a lt:TransportOperator ;
 
 lt:transport_for_london_-_transport a lt:TransportOperator ;
     rdfs:label "Transport for London - Transport" .
-
-lt:transport_for_london_tfl rdfs:label "Transport for London (TfL)" ;
-    lt:operatesOn "Implementation of low floor, accessible bus fleet" ;
-    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
 
 lt:transport_for_londons a lt:TransportOperator ;
     rdfs:label "Transport for London's" .
@@ -6992,9 +6785,6 @@ lt:victoriastation rdfs:label "VictoriaStation" ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
 
-lt:vienna a lt:Location ;
-    rdfs:label "Vienna" .
-
 lt:vilnius a lt:TransportOperator ;
     rdfs:label "Vilnius" .
 
@@ -7068,12 +6858,6 @@ lt:wanstead a lt:TransportOperator ;
 
 lt:warren_street a lt:TransitStop ;
     rdfs:label "Warren Street" .
-
-lt:warsaw a lt:Location ;
-    rdfs:label "Warsaw" .
-
-lt:warsaw_public_transport a lt:TransportOperator ;
-    rdfs:label "Warsaw Public Transport" .
 
 lt:warwickshire a lt:Location ;
     rdfs:label "Warwickshire" .
@@ -7491,7 +7275,7 @@ lt:canary_wharf a lt:TransitStop ;
 lt:catford_bus_garage rdfs:label "Catford bus garage" .
 
 lt:central_line rdfs:label "Central line" ;
-    lt:isNightService "August 19, 2016" ;
+    lt:openedDate "August 19, 2016"^^xsd:gYear ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_Tube> ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
 
@@ -7546,10 +7330,7 @@ lt:contactless_credit_and_debit_cards rdfs:label "Contactless Credit and Debit C
 
 lt:contactless_debit_and_credit_cards rdfs:label "Contactless debit and credit cards" .
 
-lt:contactless_debitcredit_card rdfs:label "Contactless debit/credit card" ;
-    lt:acceptedOn "London Underground and some areas not covered by Oyster" ;
-    dcterms:source <https://en.wikipedia.org/wiki/National_Rail> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
+lt:contactless_debitcredit_card rdfs:label "Contactless debit/credit card" .
 
 lt:contactless_smart_card rdfs:label "contactless smart card" .
 
@@ -7621,8 +7402,6 @@ lt:east_thames_buses a lt:TransportOperator ;
 lt:eastlondonline rdfs:label "EastLondonLine" .
 
 lt:edgware_station rdfs:label "Edgware station" .
-
-lt:electric_powered_retractable_wheelchair_ramp rdfs:label "electric powered, retractable wheelchair ramp" .
 
 lt:eltham_high_street rdfs:label "Eltham High Street" .
 
@@ -7870,8 +7649,6 @@ lt:metro a lt:TransitStop ;
     rdfs:label "Metro",
         "metro" .
 
-lt:metrolines rdfs:label "MetroLines" .
-
 lt:mile_end_station rdfs:label "Mile End station" .
 
 lt:mill_hill rdfs:label "Mill Hill" .
@@ -7982,7 +7759,6 @@ lt:oyster_card rdfs:label "Oyster card" ;
         lt:national_rail,
         lt:national_rail_in_greater_london,
         lt:southeastern_high_speed_train_services,
-        lt:southeastern_highspeed_services_within_london,
         lt:southern_rail,
         lt:thames_clippers,
         lt:thameslink,
@@ -8140,8 +7916,6 @@ lt:south_woodford_station rdfs:label "South Woodford station" .
 
 lt:southeastern_high_speed_train_services rdfs:label "Southeastern high speed train services" .
 
-lt:southeastern_highspeed_services_within_london rdfs:label "Southeastern highspeed services within London" .
-
 lt:southern_rail a lt:TransportOperator ;
     rdfs:label "Southern Rail" .
 
@@ -8227,8 +8001,6 @@ lt:tooting_broadway rdfs:label "Tooting Broadway" .
 
 lt:tooting_broadway_station rdfs:label "Tooting Broadway station" .
 
-lt:touch-intouch-out_system_with_oyster_card rdfs:label "Touch-in/Touch-out system with oyster card" .
-
 lt:trafalgarsquare rdfs:label "TrafalgarSquare" .
 
 lt:tram rdfs:label "Tram" .
@@ -8241,8 +8013,7 @@ lt:tramlink a lt:TransportOperator ;
 
 lt:transport_for_all a lt:TransportOperator ;
     rdfs:label "Transport for All" ;
-    lt:criticisedBy lt:tfl,
-        "lack of a ring-fenced budget for step-free access" ;
+    lt:criticisedBy lt:tfl ;
     lt:openedDate "2013"^^xsd:gYear ;
     dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
@@ -8530,7 +8301,6 @@ lt:morden_station rdfs:label "Morden station" .
 lt:national_rail a lt:TransportOperator ;
     rdfs:label "National Rail",
         "National_Rail" ;
-    lt:acceptedOn "TfL fare zones and selected stations outside London" ;
     lt:operatesOn lt:oyster_card_pay-as-you-go,
         lt:pay-as-you-go_validity_maps_publication,
         lt:wimbledon_to_clapham_junction_section,
@@ -8540,6 +8310,13 @@ lt:national_rail a lt:TransportOperator ;
     prov:wasGeneratedBy lt:UnstructuredPipeline .
 
 lt:new_cross_station rdfs:label "New Cross station" .
+
+lt:night_tube a lt:TransportOperator ;
+    rdfs:label "Night Tube" ;
+    lt:openedDate "2016-08-19"^^xsd:gYear,
+        "2020-03-20"^^xsd:gYear ;
+    dcterms:source <https://en.wikipedia.org/wiki/Night_Tube> ;
+    prov:wasGeneratedBy lt:UnstructuredPipeline .
 
 lt:northolt_station rdfs:label "Northolt station" .
 
@@ -8646,14 +8423,6 @@ lt:metroline a lt:TransportOperator ;
 
 lt:new_cross_gate_station rdfs:label "New Cross Gate station" .
 
-lt:night_tube a lt:TransportOperator ;
-    rdfs:label "Night Tube" ;
-    lt:openedDate "2016-08-19"^^xsd:gYear,
-        "2020-03-20"^^xsd:gYear ;
-    lt:operatedBy "London Underground, London Overground Night Service" ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_Tube> ;
-    prov:wasGeneratedBy lt:UnstructuredPipeline .
-
 lt:sloane_square_station rdfs:label "Sloane Square station" .
 
 lt:tfl a lt:TransitStop,
@@ -8667,7 +8436,6 @@ lt:tfl a lt:TransitStop,
         lt:overground,
         lt:oyster_system,
         lt:underground ;
-    lt:replacedBy "London Transport Unit for Disabled Passengers" ;
     dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
         <https://en.wikipedia.org/wiki/Oyster_card>,
         <https://en.wikipedia.org/wiki/Transport_for_London> ;
@@ -8682,7 +8450,7 @@ lt:thames_clippers a lt:TransportOperator ;
 lt:true rdfs:label "true" .
 
 lt:victoria_line rdfs:label "Victoria line" ;
-    lt:isNightService "August 19, 2016" ;
+    lt:openedDate "August 19, 2016"^^xsd:gYear ;
     lt:operatedBy lt:transport_for_london ;
     lt:partOf lt:night_tube ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_Tube>,
@@ -8768,11 +8536,9 @@ lt:london_underground a lt:TransportOperator ;
     rdfs:label "London Underground" ;
     lt:acceptedOn lt:contactless_credit_and_debit_cards,
         lt:contactless_payment,
-        lt:international_contactless_cards,
-        "Oyster card with pink validator confirmation" ;
+        lt:international_contactless_cards ;
     lt:contains lt:tubestations,
         lt:victoria_line ;
-    lt:hasAccessibilityFeature lt:touch-intouch-out_system_with_oyster_card ;
     lt:inFareZone "Central zone 1" ;
     lt:isServedBy "Zone 1" ;
     lt:operatedBy lt:transport_for_london ;
@@ -8822,7 +8588,6 @@ lt:transport_for_london a lt:TransportOperator ;
         lt:trams,
         lt:tube_stations,
         lt:watford_junction_to_richmond_route,
-        "assistance in 'on ground' set up of diversions",
         "management of bus stations and bus stops" ;
     dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
         <https://en.wikipedia.org/wiki/Fare_capping>,

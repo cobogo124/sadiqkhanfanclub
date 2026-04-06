@@ -13,6 +13,7 @@ python main.py
 
 1. Install Ollama: https://ollama.com
 2. Run in CMD ensure exposed at "http://localhost:11434/api/generate":
+
    ollama pull mistral
 
 3. Set:

@@ -90,7 +90,6 @@ PREDICATE_MAP = {
     #isNightService
     "operatesnightservice": LT.isNightService,
     "isnighttube":         LT.isNightService,
-    "startednightservice": LT.isNightService,
     "operatesnightserviceon": LT.isNightService,
 
     #isStepFree
@@ -160,6 +159,7 @@ PREDICATE_MAP = {
     "endedon":             LT.openedDate,
     "endedin":             LT.openedDate,
     "extendedin":          LT.openedDate,
+    "startednightservice": LT.openedDate,
 
     #acceptedOn (payment/ticketing)
     "acceptedon":          LT.acceptedOn,
@@ -199,10 +199,17 @@ PREDICATE_MAP = {
     "criticismtowardstfl": LT.criticisedBy,
 }
 
-#frequently seen non london entities
+#frequently seen non london entities also used llm to help compile this list
 NON_LONDON = {"milan", "almaty", "copenhagen", "dublin", "adelaide", "glasgow",
               "nuremberg", "cork", "zurich", "žilina", "prešov", "vancouver",
-              "austin", "toronto", "dpmp", "dpmž"}
+              "austin", "toronto", "dpmp", "dpmž", "palermo", "cairo", "athens",
+              "helsinki", "stockholm", "sydney", "paris", "berlin", "madrid",
+              "rome", "amsterdam", "brussels", "vienna", "prague", "budapest",
+              "warsaw", "lisbon", "seoul", "tokyo", "beijing", "shanghai",
+              "mumbai", "mexico", "bogota", "santiago", "lima", "buenos",
+              "são", "rio", "cape", "johannesburg", "nitelink", "connexxion",
+              "ret", "movia", "amat", "after_midnight", "blue_night",
+              "metro_vancouver", "first_glasgow", "ontario"}
 
 #types
 LABEL_CLASS_MAP = {
@@ -284,8 +291,13 @@ def build_wiki_graph(all_results):
                 continue  #discard preds with no match in map
             obj_label = triple["object"]
 
-            #one last filter, check for non london enitites
+            #check for non london enitites
             if not is_london_entity(triple["subject"]):
+                skipped += 1
+                continue
+            
+            #check nothing over 40 characters
+            if len(triple["subject"]) > 40 or len(triple["object"]) > 40:
                 skipped += 1
                 continue
 
@@ -325,7 +337,7 @@ def build_wiki_graph(all_results):
 
 def run():
     #finds most recent triples output
-    processed_dir = os.path.join("downloads", "processed")
+    processed_dir = os.path.join("data", "processed")
     latest = sorted(os.listdir(processed_dir))[-1]
     triples_path = os.path.join(processed_dir, latest, "wiki_triples.json")
 

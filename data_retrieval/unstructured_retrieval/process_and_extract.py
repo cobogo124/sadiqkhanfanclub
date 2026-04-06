@@ -8,10 +8,10 @@ import re
 
 #SET FALSE TO USE CACHED TRIPLES FILES
 ###########################
-USE_LLM = True  
+USE_LLM = False  
 ###########################
 
-CACHE_FILE = "triples_cache.json"
+CACHE_FILE = "data/caches/triples_cache.json"
 
 #load spacy model (same as lab)
 nlp = spacy.load("en_core_web_sm")
