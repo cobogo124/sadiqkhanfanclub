@@ -84,7 +84,7 @@ def get_wikipedia_text(title):
 
 
 def snapshot_dir(snapshot_date):
-    path = os.path.join("downloads", "raw", snapshot_date, "wikipedia")
+    path = os.path.join("data", "raw", snapshot_date, "wikipedia")
     os.makedirs(path, exist_ok=True)
     return path
 
