@@ -33,10 +33,10 @@ def main():
     wiki_scraper.run_wiki_scraper()
     
     print("  -> Step 2b: Extracting Triples (LLM/Cache)...")
-    extract_triples.main()
+    extract_triples.run_extract_triples()
     
     print("  -> Step 2c: Building Unstructured RDF Graph...")
-    triples_to_rdf.run()
+    triples_to_rdf.run_triples_to_rdf()
     
     # Load the ABox the unstructured scripts just generated
     unstructured_path = "ontologies/pipeline_output/unstructured_london_transport.ttl"

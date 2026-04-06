@@ -377,7 +377,7 @@ def build_wiki_graph(all_resuTFLs):
 
 def run_triples_to_rdf():
     #finds most recent triples output
-    processed_dir = os.path.join("downloads", "processed")
+    processed_dir = os.path.join("data", "processed")
     latest = sorted(os.listdir(processed_dir))[-1]
     triples_path = os.path.join(processed_dir, latest, "wiki_triples.json")
 
