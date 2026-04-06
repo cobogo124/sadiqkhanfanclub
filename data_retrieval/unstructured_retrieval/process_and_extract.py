@@ -258,11 +258,11 @@ def main():
     #finds most recent wiki pulls
     today = str(date.today())
 
-    processed_dir = os.path.join("downloads", "raw")
+    processed_dir = os.path.join("data", "raw")
     latest = sorted(os.listdir(processed_dir))[-1]
     wiki_dir = os.path.join(processed_dir, latest, "wikipedia")
 
-    out_dir = os.path.join("downloads", "processed", today)
+    out_dir = os.path.join("data", "processed", today)
     os.makedirs(out_dir, exist_ok=True)
 
     txt_files = [
