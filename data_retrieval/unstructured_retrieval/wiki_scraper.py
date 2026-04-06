@@ -4,7 +4,7 @@ import requests
 from datetime import date
 
 #unfinsihed article list suggest additions
-ARTICLES = [
+"""ARTICLES = [
     "Oyster card",
     "London Underground",
     "Elizabeth line",
@@ -13,37 +13,85 @@ ARTICLES = [
     "Trams in Croydon",
     "London fare zones",
     "Transport for London",
+]"""
+
+ARTICLES = [
+    # ticket/fare logic
+    "Oyster card",
+    "Pay-as-you-go",
+    "Contactless payment",
+    "Fare capping",
+    "London fare zones",
+
+    #accessibility and acess semantics
+    "Step-free access",
+    "Accessibility of transport in London",  
+    "London Dial-a-Ride",  
+    #"Railway station facilities",
+
+    #night services
+    "Night Tube",
+    "Night buses in London",
+    "Night service (public transport)",
+
+    #system context
+    "Transport for London",
+    "National Rail",
+
+    #conceptual semantics
+    "Rapid transit",
+    "Light rail",
+    "London Buses",
+    "Bus transport in the United Kingdom",
+    "Transport hub",
+    "Interchange station",
+    "Train station",
+    "Station building"
 ]
 
 #inputs wiki article title, outputs plain text
-def get_wikipedia_text(title: str) -> str:
+def get_wikipedia_text(title):
+
+    #update K_NUMBER to email for submission
+    headers = {
+        "User-Agent": "TfL_Ontology_Scraper/1.0 (K_NUMBER@kcl.ac.uk)"
+    }
+
     response = requests.get(
         "https://en.wikipedia.org/w/api.php",
+        headers=headers,
         params={
             "action": "query",
             "titles": title,
             "prop": "extracts",
             "explaintext": True,
+            "redirects": 1,
             "exsectionformat": "plain",
             "format": "json",
         },
     )
     response.raise_for_status()
+
     pages = response.json()["query"]["pages"]
+    
     page = next(iter(pages.values()))
+    if "missing" in page:
+        print(f"{title} page does not exist")
+        return ""
+    
     return page.get("extract", "")
 
 
 
-def snapshot_dir(repo_root: str, snapshot_date: str) -> str:
-    path = os.path.join(repo_root, "downloads", "raw", snapshot_date, "wikipedia")
+def snapshot_dir(snapshot_date):
+    path = os.path.join("data", "raw", snapshot_date, "wikipedia")
     os.makedirs(path, exist_ok=True)
     return path
 
 
-def run(repo_root: str = ".") -> None:
+def run():
     today = str(date.today())
-    out_dir = snapshot_dir(repo_root, today)
+    out_dir = snapshot_dir(today)
     manifest = []
 
     for title in ARTICLES:
@@ -63,7 +111,7 @@ def run(repo_root: str = ".") -> None:
             "retrieved_at": today,
             "source_url": f"https://en.wikipedia.org/wiki/{title.replace(' ', '_')}",
         })
-        print(f"  Saved {len(text)} characters → {filename}")
+        print(f"  Saved {len(text)} characters to {filename}")
 
     #save manifest alongside the text files
     manifest_path = os.path.join(out_dir, "manifest.json")
