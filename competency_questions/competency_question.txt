@@ -1,0 +1,200 @@
+5CCSAKNE CW2 Competency Question SPARQL queries
+
+Namespace: PREFIX tfl1: <http://example.org/tfl#>      <--------- important
+
+##########################################################################################
+
+1. Which London Underground lines intersect at King's Cross St Pancras station?
+
+SELECT ?lineName WHERE {
+    tfl1:KingsCrossStPancras tfl1:servedByLine ?line .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName
+
+##########################################################################################
+
+2. What are the terminal stations for the Victoria Line?
+
+SELECT ?stationName WHERE {
+    tfl1:VictoriaLine tfl1:hasTerminalStation ?station .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+3. Which transport modes (e.g., Tube, Bus, DLR, Elizabeth Line) are available for interchange at Stratford station?
+
+SELECT ?lineName WHERE {
+    tfl1:StratfordStation tfl1:servedByLine ?line .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName
+
+##########################################################################################
+
+4. Which fare zones does the Docklands Light Railway (DLR) operate within?
+
+SELECT ?zoneLabel WHERE {
+    tfl1:DLR tfl1:operatesInZone ?zone .
+    ?zone rdfs:label ?zoneLabel .
+} ORDER BY ?zoneLabel
+
+##########################################################################################
+
+5. Which stations on the Jubilee Line feature step-free access from the street to the train?
+
+SELECT ?stationName WHERE {
+    ?station tfl1:servedByLine tfl1:JubileeLine .
+    ?station tfl1:hasStepFreeStreetToPlatform true .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+6. Does Baker Street station have public restroom facilities available?
+-------------------------------------------------------------------------
+SELECT ?facilityLabel WHERE {
+    tfl1:BakerStreetStation tfl1:hasFacility ?fac .
+    ?fac a tfl1:PublicToilet .
+    ?fac rdfs:label ?facilityLabel .
+}
+
+##########################################################################################
+
+7. Which stations on the Central Line provide public car parking facilities?
+
+SELECT ?stationName ?cpName WHERE {
+    ?station tfl1:servedByLine tfl1:CentralLine .
+    ?station tfl1:hasFacility ?cp .
+    ?cp a tfl1:CarPark .
+    ?station rdfs:label ?stationName .
+    ?cp rdfs:label ?cpName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+8. Who is the designated operating company for the London Overground network?
+
+SELECT ?opName WHERE {
+    tfl1:LondonOverground tfl1:operatedBy ?op .
+    ?op rdfs:label ?opName .
+}
+
+##########################################################################################
+
+9. Which specific bus routes terminate at Trafalgar Square?
+
+SELECT ?routeNumber WHERE {
+    ?route tfl1:terminatesAt tfl1:TrafalgarSquareBusTerminus .
+    ?route tfl1:routeNumber ?routeNumber .
+} ORDER BY xsd:integer(?routeNumber)
+
+##########################################################################################
+
+10. Which London Underground lines operate the Night Tube service on Fridays and Saturdays?
+
+SELECT ?lineName WHERE {
+    ?line tfl1:isNightTube true .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName
+
+##########################################################################################
+
+11. What is the peak-hour Oyster fare for an adult journey travelling across zones 1 to 3?
+
+SELECT ?amount ?currency WHERE {
+    tfl1:PeakFare_Adult_Z1to3 tfl1:fareAmount ?amount .
+    tfl1:PeakFare_Adult_Z1to3 schema:priceCurrency ?currency .
+}
+
+##########################################################################################
+
+12. Which transport modes in the TfL network charge a flat fare regardless of distance travelled?
+
+SELECT DISTINCT ?typeLabel WHERE {
+    ?line tfl1:isFlatFare true .
+    ?line a ?type .
+    ?type rdfs:label ?typeLabel .
+} ORDER BY ?typeLabel
+
+##########################################################################################
+
+13. Which TfL lines currently have planned engineering closures scheduled for this weekend?
+
+SELECT ?lineName ?desc WHERE {
+    ?line tfl1:hasDisruption ?closure .
+    ?closure a tfl1:EngineeringClosure .
+    ?closure tfl1:closureDescription ?desc .
+    ?line rdfs:label ?lineName .
+}
+
+##########################################################################################
+
+14. What is the official operator of the Docklands Light Railway?
+
+SELECT ?opName WHERE {
+    tfl1:DLR tfl1:operatedBy ?op .
+    ?op rdfs:label ?opName .
+}
+
+##########################################################################################
+
+15. What is the estimated journey duration and how many legs are required to travel from Brixton to Canary Wharf?
+
+SELECT ?minutes ?legs WHERE {
+    tfl1:Journey_BrixtonToCanaryWharf tfl1:estimatedJourneyMinutes ?minutes .
+    tfl1:Journey_BrixtonToCanaryWharf tfl1:numberOfLegs ?legs .
+}
+
+##########################################################################################
+
+16. Which stations on the Overground network offer a staff-assisted boarding service for passengers with disabilities?
+
+SELECT ?stationName WHERE {
+    ?station tfl1:hasAccessibilityFeature ?feat .
+    ?feat a tfl1:AssistedBoardingService .
+    ?station tfl1:servedByLine tfl1:LondonOverground .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+17. Which specific bus routes operate as night bus services with an N-prefix in the TfL network?
+
+SELECT ?routeNumber WHERE {
+    ?route a tfl1:NightBusRoute .
+    ?route tfl1:routeNumber ?routeNumber .
+} ORDER BY ?routeNumber
+
+##########################################################################################
+
+18. Which Elizabeth Line stations are equipped with audio-visual aids for sensory-impaired passengers?
+
+SELECT ?stationName WHERE {
+    ?station a tfl1:ElizabethLineStation .
+    ?station tfl1:hasAccessibilityFeature ?feat .
+    ?feat a tfl1:AudioVisualAid .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+19. Which TfL lines serve stations located in both zone 2 and zone 3?
+
+SELECT DISTINCT ?lineName WHERE {
+    ?s1 tfl1:servedByLine ?line .
+    ?s1 tfl1:operatesInZone tfl1:Zone2 .
+    ?s2 tfl1:servedByLine ?line .
+    ?s2 tfl1:operatesInZone tfl1:Zone3 .
+    ?line rdfs:label ?lineName .
+    FILTER(?s1 != ?s2)
+} ORDER BY ?lineName
+
+##########################################################################################
+
+20. Which fare concessions apply to disabled passengers using the bus network during peak hours?
+
+SELECT ?concLabel ?desc WHERE {
+    ?conc a tfl1:FareConcession .
+    ?conc rdfs:label ?concLabel .
+    ?conc tfl1:concessionDescription ?desc .
+} ORDER BY ?concLabel
