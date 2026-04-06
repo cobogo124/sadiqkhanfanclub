@@ -253,7 +253,7 @@ def process_article(txt_path, cache):
 
 #finds input files 
 #and saves output files 
-def main():
+def run_extract_triples():
 
     #finds most recent wiki pulls
     today = str(date.today())
@@ -294,4 +294,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    run_extract_triples()

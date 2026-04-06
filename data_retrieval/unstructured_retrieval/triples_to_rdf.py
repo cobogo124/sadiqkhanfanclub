@@ -5,7 +5,7 @@ from datetime import date
 from rdflib import Graph, Literal, Namespace, RDF, RDFS, XSD, URIRef
 from rdflib.namespace import DCTERMS
 
-LT = Namespace("http://kcl.ac.uk/ontology/london-transport#")
+LT = Namespace("tfl#")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 
 #map common predicate strings from LLM output → ontology properties
@@ -192,24 +192,52 @@ PREDICATE_MAP = {
     "takenoverby":         LT.replacedBy,
     "succeededby":         LT.replacedBy,
     "alongroute":          LT.onRoute,
-    "onroute":             LT.onRoute,
-    "criticisedby":        LT.criticisedBy,
-    "criticisedtflfor":    LT.criticisedBy,
-    "criticizesdecision":  LT.criticisedBy,
-    "criticismtowardstfl": LT.criticisedBy,
+    "onroute":             LT.onRoute
 }
 
-#frequently seen non london entities also used llm to help compile this list
-NON_LONDON = {"milan", "almaty", "copenhagen", "dublin", "adelaide", "glasgow",
-              "nuremberg", "cork", "zurich", "žilina", "prešov", "vancouver",
-              "austin", "toronto", "dpmp", "dpmž", "palermo", "cairo", "athens",
-              "helsinki", "stockholm", "sydney", "paris", "berlin", "madrid",
-              "rome", "amsterdam", "brussels", "vienna", "prague", "budapest",
-              "warsaw", "lisbon", "seoul", "tokyo", "beijing", "shanghai",
-              "mumbai", "mexico", "bogota", "santiago", "lima", "buenos",
-              "são", "rio", "cape", "johannesburg", "nitelink", "connexxion",
-              "ret", "movia", "amat", "after_midnight", "blue_night",
-              "metro_vancouver", "first_glasgow", "ontario"}
+#non london entities appearing in the wiki pages, llm couldnt relia
+NON_LONDON = {
+    # countries
+    "argentina", "australia", "austria", "azerbaijan", "belarus", "belgium",
+    "brazil", "bulgaria", "canada", "china", "denmark", "egypt", "finland",
+    "france", "germany", "greece", "hungary", "iceland", "india", "indonesia",
+    "iran", "ireland", "israel", "italy", "japan", "kazakhstan", "malaysia",
+    "mexico", "netherlands", "nigeria", "norway", "pakistan", "philippines",
+    "poland", "portugal", "russia", "saudi", "serbia", "singapore", "slovakia",
+    "slovenia", "somalia", "south africa", "south korea", "spain", "sri lanka",
+    "sudan", "sweden", "switzerland", "taiwan", "thailand", "turkey", "ukraine",
+    "venezuela", "yemen",
+    # foreign cities
+    "milan", "almaty", "copenhagen", "dublin", "adelaide", "glasgow", "nuremberg",
+    "cork", "zurich", "žilina", "prešov", "vancouver", "austin", "toronto",
+    "palermo", "cairo", "athens", "helsinki", "stockholm", "sydney", "paris",
+    "berlin", "madrid", "rome", "amsterdam", "brussels", "vienna", "prague",
+    "budapest", "warsaw", "lisbon", "seoul", "tokyo", "beijing", "shanghai",
+    "mumbai", "bogota", "santiago", "lima", "buenos", "são", "rio",
+    "johannesburg", "barcelona", "moscow", "chicago", "philadelphia", "boston",
+    "miami", "houston", "dallas", "denver", "seattle", "portland", "detroit",
+    "atlanta", "pittsburgh", "minneapolis", "sacramento", "los angeles",
+    "san francisco", "san diego", "new york", "new jersey", "new orleans",
+    "cologne", "hamburg", "munich", "stuttgart", "dresden", "frankfurt",
+    "strasbourg", "toulouse", "marseille", "lyon", "lille", "nantes", "bordeaux",
+    "naples", "turin", "genoa", "bilbao", "manila", "jakarta", "bangkok",
+    "hong kong", "taipei", "kaohsiung", "kuala lumpur", "bangalore", "hyderabad",
+    "pune", "chennai", "karachi", "lahore", "tehran", "istanbul", "caracas",
+    "medellín", "guadalajara", "montreal", "ottawa", "calgary", "edmonton",
+    "brisbane", "melbourne", "perth", "auckland", "wellington",
+    # foreign transit
+    "nitelink", "connexxion", "ret", "movia", "amat", "after midnight",
+    "blue night", "metro vancouver", "first glasgow", "ontario", "moonliner",
+    "nachtbus", "nachtexpress", "noctilien", "noctambus", "noctis", "nightride",
+    "nitbus", "afterbus",
+    # non-transport
+    "apple", "google", "samsung", "microsoft", "amazon", "visa", "mastercard",
+    "barclays", "hsbc", "vodafone", "bbc", "wikipedia", "wikimedia",
+    "american express", "delta air", "united airlines", "continental airlines",
+    "frontier airlines", "alaska airlines", "pan am", "easyjet", "eurostar",
+    "facebook", "whatsapp", "android", "iphone", "sony", "nokia", "fujitsu",
+    "siemens", "bombardier", "alstom",
+}
 
 #types
 LABEL_CLASS_MAP = {
@@ -268,16 +296,24 @@ def build_wiki_graph(all_results):
         
         #add rdf:type
         for ent in article.get("entities", []):
-
-        
-            if not is_london_entity(ent["text"]):
+            text = ent["text"]
+            # skip non-London
+            if not is_london_entity(text):
                 continue
-
+            # skip if too short (single chars, numbers)
+            if len(text) <= 2:
+                continue
+            # skip if it's just a number or date
+            if text.replace(" ", "").replace(":", "").replace("-", "").isdigit():
+                continue
+            # skip overly long concatenated entities
+            if len(text) > 40:
+                continue
             cls = LABEL_CLASS_MAP.get(ent["label"])
             if cls:
-                ent_uri = label_to_uri(ent["text"])
+                ent_uri = label_to_uri(text)
                 g.add((ent_uri, RDF.type, cls))
-                g.add((ent_uri, RDFS.label, Literal(ent["text"])))
+                g.add((ent_uri, RDFS.label, Literal(text)))
         
         for triple in article["triples"]:
 
@@ -335,7 +371,7 @@ def build_wiki_graph(all_results):
     return g
 
 
-def run():
+def run_triples_to_rdf():
     #finds most recent triples output
     processed_dir = os.path.join("data", "processed")
     latest = sorted(os.listdir(processed_dir))[-1]
