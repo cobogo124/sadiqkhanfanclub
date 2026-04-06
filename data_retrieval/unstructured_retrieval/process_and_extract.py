@@ -254,8 +254,14 @@ def process_article(txt_path, cache):
 #finds input files 
 #and saves output files 
 def main():
+
+    #finds most recent wiki pulls
     today = str(date.today())
-    wiki_dir = os.path.join("downloads", "raw", today, "wikipedia")
+
+    processed_dir = os.path.join("downloads", "raw")
+    latest = sorted(os.listdir(processed_dir))[-1]
+    wiki_dir = os.path.join(processed_dir, latest, "wikipedia")
+
     out_dir = os.path.join("downloads", "processed", today)
     os.makedirs(out_dir, exist_ok=True)
 
