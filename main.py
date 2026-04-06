@@ -9,14 +9,14 @@ def main():
     final_graph.bind("tfl", TFL)
     
     print("--- 1. Loading Base Ontologies ---")
-    tbox_path = "ontologies/tfl_kamyar_final.ttl"
+    tbox_path = "ontologies/manual/tfl_kamyar_final.ttl"
     if os.path.exists(tbox_path):
         final_graph.parse(tbox_path, format="turtle")
     else:
         print(f"Error: Could not find {tbox_path}")
         
     # Load GTFS standard
-    gtfs_path = "ontologies/gtfs.ttl"
+    gtfs_path = "ontologies/manual/gtfs.ttl"
     if os.path.exists(gtfs_path):
         final_graph.parse(gtfs_path, format="turtle")
     

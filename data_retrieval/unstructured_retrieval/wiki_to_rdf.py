@@ -12,191 +12,191 @@ PROV = Namespace("http://www.w3.org/ns/prov#")
 #using output of this script (unmapped preds are printed) and an LLM i made this map
 PREDICATE_MAP = {
     #hasStop
-    "operatesthrough":     LT.hasStop,
-    "operatesvia":         LT.hasStop,
-    "hasstop":             LT.hasStop,
-    "stopsat":             LT.hasStop,
-    "passesthrough":       LT.hasStop,
-    "passesby":            LT.hasStop,
-    "goesthrough":         LT.hasStop,
-    "servesstation":       LT.hasStop,
-    "hasroutevia":         LT.hasStop,
-    "hasstation":          LT.hasStop,
-    "travelsthrough":      LT.hasStop,
-    "operatesbetween":     LT.hasStop,
-    "goesto":              LT.hasStop,
-    "operatesto":          LT.hasStop,
-    "operatesfrom":        LT.hasStop,
-    "extendsto":           LT.hasStop,
-    "extendedto":          LT.hasStop,
-    "extendedtoserve":     LT.hasStop,
-    "servesarea":          LT.hasStop,
-    "serveshospital":      LT.hasStop,
-    "hasimprovedaccessat": LT.hasStop,
-    "hasstopon":           LT.hasStop,
+    "operatesthrough":     TFL.hasStop,
+    "operatesvia":         TFL.hasStop,
+    "hasstop":             TFL.hasStop,
+    "stopsat":             TFL.hasStop,
+    "passesthrough":       TFL.hasStop,
+    "passesby":            TFL.hasStop,
+    "goesthrough":         TFL.hasStop,
+    "servesstation":       TFL.hasStop,
+    "hasroutevia":         TFL.hasStop,
+    "hasstation":          TFL.hasStop,
+    "travelsthrough":      TFL.hasStop,
+    "operatesbetween":     TFL.hasStop,
+    "goesto":              TFL.hasStop,
+    "operatesto":          TFL.hasStop,
+    "operatesfrom":        TFL.hasStop,
+    "extendsto":           TFL.hasStop,
+    "extendedto":          TFL.hasStop,
+    "extendedtoserve":     TFL.hasStop,
+    "servesarea":          TFL.hasStop,
+    "serveshospital":      TFL.hasStop,
+    "hasimprovedaccessat": TFL.hasStop,
+    "hasstopon":           TFL.hasStop,
 
     #hasTerminus
-    "startsat":            LT.hasTerminus,
-    "endsat":              LT.hasTerminus,
-    "terminatesat":        LT.hasTerminus,
-    "isterminus":          LT.hasTerminus,
-    "startsatstation":     LT.hasTerminus,
-    "endsatstation":       LT.hasTerminus,
-    "terminatesatoriginally": LT.hasTerminus,
-    "terminatesatcurrently": LT.hasTerminus,
+    "startsat":            TFL.hasTerminus,
+    "endsat":              TFL.hasTerminus,
+    "terminatesat":        TFL.hasTerminus,
+    "isterminus":          TFL.hasTerminus,
+    "startsatstation":     TFL.hasTerminus,
+    "endsatstation":       TFL.hasTerminus,
+    "terminatesatoriginally": TFL.hasTerminus,
+    "terminatesatcurrently": TFL.hasTerminus,
 
     #operatedBy
-    "operatedby":          LT.operatedBy,
-    "hasoperator":         LT.operatedBy,
-    "providedby":          LT.operatedBy,
-    "isoperatedby":        LT.operatedBy,
-    "managedby":           LT.operatedBy,
-    "controlledby":        LT.operatedBy,
-    "ownedby":             LT.operatedBy,
-    "issuedby":            LT.operatedBy,
-    "operatedbyinitially": LT.operatedBy,
-    "operatedbyfrom2007":  LT.operatedBy,
-    "operatedbybefore2009": LT.operatedBy,
-    "operatedbyafter2009": LT.operatedBy,
-    "operatedbyaftere-tendering": LT.operatedBy,
-    "operatedbyfrom1997-04-19": LT.operatedBy,
-    "operatedbyafter2005": LT.operatedBy,
-    "operatedbyafterresume": LT.operatedBy,
-    "initiallyoperatedby": LT.operatedBy,
-    "operatedbyassumingitresumedoperationbythesamecompany": LT.operatedBy,
-    "commissionedby":      LT.operatedBy,
-    "foundedby":           LT.operatedBy,
-    "subsidizedby":        LT.operatedBy,
+    "operatedby":          TFL.operatedBy,
+    "hasoperator":         TFL.operatedBy,
+    "providedby":          TFL.operatedBy,
+    "isoperatedby":        TFL.operatedBy,
+    "managedby":           TFL.operatedBy,
+    "controlledby":        TFL.operatedBy,
+    "ownedby":             TFL.operatedBy,
+    "issuedby":            TFL.operatedBy,
+    "operatedbyinitially": TFL.operatedBy,
+    "operatedbyfrom2007":  TFL.operatedBy,
+    "operatedbybefore2009": TFL.operatedBy,
+    "operatedbyafter2009": TFL.operatedBy,
+    "operatedbyaftere-tendering": TFL.operatedBy,
+    "operatedbyfrom1997-04-19": TFL.operatedBy,
+    "operatedbyafter2005": TFL.operatedBy,
+    "operatedbyafterresume": TFL.operatedBy,
+    "initiallyoperatedby": TFL.operatedBy,
+    "operatedbyassumingitresumedoperationbythesamecompany": TFL.operatedBy,
+    "commissionedby":      TFL.operatedBy,
+    "foundedby":           TFL.operatedBy,
+    "subsidizedby":        TFL.operatedBy,
 
     #connectsTo
-    "connectsto":          LT.connectsTo,
-    "connectedtoviaroute": LT.connectsTo,
-    "connectswith":        LT.connectsTo,
-    "connectedby":         LT.connectsTo,
-    "connectedviaroute":   LT.connectsTo,
-    "connectswithoutside": LT.connectsTo,
+    "connectsto":          TFL.connectsTo,
+    "connectedtoviaroute": TFL.connectsTo,
+    "connectswith":        TFL.connectsTo,
+    "connectedby":         TFL.connectsTo,
+    "connectedviaroute":   TFL.connectsTo,
+    "connectswithoutside": TFL.connectsTo,
 
     #inFareZone
-    "haszones":            LT.inFareZone,
-    "includeszone":        LT.inFareZone,
-    "operatesinzone":      LT.inFareZone,
-    "applicableforzones":  LT.inFareZone,
+    "haszones":            TFL.inFareZone,
+    "includeszone":        TFL.inFareZone,
+    "operatesinzone":      TFL.inFareZone,
+    "applicableforzones":  TFL.inFareZone,
 
     #isServedBy
-    "servedby":            LT.isServedBy,
-    "servedbyroute":       LT.isServedBy,
-    "servedbyline":        LT.isServedBy,
+    "servedby":            TFL.isServedBy,
+    "servedbyroute":       TFL.isServedBy,
+    "servedbyline":        TFL.isServedBy,
 
     #isNightService
-    "operatesnightservice": LT.isNightService,
-    "isnighttube":         LT.isNightService,
-    "operatesnightserviceon": LT.isNightService,
+    "operatesnightservice": TFL.isNightService,
+    "isnighttube":         TFL.isNightService,
+    "operatesnightserviceon": TFL.isNightService,
 
     #isStepFree
-    "hasstepfreeaccess":   LT.isStepFree,
-    "madestepfree":        LT.isStepFree,
-    "willgainstepfreeaccess": LT.isStepFree,
-    "hasstepfreeaccesstoallplatformsatcostof": LT.isStepFree,
+    "hasstepfreeaccess":   TFL.isStepFree,
+    "madestepfree":        TFL.isStepFree,
+    "willgainstepfreeaccess": TFL.isStepFree,
+    "hasstepfreeaccesstoallplatformsatcostof": TFL.isStepFree,
 
     #hasAccessibilityFeature
-    "hasaccessibilityfeature": LT.hasAccessibilityFeature,
-    "offersfeature":       LT.hasAccessibilityFeature,
-    "hasfeature":          LT.hasAccessibilityFeature,
-    "includesfeature":     LT.hasAccessibilityFeature,
-    "includedfeature":     LT.hasAccessibilityFeature,
-    "includesaccessfeature": LT.hasAccessibilityFeature,
-    "equippedwith":        LT.hasAccessibilityFeature,
-    "addedlifts":          LT.hasAccessibilityFeature,
-    "containslifts":       LT.hasAccessibilityFeature,
-    "providesaccessfor":   LT.hasAccessibilityFeature,
-    "providesaccessmethod": LT.hasAccessibilityFeature,
+    "hasaccessibilityfeature": TFL.hasAccessibilityFeature,
+    "offersfeature":       TFL.hasAccessibilityFeature,
+    "hasfeature":          TFL.hasAccessibilityFeature,
+    "includesfeature":     TFL.hasAccessibilityFeature,
+    "includedfeature":     TFL.hasAccessibilityFeature,
+    "includesaccessfeature": TFL.hasAccessibilityFeature,
+    "equippedwith":        TFL.hasAccessibilityFeature,
+    "addedlifts":          TFL.hasAccessibilityFeature,
+    "containslifts":       TFL.hasAccessibilityFeature,
+    "providesaccessfor":   TFL.hasAccessibilityFeature,
+    "providesaccessmethod": TFL.hasAccessibilityFeature,
 
     #fareAmount
-    "costs":               LT.fareAmount,
-    "cost":                LT.fareAmount,
-    "costofconstruction":  LT.fareAmount,
-    "costofupgrade":       LT.fareAmount,
-    "amount":              LT.fareAmount,
-    "initialbudget":       LT.fareAmount,
+    "costs":               TFL.fareAmount,
+    "cost":                TFL.fareAmount,
+    "costofconstruction":  TFL.fareAmount,
+    "costofupgrade":       TFL.fareAmount,
+    "amount":              TFL.fareAmount,
+    "initialbudget":       TFL.fareAmount,
 
     #operatesOn / general operations
-    "operateson":          LT.operatesOn,
-    "operates":            LT.operatesOn,
-    "operatesasauthority": LT.operatesOn,
-    "responsiblefor":      LT.operatesOn,
-    "manages":             LT.operatesOn,
-    "oversees":            LT.operatesOn,
-    "isresponsiblefor":    LT.operatesOn,
-    "owns":                LT.operatesOn,
+    "operateson":          TFL.operatesOn,
+    "operates":            TFL.operatesOn,
+    "operatesasauthority": TFL.operatesOn,
+    "responsiblefor":      TFL.operatesOn,
+    "manages":             TFL.operatesOn,
+    "oversees":            TFL.operatesOn,
+    "isresponsiblefor":    TFL.operatesOn,
+    "owns":                TFL.operatesOn,
 
     #servesMode
-    "servesmode":          LT.servesMode,
-    "type":                LT.servesMode,
-    "typeof":              LT.servesMode,
-    "linetype":            LT.servesMode,
+    "servesmode":          TFL.servesMode,
+    "type":                TFL.servesMode,
+    "typeof":              TFL.servesMode,
+    "linetype":            TFL.servesMode,
 
     #dates
-    "opened":              LT.openedDate,
-    "openedin":            LT.openedDate,
-    "openeddate":          LT.openedDate,
-    "openedon":            LT.openedDate,
-    "introducedon":        LT.openedDate,
-    "introducedin":        LT.openedDate,
-    "introduced":          LT.openedDate,
-    "startedon":           LT.openedDate,
-    "startedin":           LT.openedDate,
-    "startedoperatingon":  LT.openedDate,
-    "startedoperatingin":  LT.openedDate,
-    "startedoperationon":  LT.openedDate,
-    "commencedon":         LT.openedDate,
-    "commencedoperatingon": LT.openedDate,
-    "establishedin":       LT.openedDate,
-    "launched":            LT.openedDate,
-    "formedinyear":        LT.openedDate,
-    "restartedoperatingon": LT.openedDate,
-    "suspendedon":         LT.openedDate,
-    "reopenedon":          LT.openedDate,
-    "endedon":             LT.openedDate,
-    "endedin":             LT.openedDate,
-    "extendedin":          LT.openedDate,
-    "startednightservice": LT.openedDate,
+    "opened":              TFL.openedDate,
+    "openedin":            TFL.openedDate,
+    "openeddate":          TFL.openedDate,
+    "openedon":            TFL.openedDate,
+    "introducedon":        TFL.openedDate,
+    "introducedin":        TFL.openedDate,
+    "introduced":          TFL.openedDate,
+    "startedon":           TFL.openedDate,
+    "startedin":           TFL.openedDate,
+    "startedoperatingon":  TFL.openedDate,
+    "startedoperatingin":  TFL.openedDate,
+    "startedoperationon":  TFL.openedDate,
+    "commencedon":         TFL.openedDate,
+    "commencedoperatingon": TFL.openedDate,
+    "establishedin":       TFL.openedDate,
+    "launched":            TFL.openedDate,
+    "formedinyear":        TFL.openedDate,
+    "restartedoperatingon": TFL.openedDate,
+    "suspendedon":         TFL.openedDate,
+    "reopenedon":          TFL.openedDate,
+    "endedon":             TFL.openedDate,
+    "endedin":             TFL.openedDate,
+    "extendedin":          TFL.openedDate,
+    "startednightservice": TFL.openedDate,
 
     #acceptedOn (payment/ticketing)
-    "acceptedon":          LT.acceptedOn,
-    "usedon":              LT.acceptedOn,
-    "validon":             LT.acceptedOn,
-    "acceptspaymentmethod": LT.acceptedOn,
-    "acceptspayment":      LT.acceptedOn,
-    "accepts":             LT.acceptedOn,
-    "acceptedby":          LT.acceptedOn,
-    "acceptspaymentby":    LT.acceptedOn,
-    "acceptedpaymentmethod": LT.acceptedOn,
-    "usedin":              LT.acceptedOn,
+    "acceptedon":          TFL.acceptedOn,
+    "usedon":              TFL.acceptedOn,
+    "validon":             TFL.acceptedOn,
+    "acceptspaymentmethod": TFL.acceptedOn,
+    "acceptspayment":      TFL.acceptedOn,
+    "accepts":             TFL.acceptedOn,
+    "acceptedby":          TFL.acceptedOn,
+    "acceptspaymentby":    TFL.acceptedOn,
+    "acceptedpaymentmethod": TFL.acceptedOn,
+    "usedin":              TFL.acceptedOn,
 
     #misc
-    "partof":              LT.partOf,
-    "ispartof":            LT.partOf,
-    "includedin":          LT.partOf,
-    "belongsto":           LT.partOf,
-    "locatedin":           LT.locatedIn,
-    "operatesin":          LT.locatedIn,
-    "locationof":          LT.locatedIn,
-    "locatedinarea":       LT.locatedIn,
-    "locatedat":           LT.locatedIn,
-    "contains":            LT.contains,
-    "includes":            LT.contains,
-    "includesline":        LT.contains,
-    "consistsof":          LT.contains,
-    "introducedby":        LT.introducedBy,
-    "replacedby":          LT.replacedBy,
-    "takenoverby":         LT.replacedBy,
-    "succeededby":         LT.replacedBy,
-    "alongroute":          LT.onRoute,
-    "onroute":             LT.onRoute,
-    "criticisedby":        LT.criticisedBy,
-    "criticisedtflfor":    LT.criticisedBy,
-    "criticizesdecision":  LT.criticisedBy,
-    "criticismtowardstfl": LT.criticisedBy,
+    "partof":              TFL.partOf,
+    "ispartof":            TFL.partOf,
+    "includedin":          TFL.partOf,
+    "belongsto":           TFL.partOf,
+    "locatedin":           TFL.locatedIn,
+    "operatesin":          TFL.locatedIn,
+    "locationof":          TFL.locatedIn,
+    "locatedinarea":       TFL.locatedIn,
+    "locatedat":           TFL.locatedIn,
+    "contains":            TFL.contains,
+    "includes":            TFL.contains,
+    "includesline":        TFL.contains,
+    "consistsof":          TFL.contains,
+    "introducedby":        TFL.introducedBy,
+    "replacedby":          TFL.replacedBy,
+    "takenoverby":         TFL.replacedBy,
+    "succeededby":         TFL.replacedBy,
+    "alongroute":          TFL.onRoute,
+    "onroute":             TFL.onRoute,
+    "criticisedby":        TFL.criticisedBy,
+    "criticisedtflfor":    TFL.criticisedBy,
+    "criticizesdecision":  TFL.criticisedBy,
+    "criticismtowardstfl": TFL.criticisedBy,
 }
 
 #frequently seen non london entities also used llm to help compile this list
@@ -213,12 +213,12 @@ NON_LONDON = {"milan", "almaty", "copenhagen", "dublin", "adelaide", "glasgow",
 
 #types
 LABEL_CLASS_MAP = {
-    "ORG":     LT.TransportOperator,
-    "FAC":     LT.TransitStop,
-    "GPE":     LT.Location,
-    "LOC":     LT.Location,
-    "PRODUCT": LT.TransportService,
-    "EVENT":   LT.TransportEvent,
+    "ORG":     TFL.TransportOperator,
+    "FAC":     TFL.TransitStop,
+    "GPE":     TFL.Location,
+    "LOC":     TFL.Location,
+    "PRODUCT": TFL.TransportService,
+    "EVENT":   TFL.TransportEvent,
 }
 
 #checks if mention of somewhere outside of london
@@ -237,7 +237,7 @@ def slugify(text):
 
 #wraps slugify and produces a uri within the namespace
 def label_to_uri(label):
-    return LT[slugify(label)]
+    return TFL[slugify(label)]
 
 #takes predicateLikeThis from LLM and maps to uri in nameopsace
 def map_predicate(raw):
@@ -245,15 +245,15 @@ def map_predicate(raw):
     return PREDICATE_MAP.get(key)
 
 
-def build_wiki_graph(all_results):
+def build_wiki_graph(all_resuTFLs):
     g = Graph()
-    g.bind("lt", LT)
+    g.bind("TFL", TFL)
     g.bind("dcterms", DCTERMS)
     g.bind("prov", PROV)
     g.bind("rdfs", RDFS)
 
     #pipeline provenance
-    pipeline_uri = LT["UnstructuredPipeline"]
+    pipeline_uri = TFL["UnstructuredPipeline"]
 
     g.add((pipeline_uri, RDF.type, PROV.Activity))
     g.add((pipeline_uri, RDFS.label, Literal("LLM Wikipedia Extraction Pipeline")))
@@ -262,7 +262,7 @@ def build_wiki_graph(all_results):
     valid = 0
     skipped = 0
 
-    for article in all_results:
+    for article in all_resuTFLs:
         source_url = f"https://en.wikipedia.org/wiki/{article['title'].replace(' ', '_')}"
         source_uri = URIRef(source_url)
         
@@ -306,7 +306,7 @@ def build_wiki_graph(all_results):
                 continue
             
             #adds date datatype
-            if pred_uri == LT.openedDate:
+            if pred_uri == TFL.openedDate:
                 try:
                     obj_node = Literal(obj_label, datatype=XSD.gYear)
                 except:
@@ -337,7 +337,7 @@ def build_wiki_graph(all_results):
 
 def run():
     #finds most recent triples output
-    processed_dir = os.path.join("data", "processed")
+    processed_dir = os.path.join("downloads", "processed")
     latest = sorted(os.listdir(processed_dir))[-1]
     triples_path = os.path.join(processed_dir, latest, "wiki_triples.json")
 
@@ -347,10 +347,10 @@ def run():
         return
 
     with open(triples_path, encoding="utf-8") as f:
-        all_results = json.load(f)
+        all_resuTFLs = json.load(f)
 
-    print(f"Building RDF graph from {len(all_results)} articles...")
-    g = build_wiki_graph(all_results)
+    print(f"Building RDF graph from {len(all_resuTFLs)} articles...")
+    g = build_wiki_graph(all_resuTFLs)
 
     out_path = os.path.join("ontologies", "pipeline_output", "unstructured_london_transport.ttl")
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
