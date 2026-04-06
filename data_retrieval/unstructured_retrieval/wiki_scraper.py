@@ -89,7 +89,7 @@ def snapshot_dir(snapshot_date):
     return path
 
 
-def run():
+def run_wiki_scraper():
     today = str(date.today())
     out_dir = snapshot_dir(today)
     manifest = []
@@ -121,4 +121,4 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    run_wiki_scraper()
