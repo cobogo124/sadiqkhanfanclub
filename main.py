@@ -1,8 +1,16 @@
 import os
 from rdflib import Graph
-from data_retrieval.unstructured_retrieval import wiki_to_rdf
+
+# Import the ACTUALLY named modules from the unstructured pipeline
+from data_retrieval.unstructured_retrieval import wiki_scraper
+from data_retrieval.unstructured_retrieval import extract_triples
+from data_retrieval.unstructured_retrieval import triples_to_rdf
+
+# Import your structured pipeline
 from data_retrieval.structured_retrieval import tfl_api_processor
-from data_retrieval.unstructured_retrieval.wiki_to_rdf import TFL
+
+# Import the TFL namespace from the newly named triples_to_rdf script
+from data_retrieval.unstructured_retrieval.triples_to_rdf import TFL
 
 def main():
     final_graph = Graph()
@@ -21,10 +29,16 @@ def main():
         final_graph.parse(gtfs_path, format="turtle")
     
     print("\n--- 2. Running Unstructured Pipeline ---")
-    # Run the colleague's script
-    wiki_to_rdf.run()
+    print("  -> Step 2a: Scraping Wikipedia...")
+    wiki_scraper.run_wiki_scraper()
     
-    # Load the ABox their script just generated
+    print("  -> Step 2b: Extracting Triples (LLM/Cache)...")
+    extract_triples.main()
+    
+    print("  -> Step 2c: Building Unstructured RDF Graph...")
+    triples_to_rdf.run()
+    
+    # Load the ABox the unstructured scripts just generated
     unstructured_path = "ontologies/pipeline_output/unstructured_london_transport.ttl"
     if os.path.exists(unstructured_path):
         final_graph.parse(unstructured_path, format="turtle")
@@ -32,7 +46,7 @@ def main():
         print(f"Warning: {unstructured_path} was not found.")
 
     print("\n--- 3. Running Structured Pipeline ---")
-    # Run your code and merge the resulting graph directly
+    # Run the API fetcher and merge the resulting graph directly
     structured_g = tfl_api_processor.run()
     final_graph += structured_g
     

@@ -3,7 +3,7 @@ import json
 import requests
 from rdflib import Graph, RDF, RDFS, Literal
 # Import the renamed TFL namespace from your colleague's script
-from data_retrieval.unstructured_retrieval.wiki_to_rdf import label_to_uri, TFL
+from data_retrieval.unstructured_retrieval.triples_to_rdf import label_to_uri, TFL
 
 CACHE_PATH = "downloads/tfl_api_cache.json"
 OUTPUT_PATH = "ontologies/pipeline_output/structured_london_transport.ttl"
