@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+# sadiqkhanfanclub
+=======
 # sadiqkhanfanclub
 
 ## Build the TfL snapshot
