@@ -5,7 +5,7 @@ from datetime import date
 from rdflib import Graph, Literal, Namespace, RDF, RDFS, XSD, URIRef
 from rdflib.namespace import DCTERMS
 
-TFL = Namespace("tfl#")
+TFL = Namespace("http://example.org/tfl#")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 
 #map common predicate strings from LLM output → ontology properties
@@ -258,14 +258,35 @@ def is_london_entity(text):
     t = text.lower()
     return not any(f" {kw} " in f" {t} " for kw in NON_LONDON)
 
+CANONICAL = {
+    # Acronyms
+    'Dlr': 'DLR',
+    'Tfl': 'TfL',
+    'DocklandsLightRailway': 'DLR',
+    'Victoria': 'VictoriaLine',
+    'Jubilee': 'JubileeLine',
+    'Central': 'CentralLine',
+    'Northern': 'NorthernLine',
+    'Piccadilly': 'PiccadillyLine',
+    'Bakerloo': 'BakerlooLine',
+    'Circle': 'CircleLine',
+    'District': 'DistrictLine',
+    'Metropolitan': 'MetropolitanLine',
+    'HammersmithCity': 'HammersmithCityLine',
+    'WaterlooCity': 'WaterlooAndCityLine',
+    'ElizabethLine': 'ElizabethLineRoute',
+    'BakerStreet': 'BakerStreetStation',
+    'KingsCross': 'KingsCrossStPancras',
+    'Stratford': 'StratfordStation',
+    'TrafalgarSquare': 'TrafalgarSquareBusTerminus',
+}
 
-#replaces " " with "_"
+#makes pascal case to make modelling team
 def slugify(text):
     text = text.strip()
-    text = text.lower()
     text = re.sub(r"[^\w\s-]", "", text)
-    text = re.sub(r"\s+", "_", text)
-    return text
+    text = "".join(word.capitalize() for word in text.split())
+    return CANONICAL.get(text, text)
 
 #wraps slugify and produces a uri within the namespace
 def label_to_uri(label):
