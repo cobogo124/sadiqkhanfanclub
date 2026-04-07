@@ -1,0 +1,695 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Knowledge Graph Report},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Knowledge Graph Report}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Knowledge Graph Report}\label{knowledge-graph-report}
+
+\subsection{Introduction}\label{introduction}
+
+This project develops a knowledge graph for London public transportation
+with a particular focus on the Transport for London (TfL) network,
+Oyster/contactless fare semantics, accessibility, operators, night
+services, and journey-planning facts. The domain choice aligns directly
+with the coursework brief\textquotesingle s recommended "public
+transportation" theme and supports a mixture of operational,
+accessibility, and fare-related competency questions.
+
+The repository implements a hybrid construction workflow. A manually
+curated ontology and seed ABox are stored in
+\texttt{ontologies/manual/tfl\_kamyar\_final.ttl}, the structured
+pipeline is implemented in
+\texttt{data\_retrieval/structured\_retrieval/tfl\_api\_processor.py},
+the unstructured pipeline is implemented across
+\texttt{data\_retrieval/unstructured\_retrieval/}, and the merge step is
+orchestrated by \texttt{main.py}. The final merged artifact in the
+repository is
+\texttt{ontologies/pipeline\_output/final\_london\_transport\_kg.ttl},
+which currently contains 17,539 triples and occupies roughly 656 KB on
+disk.
+
+The public repository linked to this submission is:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/cobogo124/sadiqkhanfanclub}{sadiqkhanfanclub}
+\end{itemize}
+
+The important outcome is that the graph covers the
+coursework\textquotesingle s required question set while also exposing
+where the current build is still incomplete. The current repository
+snapshot is strong on documentation of intent, source manifests, and
+competency-question coverage, but it is also a hybrid snapshot rather
+than a fully clean rebuild from raw inputs. In particular, the manually
+curated ontology currently provides most of the queryable
+\texttt{http://example.org/tfl\#} facts used by the coursework SPARQL
+queries, while the automated outputs require a namespace-alignment fix
+before they can contribute seamlessly to the same query space.
+
+\subsection{Data Source Selection}\label{data-source-selection}
+
+\subsubsection{Structured sources}\label{structured-sources}
+
+The primary structured source is the official TfL Unified API, cached
+locally in \texttt{downloads/tfl\_api\_cache.json}. The committed cache
+is approximately 79 MB and contains 695 line records across bus, Tube,
+Overground, DLR, and Elizabeth line services, with 7,949 nested
+stop-point entries. This choice is appropriate for the coursework
+because it offers authoritative operational identifiers, line metadata,
+route membership, and station/stop attributes in a machine-readable
+form.
+
+The repository also includes a generated source manifest in
+\texttt{docs/generated/tfl-sources.json} and
+\texttt{docs/generated/tfl-sources.md}. The JSON manifest records 1,299
+retrievals across the following categories:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{core}: 1
+\item
+  \texttt{textual}: 2
+\item
+  \texttt{route\_sequences}: 695
+\item
+  \texttt{line\_stop\_points}: 19
+\item
+  \texttt{line\_statuses}: 19
+\item
+  \texttt{search}: 3
+\item
+  \texttt{stop\_points}: 560
+\end{itemize}
+
+This is valuable from a reproducibility point of view because it shows
+the intended breadth of the structured collection process, not just the
+small subset ultimately materialized into the main queryable namespace.
+
+As a secondary structured reference, the repository includes
+\texttt{downloads/naptan\_london.csv} (about 4.3 MB). NaPTAN is useful
+as a normalization and identifier-support resource for stops and
+stations, particularly where the TfL API returns multiple stop-point
+variants or where station naming ambiguity arises.
+
+\subsubsection{Textual sources}\label{textual-sources}
+
+The unstructured pipeline begins from a curated list of 21 Wikipedia
+articles defined in
+\texttt{data\_retrieval/unstructured\_retrieval/wiki\_scraper.py}. These
+articles cover ticketing, accessibility, night services, network
+context, and general transport semantics, including entries such as
+"Oyster card", "London fare zones", "Step-free access", "Night Tube",
+"Night buses in London", and "Interchange station".
+
+The source manifest additionally records two non-Wikipedia textual
+resources that are closer to official evidence:
+
+\begin{itemize}
+\tightlist
+\item
+  TfL step-free guide PDF
+\item
+  TfL Freedom of Information page for London Overground operator
+  information
+\end{itemize}
+
+This hybrid source strategy is sensible for the domain. Official
+structured APIs are the best fit for line, stop, and status data, while
+textual sources are useful for extracting explanatory semantics such as
+accessibility, concessions, and service concepts that do not always
+appear in a clean schema from the API.
+
+\subsubsection{Source-selection
+rationale}\label{source-selection-rationale}
+
+The data-source selection balances four considerations:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Authority. TfL API responses and official TfL pages are the most
+  defensible evidence for operational transport facts.
+\item
+  Coverage. Wikipedia articles broaden the semantic range to include
+  accessibility, fare-policy, and service concepts.
+\item
+  Reproducibility. Cached JSON, a manifest of retrieval URLs, and
+  committed Turtle outputs reduce dependence on live services during
+  marking.
+\item
+  Coursework fit. The combination satisfies the requirement to use at
+  least one structured source and one textual source.
+\end{enumerate}
+
+\subsubsection{Source-related caveats}\label{source-related-caveats}
+
+Two limitations should be acknowledged explicitly.
+
+First, the repository currently preserves the top-level API cache and
+the generated source manifest, but not the full
+\texttt{downloads/raw/...} snapshot tree referenced by the manifest.
+Second, the unstructured pipeline refers to raw Wikipedia text snapshots
+under \texttt{data/raw/...}, but those raw text files are not committed
+in the current repository snapshot. The graph outputs and LLM cache are
+present, but the full end-to-end provenance trail is therefore
+incomplete.
+
+\subsection{Extension Of Existing
+Ontologies}\label{extension-of-existing-ontologies}
+
+The core ontology in \texttt{ontologies/manual/tfl\_kamyar\_final.ttl}
+imports and extends two existing ontologies:
+
+\begin{itemize}
+\tightlist
+\item
+  GTFS (\texttt{http://vocab.gtfs.org/terms\#})
+\item
+  Schema.org (\texttt{http://schema.org/})
+\end{itemize}
+
+This satisfies the coursework requirement to reuse existing ontologies
+and extend them with domain-specific classes and properties. The main
+benefits are interoperability and avoiding the unnecessary reinvention
+of general transport and web-data concepts.
+
+\subsubsection{Class extensions}\label{class-extensions}
+
+The ontology introduces several subclasses rooted in GTFS and Schema.org
+concepts. Important examples include:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tfl:TfLLine\ rdfs:subClassOf\ gtfs:Route}
+\item
+  \texttt{tfl:TfLStation\ rdfs:subClassOf\ gtfs:Station}
+\item
+  \texttt{tfl:OysterFareZone\ rdfs:subClassOf\ gtfs:Zone}
+\item
+  \texttt{tfl:TfLOperator\ rdfs:subClassOf\ gtfs:Agency}
+\item
+  \texttt{tfl:OysterFare\ rdfs:subClassOf\ schema:PriceSpecification}
+\item
+  \texttt{tfl:Journey\ rdfs:subClassOf\ schema:Trip}
+\end{itemize}
+
+These are then specialized further into subclasses such as
+\texttt{UndergroundLine}, \texttt{NightTubeLine}, \texttt{BusRoute},
+\texttt{InterchangeStation}, \texttt{ElizabethLineStation},
+\texttt{PublicToilet}, and \texttt{CarPark}. This layered design is
+appropriate because it keeps the ontology recognizably
+transport-oriented while allowing the graph to answer the
+coursework\textquotesingle s more domain-specific questions.
+
+\subsubsection{Property extensions}\label{property-extensions}
+
+The ontology also defines useful transport-specific properties and
+aligns them upward to GTFS and Schema.org where appropriate. Key
+examples include:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tfl:servedByLine\ rdfs:subPropertyOf\ gtfs:route}
+\item
+  \texttt{tfl:operatesInZone\ rdfs:subPropertyOf\ gtfs:zone}
+\item
+  \texttt{tfl:routeNumber\ rdfs:subPropertyOf\ gtfs:shortName}
+\item
+  \texttt{tfl:lineColour\ rdfs:subPropertyOf\ gtfs:color}
+\item
+  \texttt{tfl:operatedBy\ rdfs:subPropertyOf\ schema:provider}
+\item
+  \texttt{tfl:journeyOrigin\ rdfs:subPropertyOf\ schema:departureStation}
+\item
+  \texttt{tfl:journeyDestination\ rdfs:subPropertyOf\ schema:arrivalStation}
+\item
+  \texttt{tfl:fareAmount\ rdfs:subPropertyOf\ schema:price}
+\end{itemize}
+
+These choices are technically strong because they allow local modeling
+decisions to remain compatible with broader vocabularies. They also
+support clearer reporting and potential reuse outside the coursework.
+
+\subsubsection{Domain-specific concepts}\label{domain-specific-concepts}
+
+The ontology adds concepts that are important for this domain but not
+cleanly provided by the reused ontologies, including:
+
+\begin{itemize}
+\tightlist
+\item
+  fare concessions
+\item
+  night services
+\item
+  station facilities
+\item
+  accessibility features
+\item
+  engineering closures
+\item
+  alternative services
+\item
+  multi-leg journeys
+\end{itemize}
+
+This is a good example of extending rather than replacing external
+ontologies: GTFS and Schema.org provide a skeleton, while the TfL
+ontology adds the domain semantics needed by the competency questions.
+
+\subsection{Mappings}\label{mappings}
+
+\subsubsection{Structured mapping
+pipeline}\label{structured-mapping-pipeline}
+
+The structured pipeline is implemented in
+\texttt{data\_retrieval/structured\_retrieval/tfl\_api\_processor.py}.
+Its workflow is:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Load a local JSON cache if available, otherwise fetch live TfL API
+  data.
+\item
+  Iterate through each line and attach stop-point data.
+\item
+  Map each line to a domain class according to \texttt{modeName}.
+\item
+  Create station resources from stop points.
+\item
+  Interpret \texttt{additionalProperties} as either station facilities
+  or accessibility features.
+\item
+  Serialize the result to
+  \texttt{ontologies/pipeline\_output/structured\_london\_transport.ttl}.
+\end{enumerate}
+
+The mode-to-class mapping is straightforward and domain-appropriate:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tube} -\textgreater{} \texttt{UndergroundLine}
+\item
+  \texttt{dlr} -\textgreater{} \texttt{DLRLine}
+\item
+  \texttt{elizabeth-line} -\textgreater{} \texttt{ElizabethLineService}
+\item
+  \texttt{overground} -\textgreater{} \texttt{OvergroundLine}
+\item
+  \texttt{bus} -\textgreater{} \texttt{BusRoute}
+\end{itemize}
+
+At station level, the pipeline maps stop-point metadata into ontology
+facts such as:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{servedByLine}
+\item
+  \texttt{hasFacility}
+\item
+  \texttt{hasAccessibilityFeature}
+\item
+  \texttt{hasStepFreeStreetToPlatform}
+\end{itemize}
+
+This is a reasonable mapping design because it translates
+source-specific JSON fields into domain semantics that directly support
+the competency questions.
+
+\subsubsection{Unstructured mapping
+pipeline}\label{unstructured-mapping-pipeline}
+
+The unstructured workflow is distributed across three scripts:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{wiki\_scraper.py}
+\item
+  \texttt{extract\_triples.py}
+\item
+  \texttt{triples\_to\_rdf.py}
+\end{itemize}
+
+The process is:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Download text from selected Wikipedia pages.
+\item
+  Split text into chunks.
+\item
+  Run spaCy named-entity recognition to identify relevant candidate
+  entities.
+\item
+  Use an LLM prompt, or cached LLM output, to extract candidate triples.
+\item
+  Filter the extracted triples against recognized entities.
+\item
+  Map free-text predicates to ontology properties.
+\item
+  Serialize the resulting RDF and attach provenance links.
+\end{enumerate}
+
+The repository currently ships with \texttt{USE\_LLM\ =\ False}, meaning
+the build depends on cached triple extraction results stored in
+\texttt{data/caches/triples\_cache.json}. That cache currently contains
+563 entries. This is useful for reproducibility and offline marking,
+even though it means the present build is not using a live LLM call at
+runtime.
+
+The predicate-mapping stage in \texttt{triples\_to\_rdf.py} is
+particularly important. It normalizes a wide range of surface predicates
+such as \texttt{operatedBy}, \texttt{hasStop}, \texttt{acceptedOn},
+\texttt{hasAccessibilityFeature}, and \texttt{openedDate} into ontology
+properties under the TfL namespace. The script also adds
+\texttt{dcterms:source} and \texttt{prov:wasGeneratedBy}, which gives
+the unstructured portion of the graph better provenance than many
+student projects achieve.
+
+\subsubsection{Merge step}\label{merge-step}
+
+\texttt{main.py} loads the manual ontology, loads the GTFS ontology,
+runs the unstructured pipeline, runs the structured pipeline, and
+serializes the merged graph to
+\texttt{ontologies/pipeline\_output/final\_london\_transport\_kg.ttl}.
+
+In design terms, this is a good architecture for the coursework because
+it separates:
+
+\begin{itemize}
+\tightlist
+\item
+  ontology definition
+\item
+  structured extraction
+\item
+  unstructured extraction
+\item
+  final graph assembly
+\end{itemize}
+
+\subsubsection{Important integration
+limitation}\label{important-integration-limitation}
+
+The current repository snapshot also exposes the main technical weakness
+of the build. The automated outputs do not currently share the same
+namespace as the manual ontology.
+
+\begin{itemize}
+\tightlist
+\item
+  The structured output serializes resources under a Linux file-based
+  \texttt{file:///.../ontologies/pipeline\_output/tfl\#} namespace
+\item
+  The unstructured output serializes resources under a Windows
+  file-based \texttt{file:///.../ontologies/pipeline\_output/tfl\#}
+  namespace
+\item
+  The manual ontology and all coursework SPARQL queries use
+  \texttt{http://example.org/tfl\#}
+\end{itemize}
+
+This means the repository currently contains three parallel TfL
+namespaces rather than one canonical graph namespace. In practice, this
+is why the coursework SPARQL queries are answered primarily by the
+manually curated \texttt{http://example.org/tfl\#} ABox rather than by
+the automated outputs. The automated pipeline still adds a large amount
+of data, but it is not yet fully integrated into the namespace used by
+the competency-question layer.
+
+This limitation should be documented rather than hidden, because it is
+the single clearest remaining blocker to claiming a fully automated
+end-to-end KG population workflow.
+
+\subsection{Queries}\label{queries}
+
+The repository includes 20 competency questions and their SPARQL
+implementations in
+\texttt{competency\_questions/competency\_question.txt}. The executable
+validation harness is
+\texttt{competency\_questions/competency\_question\_test.py}, which
+loads
+\texttt{ontologies/pipeline\_output/final\_london\_transport\_kg.ttl}
+and runs all 20 questions.
+
+Running that validation script against the current repository snapshot
+returns non-empty results for all 20 questions, so the recorded CQ
+answerability score is currently:
+
+\begin{itemize}
+\tightlist
+\item
+  20/20 answered
+\item
+  100\% non-empty query coverage
+\end{itemize}
+
+Representative results from the current graph include:
+
+\begin{itemize}
+\tightlist
+\item
+  King\textquotesingle s Cross St Pancras is linked to Circle,
+  Hammersmith \& City, Metropolitan, Northern, Piccadilly, and Victoria
+  lines.
+\item
+  The Victoria line terminates at Brixton and Walthamstow Central.
+\item
+  Stratford is modeled as an interchange served by Central, Jubilee,
+  DLR, Elizabeth line, and Overground services.
+\item
+  Baker Street has a public toilet facility.
+\item
+  The Night Tube lines returned by the graph are Central, Jubilee,
+  Northern, Piccadilly, and Victoria.
+\item
+  Three fare concessions for disabled bus passengers are represented and
+  queryable.
+\end{itemize}
+
+It is also worth noting that the repository contains two slightly
+different CQ descriptions: one in \texttt{README.md} and one in
+\texttt{competency\_questions/competency\_question.txt}. For the
+purposes of implementation and validation, the authoritative set is the
+latter, because it is the one paired with executable SPARQL and a
+working test script.
+
+\subsection{Evaluation Methodology}\label{evaluation-methodology}
+
+\subsubsection{Quality metrics}\label{quality-metrics}
+
+The most direct quality metric for this coursework is
+competency-question answerability. On the current repository snapshot,
+all 20 stored SPARQL queries return at least one answer.
+
+Additional useful quality indicators from the current graph are:
+
+\begin{itemize}
+\tightlist
+\item
+  final merged graph size: 17,539 triples
+\item
+  queryable \texttt{http://example.org/tfl\#} station-like instances: 30
+\item
+  queryable line-like instances under the core ontology hierarchy: 39
+\item
+  queryable facility-like instances: 7
+\item
+  queryable accessibility-feature-like instances: 19
+\item
+  operators: 4
+\item
+  fare zones: 6
+\item
+  fare concessions: 3
+\item
+  subjects with explicit \texttt{dcterms:source}: 211
+\item
+  distinct Wikipedia source URIs represented in the graph: 15
+\end{itemize}
+
+These numbers indicate that the graph is not merely a minimal toy
+example. It contains enough domain structure to answer fare,
+accessibility, operator, closure, and journey questions across multiple
+modes.
+
+\subsubsection{Performance metrics}\label{performance-metrics}
+
+A lightweight performance evaluation was run directly against the
+committed final graph. On this environment:
+
+\begin{itemize}
+\tightlist
+\item
+  parsing \texttt{final\_london\_transport\_kg.ttl} took about 0.80
+  seconds
+\item
+  running the full 20-query validation set took about 0.28 seconds in
+  total
+\item
+  average per-query time was about 0.014 seconds
+\item
+  peak resident memory during the run was about 49 MB
+\end{itemize}
+
+The slowest query in this run was the King\textquotesingle s Cross
+intersection query, but even that completed in roughly 0.12 seconds.
+These timings are acceptable for a coursework-sized KG and suggest that
+the current graph remains easy to load and query on ordinary hardware.
+
+\subsubsection{Provenance and source-coverage
+evaluation}\label{provenance-and-source-coverage-evaluation}
+
+The generated source manifest is a useful secondary metric because it
+shows how much source material the pipeline was designed to cover:
+
+\begin{itemize}
+\tightlist
+\item
+  1,299 manifest entries in \texttt{docs/generated/tfl-sources.json}
+\item
+  695 route-sequence fetches
+\item
+  560 stop-point fetches
+\item
+  19 line-status fetches
+\end{itemize}
+
+This provides a stronger argument for scalability than the queryable
+manual ABox alone. However, the namespace split described earlier means
+that much of this harvested information is not yet visible in the main
+coursework query namespace.
+
+\subsubsection{Suggested baseline
+comparisons}\label{suggested-baseline-comparisons}
+
+The coursework brief also asks for comparison against simpler LLM
+approaches. The repository does not preserve a full baseline experiment,
+so the most defensible methodology is:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Use the 20 competency questions as a fixed evaluation set.
+\item
+  Record gold or expected answers from the current validated KG.
+\item
+  Ask a plain LLM the same 20 questions without retrieval.
+\item
+  Ask the same LLM with KG-backed retrieval.
+\item
+  Compare exactness, completeness, hallucination rate, and citation
+  quality.
+\end{enumerate}
+
+This comparison is not fully archived in the current repository, so it
+should be presented as the evaluation method rather than as a completed
+experimental result.
+
+\subsubsection{Validity threats}\label{validity-threats}
+
+The evaluation should acknowledge four threats to validity:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The automated outputs are currently split across file-based namespaces
+  and are therefore underused by the main SPARQL layer.
+\item
+  The repository no longer contains the complete raw source snapshot
+  tree referenced in the manifest.
+\item
+  The unstructured extraction stage relies on cached LLM output rather
+  than a fully reproducible live run.
+\item
+  Some CQ answers are currently supported by manually seeded ABox facts
+  in the ontology, which improves answerability but reduces the strength
+  of the end-to-end automation claim.
+\end{enumerate}
+
+\subsection{Conclusion}\label{conclusion}
+
+Overall, this repository contains a strong coursework narrative: it
+defines an ontology for TfL public transport, reuses existing
+vocabularies appropriately, combines structured and unstructured
+sources, and validates the resulting KG with 20 SPARQL competency
+questions that all return answers on the current final artifact.
+
+The main remaining weakness is not the domain framing, but integration
+quality. The project is closest to a successful submission when
+described honestly as a hybrid system: a solid manually curated core
+ontology and CQ layer, supported by an ambitious automated pipeline
+whose harvested outputs still need namespace normalization and tighter
+provenance preservation before they can be counted as fully integrated
+automated population of the same graph.
+
+\end{document}

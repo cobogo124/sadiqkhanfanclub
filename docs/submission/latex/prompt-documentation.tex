@@ -1,0 +1,471 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Prompt Documentation},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Prompt Documentation}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Prompt Documentation}\label{prompt-documentation}
+
+\subsection{Purpose Of This Document}\label{purpose-of-this-document}
+
+The coursework brief asks for a document explaining what prompts were
+used and for what specific knowledge-engineering task. The repository
+preserves one operational LLM prompt verbatim and preserves evidence of
+a few additional prompt-driven activities indirectly through comments,
+outputs, and cached files. This document separates:
+
+\begin{itemize}
+\tightlist
+\item
+  prompts recoverable exactly from the repository
+\item
+  prompt-driven tasks that are only reconstructable from repository
+  evidence
+\end{itemize}
+
+Where a prompt is reconstructed rather than preserved verbatim, that is
+stated explicitly.
+
+\subsection{Exact Prompt Recoverable From The
+Repository}\label{exact-prompt-recoverable-from-the-repository}
+
+\subsubsection{Task: triple extraction from unstructured
+text}\label{task-triple-extraction-from-unstructured-text}
+
+Source:
+\texttt{data\_retrieval/unstructured\_retrieval/extract\_triples.py}
+
+Model/runtime recorded in code:
+
+\begin{itemize}
+\tightlist
+\item
+  local Ollama endpoint at \texttt{http://localhost:11434/api/generate}
+\item
+  model name: \texttt{mistral}
+\item
+  caching enabled through \texttt{data/caches/triples\_cache.json}
+\item
+  current repository setting: \texttt{USE\_LLM\ =\ False}
+\end{itemize}
+
+Repository-preserved prompt:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#\#\# Instruction}
+\NormalTok{Extract RDF triples from the text below about London public transport.}
+\NormalTok{A triple has the format: subject | predicate | object}
+
+\NormalTok{\#\#\# Constraints}
+\NormalTok{{-} ONLY extract facts explicitly stated in the text}
+\NormalTok{{-} Do NOT infer, guess, or add external knowledge}
+\NormalTok{{-} Use clean short labels: "Victoria line" not "the Victoria line"}
+\NormalTok{{-} Use camelCase predicates: "operatedBy" not "operated by"}
+\NormalTok{{-} Use natural labels with spaces: "Elizabeth line" not "ElizabethLine" or "Elizabeth\_line"}
+\NormalTok{{-} Do NOT prefix with "subject:" or "predicate:" or "object:"}
+\NormalTok{{-} Maximum 10 triples}
+\NormalTok{{-} If no facts can be extracted, return: NONE}
+
+\NormalTok{\#\#\# Examples}
+\NormalTok{Victoria line | operatedBy | Transport for London}
+\NormalTok{DLR | openedIn | 1987}
+\NormalTok{Jubilee line | hasStop | Westminster}
+\NormalTok{Oyster card | acceptedOn | London Underground}
+\NormalTok{Zone 1 | contains | Kings Cross St Pancras}
+
+\NormalTok{\#\#\# Text}
+\NormalTok{\{passage\}}
+
+\NormalTok{\#\#\# Triples}
+\end{Highlighting}
+\end{Shaded}
+
+Knowledge-engineering task supported:
+
+\begin{itemize}
+\tightlist
+\item
+  extraction of candidate subject-predicate-object statements from
+  textual sources
+\item
+  preparation of unstructured facts for later RDF mapping
+\end{itemize}
+
+Why this prompt is useful:
+
+\begin{itemize}
+\tightlist
+\item
+  it constrains the model to explicit facts
+\item
+  it normalizes predicate style for later mapping
+\item
+  it limits output length
+\item
+  it supports downstream validation against spaCy-recognized entities
+\end{itemize}
+
+\subsection{Prompt-Driven Activities Evidenced
+Indirectly}\label{prompt-driven-activities-evidenced-indirectly}
+
+\subsubsection{Task: predicate-to-ontology mapping
+refinement}\label{task-predicate-to-ontology-mapping-refinement}
+
+Source evidence:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{data\_retrieval/unstructured\_retrieval/triples\_to\_rdf.py}
+\item
+  comment: "using output of this script ... and an LLM i made this map"
+\end{itemize}
+
+What is preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  the final predicate map
+\end{itemize}
+
+What is not preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  the exact prompt used to create or refine the map
+\end{itemize}
+
+Repository-consistent reconstructed prompt:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Given the following list of extracted free{-}text predicates from London transport articles, map each one to the closest property in this ontology. Prefer reuse of existing ontology predicates, keep semantically equivalent predicates together, and return a JSON object from raw predicate string to canonical ontology property name.}
+\end{Highlighting}
+\end{Shaded}
+
+Knowledge-engineering task supported:
+
+\begin{itemize}
+\tightlist
+\item
+  ontology alignment between noisy LLM extractions and the
+  project\textquotesingle s formal property vocabulary
+\end{itemize}
+
+Status:
+
+\begin{itemize}
+\tightlist
+\item
+  reconstructed from comments and outputs, not preserved verbatim
+\end{itemize}
+
+\subsubsection{Task: generation of additional competency
+questions}\label{task-generation-of-additional-competency-questions}
+
+Source evidence:
+
+\begin{itemize}
+\tightlist
+\item
+  coursework brief requires 10 manually created and 10 LLM-augmented
+  competency questions
+\item
+  \texttt{README.md} preserves a manual/LLM split
+\item
+  \texttt{competency\_questions/competency\_question.txt} preserves the
+  final 20 SPARQL-backed questions
+\end{itemize}
+
+What is preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  final question outputs
+\end{itemize}
+
+What is not preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  the exact prompt used to generate the LLM-augmented question set
+\end{itemize}
+
+Repository-consistent reconstructed prompt:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Generate 10 additional competency questions for a knowledge graph about London public transportation. The questions should complement, not duplicate, a manual set focused on lines, stations, interchange, zones, accessibility, operators, bus termini, and Night Tube services. Prioritize questions about fares, disruptions, journey planning, accessibility support, and concessions that can realistically be answered from a mixed structured/unstructured data pipeline.}
+\end{Highlighting}
+\end{Shaded}
+
+Knowledge-engineering task supported:
+
+\begin{itemize}
+\tightlist
+\item
+  requirements expansion
+\item
+  broadening the CQ set beyond straightforward operational questions
+\end{itemize}
+
+Status:
+
+\begin{itemize}
+\tightlist
+\item
+  reconstructed from the final question outputs, not preserved verbatim
+\end{itemize}
+
+\subsubsection{Task: source discovery}\label{task-source-discovery}
+
+Source evidence:
+
+\begin{itemize}
+\tightlist
+\item
+  coursework brief explicitly allows LLMs and web search to discover
+  sources
+\item
+  \texttt{docs/generated/tfl-sources.json} records the final sources
+  that were selected
+\end{itemize}
+
+What is preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  selected source URLs and categories
+\end{itemize}
+
+What is not preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  the exact search prompts or web queries used to find those sources
+\end{itemize}
+
+Repository-consistent reconstructed prompt:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Find authoritative structured and textual data sources for a knowledge graph about London public transport. Prefer official TfL APIs, official TfL pages, and stable public datasets. Include sources for lines, stops, accessibility, operators, disruptions, and fare{-}related semantics.}
+\end{Highlighting}
+\end{Shaded}
+
+Knowledge-engineering task supported:
+
+\begin{itemize}
+\tightlist
+\item
+  source selection
+\item
+  balancing authoritative operational data with textual explanatory
+  sources
+\end{itemize}
+
+Status:
+
+\begin{itemize}
+\tightlist
+\item
+  reconstructed from the selected source manifest, not preserved
+  verbatim
+\end{itemize}
+
+\subsubsection{Task: ontology discovery}\label{task-ontology-discovery}
+
+Source evidence:
+
+\begin{itemize}
+\tightlist
+\item
+  the coursework brief requires two existing ontologies
+\item
+  the final ontology imports GTFS and Schema.org
+\end{itemize}
+
+What is preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  the chosen ontologies and the resulting subclass/subproperty
+  alignments
+\end{itemize}
+
+What is not preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  the exact discovery prompts or search strings used to find GTFS and
+  Schema.org
+\end{itemize}
+
+Repository-consistent reconstructed prompt:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Identify two existing ontologies that can be reused for a knowledge graph about London public transportation, fares, operators, stations, and journeys. Prefer ontologies that are stable, widely used, and easy to extend with subclasses and subproperties.}
+\end{Highlighting}
+\end{Shaded}
+
+Knowledge-engineering task supported:
+
+\begin{itemize}
+\tightlist
+\item
+  ontology reuse
+\item
+  design justification for extending rather than inventing a transport
+  vocabulary from scratch
+\end{itemize}
+
+Status:
+
+\begin{itemize}
+\tightlist
+\item
+  reconstructed from the ontology imports and alignments, not preserved
+  verbatim
+\end{itemize}
+
+\subsection{Prompt Execution Notes}\label{prompt-execution-notes}
+
+The repository currently uses cached LLM outputs rather than live
+generation during a normal run:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{USE\_LLM\ =\ False} in \texttt{extract\_triples.py}
+\item
+  \texttt{data/caches/triples\_cache.json} contains 563 cached
+  extraction entries
+\end{itemize}
+
+This is good for reproducibility in a marking environment, but it also
+means the exact dialogue history that originally produced the cache is
+not fully recoverable from the repository alone.
+
+\subsection{Conclusion}\label{conclusion}
+
+The repository preserves one exact operational prompt and preserves the
+outputs of several other prompt-dependent tasks, but it does not
+preserve every search query or chat transcript used during knowledge
+engineering. For submission purposes, the safest and most honest
+position is:
+
+\begin{itemize}
+\tightlist
+\item
+  present the triple-extraction prompt verbatim
+\item
+  identify the other prompt-driven tasks clearly
+\item
+  label reconstructed prompts as reconstructed rather than original logs
+\end{itemize}
+
+That approach keeps the documentation complete without inventing
+provenance that the repository does not actually contain.
+
+\end{document}
