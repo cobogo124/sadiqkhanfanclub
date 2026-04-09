@@ -11,7 +11,7 @@ CQS = [
     (
         "CQ1: Which London Underground lines intersect at King's Cross St Pancras station?",
         f"""SELECT ?lineName WHERE {{
-            <{TFL}KingsCrossStPancrasStation> <{TFL}servedByLine> ?line .
+            <{TFL}KingsCrossStPancras> <{TFL}servedByLine> ?line .
             ?line rdfs:label ?lineName .
         }} ORDER BY ?lineName"""
     ),
