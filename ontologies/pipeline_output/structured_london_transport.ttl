@@ -1379,7 +1379,7 @@ tfl:AbbeyRoadStudiosGroveEndRoad a tfl:TfLStation ;
     rdfs:label "Abbey Road Studios / Grove End Road" ;
     tfl:servedByLine tfl:139 .
 
-tfl:AbbeyWoodStation a tfl:TfLStation ;
+tfl:AbbeyWood a tfl:TfLStation ;
     rdfs:label "Abbey Wood Station" ;
     tfl:servedByLine tfl:Sl11 .
 
@@ -1505,24 +1505,24 @@ tfl:AlderneyGardens a tfl:TfLStation ;
     tfl:servedByLine tfl:120,
         tfl:140 .
 
-tfl:AldgateBusStation a tfl:TfLStation ;
+tfl:Aldgate a tfl:TfLStation ;
+    rdfs:label "Aldgate Station" ;
+    tfl:hasAccessibilityFeature tfl:WaitingRoom,
+        tfl:Wifi ;
+    tfl:servedByLine tfl:100,
+        tfl:115 .
+
+tfl:AldgateBus a tfl:TfLStation ;
     rdfs:label "Aldgate Bus Station" ;
     tfl:servedByLine tfl:115 .
 
-tfl:AldgateEastStation a tfl:TfLStation ;
+tfl:AldgateEast a tfl:TfLStation ;
     rdfs:label "Aldgate East Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom,
         tfl:Wifi ;
     tfl:servedByLine tfl:115,
         tfl:135 .
-
-tfl:AldgateStation a tfl:TfLStation ;
-    rdfs:label "Aldgate Station" ;
-    tfl:hasAccessibilityFeature tfl:WaitingRoom,
-        tfl:Wifi ;
-    tfl:servedByLine tfl:100,
-        tfl:115 .
 
 tfl:AldwychDruryLane a tfl:TfLStation ;
     rdfs:label "Aldwych / Drury Lane" ;
@@ -1535,6 +1535,10 @@ tfl:AldwychKingsway a tfl:TfLStation ;
 tfl:AlexandraAvenue a tfl:TfLStation ;
     rdfs:label "Alexandra Avenue" ;
     tfl:servedByLine tfl:114 .
+
+tfl:AlexandraPalace a tfl:TfLStation ;
+    rdfs:label "Alexandra Palace Station" ;
+    tfl:servedByLine tfl:W3 .
 
 tfl:AlexandraPalaceGardenCentre a tfl:TfLStation ;
     rdfs:label "Alexandra Palace Garden Centre" ;
@@ -1551,10 +1555,6 @@ tfl:AlexandraPalacePalmCourt a tfl:TfLStation ;
 
 tfl:AlexandraPalacePark a tfl:TfLStation ;
     rdfs:label "Alexandra Palace Park" ;
-    tfl:servedByLine tfl:W3 .
-
-tfl:AlexandraPalaceStation a tfl:TfLStation ;
-    rdfs:label "Alexandra Palace Station" ;
     tfl:servedByLine tfl:W3 .
 
 tfl:AlexandraParkRoad a tfl:TfLStation ;
@@ -1630,7 +1630,7 @@ tfl:AmershamRoad a tfl:TfLStation ;
     rdfs:label "Amersham Road" ;
     tfl:servedByLine tfl:136 .
 
-tfl:AmhurstRoadHackneyDownsStation a tfl:TfLStation ;
+tfl:AmhurstRoadHackneyDowns a tfl:TfLStation ;
     rdfs:label "Amhurst Road / Hackney Downs Station" ;
     tfl:servedByLine tfl:106 .
 
@@ -1650,7 +1650,7 @@ tfl:AndersonDrive a tfl:TfLStation ;
     rdfs:label "Anderson Drive" ;
     tfl:servedByLine tfl:117 .
 
-tfl:AnerleyRailStation a tfl:TfLStation ;
+tfl:AnerleyRail a tfl:TfLStation ;
     rdfs:label "Anerley Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -1664,7 +1664,7 @@ tfl:AngelCorner a tfl:TfLStation ;
     tfl:servedByLine tfl:102,
         tfl:144 .
 
-tfl:AngelCornerSilverStreetStation a tfl:TfLStation ;
+tfl:AngelCornerSilverStreet a tfl:TfLStation ;
     rdfs:label "Angel Corner / Silver Street Station" ;
     tfl:servedByLine tfl:102,
         tfl:144 .
@@ -1715,16 +1715,16 @@ tfl:ArchdalePlace a tfl:TfLStation ;
     rdfs:label "Archdale Place" ;
     tfl:servedByLine tfl:131 .
 
-tfl:ArchwayBridge a tfl:TfLStation ;
-    rdfs:label "Archway Bridge" ;
-    tfl:servedByLine tfl:W5 .
-
-tfl:ArchwayStation a tfl:TfLStation ;
+tfl:Archway a tfl:TfLStation ;
     rdfs:label "Archway Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:134,
         tfl:143,
         tfl:W5 .
+
+tfl:ArchwayBridge a tfl:TfLStation ;
+    rdfs:label "Archway Bridge" ;
+    tfl:servedByLine tfl:W5 .
 
 tfl:ArdenRoad a tfl:TfLStation ;
     rdfs:label "Arden Road" ;
@@ -1784,6 +1784,10 @@ tfl:AshcroftCourt a tfl:TfLStation ;
     rdfs:label "Ashcroft Court" ;
     tfl:servedByLine tfl:125 .
 
+tfl:Ashford a tfl:TfLStation ;
+    rdfs:label "Ashford Station" ;
+    tfl:servedByLine tfl:117 .
+
 tfl:AshfordHospital a tfl:TfLStation ;
     rdfs:label "Ashford Hospital" ;
     tfl:servedByLine tfl:116 .
@@ -1792,15 +1796,11 @@ tfl:AshfordHospitalEntrance a tfl:TfLStation ;
     rdfs:label "Ashford Hospital Entrance" ;
     tfl:servedByLine tfl:116 .
 
-tfl:AshfordRailwayStation a tfl:TfLStation ;
+tfl:AshfordRailway a tfl:TfLStation ;
     rdfs:label "Ashford Railway Station" ;
     tfl:servedByLine tfl:117 .
 
-tfl:AshfordStation a tfl:TfLStation ;
-    rdfs:label "Ashford Station" ;
-    tfl:servedByLine tfl:117 .
-
-tfl:AshfordSurreyRailStation a tfl:TfLStation ;
+tfl:AshfordSurreyRail a tfl:TfLStation ;
     rdfs:label "Ashford (Surrey) Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -1930,13 +1930,13 @@ tfl:BankStationPrincesStreet a tfl:TfLStation ;
     rdfs:label "Bank Station  / Princes Street" ;
     tfl:servedByLine tfl:141 .
 
-tfl:BankUndergroundStation a tfl:TfLStation ;
+tfl:BankUnderground a tfl:TfLStation ;
     rdfs:label "Bank Underground Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Night,
         tfl:Wifi ;
     tfl:hasFacility tfl:Toilets ;
-    tfl:servedByLine tfl:WaterlooAndCityLine .
+    tfl:servedByLine tfl:WaterlooAndCity .
 
 tfl:BargeryRoad a tfl:TfLStation ;
     rdfs:label "Bargery Road" ;
@@ -1962,7 +1962,7 @@ tfl:BarkingsideHighStreet a tfl:TfLStation ;
     rdfs:label "Barkingside High Street" ;
     tfl:servedByLine tfl:128 .
 
-tfl:BarkingsidePoliceStation a tfl:TfLStation ;
+tfl:BarkingsidePolice a tfl:TfLStation ;
     rdfs:label "Barkingside Police Station" ;
     tfl:servedByLine tfl:128 .
 
@@ -2037,12 +2037,12 @@ tfl:BasingWay a tfl:TfLStation ;
     rdfs:label "Basing Way" ;
     tfl:servedByLine tfl:143 .
 
-tfl:BatterseaParkChelseaGate a tfl:TfLStation ;
-    rdfs:label "Battersea Park / Chelsea Gate" ;
+tfl:BatterseaPark a tfl:TfLStation ;
+    rdfs:label "Battersea Park Station" ;
     tfl:servedByLine tfl:137 .
 
-tfl:BatterseaParkStation a tfl:TfLStation ;
-    rdfs:label "Battersea Park Station" ;
+tfl:BatterseaParkChelseaGate a tfl:TfLStation ;
+    rdfs:label "Battersea Park / Chelsea Gate" ;
     tfl:servedByLine tfl:137 .
 
 tfl:BaudwinRoad a tfl:TfLStation ;
@@ -2120,7 +2120,11 @@ tfl:BeaufortStreet a tfl:TfLStation ;
     rdfs:label "Beaufort Street" ;
     tfl:servedByLine tfl:11 .
 
-tfl:BecktonBusStation a tfl:TfLStation ;
+tfl:Beckton a tfl:TfLStation ;
+    rdfs:label "Beckton Station" ;
+    tfl:servedByLine tfl:129 .
+
+tfl:BecktonBus a tfl:TfLStation ;
     rdfs:label "Beckton Bus Station" ;
     tfl:servedByLine tfl:101,
         tfl:104,
@@ -2128,10 +2132,6 @@ tfl:BecktonBusStation a tfl:TfLStation ;
 
 tfl:BecktonDistrictPark a tfl:TfLStation ;
     rdfs:label "Beckton District Park" ;
-    tfl:servedByLine tfl:129 .
-
-tfl:BecktonStation a tfl:TfLStation ;
-    rdfs:label "Beckton Station" ;
     tfl:servedByLine tfl:129 .
 
 tfl:BecmeadAvenue a tfl:TfLStation ;
@@ -2223,7 +2223,7 @@ tfl:BelmontRoad a tfl:TfLStation ;
     rdfs:label "Belmont Road" ;
     tfl:servedByLine tfl:W4 .
 
-tfl:BelsizeParkStation a tfl:TfLStation ;
+tfl:BelsizePark a tfl:TfLStation ;
     rdfs:label "Belsize Park Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Wifi ;
@@ -2278,7 +2278,7 @@ tfl:BethellAvenue a tfl:TfLStation ;
     tfl:servedByLine tfl:123,
         tfl:128 .
 
-tfl:BethnalGreenStation a tfl:TfLStation ;
+tfl:BethnalGreen a tfl:TfLStation ;
     rdfs:label "Bethnal Green Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:106 .
@@ -2291,6 +2291,10 @@ tfl:BeverleyRoad a tfl:TfLStation ;
     rdfs:label "Beverley Road" ;
     tfl:servedByLine tfl:120 .
 
+tfl:Bexley a tfl:TfLStation ;
+    rdfs:label "Bexley Station" ;
+    tfl:servedByLine tfl:132 .
+
 tfl:BexleyLibrary a tfl:TfLStation ;
     rdfs:label "Bexley Library" ;
     tfl:servedByLine tfl:132 .
@@ -2301,10 +2305,6 @@ tfl:BexleyRoadGleneskRoad a tfl:TfLStation ;
 
 tfl:BexleyRoadReinickendorfAvenue a tfl:TfLStation ;
     rdfs:label "Bexley Road / Reinickendorf Avenue" ;
-    tfl:servedByLine tfl:132 .
-
-tfl:BexleyStation a tfl:TfLStation ;
-    rdfs:label "Bexley Station" ;
     tfl:servedByLine tfl:132 .
 
 tfl:BexleyWarMemorial a tfl:TfLStation ;
@@ -2398,6 +2398,10 @@ tfl:BlackfenSchoolForGirls a tfl:TfLStation ;
     rdfs:label "Blackfen School For Girls" ;
     tfl:servedByLine tfl:132 .
 
+tfl:Blackheath a tfl:TfLStation ;
+    rdfs:label "Blackheath Station" ;
+    tfl:servedByLine tfl:108 .
+
 tfl:BlackheathHospital a tfl:TfLStation ;
     rdfs:label "Blackheath Hospital" ;
     tfl:servedByLine tfl:108 .
@@ -2408,10 +2412,6 @@ tfl:BlackheathRise a tfl:TfLStation ;
 
 tfl:BlackheathRoyalStandard a tfl:TfLStation ;
     rdfs:label "Blackheath / Royal Standard" ;
-    tfl:servedByLine tfl:108 .
-
-tfl:BlackheathStation a tfl:TfLStation ;
-    rdfs:label "Blackheath Station" ;
     tfl:servedByLine tfl:108 .
 
 tfl:BlackhorseRdStnBlackhorseLane a tfl:TfLStation ;
@@ -2469,7 +2469,7 @@ tfl:BorehamwoodTesco a tfl:TfLStation ;
     rdfs:label "Borehamwood Tesco" ;
     tfl:servedByLine tfl:107 .
 
-tfl:BoroughStation a tfl:TfLStation ;
+tfl:Borough a tfl:TfLStation ;
     rdfs:label "Borough Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:133 .
@@ -2489,7 +2489,7 @@ tfl:BoundfieldRoad a tfl:TfLStation ;
     rdfs:label "Boundfield Road" ;
     tfl:servedByLine tfl:124 .
 
-tfl:BoundsGreenStation a tfl:TfLStation ;
+tfl:BoundsGreen a tfl:TfLStation ;
     rdfs:label "Bounds Green Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:102 .
@@ -2507,11 +2507,8 @@ tfl:BournehallRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:142 .
 
 tfl:BowChurch a tfl:TfLStation ;
-    rdfs:label "Bow Church" ;
-    tfl:servedByLine tfl:108 .
-
-tfl:BowChurchStation a tfl:TfLStation ;
-    rdfs:label "Bow Church Station" ;
+    rdfs:label "Bow Church",
+        "Bow Church Station" ;
     tfl:servedByLine tfl:108 .
 
 tfl:BowFlyover a tfl:TfLStation ;
@@ -2562,18 +2559,18 @@ tfl:BreamClose a tfl:TfLStation ;
     rdfs:label "Bream Close" ;
     tfl:servedByLine tfl:123 .
 
+tfl:BrentCross a tfl:TfLStation ;
+    rdfs:label "Brent Cross Station" ;
+    tfl:hasAccessibilityFeature tfl:Wifi ;
+    tfl:hasFacility tfl:CarPark ;
+    tfl:servedByLine tfl:112 .
+
 tfl:BrentCrossShoppingCentre a tfl:TfLStation ;
     rdfs:label "Brent Cross Shopping Centre" ;
     tfl:servedByLine tfl:102,
         tfl:112,
         tfl:142,
         tfl:143 .
-
-tfl:BrentCrossStation a tfl:TfLStation ;
-    rdfs:label "Brent Cross Station" ;
-    tfl:hasAccessibilityFeature tfl:Wifi ;
-    tfl:hasFacility tfl:CarPark ;
-    tfl:servedByLine tfl:112 .
 
 tfl:BrentRoad a tfl:TfLStation ;
     rdfs:label "Brent Road" ;
@@ -2628,14 +2625,14 @@ tfl:BritishMuseum a tfl:TfLStation ;
     rdfs:label "British Museum" ;
     tfl:servedByLine tfl:14 .
 
-tfl:BrixtonRoadBrixtonPoliceStation a tfl:TfLStation ;
-    rdfs:label "Brixton Road / Brixton Police Station" ;
+tfl:Brixton a tfl:TfLStation ;
+    rdfs:label "Brixton Station" ;
+    tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:109,
         tfl:133 .
 
-tfl:BrixtonStation a tfl:TfLStation ;
-    rdfs:label "Brixton Station" ;
-    tfl:hasAccessibilityFeature tfl:Wifi ;
+tfl:BrixtonRoadBrixtonPolice a tfl:TfLStation ;
+    rdfs:label "Brixton Road / Brixton Police Station" ;
     tfl:servedByLine tfl:109,
         tfl:133 .
 
@@ -2693,7 +2690,7 @@ tfl:BrockleyPark a tfl:TfLStation ;
     rdfs:label "Brockley Park" ;
     tfl:servedByLine tfl:122 .
 
-tfl:BrockleyRailStation a tfl:TfLStation ;
+tfl:BrockleyRail a tfl:TfLStation ;
     rdfs:label "Brockley Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -2716,7 +2713,7 @@ tfl:BromleyHighStreetTheMall a tfl:TfLStation ;
         tfl:126,
         tfl:138 .
 
-tfl:BromleyNorthStation a tfl:TfLStation ;
+tfl:BromleyNorth a tfl:TfLStation ;
     rdfs:label "Bromley North Station" ;
     tfl:servedByLine tfl:119,
         tfl:126,
@@ -2734,7 +2731,7 @@ tfl:BromleyRoadLewishamTownHall a tfl:TfLStation ;
     rdfs:label "Bromley Road / Lewisham Town Hall" ;
     tfl:servedByLine tfl:136 .
 
-tfl:BromleySouthStation a tfl:TfLStation ;
+tfl:BromleySouth a tfl:TfLStation ;
     rdfs:label "Bromley South Station" ;
     tfl:servedByLine tfl:119,
         tfl:138 .
@@ -2763,7 +2760,7 @@ tfl:BrooklandRise a tfl:TfLStation ;
     rdfs:label "Brookland Rise" ;
     tfl:servedByLine tfl:102 .
 
-tfl:BrooksbysWalkHomertonStation a tfl:TfLStation ;
+tfl:BrooksbysWalkHomerton a tfl:TfLStation ;
     rdfs:label "Brooksby's Walk / Homerton Station" ;
     tfl:servedByLine tfl:W15 .
 
@@ -2809,11 +2806,11 @@ tfl:BrownswoodRoadGreenLanes a tfl:TfLStation ;
     rdfs:label "Brownswood Road / Green Lanes" ;
     tfl:servedByLine tfl:106 .
 
-tfl:BruceCastleParkMuseum a tfl:TfLStation ;
+tfl:BruceCastleParkAndMuseum a tfl:TfLStation ;
     rdfs:label "Bruce Castle Park & Museum" ;
     tfl:servedByLine tfl:123 .
 
-tfl:BruceGroveStation a tfl:TfLStation ;
+tfl:BruceGrove a tfl:TfLStation ;
     rdfs:label "Bruce Grove Station" ;
     tfl:servedByLine tfl:123,
         tfl:W4 .
@@ -2826,11 +2823,11 @@ tfl:BuckhurstCourt a tfl:TfLStation ;
     rdfs:label "Buckhurst Court" ;
     tfl:servedByLine tfl:W14 .
 
-tfl:BuckhurstHillStation a tfl:TfLStation ;
+tfl:BuckhurstHill a tfl:TfLStation ;
     rdfs:label "Buckhurst Hill Station" ;
     tfl:servedByLine tfl:W14 .
 
-tfl:BuckhurstHillUndergroundStation a tfl:TfLStation ;
+tfl:BuckhurstHillUnderground a tfl:TfLStation ;
     rdfs:label "Buckhurst Hill Underground Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Night,
@@ -2877,20 +2874,20 @@ tfl:BurntAshLaneSouthover a tfl:TfLStation ;
     rdfs:label "Burnt Ash Lane / Southover" ;
     tfl:servedByLine tfl:126 .
 
+tfl:BurntOak a tfl:TfLStation ;
+    rdfs:label "Burnt Oak Station" ;
+    tfl:hasAccessibilityFeature tfl:Bridge,
+        tfl:WaitingRoom,
+        tfl:Wifi ;
+    tfl:hasFacility tfl:CarPark ;
+    tfl:servedByLine tfl:114 .
+
 tfl:BurntOakBroadway a tfl:TfLStation ;
     rdfs:label "Burnt Oak Broadway" ;
     tfl:servedByLine tfl:142 .
 
 tfl:BurntOakLeisureCentre a tfl:TfLStation ;
     rdfs:label "Burnt Oak Leisure Centre" ;
-    tfl:servedByLine tfl:114 .
-
-tfl:BurntOakStation a tfl:TfLStation ;
-    rdfs:label "Burnt Oak Station" ;
-    tfl:hasAccessibilityFeature tfl:Bridge,
-        tfl:WaitingRoom,
-        tfl:Wifi ;
-    tfl:hasFacility tfl:CarPark ;
     tfl:servedByLine tfl:114 .
 
 tfl:BurrardRoad a tfl:TfLStation ;
@@ -2919,6 +2916,10 @@ tfl:BushRoadGreenManRoundabout a tfl:TfLStation ;
     rdfs:label "Bush Road / Green Man Roundabout" ;
     tfl:servedByLine tfl:W19 .
 
+tfl:Bushey a tfl:TfLStation ;
+    rdfs:label "Bushey Station" ;
+    tfl:servedByLine tfl:142 .
+
 tfl:BusheyArches a tfl:TfLStation ;
     rdfs:label "Bushey Arches" ;
     tfl:servedByLine tfl:142 .
@@ -2929,10 +2930,6 @@ tfl:BusheyHeathThreeCrowns a tfl:TfLStation ;
 
 tfl:BusheyRailwayStationEast a tfl:TfLStation ;
     rdfs:label "Bushey Railway Station East" ;
-    tfl:servedByLine tfl:142 .
-
-tfl:BusheyStation a tfl:TfLStation ;
-    rdfs:label "Bushey Station" ;
     tfl:servedByLine tfl:142 .
 
 tfl:ByngStreet a tfl:TfLStation ;
@@ -2999,7 +2996,7 @@ tfl:CambridgeGrove a tfl:TfLStation ;
     rdfs:label "Cambridge Grove" ;
     tfl:servedByLine tfl:131 .
 
-tfl:CambridgeHeathStation a tfl:TfLStation ;
+tfl:CambridgeHeath a tfl:TfLStation ;
     rdfs:label "Cambridge Heath Station" ;
     tfl:servedByLine tfl:106 .
 
@@ -3035,7 +3032,7 @@ tfl:CamdenMarket a tfl:TfLStation ;
     rdfs:label "Camden Market" ;
     tfl:servedByLine tfl:1 .
 
-tfl:CamdenTownStation a tfl:TfLStation ;
+tfl:CamdenTown a tfl:TfLStation ;
     rdfs:label "Camden Town Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:1,
@@ -3065,11 +3062,11 @@ tfl:CanadaSquareSouthCanaryWharfStn a tfl:TfLStation ;
     rdfs:label "Canada Square South / Canary Wharf Stn" ;
     tfl:servedByLine tfl:135 .
 
-tfl:CanadaWaterBusStation a tfl:TfLStation ;
+tfl:CanadaWaterBus a tfl:TfLStation ;
     rdfs:label "Canada Water Bus Station" ;
     tfl:servedByLine tfl:1 .
 
-tfl:CanadaWaterRailStation a tfl:TfLStation ;
+tfl:CanadaWaterRail a tfl:TfLStation ;
     rdfs:label "Canada Water Rail Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Night,
@@ -3085,7 +3082,7 @@ tfl:CanalWalk a tfl:TfLStation ;
     rdfs:label "Canal Walk" ;
     tfl:servedByLine tfl:141 .
 
-tfl:CanaryWharfStation a tfl:TfLStation ;
+tfl:CanaryWharf a tfl:TfLStation ;
     rdfs:label "Canary Wharf Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -3105,19 +3102,19 @@ tfl:CanningRoad a tfl:TfLStation ;
     rdfs:label "Canning Road" ;
     tfl:servedByLine tfl:119 .
 
-tfl:CanningTownBusStation a tfl:TfLStation ;
+tfl:CanningTownBus a tfl:TfLStation ;
     rdfs:label "Canning Town Bus Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
     tfl:servedByLine tfl:115 .
 
-tfl:CannonStreetStation a tfl:TfLStation ;
+tfl:CannonStreet a tfl:TfLStation ;
     rdfs:label "Cannon Street Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Wifi ;
     tfl:servedByLine tfl:133 .
 
-tfl:CanonburyRailStation a tfl:TfLStation ;
+tfl:CanonburyRail a tfl:TfLStation ;
     rdfs:label "Canonbury Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Accessvialift,
         tfl:Night ;
@@ -3166,6 +3163,10 @@ tfl:CarpentersPrimarySchool a tfl:TfLStation ;
     rdfs:label "Carpenters Primary School" ;
     tfl:servedByLine tfl:108 .
 
+tfl:Carshalton a tfl:TfLStation ;
+    rdfs:label "Carshalton Station" ;
+    tfl:servedByLine tfl:127 .
+
 tfl:CarshaltonCollege a tfl:TfLStation ;
     rdfs:label "Carshalton College" ;
     tfl:servedByLine tfl:127 .
@@ -3176,10 +3177,6 @@ tfl:CarshaltonHighStreet a tfl:TfLStation ;
 
 tfl:CarshaltonPonds a tfl:TfLStation ;
     rdfs:label "Carshalton Ponds" ;
-    tfl:servedByLine tfl:127 .
-
-tfl:CarshaltonStation a tfl:TfLStation ;
-    rdfs:label "Carshalton Station" ;
     tfl:servedByLine tfl:127 .
 
 tfl:CarterhatchLane a tfl:TfLStation ;
@@ -3210,15 +3207,15 @@ tfl:CaterhamAvenue a tfl:TfLStation ;
     rdfs:label "Caterham Avenue" ;
     tfl:servedByLine tfl:128 .
 
+tfl:CatfordAndCatfordBridgeStations a tfl:TfLStation ;
+    rdfs:label "Catford & Catford Bridge Stations" ;
+    tfl:servedByLine tfl:124 .
+
 tfl:CatfordBusGarage a tfl:TfLStation ;
     rdfs:label "Catford Bus Garage" ;
     tfl:servedByLine tfl:136 .
 
-tfl:CatfordCatfordBridgeStations a tfl:TfLStation ;
-    rdfs:label "Catford & Catford Bridge Stations" ;
-    tfl:servedByLine tfl:124 .
-
-tfl:CatfordPoliceStation a tfl:TfLStation ;
+tfl:CatfordPolice a tfl:TfLStation ;
     rdfs:label "Catford Police Station" ;
     tfl:servedByLine tfl:136 .
 
@@ -3289,14 +3286,14 @@ tfl:CephasStreet a tfl:TfLStation ;
     rdfs:label "Cephas Street" ;
     tfl:servedByLine tfl:106 .
 
-tfl:ChalkFarmRoadMorrisons a tfl:TfLStation ;
-    rdfs:label "Chalk Farm Road / Morrisons" ;
-    tfl:servedByLine tfl:1 .
-
-tfl:ChalkFarmStation a tfl:TfLStation ;
+tfl:ChalkFarm a tfl:TfLStation ;
     rdfs:label "Chalk Farm Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
+    tfl:servedByLine tfl:1 .
+
+tfl:ChalkFarmRoadMorrisons a tfl:TfLStation ;
+    rdfs:label "Chalk Farm Road / Morrisons" ;
     tfl:servedByLine tfl:1 .
 
 tfl:ChallengeRoad a tfl:TfLStation ;
@@ -3307,7 +3304,7 @@ tfl:ChalmersRoadEast a tfl:TfLStation ;
     rdfs:label "Chalmers Road East" ;
     tfl:servedByLine tfl:117 .
 
-tfl:ChanceryLaneStation a tfl:TfLStation ;
+tfl:ChanceryLane a tfl:TfLStation ;
     rdfs:label "Chancery Lane Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:133 .
@@ -3324,7 +3321,7 @@ tfl:ChargeableLane a tfl:TfLStation ;
     rdfs:label "Chargeable Lane" ;
     tfl:servedByLine tfl:115 .
 
-tfl:CharingCrossStation a tfl:TfLStation ;
+tfl:CharingCross a tfl:TfLStation ;
     rdfs:label "Charing Cross Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -3527,7 +3524,7 @@ tfl:ChurchLane a tfl:TfLStation ;
     rdfs:label "Church Lane" ;
     tfl:servedByLine tfl:W16 .
 
-tfl:ChurchOfStMichaelAllAngels a tfl:TfLStation ;
+tfl:ChurchOfStMichaelAndAllAngels a tfl:TfLStation ;
     rdfs:label "Church of St Michael & All Angels" ;
     tfl:servedByLine tfl:W15 .
 
@@ -3554,7 +3551,7 @@ tfl:ChurstonAvenue a tfl:TfLStation ;
 tfl:CircleLine a tfl:UndergroundLine ;
     rdfs:label "Circle" .
 
-tfl:CityIslingtonCollege a tfl:TfLStation ;
+tfl:CityAndIslingtonCollege a tfl:TfLStation ;
     rdfs:label "City & Islington College" ;
     tfl:servedByLine tfl:106 .
 
@@ -3567,7 +3564,7 @@ tfl:CityRoadLeonardStreet a tfl:TfLStation ;
     rdfs:label "City Road / Leonard Street" ;
     tfl:servedByLine tfl:141 .
 
-tfl:CityThameslinkStation a tfl:TfLStation ;
+tfl:CityThameslink a tfl:TfLStation ;
     rdfs:label "City Thameslink Station" ;
     tfl:servedByLine tfl:133 .
 
@@ -3583,21 +3580,21 @@ tfl:CivicWay a tfl:TfLStation ;
     rdfs:label "Civic Way" ;
     tfl:servedByLine tfl:114 .
 
-tfl:ClaphamCommonOldTown a tfl:TfLStation ;
-    rdfs:label "Clapham Common Old Town" ;
-    tfl:servedByLine tfl:137 .
-
-tfl:ClaphamCommonStation a tfl:TfLStation ;
+tfl:ClaphamCommon a tfl:TfLStation ;
     rdfs:label "Clapham Common Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:137 .
 
-tfl:ClaphamHighStreetRailStation a tfl:TfLStation ;
+tfl:ClaphamCommonOldTown a tfl:TfLStation ;
+    rdfs:label "Clapham Common Old Town" ;
+    tfl:servedByLine tfl:137 .
+
+tfl:ClaphamHighStreetRail a tfl:TfLStation ;
     rdfs:label "Clapham High Street Rail Station" ;
     tfl:hasAccessibilityFeature tfl:HelpPoints ;
     tfl:servedByLine tfl:Windrush .
 
-tfl:ClaphamJunctionRailStation a tfl:TfLStation ;
+tfl:ClaphamJunctionRail a tfl:TfLStation ;
     rdfs:label "Clapham Junction Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:CashMachines,
@@ -3607,6 +3604,10 @@ tfl:ClaphamJunctionRailStation a tfl:TfLStation ;
         tfl:Wifi ;
     tfl:hasFacility tfl:Toilets ;
     tfl:servedByLine tfl:Windrush .
+
+tfl:Clapton a tfl:TfLStation ;
+    rdfs:label "Clapton Station" ;
+    tfl:servedByLine tfl:106 .
 
 tfl:ClaptonGirlsAcademy a tfl:TfLStation ;
     rdfs:label "Clapton Girls' Academy" ;
@@ -3622,10 +3623,6 @@ tfl:ClaptonPond a tfl:TfLStation ;
 
 tfl:ClaptonSquare a tfl:TfLStation ;
     rdfs:label "Clapton Square" ;
-    tfl:servedByLine tfl:106 .
-
-tfl:ClaptonStation a tfl:TfLStation ;
-    rdfs:label "Clapton Station" ;
     tfl:servedByLine tfl:106 .
 
 tfl:ClareRoad a tfl:TfLStation ;
@@ -3724,17 +3721,17 @@ tfl:ColesGreenRoad a tfl:TfLStation ;
     rdfs:label "Coles Green Road" ;
     tfl:servedByLine tfl:112 .
 
-tfl:ColindaleAvenue a tfl:TfLStation ;
-    rdfs:label "Colindale Avenue" ;
-    tfl:servedByLine tfl:142 .
-
-tfl:ColindaleStation a tfl:TfLStation ;
+tfl:Colindale a tfl:TfLStation ;
     rdfs:label "Colindale Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom,
         tfl:Wifi ;
     tfl:hasFacility tfl:CarPark ;
     tfl:servedByLine tfl:125 .
+
+tfl:ColindaleAvenue a tfl:TfLStation ;
+    rdfs:label "Colindale Avenue" ;
+    tfl:servedByLine tfl:142 .
 
 tfl:ColindeepLane a tfl:TfLStation ;
     rdfs:label "Colindeep Lane" ;
@@ -3758,7 +3755,7 @@ tfl:ColliersWaterLane a tfl:TfLStation ;
     rdfs:label "Colliers Water Lane" ;
     tfl:servedByLine tfl:109 .
 
-tfl:ColliersWoodStation a tfl:TfLStation ;
+tfl:ColliersWood a tfl:TfLStation ;
     rdfs:label "Colliers Wood Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:131 .
@@ -3973,7 +3970,7 @@ tfl:CricklewoodLane a tfl:TfLStation ;
     rdfs:label "Cricklewood Lane" ;
     tfl:servedByLine tfl:113 .
 
-tfl:CroftonParkStation a tfl:TfLStation ;
+tfl:CroftonPark a tfl:TfLStation ;
     rdfs:label "Crofton Park Station" ;
     tfl:servedByLine tfl:122 .
 
@@ -3987,7 +3984,7 @@ tfl:CromwellRoad a tfl:TfLStation ;
         tfl:111,
         tfl:134 .
 
-tfl:CromwellRoadBusStation a tfl:TfLStation ;
+tfl:CromwellRoadBus a tfl:TfLStation ;
     rdfs:label "Cromwell Road Bus Station" ;
     tfl:servedByLine tfl:111,
         tfl:131 .
@@ -4001,12 +3998,12 @@ tfl:CrossLane a tfl:TfLStation ;
     rdfs:label "Cross Lane" ;
     tfl:servedByLine tfl:132 .
 
-tfl:CrossharbourAsda a tfl:TfLStation ;
-    rdfs:label "Crossharbour Asda" ;
+tfl:Crossharbour a tfl:TfLStation ;
+    rdfs:label "Crossharbour Station" ;
     tfl:servedByLine tfl:135 .
 
-tfl:CrossharbourStation a tfl:TfLStation ;
-    rdfs:label "Crossharbour Station" ;
+tfl:CrossharbourAsda a tfl:TfLStation ;
+    rdfs:label "Crossharbour Asda" ;
     tfl:servedByLine tfl:135 .
 
 tfl:CrouchEndBroadway a tfl:TfLStation ;
@@ -4014,7 +4011,7 @@ tfl:CrouchEndBroadway a tfl:TfLStation ;
     tfl:servedByLine tfl:W5,
         tfl:W7 .
 
-tfl:CrouchHillStation a tfl:TfLStation ;
+tfl:CrouchHill a tfl:TfLStation ;
     rdfs:label "Crouch Hill Station" ;
     tfl:servedByLine tfl:W5 .
 
@@ -4039,7 +4036,7 @@ tfl:CrownRoad a tfl:TfLStation ;
     rdfs:label "Crown Road" ;
     tfl:servedByLine tfl:121 .
 
-tfl:CrownRoadSouthburyStation a tfl:TfLStation ;
+tfl:CrownRoadSouthbury a tfl:TfLStation ;
     rdfs:label "Crown Road / Southbury Station" ;
     tfl:servedByLine tfl:121 .
 
@@ -4087,7 +4084,7 @@ tfl:CrystalPalaceParkRoad a tfl:TfLStation ;
     rdfs:label "Crystal Palace Park Road" ;
     tfl:servedByLine tfl:122 .
 
-tfl:CrystalPalaceRailStation a tfl:TfLStation ;
+tfl:CrystalPalaceRail a tfl:TfLStation ;
     rdfs:label "Crystal Palace Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Accessvialift,
         tfl:BoardingRamps,
@@ -4148,7 +4145,7 @@ tfl:DacrePark a tfl:TfLStation ;
     rdfs:label "Dacre Park" ;
     tfl:servedByLine tfl:122 .
 
-tfl:DagenhamEastStation a tfl:TfLStation ;
+tfl:DagenhamEast a tfl:TfLStation ;
     rdfs:label "Dagenham East Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom,
@@ -4167,7 +4164,7 @@ tfl:DalrympleRoad a tfl:TfLStation ;
     rdfs:label "Dalrymple Road" ;
     tfl:servedByLine tfl:122 .
 
-tfl:DalstonJunctionRailStation a tfl:TfLStation ;
+tfl:DalstonJunctionRail a tfl:TfLStation ;
     rdfs:label "Dalston Junction Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Accessvialift,
         tfl:Night ;
@@ -4214,7 +4211,7 @@ tfl:DeneRoad a tfl:TfLStation ;
     rdfs:label "Dene Road" ;
     tfl:servedByLine tfl:125 .
 
-tfl:DenmarkHillRailStation a tfl:TfLStation ;
+tfl:DenmarkHillRail a tfl:TfLStation ;
     rdfs:label "Denmark Hill Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -4242,7 +4239,7 @@ tfl:DerwentCrescent a tfl:TfLStation ;
     rdfs:label "Derwent Crescent" ;
     tfl:servedByLine tfl:125 .
 
-tfl:DevonsRoadStation a tfl:TfLStation ;
+tfl:DevonsRoad a tfl:TfLStation ;
     rdfs:label "Devons Road Station" ;
     tfl:servedByLine tfl:108 .
 
@@ -4470,12 +4467,12 @@ tfl:EagleWharfRoad a tfl:TfLStation ;
     rdfs:label "Eagle Wharf Road" ;
     tfl:servedByLine tfl:141 .
 
-tfl:EastCroydonBusStation a tfl:TfLStation ;
-    rdfs:label "East Croydon Bus Station" ;
+tfl:EastCroydon a tfl:TfLStation ;
+    rdfs:label "East Croydon Station" ;
     tfl:servedByLine tfl:119 .
 
-tfl:EastCroydonStation a tfl:TfLStation ;
-    rdfs:label "East Croydon Station" ;
+tfl:EastCroydonBus a tfl:TfLStation ;
+    rdfs:label "East Croydon Bus Station" ;
     tfl:servedByLine tfl:119 .
 
 tfl:EastEndRoad a tfl:TfLStation ;
@@ -4489,11 +4486,7 @@ tfl:EastFerryRoad a tfl:TfLStation ;
     rdfs:label "East Ferry Road" ;
     tfl:servedByLine tfl:135 .
 
-tfl:EastFinchleyCemetery a tfl:TfLStation ;
-    rdfs:label "East Finchley Cemetery" ;
-    tfl:servedByLine tfl:143 .
-
-tfl:EastFinchleyStation a tfl:TfLStation ;
+tfl:EastFinchley a tfl:TfLStation ;
     rdfs:label "East Finchley Station" ;
     tfl:hasAccessibilityFeature tfl:AsdaClickAndCollect,
         tfl:WaitingRoom,
@@ -4502,24 +4495,28 @@ tfl:EastFinchleyStation a tfl:TfLStation ;
     tfl:servedByLine tfl:102,
         tfl:143 .
 
+tfl:EastFinchleyCemetery a tfl:TfLStation ;
+    rdfs:label "East Finchley Cemetery" ;
+    tfl:servedByLine tfl:143 .
+
+tfl:EastHam a tfl:TfLStation ;
+    rdfs:label "East Ham Station" ;
+    tfl:hasAccessibilityFeature tfl:BoardingRamps,
+        tfl:Wifi ;
+    tfl:servedByLine tfl:101 .
+
 tfl:EastHamCentralPark a tfl:TfLStation ;
     rdfs:label "East Ham / Central Park" ;
     tfl:servedByLine tfl:101,
         tfl:115 .
 
-tfl:EastHamFireStation a tfl:TfLStation ;
+tfl:EastHamFire a tfl:TfLStation ;
     rdfs:label "East Ham Fire Station" ;
     tfl:servedByLine tfl:101 .
 
 tfl:EastHamManorWay a tfl:TfLStation ;
     rdfs:label "East Ham Manor Way" ;
     tfl:servedByLine tfl:129 .
-
-tfl:EastHamStation a tfl:TfLStation ;
-    rdfs:label "East Ham Station" ;
-    tfl:hasAccessibilityFeature tfl:BoardingRamps,
-        tfl:Wifi ;
-    tfl:servedByLine tfl:101 .
 
 tfl:EastStreet a tfl:TfLStation ;
     rdfs:label "East Street" ;
@@ -4563,7 +4560,16 @@ tfl:EderlineAvenue a tfl:TfLStation ;
     rdfs:label "Ederline Avenue" ;
     tfl:servedByLine tfl:109 .
 
-tfl:EdgwareBusStation a tfl:TfLStation ;
+tfl:Edgware a tfl:TfLStation ;
+    rdfs:label "Edgware Station" ;
+    tfl:hasAccessibilityFeature tfl:Bridge,
+        tfl:WaitingRoom,
+        tfl:Wifi ;
+    tfl:servedByLine tfl:107,
+        tfl:113,
+        tfl:142 .
+
+tfl:EdgwareBus a tfl:TfLStation ;
     rdfs:label "Edgware Bus Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom,
@@ -4575,15 +4581,6 @@ tfl:EdgwareBusStation a tfl:TfLStation ;
 tfl:EdgwareCommunityHospital a tfl:TfLStation ;
     rdfs:label "Edgware Community Hospital" ;
     tfl:servedByLine tfl:142 .
-
-tfl:EdgwareStation a tfl:TfLStation ;
-    rdfs:label "Edgware Station" ;
-    tfl:hasAccessibilityFeature tfl:Bridge,
-        tfl:WaitingRoom,
-        tfl:Wifi ;
-    tfl:servedByLine tfl:107,
-        tfl:113,
-        tfl:142 .
 
 tfl:EdgwareStationStationRoad a tfl:TfLStation ;
     rdfs:label "Edgware Station  / Station Road",
@@ -4622,25 +4619,25 @@ tfl:EdmontonCemetery a tfl:TfLStation ;
     rdfs:label "Edmonton Cemetery" ;
     tfl:servedByLine tfl:W8 .
 
-tfl:EdmontonFireStation a tfl:TfLStation ;
+tfl:EdmontonFire a tfl:TfLStation ;
     rdfs:label "Edmonton Fire Station" ;
     tfl:servedByLine tfl:W8 .
 
-tfl:EdmontonGreenBusStation a tfl:TfLStation ;
-    rdfs:label "Edmonton Green Bus Station" ;
-    tfl:servedByLine tfl:102,
-        tfl:144,
-        tfl:W6,
-        tfl:W8 .
-
-tfl:EdmontonGreenStation a tfl:TfLStation ;
+tfl:EdmontonGreen a tfl:TfLStation ;
     rdfs:label "Edmonton Green Station" ;
     tfl:servedByLine tfl:102,
         tfl:144,
         tfl:W6,
         tfl:W8 .
 
-tfl:EdmontonPoliceStation a tfl:TfLStation ;
+tfl:EdmontonGreenBus a tfl:TfLStation ;
+    rdfs:label "Edmonton Green Bus Station" ;
+    tfl:servedByLine tfl:102,
+        tfl:144,
+        tfl:W6,
+        tfl:W8 .
+
+tfl:EdmontonPolice a tfl:TfLStation ;
     rdfs:label "Edmonton Police Station" ;
     tfl:servedByLine tfl:102,
         tfl:144 .
@@ -4654,29 +4651,29 @@ tfl:El2 a tfl:BusRoute ;
 tfl:El3 a tfl:BusRoute ;
     rdfs:label "EL3" .
 
-tfl:ElephantCastleLondonRoad a tfl:TfLStation ;
-    rdfs:label "Elephant & Castle  / London Road",
-        "Elephant & Castle / London Road" ;
-    tfl:servedByLine tfl:1,
-        tfl:12 .
-
-tfl:ElephantCastleNewKentRoad a tfl:TfLStation ;
-    rdfs:label "Elephant & Castle   / New Kent Road",
-        "Elephant & Castle / New Kent Road" ;
-    tfl:servedByLine tfl:1 .
-
-tfl:ElephantCastleNewingtonCauseway a tfl:TfLStation ;
-    rdfs:label "Elephant & Castle / Newington Causeway" ;
-    tfl:servedByLine tfl:133,
-        tfl:136 .
-
-tfl:ElephantCastleStation a tfl:TfLStation ;
+tfl:ElephantAndCastle a tfl:TfLStation ;
     rdfs:label "Elephant & Castle Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:EuroCashMachines,
         tfl:Wifi ;
     tfl:servedByLine tfl:12,
         tfl:133,
+        tfl:136 .
+
+tfl:ElephantAndCastleLondonRoad a tfl:TfLStation ;
+    rdfs:label "Elephant & Castle  / London Road",
+        "Elephant & Castle / London Road" ;
+    tfl:servedByLine tfl:1,
+        tfl:12 .
+
+tfl:ElephantAndCastleNewKentRoad a tfl:TfLStation ;
+    rdfs:label "Elephant & Castle   / New Kent Road",
+        "Elephant & Castle / New Kent Road" ;
+    tfl:servedByLine tfl:1 .
+
+tfl:ElephantAndCastleNewingtonCauseway a tfl:TfLStation ;
+    rdfs:label "Elephant & Castle / Newington Causeway" ;
+    tfl:servedByLine tfl:133,
         tfl:136 .
 
 tfl:ElephantPark a tfl:TfLStation ;
@@ -4689,7 +4686,7 @@ tfl:ElimPentecostalChurch a tfl:TfLStation ;
         tfl:W16,
         tfl:W19 .
 
-tfl:ElizabethLineRoute a tfl:ElizabethLineService ;
+tfl:Elizabeth a tfl:ElizabethLineService ;
     rdfs:label "Elizabeth line" .
 
 tfl:EllermanAvenue a tfl:TfLStation ;
@@ -4719,7 +4716,7 @@ tfl:ElmhurstRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:123,
         tfl:W4 .
 
-tfl:ElmsleighBusStation a tfl:TfLStation ;
+tfl:ElmsleighBus a tfl:TfLStation ;
     rdfs:label "Elmsleigh Bus Station" ;
     tfl:servedByLine tfl:117 .
 
@@ -4727,7 +4724,11 @@ tfl:ElmwoodAvenue a tfl:TfLStation ;
     rdfs:label "Elmwood Avenue" ;
     tfl:servedByLine tfl:117 .
 
-tfl:ElstreeBorehamwoodRailStation a tfl:TfLStation ;
+tfl:ElstreeAndBorehamwood a tfl:TfLStation ;
+    rdfs:label "Elstree & Borehamwood Station" ;
+    tfl:servedByLine tfl:107 .
+
+tfl:ElstreeAndBorehamwoodRail a tfl:TfLStation ;
     rdfs:label "Elstree & Borehamwood Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -4737,12 +4738,8 @@ tfl:ElstreeBorehamwoodRailStation a tfl:TfLStation ;
         tfl:Toilets ;
     tfl:servedByLine tfl:107 .
 
-tfl:ElstreeBorehamwoodRailwayStation a tfl:TfLStation ;
+tfl:ElstreeAndBorehamwoodRailway a tfl:TfLStation ;
     rdfs:label "Elstree & Borehamwood Railway Station" ;
-    tfl:servedByLine tfl:107 .
-
-tfl:ElstreeBorehamwoodStation a tfl:TfLStation ;
-    rdfs:label "Elstree & Borehamwood Station" ;
     tfl:servedByLine tfl:107 .
 
 tfl:ElstreeHillNorth a tfl:TfLStation ;
@@ -4836,11 +4833,11 @@ tfl:EndymionRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:141,
         tfl:W5 .
 
-tfl:EnfieldBusGarageSouthburyStation a tfl:TfLStation ;
+tfl:EnfieldBusGarageSouthbury a tfl:TfLStation ;
     rdfs:label "Enfield Bus Garage / Southbury Station" ;
     tfl:servedByLine tfl:121 .
 
-tfl:EnfieldChaseStation a tfl:TfLStation ;
+tfl:EnfieldChase a tfl:TfLStation ;
     rdfs:label "Enfield Chase Station" ;
     tfl:servedByLine tfl:121 .
 
@@ -4862,9 +4859,14 @@ tfl:EnfieldIslandVillage a tfl:TfLStation ;
     rdfs:label "Enfield Island Village" ;
     tfl:servedByLine tfl:121 .
 
-tfl:EnfieldLockStation a tfl:TfLStation ;
+tfl:EnfieldLock a tfl:TfLStation ;
     rdfs:label "Enfield Lock Station" ;
     tfl:servedByLine tfl:121 .
+
+tfl:EnfieldTown a tfl:TfLStation ;
+    rdfs:label "Enfield Town Station" ;
+    tfl:servedByLine tfl:121,
+        tfl:W8 .
 
 tfl:EnfieldTownCecilRoad a tfl:TfLStation ;
     rdfs:label "Enfield Town / Cecil Road" ;
@@ -4884,11 +4886,6 @@ tfl:EnfieldTownSilverStreet a tfl:TfLStation ;
     rdfs:label "Enfield Town / Silver Street" ;
     tfl:servedByLine tfl:W8,
         tfl:W9 .
-
-tfl:EnfieldTownStation a tfl:TfLStation ;
-    rdfs:label "Enfield Town Station" ;
-    tfl:servedByLine tfl:121,
-        tfl:W8 .
 
 tfl:EnglefieldRoad a tfl:TfLStation ;
     rdfs:label "Englefield Road" ;
@@ -4926,7 +4923,7 @@ tfl:EtherowStreet a tfl:TfLStation ;
     rdfs:label "Etherow Street" ;
     tfl:servedByLine tfl:12 .
 
-tfl:EustonStation a tfl:TfLStation ;
+tfl:Euston a tfl:TfLStation ;
     rdfs:label "Euston Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -4993,7 +4990,7 @@ tfl:FaireyCorner a tfl:TfLStation ;
     rdfs:label "Fairey Corner" ;
     tfl:servedByLine tfl:140 .
 
-tfl:FairfieldBusStation a tfl:TfLStation ;
+tfl:FairfieldBus a tfl:TfLStation ;
     rdfs:label "Fairfield Bus Station" ;
     tfl:servedByLine tfl:131 .
 
@@ -5094,7 +5091,7 @@ tfl:FieldwayTramStop a tfl:TfLStation ;
     rdfs:label "Fieldway Tram Stop" ;
     tfl:servedByLine tfl:130 .
 
-tfl:FinchleyCentralStation a tfl:TfLStation ;
+tfl:FinchleyCentral a tfl:TfLStation ;
     rdfs:label "Finchley Central Station" ;
     tfl:hasAccessibilityFeature tfl:AmazonLockers,
         tfl:WaitingRoom,
@@ -5113,16 +5110,22 @@ tfl:FinchleyPark a tfl:TfLStation ;
     tfl:servedByLine tfl:125 .
 
 tfl:FinchleyRoad a tfl:TfLStation ;
-    rdfs:label "Finchley Road" ;
-    tfl:servedByLine tfl:139 .
+    rdfs:label "Finchley Road",
+        "Finchley Road Station" ;
+    tfl:hasAccessibilityFeature tfl:Bridge,
+        tfl:EuroCashMachines,
+        tfl:WaitingRoom ;
+    tfl:servedByLine tfl:113,
+        tfl:13,
+        tfl:139 .
 
-tfl:FinchleyRoadCollegeCrescent a tfl:TfLStation ;
-    rdfs:label "Finchley Road / College Crescent" ;
+tfl:FinchleyRoadAndFrognal a tfl:TfLStation ;
+    rdfs:label "Finchley Road & Frognal Station" ;
     tfl:servedByLine tfl:113,
         tfl:13 .
 
-tfl:FinchleyRoadFrognalStation a tfl:TfLStation ;
-    rdfs:label "Finchley Road & Frognal Station" ;
+tfl:FinchleyRoadCollegeCrescent a tfl:TfLStation ;
+    rdfs:label "Finchley Road / College Crescent" ;
     tfl:servedByLine tfl:113,
         tfl:13 .
 
@@ -5131,13 +5134,12 @@ tfl:FinchleyRoadO2Centre a tfl:TfLStation ;
     tfl:servedByLine tfl:113,
         tfl:13 .
 
-tfl:FinchleyRoadStation a tfl:TfLStation ;
-    rdfs:label "Finchley Road Station" ;
-    tfl:hasAccessibilityFeature tfl:Bridge,
-        tfl:EuroCashMachines,
-        tfl:WaitingRoom ;
-    tfl:servedByLine tfl:113,
-        tfl:13 .
+tfl:FinsburyPark a tfl:TfLStation ;
+    rdfs:label "Finsbury Park Station" ;
+    tfl:hasAccessibilityFeature tfl:EuroCashMachines,
+        tfl:Wifi ;
+    tfl:servedByLine tfl:W3,
+        tfl:W7 .
 
 tfl:FinsburyParkEndymionGate a tfl:TfLStation ;
     rdfs:label "Finsbury Park / Endymion Gate" ;
@@ -5150,13 +5152,6 @@ tfl:FinsburyParkHornseyGate a tfl:TfLStation ;
 tfl:FinsburyParkInterchange a tfl:TfLStation ;
     rdfs:label "Finsbury Park Interchange" ;
     tfl:servedByLine tfl:106 .
-
-tfl:FinsburyParkStation a tfl:TfLStation ;
-    rdfs:label "Finsbury Park Station" ;
-    tfl:hasAccessibilityFeature tfl:EuroCashMachines,
-        tfl:Wifi ;
-    tfl:servedByLine tfl:W3,
-        tfl:W7 .
 
 tfl:FinsburySquare a tfl:TfLStation ;
     rdfs:label "Finsbury Square" ;
@@ -5182,7 +5177,7 @@ tfl:FivewaysCorner a tfl:TfLStation ;
     rdfs:label "Fiveways Corner" ;
     tfl:servedByLine tfl:113 .
 
-tfl:ForestHillFireStation a tfl:TfLStation ;
+tfl:ForestHillFire a tfl:TfLStation ;
     rdfs:label "Forest Hill Fire Station" ;
     tfl:servedByLine tfl:122 .
 
@@ -5190,7 +5185,7 @@ tfl:ForestHillPools a tfl:TfLStation ;
     rdfs:label "Forest Hill Pools" ;
     tfl:servedByLine tfl:122 .
 
-tfl:ForestHillRailStation a tfl:TfLStation ;
+tfl:ForestHillRail a tfl:TfLStation ;
     rdfs:label "Forest Hill Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Accessvialift,
         tfl:BoardingRamps,
@@ -5303,11 +5298,8 @@ tfl:FulbrookRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:134 .
 
 tfl:FulhamBroadway a tfl:TfLStation ;
-    rdfs:label "Fulham Broadway" ;
-    tfl:servedByLine tfl:14 .
-
-tfl:FulhamBroadwayStation a tfl:TfLStation ;
-    rdfs:label "Fulham Broadway Station" ;
+    rdfs:label "Fulham Broadway",
+        "Fulham Broadway Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:Bridge,
         tfl:Wifi ;
@@ -5365,19 +5357,19 @@ tfl:GalleywallRoadSouthBermondseyStn a tfl:TfLStation ;
     rdfs:label "Galleywall Road / South Bermondsey Stn" ;
     tfl:servedByLine tfl:1 .
 
-tfl:GallionsReachRoundabout a tfl:TfLStation ;
-    rdfs:label "Gallions Reach Roundabout" ;
+tfl:GallionsReach a tfl:TfLStation ;
+    rdfs:label "Gallions Reach Station" ;
     tfl:servedByLine tfl:129 .
 
-tfl:GallionsReachStation a tfl:TfLStation ;
-    rdfs:label "Gallions Reach Station" ;
+tfl:GallionsReachRoundabout a tfl:TfLStation ;
+    rdfs:label "Gallions Reach Roundabout" ;
     tfl:servedByLine tfl:129 .
 
 tfl:GalpinsRoad a tfl:TfLStation ;
     rdfs:label "Galpins Road" ;
     tfl:servedByLine tfl:109 .
 
-tfl:GantsHillStation a tfl:TfLStation ;
+tfl:GantsHill a tfl:TfLStation ;
     rdfs:label "Gants Hill Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:128 .
@@ -5429,7 +5421,7 @@ tfl:GaytonRoad a tfl:TfLStation ;
     rdfs:label "Gayton Road" ;
     tfl:servedByLine tfl:114 .
 
-tfl:GaytonRoadAbbeyWoodStation a tfl:TfLStation ;
+tfl:GaytonRoadAbbeyWood a tfl:TfLStation ;
     rdfs:label "Gayton Road / Abbey Wood Station" ;
     tfl:servedByLine tfl:Sl11 .
 
@@ -5538,6 +5530,15 @@ tfl:GoldbeatersGrove a tfl:TfLStation ;
     rdfs:label "Goldbeaters Grove" ;
     tfl:servedByLine tfl:114 .
 
+tfl:GoldersGreen a tfl:TfLStation ;
+    rdfs:label "Golders Green Station" ;
+    tfl:hasAccessibilityFeature tfl:Bridge,
+        tfl:WaitingRoom,
+        tfl:Wifi ;
+    tfl:servedByLine tfl:102,
+        tfl:13,
+        tfl:139 .
+
 tfl:GoldersGreenFinchleyRoad a tfl:TfLStation ;
     rdfs:label "Golders Green / Finchley Road" ;
     tfl:servedByLine tfl:102,
@@ -5547,15 +5548,6 @@ tfl:GoldersGreenFinchleyRoad a tfl:TfLStation ;
 tfl:GoldersGreenRoad a tfl:TfLStation ;
     rdfs:label "Golders Green Road" ;
     tfl:servedByLine tfl:112 .
-
-tfl:GoldersGreenStation a tfl:TfLStation ;
-    rdfs:label "Golders Green Station" ;
-    tfl:hasAccessibilityFeature tfl:Bridge,
-        tfl:WaitingRoom,
-        tfl:Wifi ;
-    tfl:servedByLine tfl:102,
-        tfl:13,
-        tfl:139 .
 
 tfl:GoldhawkRoad a tfl:TfLStation ;
     rdfs:label "Goldhawk Road" ;
@@ -5577,7 +5569,7 @@ tfl:GoodrichRoad a tfl:TfLStation ;
     rdfs:label "Goodrich Road" ;
     tfl:servedByLine tfl:12 .
 
-tfl:GordonHillStation a tfl:TfLStation ;
+tfl:GordonHill a tfl:TfLStation ;
     rdfs:label "Gordon Hill Station" ;
     tfl:servedByLine tfl:W8 .
 
@@ -5603,7 +5595,7 @@ tfl:GrangeAcademy a tfl:TfLStation ;
     rdfs:label "Grange Academy" ;
     tfl:servedByLine tfl:142 .
 
-tfl:GrangeParkStation a tfl:TfLStation ;
+tfl:GrangePark a tfl:TfLStation ;
     rdfs:label "Grange Park Station" ;
     tfl:servedByLine tfl:W9 .
 
@@ -5697,14 +5689,14 @@ tfl:GreenManRoundabout a tfl:TfLStation ;
     rdfs:label "Green Man Roundabout" ;
     tfl:servedByLine tfl:W19 .
 
-tfl:GreenParkConstitutionHill a tfl:TfLStation ;
-    rdfs:label "Green Park / Constitution Hill" ;
-    tfl:servedByLine tfl:14 .
-
-tfl:GreenParkStation a tfl:TfLStation ;
+tfl:GreenPark a tfl:TfLStation ;
     rdfs:label "Green Park Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
+    tfl:servedByLine tfl:14 .
+
+tfl:GreenParkConstitutionHill a tfl:TfLStation ;
+    rdfs:label "Green Park / Constitution Hill" ;
     tfl:servedByLine tfl:14 .
 
 tfl:GreenStreet a tfl:TfLStation ;
@@ -5715,15 +5707,15 @@ tfl:GreenWay a tfl:TfLStation ;
     rdfs:label "Green Way" ;
     tfl:servedByLine tfl:122 .
 
-tfl:GreenfordBroadway a tfl:TfLStation ;
-    rdfs:label "Greenford Broadway" ;
-    tfl:servedByLine tfl:105 .
-
-tfl:GreenfordStation a tfl:TfLStation ;
+tfl:Greenford a tfl:TfLStation ;
     rdfs:label "Greenford Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:WaitingRoom,
         tfl:Wifi ;
+    tfl:servedByLine tfl:105 .
+
+tfl:GreenfordBroadway a tfl:TfLStation ;
+    rdfs:label "Greenford Broadway" ;
     tfl:servedByLine tfl:105 .
 
 tfl:Greenside a tfl:TfLStation ;
@@ -5737,6 +5729,10 @@ tfl:GreenvaleSchool a tfl:TfLStation ;
 tfl:Greenway a tfl:TfLStation ;
     rdfs:label "Greenway" ;
     tfl:servedByLine tfl:128 .
+
+tfl:Greenwich a tfl:TfLStation ;
+    rdfs:label "Greenwich Station" ;
+    tfl:servedByLine tfl:129 .
 
 tfl:GreenwichCommunityCollege a tfl:TfLStation ;
     rdfs:label "Greenwich Community College" ;
@@ -5752,10 +5748,6 @@ tfl:GreenwichHighRoadRoyalHill a tfl:TfLStation ;
 
 tfl:GreenwichSouthStreetBlackheathRoad a tfl:TfLStation ;
     rdfs:label "Greenwich South Street / Blackheath Road" ;
-    tfl:servedByLine tfl:129 .
-
-tfl:GreenwichStation a tfl:TfLStation ;
-    rdfs:label "Greenwich Station" ;
     tfl:servedByLine tfl:129 .
 
 tfl:GreenwichTownCentreCuttySark a tfl:TfLStation ;
@@ -5794,7 +5786,7 @@ tfl:GrosvenorParkRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:W15,
         tfl:W19 .
 
-tfl:GroveParkStation a tfl:TfLStation ;
+tfl:GrovePark a tfl:TfLStation ;
     rdfs:label "Grove Park Station" ;
     tfl:servedByLine tfl:124,
         tfl:126,
@@ -5822,7 +5814,7 @@ tfl:GunnerLane a tfl:TfLStation ;
     rdfs:label "Gunner Lane" ;
     tfl:servedByLine tfl:122 .
 
-tfl:GunnersburyStation a tfl:TfLStation ;
+tfl:Gunnersbury a tfl:TfLStation ;
     rdfs:label "Gunnersbury Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom ;
@@ -5900,7 +5892,7 @@ tfl:HackbridgeCorner a tfl:TfLStation ;
     rdfs:label "Hackbridge Corner" ;
     tfl:servedByLine tfl:127 .
 
-tfl:HackbridgeCornerHackbridgeStation a tfl:TfLStation ;
+tfl:HackbridgeCornerHackbridge a tfl:TfLStation ;
     rdfs:label "Hackbridge Corner / Hackbridge Station" ;
     tfl:servedByLine tfl:127 .
 
@@ -5908,7 +5900,7 @@ tfl:HackneyBaths a tfl:TfLStation ;
     rdfs:label "Hackney Baths" ;
     tfl:servedByLine tfl:106 .
 
-tfl:HackneyCentralStation a tfl:TfLStation ;
+tfl:HackneyCentral a tfl:TfLStation ;
     rdfs:label "Hackney Central Station" ;
     tfl:servedByLine tfl:106 .
 
@@ -5929,7 +5921,7 @@ tfl:HadleyWay a tfl:TfLStation ;
     rdfs:label "Hadley Way" ;
     tfl:servedByLine tfl:125 .
 
-tfl:HaggerstonRailStation a tfl:TfLStation ;
+tfl:HaggerstonRail a tfl:TfLStation ;
     rdfs:label "Haggerston Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Accessvialift,
         tfl:Night ;
@@ -5982,14 +5974,14 @@ tfl:HammeltonRoad a tfl:TfLStation ;
     rdfs:label "Hammelton Road" ;
     tfl:servedByLine tfl:126 .
 
-tfl:HammersmithBusStation a tfl:TfLStation ;
+tfl:HammersmithAndCity a tfl:UndergroundLine ;
+    rdfs:label "Hammersmith & City" .
+
+tfl:HammersmithBus a tfl:TfLStation ;
     rdfs:label "Hammersmith Bus Station" ;
     tfl:servedByLine tfl:110 .
 
-tfl:HammersmithCityLine a tfl:UndergroundLine ;
-    rdfs:label "Hammersmith & City" .
-
-tfl:HammersmithStnHcAndCircleLines a tfl:TfLStation ;
+tfl:HammersmithStnHandcAndCircleLines a tfl:TfLStation ;
     rdfs:label "Hammersmith Stn / H&c and Circle Lines" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines ;
     tfl:servedByLine tfl:110 .
@@ -6014,6 +6006,14 @@ tfl:HampsteadRoadDrummondStreet a tfl:TfLStation ;
     rdfs:label "Hampstead Road / Drummond Street" ;
     tfl:servedByLine tfl:134 .
 
+tfl:Hampton a tfl:TfLStation ;
+    rdfs:label "Hampton Station" ;
+    tfl:servedByLine tfl:111 .
+
+tfl:HamptonAndRichmondBoroughFC a tfl:TfLStation ;
+    rdfs:label "Hampton & Richmond Borough F C" ;
+    tfl:servedByLine tfl:111 .
+
 tfl:HamptonCourtGreen a tfl:TfLStation ;
     rdfs:label "Hampton Court Green" ;
     tfl:servedByLine tfl:111 .
@@ -6030,20 +6030,12 @@ tfl:HamptonLodge a tfl:TfLStation ;
     rdfs:label "Hampton Lodge" ;
     tfl:servedByLine tfl:111 .
 
-tfl:HamptonRichmondBoroughFC a tfl:TfLStation ;
-    rdfs:label "Hampton & Richmond Borough F C" ;
-    tfl:servedByLine tfl:111 .
-
 tfl:HamptonRoad a tfl:TfLStation ;
     rdfs:label "Hampton Road" ;
     tfl:servedByLine tfl:W15 .
 
 tfl:HamptonSchool a tfl:TfLStation ;
     rdfs:label "Hampton School" ;
-    tfl:servedByLine tfl:111 .
-
-tfl:HamptonStation a tfl:TfLStation ;
-    rdfs:label "Hampton Station" ;
     tfl:servedByLine tfl:111 .
 
 tfl:HamptonStreet a tfl:TfLStation ;
@@ -6055,17 +6047,14 @@ tfl:HamptonThamesStreet a tfl:TfLStation ;
     tfl:servedByLine tfl:111 .
 
 tfl:HangerLane a tfl:TfLStation ;
-    rdfs:label "Hanger Lane" ;
+    rdfs:label "Hanger Lane",
+        "Hanger Lane Station" ;
+    tfl:hasAccessibilityFeature tfl:Bridge,
+        tfl:WaitingRoom ;
     tfl:servedByLine tfl:112 .
 
 tfl:HangerLaneGyratory a tfl:TfLStation ;
     rdfs:label "Hanger Lane Gyratory" ;
-    tfl:servedByLine tfl:112 .
-
-tfl:HangerLaneStation a tfl:TfLStation ;
-    rdfs:label "Hanger Lane Station" ;
-    tfl:hasAccessibilityFeature tfl:Bridge,
-        tfl:WaitingRoom ;
     tfl:servedByLine tfl:112 .
 
 tfl:HanleyRoadStapletonHallRoad a tfl:TfLStation ;
@@ -6123,16 +6112,16 @@ tfl:HarlingtonRoadWest a tfl:TfLStation ;
     rdfs:label "Harlington Road West" ;
     tfl:servedByLine tfl:117 .
 
-tfl:HarringayGreenLanesStation a tfl:TfLStation ;
+tfl:Harringay a tfl:TfLStation ;
+    rdfs:label "Harringay Station" ;
+    tfl:servedByLine tfl:W5 .
+
+tfl:HarringayGreenLanes a tfl:TfLStation ;
     rdfs:label "Harringay Green Lanes Station" ;
     tfl:servedByLine tfl:141 .
 
 tfl:HarringaySainsburys a tfl:TfLStation ;
     rdfs:label "Harringay Sainsbury's" ;
-    tfl:servedByLine tfl:W5 .
-
-tfl:HarringayStation a tfl:TfLStation ;
-    rdfs:label "Harringay Station" ;
     tfl:servedByLine tfl:W5 .
 
 tfl:HarringtonRoad a tfl:TfLStation ;
@@ -6149,7 +6138,17 @@ tfl:Harrods a tfl:TfLStation ;
     rdfs:label "Harrods" ;
     tfl:servedByLine tfl:14 .
 
-tfl:HarrowBusStation a tfl:TfLStation ;
+tfl:HarrowAndWealdstone a tfl:TfLStation ;
+    rdfs:label "Harrow & Wealdstone Station" ;
+    tfl:hasAccessibilityFeature tfl:AsdaClickAndCollect,
+        tfl:Bridge,
+        tfl:WaitingRoom,
+        tfl:Wifi ;
+    tfl:hasFacility tfl:CarPark,
+        tfl:Toilets ;
+    tfl:servedByLine tfl:140 .
+
+tfl:HarrowBus a tfl:TfLStation ;
     rdfs:label "Harrow Bus Station" ;
     tfl:servedByLine tfl:114,
         tfl:140 .
@@ -6162,7 +6161,7 @@ tfl:HarrowHighSchool a tfl:TfLStation ;
     rdfs:label "Harrow High School" ;
     tfl:servedByLine tfl:114 .
 
-tfl:HarrowManorwayAbbeyWoodStation a tfl:TfLStation ;
+tfl:HarrowManorwayAbbeyWood a tfl:TfLStation ;
     rdfs:label "Harrow Manorway / Abbey Wood Station" ;
     tfl:servedByLine tfl:Sl11 .
 
@@ -6188,16 +6187,6 @@ tfl:HarrowTownCentreStJohnsRoad a tfl:TfLStation ;
 
 tfl:HarrowWealdBusGarage a tfl:TfLStation ;
     rdfs:label "Harrow Weald Bus Garage" ;
-    tfl:servedByLine tfl:140 .
-
-tfl:HarrowWealdstoneStation a tfl:TfLStation ;
-    rdfs:label "Harrow & Wealdstone Station" ;
-    tfl:hasAccessibilityFeature tfl:AsdaClickAndCollect,
-        tfl:Bridge,
-        tfl:WaitingRoom,
-        tfl:Wifi ;
-    tfl:hasFacility tfl:CarPark,
-        tfl:Toilets ;
     tfl:servedByLine tfl:140 .
 
 tfl:HartfordRoad a tfl:TfLStation ;
@@ -6245,13 +6234,18 @@ tfl:HawleyRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:1,
         tfl:134 .
 
+tfl:Hayes a tfl:TfLStation ;
+    rdfs:label "Hayes Station" ;
+    tfl:servedByLine tfl:119,
+        tfl:138 .
+
+tfl:HayesAndHarlington a tfl:TfLStation ;
+    rdfs:label "Hayes & Harlington Station" ;
+    tfl:servedByLine tfl:140 .
+
 tfl:HayesGeorgeLane a tfl:TfLStation ;
     rdfs:label "Hayes / George Lane" ;
     tfl:servedByLine tfl:119 .
-
-tfl:HayesHarlingtonStation a tfl:TfLStation ;
-    rdfs:label "Hayes & Harlington Station" ;
-    tfl:servedByLine tfl:140 .
 
 tfl:HayesHillRoad a tfl:TfLStation ;
     rdfs:label "Hayes Hill Road" ;
@@ -6272,11 +6266,6 @@ tfl:HayesRoadCameronRoad a tfl:TfLStation ;
 tfl:HayesRoadHayesLane a tfl:TfLStation ;
     rdfs:label "Hayes Road / Hayes Lane" ;
     tfl:servedByLine tfl:119 .
-
-tfl:HayesStation a tfl:TfLStation ;
-    rdfs:label "Hayes Station" ;
-    tfl:servedByLine tfl:119,
-        tfl:138 .
 
 tfl:HayesStationApproach a tfl:TfLStation ;
     rdfs:label "Hayes / Station Approach" ;
@@ -6331,7 +6320,7 @@ tfl:HeathlandRoad a tfl:TfLStation ;
     rdfs:label "Heathland Road" ;
     tfl:servedByLine tfl:106 .
 
-tfl:HeathrowCentralBusStation a tfl:TfLStation ;
+tfl:HeathrowCentralBus a tfl:TfLStation ;
     rdfs:label "Heathrow Central Bus Station" ;
     tfl:servedByLine tfl:105,
         tfl:111 .
@@ -6361,7 +6350,7 @@ tfl:HedgeLaneGreenLanes a tfl:TfLStation ;
     rdfs:label "Hedge Lane / Green Lanes" ;
     tfl:servedByLine tfl:W6 .
 
-tfl:HendonCentralStation a tfl:TfLStation ;
+tfl:HendonCentral a tfl:TfLStation ;
     rdfs:label "Hendon Central Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Wifi ;
@@ -6474,7 +6463,7 @@ tfl:HickmanAvenue a tfl:TfLStation ;
     rdfs:label "Hickman Avenue" ;
     tfl:servedByLine tfl:W16 .
 
-tfl:HighBarnetStation a tfl:TfLStation ;
+tfl:HighBarnet a tfl:TfLStation ;
     rdfs:label "High Barnet Station" ;
     tfl:hasAccessibilityFeature tfl:AsdaClickAndCollect,
         tfl:WaitingRoom,
@@ -6546,11 +6535,11 @@ tfl:HighamRoad a tfl:TfLStation ;
     rdfs:label "Higham Road" ;
     tfl:servedByLine tfl:W4 .
 
-tfl:HighamsParkStation a tfl:TfLStation ;
+tfl:HighamsPark a tfl:TfLStation ;
     rdfs:label "Highams Park Station" ;
     tfl:servedByLine tfl:W16 .
 
-tfl:HighburyIslingtonRailStation a tfl:TfLStation ;
+tfl:HighburyAndIslingtonRail a tfl:TfLStation ;
     rdfs:label "Highbury & Islington Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Night,
@@ -6560,6 +6549,13 @@ tfl:HighburyIslingtonRailStation a tfl:TfLStation ;
 tfl:HighfieldAvenue a tfl:TfLStation ;
     rdfs:label "Highfield Avenue" ;
     tfl:servedByLine tfl:113 .
+
+tfl:Highgate a tfl:TfLStation ;
+    rdfs:label "Highgate Station" ;
+    tfl:hasAccessibilityFeature tfl:AsdaClickAndCollect,
+        tfl:Wifi ;
+    tfl:hasFacility tfl:CarPark ;
+    tfl:servedByLine tfl:134 .
 
 tfl:HighgateGroupPractice a tfl:TfLStation ;
     rdfs:label "Highgate Group Practice" ;
@@ -6573,13 +6569,6 @@ tfl:HighgateHillHornseyLane a tfl:TfLStation ;
 tfl:HighgateSchool a tfl:TfLStation ;
     rdfs:label "Highgate School" ;
     tfl:servedByLine tfl:143 .
-
-tfl:HighgateStation a tfl:TfLStation ;
-    rdfs:label "Highgate Station" ;
-    tfl:hasAccessibilityFeature tfl:AsdaClickAndCollect,
-        tfl:Wifi ;
-    tfl:hasFacility tfl:CarPark ;
-    tfl:servedByLine tfl:134 .
 
 tfl:HighgateWood a tfl:TfLStation ;
     rdfs:label "Highgate Wood" ;
@@ -6660,6 +6649,13 @@ tfl:HogarthGardens a tfl:TfLStation ;
     tfl:servedByLine tfl:111,
         tfl:120 .
 
+tfl:Holborn a tfl:TfLStation ;
+    rdfs:label "Holborn Station" ;
+    tfl:hasAccessibilityFeature tfl:EuroCashMachines,
+        tfl:Wifi ;
+    tfl:servedByLine tfl:1,
+        tfl:133 .
+
 tfl:HolbornCircus a tfl:TfLStation ;
     rdfs:label "Holborn Circus" ;
     tfl:servedByLine tfl:133 .
@@ -6667,13 +6663,6 @@ tfl:HolbornCircus a tfl:TfLStation ;
 tfl:HolbornCircusFetterLane a tfl:TfLStation ;
     rdfs:label "Holborn Circus / Fetter Lane" ;
     tfl:servedByLine tfl:133 .
-
-tfl:HolbornStation a tfl:TfLStation ;
-    rdfs:label "Holborn Station" ;
-    tfl:hasAccessibilityFeature tfl:EuroCashMachines,
-        tfl:Wifi ;
-    tfl:servedByLine tfl:1,
-        tfl:133 .
 
 tfl:HollandWay a tfl:TfLStation ;
     rdfs:label "Holland Way" ;
@@ -6726,7 +6715,7 @@ tfl:HoneypotLane a tfl:TfLStation ;
     rdfs:label "Honeypot Lane" ;
     tfl:servedByLine tfl:114 .
 
-tfl:HonorOakParkRailStation a tfl:TfLStation ;
+tfl:HonorOakParkRail a tfl:TfLStation ;
     rdfs:label "Honor Oak Park Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -6744,7 +6733,7 @@ tfl:HornseyCentralHealthCentre a tfl:TfLStation ;
     rdfs:label "Hornsey Central Health Centre" ;
     tfl:servedByLine tfl:W7 .
 
-tfl:HornseyFireStation a tfl:TfLStation ;
+tfl:HornseyFire a tfl:TfLStation ;
     rdfs:label "Hornsey Fire Station" ;
     tfl:servedByLine tfl:144,
         tfl:W3 .
@@ -6788,7 +6777,7 @@ tfl:HothfieldPlace a tfl:TfLStation ;
     rdfs:label "Hothfield Place" ;
     tfl:servedByLine tfl:1 .
 
-tfl:HounslowBusStation a tfl:TfLStation ;
+tfl:HounslowBus a tfl:TfLStation ;
     rdfs:label "Hounslow Bus Station" ;
     tfl:servedByLine tfl:110,
         tfl:111,
@@ -6796,7 +6785,7 @@ tfl:HounslowBusStation a tfl:TfLStation ;
         tfl:117,
         tfl:120 .
 
-tfl:HounslowCentralStation a tfl:TfLStation ;
+tfl:HounslowCentral a tfl:TfLStation ;
     rdfs:label "Hounslow Central Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom,
@@ -6804,7 +6793,7 @@ tfl:HounslowCentralStation a tfl:TfLStation ;
     tfl:hasFacility tfl:Toilets ;
     tfl:servedByLine tfl:120 .
 
-tfl:HounslowEastStation a tfl:TfLStation ;
+tfl:HounslowEast a tfl:TfLStation ;
     rdfs:label "Hounslow East Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:EuroCashMachines,
@@ -6825,7 +6814,7 @@ tfl:HounslowRoad a tfl:TfLStation ;
     rdfs:label "Hounslow Road" ;
     tfl:servedByLine tfl:116 .
 
-tfl:HoxtonRailStation a tfl:TfLStation ;
+tfl:HoxtonRail a tfl:TfLStation ;
     rdfs:label "Hoxton Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Accessvialift,
         tfl:Night ;
@@ -6836,16 +6825,12 @@ tfl:HuntersGrove a tfl:TfLStation ;
     tfl:servedByLine tfl:114 .
 
 tfl:HydeParkCorner a tfl:TfLStation ;
-    rdfs:label "Hyde Park Corner" ;
+    rdfs:label "Hyde Park Corner",
+        "Hyde Park Corner Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
-    tfl:servedByLine tfl:13 .
-
-tfl:HydeParkCornerStation a tfl:TfLStation ;
-    rdfs:label "Hyde Park Corner Station" ;
-    tfl:hasAccessibilityFeature tfl:EuroCashMachines,
-        tfl:Wifi ;
-    tfl:servedByLine tfl:137,
+    tfl:servedByLine tfl:13,
+        tfl:137,
         tfl:14 .
 
 tfl:IcknieldDrive a tfl:TfLStation ;
@@ -6856,6 +6841,11 @@ tfl:IffleyRoad a tfl:TfLStation ;
     rdfs:label "Iffley Road" ;
     tfl:servedByLine tfl:110 .
 
+tfl:Ilford a tfl:TfLStation ;
+    rdfs:label "Ilford Station" ;
+    tfl:servedByLine tfl:123,
+        tfl:128 .
+
 tfl:IlfordBroadway a tfl:TfLStation ;
     rdfs:label "Ilford Broadway" ;
     tfl:servedByLine tfl:W19 .
@@ -6864,11 +6854,6 @@ tfl:IlfordChapelRoad a tfl:TfLStation ;
     rdfs:label "Ilford / Chapel Road" ;
     tfl:servedByLine tfl:123,
         tfl:W19 .
-
-tfl:IlfordStation a tfl:TfLStation ;
-    rdfs:label "Ilford Station" ;
-    tfl:servedByLine tfl:123,
-        tfl:128 .
 
 tfl:IlfordStationIlfordHill a tfl:TfLStation ;
     rdfs:label "Ilford Station  / Ilford Hill" ;
@@ -6898,7 +6883,7 @@ tfl:InnerLondonCrownCourt a tfl:TfLStation ;
     rdfs:label "Inner London Crown Court" ;
     tfl:servedByLine tfl:133 .
 
-tfl:IslandGardensStation a tfl:TfLStation ;
+tfl:IslandGardens a tfl:TfLStation ;
     rdfs:label "Island Gardens Station" ;
     tfl:servedByLine tfl:135 .
 
@@ -6986,14 +6971,20 @@ tfl:KenmoreRoad a tfl:TfLStation ;
     rdfs:label "Kenmore Road" ;
     tfl:servedByLine tfl:114 .
 
+tfl:Kennington a tfl:TfLStation ;
+    rdfs:label "Kennington Station" ;
+    tfl:hasAccessibilityFeature tfl:Wifi ;
+    tfl:servedByLine tfl:133 .
+
 tfl:KenningtonRoad a tfl:TfLStation ;
     rdfs:label "Kennington Road" ;
     tfl:servedByLine tfl:133 .
 
-tfl:KenningtonStation a tfl:TfLStation ;
-    rdfs:label "Kennington Station" ;
-    tfl:hasAccessibilityFeature tfl:Wifi ;
-    tfl:servedByLine tfl:133 .
+tfl:KentishTown a tfl:TfLStation ;
+    rdfs:label "Kentish Town Station" ;
+    tfl:hasAccessibilityFeature tfl:Bridge,
+        tfl:Wifi ;
+    tfl:servedByLine tfl:134 .
 
 tfl:KentishTownPostOffice a tfl:TfLStation ;
     rdfs:label "Kentish Town Post Office" ;
@@ -7007,11 +6998,11 @@ tfl:KentishTownRoadPrinceOfWalesRoad a tfl:TfLStation ;
     rdfs:label "Kentish Town Road / Prince of Wales Road" ;
     tfl:servedByLine tfl:134 .
 
-tfl:KentishTownStation a tfl:TfLStation ;
-    rdfs:label "Kentish Town Station" ;
+tfl:Kenton a tfl:TfLStation ;
+    rdfs:label "Kenton Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Wifi ;
-    tfl:servedByLine tfl:134 .
+    tfl:servedByLine tfl:114 .
 
 tfl:KentonLibrary a tfl:TfLStation ;
     rdfs:label "Kenton Library" ;
@@ -7021,18 +7012,16 @@ tfl:KentonRoad a tfl:TfLStation ;
     rdfs:label "Kenton Road" ;
     tfl:servedByLine tfl:114 .
 
-tfl:KentonStation a tfl:TfLStation ;
-    rdfs:label "Kenton Station" ;
-    tfl:hasAccessibilityFeature tfl:Bridge,
-        tfl:Wifi ;
-    tfl:servedByLine tfl:114 .
-
 tfl:KewBridge a tfl:TfLStation ;
-    rdfs:label "Kew Bridge" ;
+    rdfs:label "Kew Bridge",
+        "Kew Bridge Station" ;
     tfl:servedByLine tfl:110 .
 
-tfl:KewBridgeStation a tfl:TfLStation ;
-    rdfs:label "Kew Bridge Station" ;
+tfl:KewGardens a tfl:TfLStation ;
+    rdfs:label "Kew Gardens Station" ;
+    tfl:hasAccessibilityFeature tfl:Bridge,
+        tfl:EuroCashMachines,
+        tfl:Wifi ;
     tfl:servedByLine tfl:110 .
 
 tfl:KewGardensHotel a tfl:TfLStation ;
@@ -7041,13 +7030,6 @@ tfl:KewGardensHotel a tfl:TfLStation ;
 
 tfl:KewGardensRoad a tfl:TfLStation ;
     rdfs:label "Kew Gardens Road" ;
-    tfl:servedByLine tfl:110 .
-
-tfl:KewGardensStation a tfl:TfLStation ;
-    rdfs:label "Kew Gardens Station" ;
-    tfl:hasAccessibilityFeature tfl:Bridge,
-        tfl:EuroCashMachines,
-        tfl:Wifi ;
     tfl:servedByLine tfl:110 .
 
 tfl:KewGreen a tfl:TfLStation ;
@@ -7075,7 +7057,7 @@ tfl:KingEdwardStreet a tfl:TfLStation ;
     rdfs:label "King Edward Street" ;
     tfl:servedByLine tfl:133 .
 
-tfl:KingEdwardStreetStPaulsStation a tfl:TfLStation ;
+tfl:KingEdwardStreetStPauls a tfl:TfLStation ;
     rdfs:label "King Edward Street / St Pauls Station" ;
     tfl:servedByLine tfl:100 .
 
@@ -7151,6 +7133,10 @@ tfl:Kingsmeadow a tfl:TfLStation ;
     rdfs:label "Kingsmeadow" ;
     tfl:servedByLine tfl:131 .
 
+tfl:Kingston a tfl:TfLStation ;
+    rdfs:label "Kingston Station" ;
+    tfl:servedByLine tfl:111 .
+
 tfl:KingstonClose a tfl:TfLStation ;
     rdfs:label "Kingston Close" ;
     tfl:servedByLine tfl:120,
@@ -7160,15 +7146,11 @@ tfl:KingstonCrescent a tfl:TfLStation ;
     rdfs:label "Kingston Crescent" ;
     tfl:servedByLine tfl:117 .
 
-tfl:KingstonStation a tfl:TfLStation ;
-    rdfs:label "Kingston Station" ;
-    tfl:servedByLine tfl:111 .
-
 tfl:KingstonWoodStreet a tfl:TfLStation ;
     rdfs:label "Kingston / Wood Street" ;
     tfl:servedByLine tfl:111 .
 
-tfl:KingswayHolbornStation a tfl:TfLStation ;
+tfl:KingswayHolborn a tfl:TfLStation ;
     rdfs:label "Kingsway / Holborn Station" ;
     tfl:servedByLine tfl:1 .
 
@@ -7180,7 +7162,7 @@ tfl:KnellerHall a tfl:TfLStation ;
     rdfs:label "Kneller Hall" ;
     tfl:servedByLine tfl:110 .
 
-tfl:KnightsbridgeStation a tfl:TfLStation ;
+tfl:Knightsbridge a tfl:TfLStation ;
     rdfs:label "Knightsbridge Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -7191,7 +7173,7 @@ tfl:KnightsbridgeStationHarrods a tfl:TfLStation ;
     rdfs:label "Knightsbridge Station  / Harrods" ;
     tfl:servedByLine tfl:14 .
 
-tfl:KnightsbridgeUndergroundStation a tfl:TfLStation ;
+tfl:KnightsbridgeUnderground a tfl:TfLStation ;
     rdfs:label "Knightsbridge Underground Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Night,
@@ -7219,7 +7201,7 @@ tfl:LadysmithRoad a tfl:TfLStation ;
     rdfs:label "Ladysmith Road" ;
     tfl:servedByLine tfl:121 .
 
-tfl:LadywellStation a tfl:TfLStation ;
+tfl:Ladywell a tfl:TfLStation ;
     rdfs:label "Ladywell Station" ;
     tfl:servedByLine tfl:122 .
 
@@ -7227,7 +7209,7 @@ tfl:Lakeside a tfl:TfLStation ;
     rdfs:label "Lakeside" ;
     tfl:servedByLine tfl:121 .
 
-tfl:LambethNorthStation a tfl:TfLStation ;
+tfl:LambethNorth a tfl:TfLStation ;
     rdfs:label "Lambeth North Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:12 .
@@ -7267,13 +7249,13 @@ tfl:LangdaleRoad a tfl:TfLStation ;
     rdfs:label "Langdale Road" ;
     tfl:servedByLine tfl:109 .
 
+tfl:LangdonPark a tfl:TfLStation ;
+    rdfs:label "Langdon Park Station" ;
+    tfl:servedByLine tfl:108 .
+
 tfl:LangdonParkRoad a tfl:TfLStation ;
     rdfs:label "Langdon Park Road" ;
     tfl:servedByLine tfl:134 .
-
-tfl:LangdonParkStation a tfl:TfLStation ;
-    rdfs:label "Langdon Park Station" ;
-    tfl:servedByLine tfl:108 .
 
 tfl:LanglandGardens a tfl:TfLStation ;
     rdfs:label "Langland Gardens" ;
@@ -7368,6 +7350,12 @@ tfl:LewesRoad a tfl:TfLStation ;
     rdfs:label "Lewes Road" ;
     tfl:servedByLine tfl:134 .
 
+tfl:Lewisham a tfl:TfLStation ;
+    rdfs:label "Lewisham Station" ;
+    tfl:servedByLine tfl:108,
+        tfl:129,
+        tfl:136 .
+
 tfl:LewishamCentre a tfl:TfLStation ;
     rdfs:label "Lewisham Centre" ;
     tfl:servedByLine tfl:108,
@@ -7389,7 +7377,7 @@ tfl:LewishamCollegeAshmeadSchool a tfl:TfLStation ;
     rdfs:label "Lewisham College / Ashmead School" ;
     tfl:servedByLine tfl:136 .
 
-tfl:LewishamFireStation a tfl:TfLStation ;
+tfl:LewishamFire a tfl:TfLStation ;
     rdfs:label "Lewisham Fire Station" ;
     tfl:servedByLine tfl:122,
         tfl:136 .
@@ -7401,12 +7389,6 @@ tfl:LewishamHospital a tfl:TfLStation ;
 tfl:LewishamPark a tfl:TfLStation ;
     rdfs:label "Lewisham Park" ;
     tfl:servedByLine tfl:136 .
-
-tfl:LewishamStation a tfl:TfLStation ;
-    rdfs:label "Lewisham Station" ;
-    tfl:servedByLine tfl:108,
-        tfl:129,
-        tfl:136 .
 
 tfl:LewishamStationLoampitVale a tfl:TfLStation ;
     rdfs:label "Lewisham Station   / Loampit Vale" ;
@@ -7426,11 +7408,11 @@ tfl:LeytonGreenRoad a tfl:TfLStation ;
         tfl:W16,
         tfl:W19 .
 
-tfl:LeytonHighRoadLeytonStation a tfl:TfLStation ;
+tfl:LeytonHighRoadLeyton a tfl:TfLStation ;
     rdfs:label "Leyton High Road / Leyton Station" ;
     tfl:servedByLine tfl:W15 .
 
-tfl:LeytonMidlandRoadStation a tfl:TfLStation ;
+tfl:LeytonMidlandRoad a tfl:TfLStation ;
     rdfs:label "Leyton Midland Road Station" ;
     tfl:servedByLine tfl:W16 .
 
@@ -7451,14 +7433,14 @@ tfl:LeytonstoneStnGroveGreenRoad a tfl:TfLStation ;
 tfl:Liberty a tfl:OvergroundLine ;
     rdfs:label "Liberty" .
 
-tfl:LimehousePoliceStation a tfl:TfLStation ;
-    rdfs:label "Limehouse Police Station" ;
-    tfl:servedByLine tfl:135 .
-
-tfl:LimehouseStation a tfl:TfLStation ;
+tfl:Limehouse a tfl:TfLStation ;
     rdfs:label "Limehouse Station" ;
     tfl:servedByLine tfl:115,
         tfl:135 .
+
+tfl:LimehousePolice a tfl:TfLStation ;
+    rdfs:label "Limehouse Police Station" ;
+    tfl:servedByLine tfl:135 .
 
 tfl:LimehouseTownHall a tfl:TfLStation ;
     rdfs:label "Limehouse Town Hall" ;
@@ -7508,7 +7490,7 @@ tfl:LivatHammersmithShoppingCentre a tfl:TfLStation ;
     rdfs:label "Livat Hammersmith Shopping Centre" ;
     tfl:servedByLine tfl:110 .
 
-tfl:LiverpoolStreetStation a tfl:TfLStation ;
+tfl:LiverpoolStreet a tfl:TfLStation ;
     rdfs:label "Liverpool Street Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:EuroCashMachines,
@@ -7546,13 +7528,10 @@ tfl:LondonAquaticsCentre a tfl:TfLStation ;
     tfl:servedByLine tfl:108 .
 
 tfl:LondonBridge a tfl:TfLStation ;
-    rdfs:label "London Bridge" ;
+    rdfs:label "London Bridge",
+        "London Bridge Station" ;
     tfl:servedByLine tfl:133,
         tfl:141 .
-
-tfl:LondonBridgeStation a tfl:TfLStation ;
-    rdfs:label "London Bridge Station" ;
-    tfl:servedByLine tfl:141 .
 
 tfl:LondonBusinessSchool a tfl:TfLStation ;
     rdfs:label "London Business School" ;
@@ -7602,7 +7581,7 @@ tfl:LondonWall a tfl:TfLStation ;
     tfl:servedByLine tfl:100,
         tfl:141 .
 
-tfl:LondonWallMoorgateStation a tfl:TfLStation ;
+tfl:LondonWallMoorgate a tfl:TfLStation ;
     rdfs:label "London Wall / Moorgate Station" ;
     tfl:servedByLine tfl:100 .
 
@@ -7674,11 +7653,11 @@ tfl:LoughboroughRoad a tfl:TfLStation ;
     rdfs:label "Loughborough Road" ;
     tfl:servedByLine tfl:133 .
 
-tfl:LoughtonStation a tfl:TfLStation ;
+tfl:Loughton a tfl:TfLStation ;
     rdfs:label "Loughton Station" ;
     tfl:servedByLine tfl:W14 .
 
-tfl:LoughtonUndergroundStation a tfl:TfLStation ;
+tfl:LoughtonUnderground a tfl:TfLStation ;
     rdfs:label "Loughton Underground Station" ;
     tfl:hasAccessibilityFeature tfl:Night,
         tfl:WaitingRoom,
@@ -7778,7 +7757,7 @@ tfl:ManorDrive a tfl:TfLStation ;
     rdfs:label "Manor Drive" ;
     tfl:servedByLine tfl:125 .
 
-tfl:ManorHouseStation a tfl:TfLStation ;
+tfl:ManorHouse a tfl:TfLStation ;
     rdfs:label "Manor House Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:141 .
@@ -7788,17 +7767,15 @@ tfl:ManorHouseStationWoodberryGrove a tfl:TfLStation ;
     tfl:servedByLine tfl:141 .
 
 tfl:ManorPark a tfl:TfLStation ;
-    rdfs:label "Manor Park" ;
-    tfl:servedByLine tfl:122 .
+    rdfs:label "Manor Park",
+        "Manor Park Station" ;
+    tfl:servedByLine tfl:101,
+        tfl:122,
+        tfl:W19 .
 
 tfl:ManorParkCrescent a tfl:TfLStation ;
     rdfs:label "Manor Park Crescent" ;
     tfl:servedByLine tfl:142 .
-
-tfl:ManorParkStation a tfl:TfLStation ;
-    rdfs:label "Manor Park Station" ;
-    tfl:servedByLine tfl:101,
-        tfl:W19 .
 
 tfl:ManorRoad a tfl:TfLStation ;
     rdfs:label "Manor Road" ;
@@ -7816,7 +7793,7 @@ tfl:ManshipRoad a tfl:TfLStation ;
     rdfs:label "Manship Road" ;
     tfl:servedByLine tfl:127 .
 
-tfl:MansionHouseStation a tfl:TfLStation ;
+tfl:MansionHouse a tfl:TfLStation ;
     rdfs:label "Mansion House Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Wifi ;
@@ -7838,7 +7815,7 @@ tfl:MapletonRoad a tfl:TfLStation ;
     rdfs:label "Mapleton Road" ;
     tfl:servedByLine tfl:W16 .
 
-tfl:MarbleArchStation a tfl:TfLStation ;
+tfl:MarbleArch a tfl:TfLStation ;
     rdfs:label "Marble Arch Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -8078,7 +8055,7 @@ tfl:MillGreenRoad a tfl:TfLStation ;
     rdfs:label "Mill Green Road" ;
     tfl:servedByLine tfl:127 .
 
-tfl:MillHillBroadwayStation a tfl:TfLStation ;
+tfl:MillHillBroadway a tfl:TfLStation ;
     rdfs:label "Mill Hill Broadway Station" ;
     tfl:servedByLine tfl:114 .
 
@@ -8129,7 +8106,7 @@ tfl:MillenniumVillageSouth a tfl:TfLStation ;
         tfl:129,
         tfl:132 .
 
-tfl:MillfieldTheatreArtsCentre a tfl:TfLStation ;
+tfl:MillfieldTheatreAndArtsCentre a tfl:TfLStation ;
     rdfs:label "Millfield Theatre & Arts Centre" ;
     tfl:servedByLine tfl:102,
         tfl:144,
@@ -8167,7 +8144,7 @@ tfl:MitchamGardenVillageWillowLane a tfl:TfLStation ;
     rdfs:label "Mitcham Garden Village / Willow Lane" ;
     tfl:servedByLine tfl:127 .
 
-tfl:MitchamJunctionStation a tfl:TfLStation ;
+tfl:MitchamJunction a tfl:TfLStation ;
     rdfs:label "Mitcham Junction Station" ;
     tfl:servedByLine tfl:127 .
 
@@ -8179,7 +8156,7 @@ tfl:MitchamLowerGreen a tfl:TfLStation ;
     rdfs:label "Mitcham / Lower Green" ;
     tfl:servedByLine tfl:127 .
 
-tfl:MitchamPoliceStation a tfl:TfLStation ;
+tfl:MitchamPolice a tfl:TfLStation ;
     rdfs:label "Mitcham Police Station" ;
     tfl:servedByLine tfl:127 .
 
@@ -8253,7 +8230,7 @@ tfl:MontroseAvenueUnitasYouthZone a tfl:TfLStation ;
     rdfs:label "Montrose Avenue / Unitas Youth Zone" ;
     tfl:servedByLine tfl:142 .
 
-tfl:MonumentStation a tfl:TfLStation ;
+tfl:Monument a tfl:TfLStation ;
     rdfs:label "Monument Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -8265,7 +8242,7 @@ tfl:MoorfieldsEyeHospital a tfl:TfLStation ;
     tfl:servedByLine tfl:135,
         tfl:141 .
 
-tfl:MoorgateStation a tfl:TfLStation ;
+tfl:Moorgate a tfl:TfLStation ;
     rdfs:label "Moorgate Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines ;
     tfl:servedByLine tfl:141 .
@@ -8309,7 +8286,7 @@ tfl:MorningtonCresStnCamdenTnLibrary a tfl:TfLStation ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:1 .
 
-tfl:MorningtonCrescentStation a tfl:TfLStation ;
+tfl:MorningtonCrescent a tfl:TfLStation ;
     rdfs:label "Mornington Crescent Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:134 .
@@ -8322,13 +8299,18 @@ tfl:MortlakeRoad a tfl:TfLStation ;
     rdfs:label "Mortlake Road" ;
     tfl:servedByLine tfl:110 .
 
-tfl:MosaicTheWoodlands a tfl:TfLStation ;
+tfl:MosaicAndTheWoodlands a tfl:TfLStation ;
     rdfs:label "Mosaic & the Woodlands" ;
     tfl:servedByLine tfl:142 .
 
 tfl:MossfordLane a tfl:TfLStation ;
     rdfs:label "Mossford Lane" ;
     tfl:servedByLine tfl:128 .
+
+tfl:Mottingham a tfl:TfLStation ;
+    rdfs:label "Mottingham Station" ;
+    tfl:servedByLine tfl:124,
+        tfl:126 .
 
 tfl:MottinghamPrinceOfWales a tfl:TfLStation ;
     rdfs:label "Mottingham / Prince of Wales" ;
@@ -8342,11 +8324,6 @@ tfl:MottinghamRoadCourtRoad a tfl:TfLStation ;
 
 tfl:MottinghamRoadRavensworthRoad a tfl:TfLStation ;
     rdfs:label "Mottingham Road / Ravensworth Road" ;
-    tfl:servedByLine tfl:124,
-        tfl:126 .
-
-tfl:MottinghamStation a tfl:TfLStation ;
-    rdfs:label "Mottingham Station" ;
     tfl:servedByLine tfl:124,
         tfl:126 .
 
@@ -8374,7 +8351,7 @@ tfl:MountfieldRoad a tfl:TfLStation ;
     rdfs:label "Mountfield Road" ;
     tfl:servedByLine tfl:13 .
 
-tfl:MudchuteStation a tfl:TfLStation ;
+tfl:Mudchute a tfl:TfLStation ;
     rdfs:label "Mudchute Station" ;
     tfl:servedByLine tfl:135 .
 
@@ -8656,7 +8633,7 @@ tfl:NewAddingtonTramStop a tfl:TfLStation ;
     rdfs:label "New Addington Tram Stop" ;
     tfl:servedByLine tfl:130 .
 
-tfl:NewBarnetStation a tfl:TfLStation ;
+tfl:NewBarnet a tfl:TfLStation ;
     rdfs:label "New Barnet Station" ;
     tfl:servedByLine tfl:107 .
 
@@ -8681,7 +8658,7 @@ tfl:NewCrossBusGarage a tfl:TfLStation ;
     rdfs:label "New Cross Bus Garage" ;
     tfl:servedByLine tfl:136 .
 
-tfl:NewCrossEllRailStation a tfl:TfLStation ;
+tfl:NewCrossEllRail a tfl:TfLStation ;
     rdfs:label "New Cross ELL Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:CashMachines,
@@ -8692,18 +8669,18 @@ tfl:NewCrossEllRailStation a tfl:TfLStation ;
     tfl:hasFacility tfl:Toilets ;
     tfl:servedByLine tfl:Windrush .
 
-tfl:NewCrossFireStation a tfl:TfLStation ;
+tfl:NewCrossFire a tfl:TfLStation ;
     rdfs:label "New Cross Fire Station" ;
     tfl:servedByLine tfl:136 .
 
-tfl:NewCrossGateRailStation a tfl:TfLStation ;
+tfl:NewCrossGate a tfl:TfLStation ;
+    rdfs:label "New Cross Gate Station" ;
+    tfl:servedByLine tfl:136 .
+
+tfl:NewCrossGateRail a tfl:TfLStation ;
     rdfs:label "New Cross Gate Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Night ;
     tfl:servedByLine tfl:Windrush .
-
-tfl:NewCrossGateStation a tfl:TfLStation ;
-    rdfs:label "New Cross Gate Station" ;
-    tfl:servedByLine tfl:136 .
 
 tfl:NewHestonRoad a tfl:TfLStation ;
     rdfs:label "New Heston Road" ;
@@ -8800,7 +8777,7 @@ tfl:NorbitonChurchTiffinBoysSchool a tfl:TfLStation ;
     rdfs:label "Norbiton Church / Tiffin Boys School" ;
     tfl:servedByLine tfl:131 .
 
-tfl:NorburyStation a tfl:TfLStation ;
+tfl:Norbury a tfl:TfLStation ;
     rdfs:label "Norbury Station" ;
     tfl:servedByLine tfl:109 .
 
@@ -8821,7 +8798,7 @@ tfl:NorthCircularRoad a tfl:TfLStation ;
         tfl:143,
         tfl:W19 .
 
-tfl:NorthEalingStation a tfl:TfLStation ;
+tfl:NorthEaling a tfl:TfLStation ;
     rdfs:label "North Ealing Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom,
@@ -8834,7 +8811,7 @@ tfl:NorthFarm a tfl:TfLStation ;
     rdfs:label "North Farm" ;
     tfl:servedByLine tfl:W14 .
 
-tfl:NorthFinchleyBusStation a tfl:TfLStation ;
+tfl:NorthFinchleyBus a tfl:TfLStation ;
     rdfs:label "North Finchley Bus Station" ;
     tfl:servedByLine tfl:112,
         tfl:125,
@@ -8845,7 +8822,7 @@ tfl:NorthFinchleyHighRoad a tfl:TfLStation ;
     rdfs:label "North Finchley High Road" ;
     tfl:servedByLine tfl:134 .
 
-tfl:NorthGreenwichStation a tfl:TfLStation ;
+tfl:NorthGreenwich a tfl:TfLStation ;
     rdfs:label "North Greenwich Station" ;
     tfl:servedByLine tfl:108,
         tfl:129,
@@ -8896,19 +8873,19 @@ tfl:NorthfieldRoad a tfl:TfLStation ;
     rdfs:label "Northfield Road" ;
     tfl:servedByLine tfl:111 .
 
-tfl:NortholtFireStation a tfl:TfLStation ;
-    rdfs:label "Northolt Fire Station" ;
-    tfl:servedByLine tfl:140 .
-
-tfl:NortholtParkStation a tfl:TfLStation ;
-    rdfs:label "Northolt Park Station" ;
-    tfl:servedByLine tfl:140 .
-
-tfl:NortholtStation a tfl:TfLStation ;
+tfl:Northolt a tfl:TfLStation ;
     rdfs:label "Northolt Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:120,
         tfl:140 .
+
+tfl:NortholtFire a tfl:TfLStation ;
+    rdfs:label "Northolt Fire Station" ;
+    tfl:servedByLine tfl:140 .
+
+tfl:NortholtPark a tfl:TfLStation ;
+    rdfs:label "Northolt Park Station" ;
+    tfl:servedByLine tfl:140 .
 
 tfl:Northover a tfl:TfLStation ;
     rdfs:label "Northover" ;
@@ -8960,7 +8937,11 @@ tfl:NorwoodGreen a tfl:TfLStation ;
     rdfs:label "Norwood Green" ;
     tfl:servedByLine tfl:120 .
 
-tfl:NorwoodJunctionRailStation a tfl:TfLStation ;
+tfl:NorwoodJunction a tfl:TfLStation ;
+    rdfs:label "Norwood Junction Station" ;
+    tfl:servedByLine tfl:130 .
+
+tfl:NorwoodJunctionRail a tfl:TfLStation ;
     rdfs:label "Norwood Junction Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:CashMachines,
@@ -8970,10 +8951,6 @@ tfl:NorwoodJunctionRailStation a tfl:TfLStation ;
     tfl:hasFacility tfl:Toilet,
         tfl:Toilets ;
     tfl:servedByLine tfl:Windrush .
-
-tfl:NorwoodJunctionStation a tfl:TfLStation ;
-    rdfs:label "Norwood Junction Station" ;
-    tfl:servedByLine tfl:130 .
 
 tfl:NunnsRoad a tfl:TfLStation ;
     rdfs:label "Nunn's Road" ;
@@ -9028,7 +9005,7 @@ tfl:OaksRoad a tfl:TfLStation ;
     rdfs:label "Oaks Road" ;
     tfl:servedByLine tfl:130 .
 
-tfl:OakwoodStation a tfl:TfLStation ;
+tfl:Oakwood a tfl:TfLStation ;
     rdfs:label "Oakwood Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom,
@@ -9082,7 +9059,7 @@ tfl:OldParkRidings a tfl:TfLStation ;
     rdfs:label "Old Park Ridings" ;
     tfl:servedByLine tfl:125 .
 
-tfl:OldStreetStation a tfl:TfLStation ;
+tfl:OldStreet a tfl:TfLStation ;
     rdfs:label "Old Street Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -9144,7 +9121,7 @@ tfl:OssultonWay a tfl:TfLStation ;
     rdfs:label "Ossulton Way" ;
     tfl:servedByLine tfl:143 .
 
-tfl:OurLadyStGeorgesCatholicSchool a tfl:TfLStation ;
+tfl:OurLadyAndStGeorgesCatholicSchool a tfl:TfLStation ;
     rdfs:label "Our Lady & St George's Catholic School" ;
     tfl:servedByLine tfl:W16 .
 
@@ -9153,7 +9130,7 @@ tfl:OxfordAvenue a tfl:TfLStation ;
     tfl:servedByLine tfl:105,
         tfl:111 .
 
-tfl:OxfordCircusStation a tfl:TfLStation ;
+tfl:OxfordCircus a tfl:TfLStation ;
     rdfs:label "Oxford Circus Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -9204,6 +9181,11 @@ tfl:PalaceRoad a tfl:TfLStation ;
     rdfs:label "Palace Road" ;
     tfl:servedByLine tfl:W3 .
 
+tfl:PalmersGreen a tfl:TfLStation ;
+    rdfs:label "Palmers Green Station" ;
+    tfl:servedByLine tfl:121,
+        tfl:W6 .
+
 tfl:PalmersGreenGreenLanes a tfl:TfLStation ;
     rdfs:label "Palmers Green / Green Lanes" ;
     tfl:servedByLine tfl:102 .
@@ -9211,11 +9193,6 @@ tfl:PalmersGreenGreenLanes a tfl:TfLStation ;
 tfl:PalmersGreenPalmerstonRoad a tfl:TfLStation ;
     rdfs:label "Palmers Green / Palmerston Road" ;
     tfl:servedByLine tfl:102 .
-
-tfl:PalmersGreenStation a tfl:TfLStation ;
-    rdfs:label "Palmers Green Station" ;
-    tfl:servedByLine tfl:121,
-        tfl:W6 .
 
 tfl:PalmersGreenTheTriangle a tfl:TfLStation ;
     rdfs:label "Palmers Green / the Triangle" ;
@@ -9351,6 +9328,10 @@ tfl:PeckhamRoadSouthamptonWay a tfl:TfLStation ;
     tfl:servedByLine tfl:12,
         tfl:136 .
 
+tfl:PeckhamRye a tfl:TfLStation ;
+    rdfs:label "Peckham Rye Station" ;
+    tfl:servedByLine tfl:12 .
+
 tfl:PeckhamRyeBarryRoad a tfl:TfLStation ;
     rdfs:label "Peckham Rye / Barry Road" ;
     tfl:servedByLine tfl:12 .
@@ -9359,7 +9340,7 @@ tfl:PeckhamRyeEastDulwichRoad a tfl:TfLStation ;
     rdfs:label "Peckham Rye / East Dulwich Road" ;
     tfl:servedByLine tfl:12 .
 
-tfl:PeckhamRyeRailStation a tfl:TfLStation ;
+tfl:PeckhamRyeRail a tfl:TfLStation ;
     rdfs:label "Peckham Rye Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -9367,10 +9348,6 @@ tfl:PeckhamRyeRailStation a tfl:TfLStation ;
         tfl:WaitingRoom ;
     tfl:hasFacility tfl:Toilets ;
     tfl:servedByLine tfl:Windrush .
-
-tfl:PeckhamRyeStation a tfl:TfLStation ;
-    rdfs:label "Peckham Rye Station" ;
-    tfl:servedByLine tfl:12 .
 
 tfl:PeelDrive a tfl:TfLStation ;
     rdfs:label "Peel Drive" ;
@@ -9400,7 +9377,7 @@ tfl:PengeRoad a tfl:TfLStation ;
     rdfs:label "Penge Road" ;
     tfl:servedByLine tfl:104 .
 
-tfl:PengeWestRailStation a tfl:TfLStation ;
+tfl:PengeWestRail a tfl:TfLStation ;
     rdfs:label "Penge West Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -9514,7 +9491,7 @@ tfl:PlaistowGreen a tfl:TfLStation ;
     rdfs:label "Plaistow Green" ;
     tfl:servedByLine tfl:126 .
 
-tfl:PlaistowPoliceStation a tfl:TfLStation ;
+tfl:PlaistowPolice a tfl:TfLStation ;
     rdfs:label "Plaistow Police Station" ;
     tfl:servedByLine tfl:115 .
 
@@ -9539,7 +9516,7 @@ tfl:PlumsteadBusGarage a tfl:TfLStation ;
     tfl:servedByLine tfl:122,
         tfl:Sl11 .
 
-tfl:PlumsteadRoadPlumsteadStation a tfl:TfLStation ;
+tfl:PlumsteadRoadPlumstead a tfl:TfLStation ;
     rdfs:label "Plumstead Road / Plumstead Station" ;
     tfl:servedByLine tfl:122,
         tfl:Sl11 .
@@ -9564,13 +9541,13 @@ tfl:PontStreet a tfl:TfLStation ;
     rdfs:label "Pont Street" ;
     tfl:servedByLine tfl:137 .
 
-tfl:PontoonDockDlrStation a tfl:TfLStation ;
-    rdfs:label "Pontoon Dock DLR Station" ;
-    tfl:hasAccessibilityFeature tfl:Accessvialift ;
+tfl:PontoonDock a tfl:TfLStation ;
+    rdfs:label "Pontoon Dock Station" ;
     tfl:servedByLine tfl:129 .
 
-tfl:PontoonDockStation a tfl:TfLStation ;
-    rdfs:label "Pontoon Dock Station" ;
+tfl:PontoonDockDlr a tfl:TfLStation ;
+    rdfs:label "Pontoon Dock DLR Station" ;
+    tfl:hasAccessibilityFeature tfl:Accessvialift ;
     tfl:servedByLine tfl:129 .
 
 tfl:PoplarCourt a tfl:TfLStation ;
@@ -9606,7 +9583,7 @@ tfl:PortlandRoad a tfl:TfLStation ;
     rdfs:label "Portland Road" ;
     tfl:servedByLine tfl:130 .
 
-tfl:PortlandRoadNorwoodJctStation a tfl:TfLStation ;
+tfl:PortlandRoadNorwoodJct a tfl:TfLStation ;
     rdfs:label "Portland Road / Norwood Jct Station" ;
     tfl:servedByLine tfl:130 .
 
@@ -9620,7 +9597,7 @@ tfl:PottersLane a tfl:TfLStation ;
     rdfs:label "Potters Lane" ;
     tfl:servedByLine tfl:107 .
 
-tfl:PoultryBankStation a tfl:TfLStation ;
+tfl:PoultryBank a tfl:TfLStation ;
     rdfs:label "Poultry / Bank Station" ;
     tfl:servedByLine tfl:133 .
 
@@ -9699,11 +9676,15 @@ tfl:PurcellsAvenue a tfl:TfLStation ;
     tfl:servedByLine tfl:107,
         tfl:113 .
 
+tfl:Purley a tfl:TfLStation ;
+    rdfs:label "Purley Station" ;
+    tfl:servedByLine tfl:127 .
+
 tfl:PurleyCross a tfl:TfLStation ;
     rdfs:label "Purley Cross" ;
     tfl:servedByLine tfl:127 .
 
-tfl:PurleyHighStreetPurleyStation a tfl:TfLStation ;
+tfl:PurleyHighStreetPurley a tfl:TfLStation ;
     rdfs:label "Purley High Street / Purley Station" ;
     tfl:servedByLine tfl:127 .
 
@@ -9711,13 +9692,13 @@ tfl:PurleyLibrary a tfl:TfLStation ;
     rdfs:label "Purley Library" ;
     tfl:servedByLine tfl:127 .
 
-tfl:PurleyStation a tfl:TfLStation ;
-    rdfs:label "Purley Station" ;
-    tfl:servedByLine tfl:127 .
-
 tfl:PurleyStationPurleyHighStreet a tfl:TfLStation ;
     rdfs:label "Purley Station  / Purley High Street" ;
     tfl:servedByLine tfl:127 .
+
+tfl:Putney a tfl:TfLStation ;
+    rdfs:label "Putney Station" ;
+    tfl:servedByLine tfl:14 .
 
 tfl:PutneyBridgeStnGonvilleStreet a tfl:TfLStation ;
     rdfs:label "Putney Bridge Stn  / Gonville Street" ;
@@ -9733,10 +9714,6 @@ tfl:PutneyHeathGreenMan a tfl:TfLStation ;
 
 tfl:PutneyHillGreenMan a tfl:TfLStation ;
     rdfs:label "Putney Hill / Green Man" ;
-    tfl:servedByLine tfl:14 .
-
-tfl:PutneyStation a tfl:TfLStation ;
-    rdfs:label "Putney Station" ;
     tfl:servedByLine tfl:14 .
 
 tfl:PymmesPark a tfl:TfLStation ;
@@ -9795,7 +9772,11 @@ tfl:QueensRoad a tfl:TfLStation ;
         tfl:W15,
         tfl:W19 .
 
-tfl:QueensRoadPeckhamRailStation a tfl:TfLStation ;
+tfl:QueensRoadPeckham a tfl:TfLStation ;
+    rdfs:label "Queen's Road Peckham Station" ;
+    tfl:servedByLine tfl:136 .
+
+tfl:QueensRoadPeckhamRail a tfl:TfLStation ;
     rdfs:label "Queens Road Peckham Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -9804,26 +9785,22 @@ tfl:QueensRoadPeckhamRailStation a tfl:TfLStation ;
     tfl:hasFacility tfl:Toilets ;
     tfl:servedByLine tfl:Windrush .
 
-tfl:QueensRoadPeckhamStation a tfl:TfLStation ;
-    rdfs:label "Queen's Road Peckham Station" ;
-    tfl:servedByLine tfl:136 .
-
 tfl:QueensWalk a tfl:TfLStation ;
     rdfs:label "Queens Walk" ;
     tfl:servedByLine tfl:114 .
 
-tfl:QueensburyCircle a tfl:TfLStation ;
-    rdfs:label "Queensbury Circle" ;
-    tfl:servedByLine tfl:114 .
-
-tfl:QueensburyStation a tfl:TfLStation ;
+tfl:Queensbury a tfl:TfLStation ;
     rdfs:label "Queensbury Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Wifi ;
     tfl:hasFacility tfl:CarPark ;
     tfl:servedByLine tfl:114 .
 
-tfl:QueenstownRoadStation a tfl:TfLStation ;
+tfl:QueensburyCircle a tfl:TfLStation ;
+    rdfs:label "Queensbury Circle" ;
+    tfl:servedByLine tfl:114 .
+
+tfl:QueenstownRoad a tfl:TfLStation ;
     rdfs:label "Queenstown Road Station" ;
     tfl:servedByLine tfl:137 .
 
@@ -9905,9 +9882,13 @@ tfl:RadipoleRoad a tfl:TfLStation ;
     rdfs:label "Radipole Road" ;
     tfl:servedByLine tfl:14 .
 
-tfl:RailwayStation a tfl:TfLStation ;
+tfl:Railway a tfl:TfLStation ;
     rdfs:label "Railway Station" ;
     tfl:servedByLine tfl:W14 .
+
+tfl:Rainham a tfl:TfLStation ;
+    rdfs:label "Rainham Station" ;
+    tfl:servedByLine tfl:103 .
 
 tfl:RainhamInterchange a tfl:TfLStation ;
     rdfs:label "Rainham Interchange" ;
@@ -9915,10 +9896,6 @@ tfl:RainhamInterchange a tfl:TfLStation ;
 
 tfl:RainhamRoadSouthDagenhamRoad a tfl:TfLStation ;
     rdfs:label "Rainham Road South / Dagenham Road" ;
-    tfl:servedByLine tfl:103 .
-
-tfl:RainhamStation a tfl:TfLStation ;
-    rdfs:label "Rainham Station" ;
     tfl:servedByLine tfl:103 .
 
 tfl:RainhamWarMemorial a tfl:TfLStation ;
@@ -9942,11 +9919,8 @@ tfl:RavenRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:W14 .
 
 tfl:RavenscourtPark a tfl:TfLStation ;
-    rdfs:label "Ravenscourt Park" ;
-    tfl:servedByLine tfl:110 .
-
-tfl:RavenscourtParkStation a tfl:TfLStation ;
-    rdfs:label "Ravenscourt Park Station" ;
+    rdfs:label "Ravenscourt Park",
+        "Ravenscourt Park Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom,
         tfl:Wifi ;
@@ -9960,12 +9934,12 @@ tfl:RaveyStreet a tfl:TfLStation ;
     rdfs:label "Ravey Street" ;
     tfl:servedByLine tfl:135 .
 
-tfl:RaynesParkMethodistChurch a tfl:TfLStation ;
-    rdfs:label "Raynes Park Methodist Church" ;
+tfl:RaynesPark a tfl:TfLStation ;
+    rdfs:label "Raynes Park Station" ;
     tfl:servedByLine tfl:131 .
 
-tfl:RaynesParkStation a tfl:TfLStation ;
-    rdfs:label "Raynes Park Station" ;
+tfl:RaynesParkMethodistChurch a tfl:TfLStation ;
+    rdfs:label "Raynes Park Methodist Church" ;
     tfl:servedByLine tfl:131 .
 
 tfl:RedbridgeCentralLibrary a tfl:TfLStation ;
@@ -10004,19 +9978,19 @@ tfl:ReverdyRoad a tfl:TfLStation ;
     rdfs:label "Reverdy Road" ;
     tfl:servedByLine tfl:1 .
 
-tfl:RichmondBusStation a tfl:TfLStation ;
+tfl:Richmond a tfl:TfLStation ;
+    rdfs:label "Richmond Station" ;
+    tfl:hasAccessibilityFeature tfl:BoardingRamps,
+        tfl:Wifi ;
+    tfl:hasFacility tfl:Toilets ;
+    tfl:servedByLine tfl:110 .
+
+tfl:RichmondBus a tfl:TfLStation ;
     rdfs:label "Richmond Bus Station" ;
     tfl:servedByLine tfl:110 .
 
 tfl:RichmondCircus a tfl:TfLStation ;
     rdfs:label "Richmond Circus" ;
-    tfl:servedByLine tfl:110 .
-
-tfl:RichmondStation a tfl:TfLStation ;
-    rdfs:label "Richmond Station" ;
-    tfl:hasAccessibilityFeature tfl:BoardingRamps,
-        tfl:Wifi ;
-    tfl:hasFacility tfl:Toilets ;
     tfl:servedByLine tfl:110 .
 
 tfl:RidgeRoad a tfl:TfLStation ;
@@ -10055,7 +10029,7 @@ tfl:RockStreet a tfl:TfLStation ;
     rdfs:label "Rock Street" ;
     tfl:servedByLine tfl:106 .
 
-tfl:RockwareAvenueGreenfordStation a tfl:TfLStation ;
+tfl:RockwareAvenueGreenford a tfl:TfLStation ;
     rdfs:label "Rockware Avenue / Greenford Station" ;
     tfl:servedByLine tfl:105 .
 
@@ -10079,6 +10053,11 @@ tfl:RomValleyWay a tfl:TfLStation ;
     rdfs:label "Rom Valley Way" ;
     tfl:servedByLine tfl:103 .
 
+tfl:Romford a tfl:TfLStation ;
+    rdfs:label "Romford Station" ;
+    tfl:servedByLine tfl:103,
+        tfl:128 .
+
 tfl:RomfordBusGarage a tfl:TfLStation ;
     rdfs:label "Romford Bus Garage" ;
     tfl:servedByLine tfl:103 .
@@ -10092,11 +10071,6 @@ tfl:RomfordRoad a tfl:TfLStation ;
     rdfs:label "Romford Road" ;
     tfl:servedByLine tfl:101,
         tfl:W19 .
-
-tfl:RomfordStation a tfl:TfLStation ;
-    rdfs:label "Romford Station" ;
-    tfl:servedByLine tfl:103,
-        tfl:128 .
 
 tfl:RonLeightonWay a tfl:TfLStation ;
     rdfs:label "Ron Leighton Way" ;
@@ -10131,11 +10105,11 @@ tfl:RotherhitheNewRdSthBermondseyStn a tfl:TfLStation ;
     rdfs:label "Rotherhithe New Rd / Sth Bermondsey Stn" ;
     tfl:servedByLine tfl:1 .
 
-tfl:RotherhithePoliceStation a tfl:TfLStation ;
+tfl:RotherhithePolice a tfl:TfLStation ;
     rdfs:label "Rotherhithe Police Station" ;
     tfl:servedByLine tfl:1 .
 
-tfl:RotherhitheRailStation a tfl:TfLStation ;
+tfl:RotherhitheRail a tfl:TfLStation ;
     rdfs:label "Rotherhithe Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Night ;
     tfl:servedByLine tfl:Windrush .
@@ -10210,7 +10184,15 @@ tfl:RuckholtRoadBridge a tfl:TfLStation ;
     rdfs:label "Ruckholt Road Bridge" ;
     tfl:servedByLine tfl:W15 .
 
-tfl:RuislipManorStation a tfl:TfLStation ;
+tfl:Ruislip a tfl:TfLStation ;
+    rdfs:label "Ruislip Station" ;
+    tfl:hasAccessibilityFeature tfl:WaitingRoom,
+        tfl:Wifi ;
+    tfl:hasFacility tfl:CarPark,
+        tfl:Toilets ;
+    tfl:servedByLine tfl:114 .
+
+tfl:RuislipManor a tfl:TfLStation ;
     rdfs:label "Ruislip Manor Station" ;
     tfl:hasAccessibilityFeature tfl:WaitingRoom,
         tfl:Wifi ;
@@ -10224,14 +10206,6 @@ tfl:RuislipRoad a tfl:TfLStation ;
 tfl:RuislipRoadEast a tfl:TfLStation ;
     rdfs:label "Ruislip Road East" ;
     tfl:servedByLine tfl:105 .
-
-tfl:RuislipStation a tfl:TfLStation ;
-    rdfs:label "Ruislip Station" ;
-    tfl:hasAccessibilityFeature tfl:WaitingRoom,
-        tfl:Wifi ;
-    tfl:hasFacility tfl:CarPark,
-        tfl:Toilets ;
-    tfl:servedByLine tfl:114 .
 
 tfl:RumboldRoad a tfl:TfLStation ;
     rdfs:label "Rumbold Road" ;
@@ -10264,14 +10238,11 @@ tfl:RussellRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:W14 .
 
 tfl:RussellSquare a tfl:TfLStation ;
-    rdfs:label "Russell Square" ;
+    rdfs:label "Russell Square",
+        "Russell Square Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
-    tfl:servedByLine tfl:14 .
-
-tfl:RussellSquareStation a tfl:TfLStation ;
-    rdfs:label "Russell Square Station" ;
-    tfl:hasAccessibilityFeature tfl:Wifi ;
-    tfl:servedByLine tfl:1 .
+    tfl:servedByLine tfl:1,
+        tfl:14 .
 
 tfl:RutherfordCourt a tfl:TfLStation ;
     rdfs:label "Rutherford Court" ;
@@ -10425,15 +10396,15 @@ tfl:SeymourRoad a tfl:TfLStation ;
     rdfs:label "Seymour Road" ;
     tfl:servedByLine tfl:127 .
 
-tfl:ShadwellRailStation a tfl:TfLStation ;
-    rdfs:label "Shadwell Rail Station" ;
-    tfl:hasAccessibilityFeature tfl:Night ;
-    tfl:servedByLine tfl:Windrush .
-
-tfl:ShadwellStation a tfl:TfLStation ;
+tfl:Shadwell a tfl:TfLStation ;
     rdfs:label "Shadwell Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:100 .
+
+tfl:ShadwellRail a tfl:TfLStation ;
+    rdfs:label "Shadwell Rail Station" ;
+    tfl:hasAccessibilityFeature tfl:Night ;
+    tfl:servedByLine tfl:Windrush .
 
 tfl:ShaftesburyAvenue a tfl:TfLStation ;
     rdfs:label "Shaftesbury Avenue" ;
@@ -10523,19 +10494,19 @@ tfl:ShootersHillRoadKidbrookeParkRoad a tfl:TfLStation ;
     rdfs:label "Shooters Hill Road / Kidbrooke Park Road" ;
     tfl:servedByLine tfl:132 .
 
-tfl:ShoreditchFireStation a tfl:TfLStation ;
+tfl:ShoreditchFire a tfl:TfLStation ;
     rdfs:label "Shoreditch Fire Station" ;
     tfl:servedByLine tfl:135 .
 
-tfl:ShoreditchHighStreetRailStation a tfl:TfLStation ;
+tfl:ShoreditchHighStreet a tfl:TfLStation ;
+    rdfs:label "Shoreditch High Street Station" ;
+    tfl:servedByLine tfl:135 .
+
+tfl:ShoreditchHighStreetRail a tfl:TfLStation ;
     rdfs:label "Shoreditch High Street Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Accessvialift,
         tfl:Night ;
     tfl:servedByLine tfl:Windrush .
-
-tfl:ShoreditchHighStreetStation a tfl:TfLStation ;
-    rdfs:label "Shoreditch High Street Station" ;
-    tfl:servedByLine tfl:135 .
 
 tfl:ShortLane a tfl:TfLStation ;
     rdfs:label "Short Lane" ;
@@ -10603,12 +10574,8 @@ tfl:Sl9 a tfl:BusRoute ;
     rdfs:label "SL9" .
 
 tfl:SloaneSquare a tfl:TfLStation ;
-    rdfs:label "Sloane Square" ;
-    tfl:hasAccessibilityFeature tfl:Wifi ;
-    tfl:servedByLine tfl:137 .
-
-tfl:SloaneSquareStation a tfl:TfLStation ;
-    rdfs:label "Sloane Square Station" ;
+    rdfs:label "Sloane Square",
+        "Sloane Square Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:11,
         tfl:137 .
@@ -10618,11 +10585,11 @@ tfl:SloaneSquareStnLowerSloaneSt a tfl:TfLStation ;
     tfl:servedByLine tfl:11,
         tfl:137 .
 
-tfl:SloaneStreetKnightsbridgeStation a tfl:TfLStation ;
+tfl:SloaneStreetKnightsbridge a tfl:TfLStation ;
     rdfs:label "Sloane Street / Knightsbridge Station" ;
     tfl:servedByLine tfl:137 .
 
-tfl:SloaneStreetSloaneSquareStation a tfl:TfLStation ;
+tfl:SloaneStreetSloaneSquare a tfl:TfLStation ;
     rdfs:label "Sloane Street / Sloane Square Station" ;
     tfl:servedByLine tfl:137 .
 
@@ -10630,7 +10597,7 @@ tfl:SmithamBottomLane a tfl:TfLStation ;
     rdfs:label "Smitham Bottom Lane" ;
     tfl:servedByLine tfl:127 .
 
-tfl:SnaresbrookStation a tfl:TfLStation ;
+tfl:Snaresbrook a tfl:TfLStation ;
     rdfs:label "Snaresbrook Station" ;
     tfl:hasAccessibilityFeature tfl:WaitingRoom,
         tfl:Wifi ;
@@ -10661,7 +10628,7 @@ tfl:SouthGrove a tfl:TfLStation ;
     tfl:servedByLine tfl:143,
         tfl:W19 .
 
-tfl:SouthHarrowStation a tfl:TfLStation ;
+tfl:SouthHarrow a tfl:TfLStation ;
     rdfs:label "South Harrow Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:EuroCashMachines,
@@ -10672,7 +10639,7 @@ tfl:SouthHarrowStation a tfl:TfLStation ;
     tfl:servedByLine tfl:114,
         tfl:140 .
 
-tfl:SouthKensingtonStation a tfl:TfLStation ;
+tfl:SouthKensington a tfl:TfLStation ;
     rdfs:label "South Kensington Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -10690,7 +10657,7 @@ tfl:SouthParkDrive a tfl:TfLStation ;
     rdfs:label "South Park Drive" ;
     tfl:servedByLine tfl:128 .
 
-tfl:SouthRuislipStation a tfl:TfLStation ;
+tfl:SouthRuislip a tfl:TfLStation ;
     rdfs:label "South Ruislip Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:hasFacility tfl:CarPark ;
@@ -10700,12 +10667,12 @@ tfl:SouthStreet a tfl:TfLStation ;
     rdfs:label "South Street" ;
     tfl:servedByLine tfl:117 .
 
-tfl:SouthWimbledonStation a tfl:TfLStation ;
+tfl:SouthWimbledon a tfl:TfLStation ;
     rdfs:label "South Wimbledon Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:131 .
 
-tfl:SouthWoodfordStation a tfl:TfLStation ;
+tfl:SouthWoodford a tfl:TfLStation ;
     rdfs:label "South Woodford Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:WaitingRoom,
@@ -10713,13 +10680,13 @@ tfl:SouthWoodfordStation a tfl:TfLStation ;
     tfl:hasFacility tfl:CarPark ;
     tfl:servedByLine tfl:W14 .
 
-tfl:SouthallBroadway a tfl:TfLStation ;
-    rdfs:label "Southall Broadway" ;
+tfl:Southall a tfl:TfLStation ;
+    rdfs:label "Southall Station" ;
     tfl:servedByLine tfl:105,
         tfl:120 .
 
-tfl:SouthallStation a tfl:TfLStation ;
-    rdfs:label "Southall Station" ;
+tfl:SouthallBroadway a tfl:TfLStation ;
+    rdfs:label "Southall Broadway" ;
     tfl:servedByLine tfl:105,
         tfl:120 .
 
@@ -10768,6 +10735,14 @@ tfl:Southfields a tfl:TfLStation ;
     rdfs:label "Southfields" ;
     tfl:servedByLine tfl:113 .
 
+tfl:Southgate a tfl:TfLStation ;
+    rdfs:label "Southgate Station" ;
+    tfl:hasAccessibilityFeature tfl:Wifi ;
+    tfl:servedByLine tfl:121,
+        tfl:125,
+        tfl:W6,
+        tfl:W9 .
+
 tfl:SouthgateAsda a tfl:TfLStation ;
     rdfs:label "Southgate Asda" ;
     tfl:servedByLine tfl:125 .
@@ -10780,14 +10755,6 @@ tfl:SouthgateCollege a tfl:TfLStation ;
 tfl:SouthgateRoadArdleighRoad a tfl:TfLStation ;
     rdfs:label "Southgate Road / Ardleigh Road" ;
     tfl:servedByLine tfl:141 .
-
-tfl:SouthgateStation a tfl:TfLStation ;
-    rdfs:label "Southgate Station" ;
-    tfl:hasAccessibilityFeature tfl:Wifi ;
-    tfl:servedByLine tfl:121,
-        tfl:125,
-        tfl:W6,
-        tfl:W9 .
 
 tfl:SouthwarkParkRoadStJamessRoad a tfl:TfLStation ;
     rdfs:label "Southwark Park Road / St James's Road" ;
@@ -10973,7 +10940,7 @@ tfl:StJamesRoad a tfl:TfLStation ;
     rdfs:label "St James Road" ;
     tfl:servedByLine tfl:127 .
 
-tfl:StJamessParkStation a tfl:TfLStation ;
+tfl:StJamessPark a tfl:TfLStation ;
     rdfs:label "St James's Park Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:EuroCashMachines,
@@ -10997,17 +10964,17 @@ tfl:StJohnsRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:123,
         tfl:142 .
 
-tfl:StJohnsWoodRoadLordsCricketGrd a tfl:TfLStation ;
-    rdfs:label "St John's Wood Road / Lord's Cricket Grd" ;
-    tfl:servedByLine tfl:139 .
-
-tfl:StJohnsWoodStation a tfl:TfLStation ;
+tfl:StJohnsWood a tfl:TfLStation ;
     rdfs:label "St John's Wood Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
     tfl:hasFacility tfl:Toilets ;
     tfl:servedByLine tfl:113,
         tfl:13 .
+
+tfl:StJohnsWoodRoadLordsCricketGrd a tfl:TfLStation ;
+    rdfs:label "St John's Wood Road / Lord's Cricket Grd" ;
+    tfl:servedByLine tfl:139 .
 
 tfl:StJosephsChurch a tfl:TfLStation ;
     rdfs:label "St Joseph's Church" ;
@@ -11033,6 +11000,11 @@ tfl:StLeonardsChurch a tfl:TfLStation ;
         tfl:120,
         tfl:133 .
 
+tfl:StMargarets a tfl:TfLStation ;
+    rdfs:label "St Margaret's Station",
+        "St Margarets Station" ;
+    tfl:servedByLine tfl:110 .
+
 tfl:StMargaretsChurch a tfl:TfLStation ;
     rdfs:label "St Margarets Church" ;
     tfl:servedByLine tfl:142 .
@@ -11041,16 +11013,16 @@ tfl:StMargaretsChurchBrandramRoad a tfl:TfLStation ;
     rdfs:label "St Margaret's Church / Brandram Road" ;
     tfl:servedByLine tfl:108 .
 
-tfl:StMargaretsStation a tfl:TfLStation ;
-    rdfs:label "St Margaret's Station",
-        "St Margarets Station" ;
-    tfl:servedByLine tfl:110 .
-
 tfl:StMarksChurch a tfl:TfLStation ;
     rdfs:label "St Mark's Church" ;
     tfl:servedByLine tfl:119,
         tfl:133,
         tfl:138 .
+
+tfl:StMarysAndStMichaelsChurch a tfl:TfLStation ;
+    rdfs:label "St Mary's & St Michael's Church" ;
+    tfl:servedByLine tfl:115,
+        tfl:135 .
 
 tfl:StMarysAvenue a tfl:TfLStation ;
     rdfs:label "St Mary's Avenue" ;
@@ -11069,14 +11041,16 @@ tfl:StMarysRoad a tfl:TfLStation ;
     rdfs:label "St Mary's Road" ;
     tfl:servedByLine tfl:142 .
 
-tfl:StMarysStMichaelsChurch a tfl:TfLStation ;
-    rdfs:label "St Mary's & St Michael's Church" ;
-    tfl:servedByLine tfl:115,
-        tfl:135 .
-
 tfl:StMichaelsSchool a tfl:TfLStation ;
     rdfs:label "St Michaels School" ;
     tfl:servedByLine tfl:143 .
+
+tfl:StPauls a tfl:TfLStation ;
+    rdfs:label "St Paul's Station" ;
+    tfl:hasAccessibilityFeature tfl:EuroCashMachines,
+        tfl:Wifi ;
+    tfl:servedByLine tfl:100,
+        tfl:133 .
 
 tfl:StPaulsChurch a tfl:TfLStation ;
     rdfs:label "St Paul's Church" ;
@@ -11085,13 +11059,6 @@ tfl:StPaulsChurch a tfl:TfLStation ;
 tfl:StPaulsRise a tfl:TfLStation ;
     rdfs:label "St Pauls Rise" ;
     tfl:servedByLine tfl:W4 .
-
-tfl:StPaulsStation a tfl:TfLStation ;
-    rdfs:label "St Paul's Station" ;
-    tfl:hasAccessibilityFeature tfl:EuroCashMachines,
-        tfl:Wifi ;
-    tfl:servedByLine tfl:100,
-        tfl:133 .
 
 tfl:StPetersClose a tfl:TfLStation ;
     rdfs:label "St Peter's Close" ;
@@ -11131,15 +11098,19 @@ tfl:StagLane a tfl:TfLStation ;
     rdfs:label "Stag Lane" ;
     tfl:servedByLine tfl:142 .
 
-tfl:StainesBusStation a tfl:TfLStation ;
+tfl:Staines a tfl:TfLStation ;
+    rdfs:label "Staines Station" ;
+    tfl:servedByLine tfl:117 .
+
+tfl:StainesBus a tfl:TfLStation ;
     rdfs:label "Staines Bus Station" ;
     tfl:servedByLine tfl:117 .
 
-tfl:StainesPoliceStation a tfl:TfLStation ;
+tfl:StainesPolice a tfl:TfLStation ;
     rdfs:label "Staines Police Station" ;
     tfl:servedByLine tfl:117 .
 
-tfl:StainesRailStation a tfl:TfLStation ;
+tfl:StainesRail a tfl:TfLStation ;
     rdfs:label "Staines Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:CashMachines,
@@ -11151,7 +11122,7 @@ tfl:StainesRailStation a tfl:TfLStation ;
     tfl:hasFacility tfl:Toilets ;
     tfl:servedByLine tfl:117 .
 
-tfl:StainesRailwayStation a tfl:TfLStation ;
+tfl:StainesRailway a tfl:TfLStation ;
     rdfs:label "Staines Railway Station" ;
     tfl:servedByLine tfl:117 .
 
@@ -11159,10 +11130,6 @@ tfl:StainesRoadMartindaleRoad a tfl:TfLStation ;
     rdfs:label "Staines Road / Martindale Road" ;
     tfl:servedByLine tfl:116,
         tfl:117 .
-
-tfl:StainesStation a tfl:TfLStation ;
-    rdfs:label "Staines Station" ;
-    tfl:servedByLine tfl:117 .
 
 tfl:StamfordBrookBusGarage a tfl:TfLStation ;
     rdfs:label "Stamford Brook Bus Garage" ;
@@ -11181,7 +11148,7 @@ tfl:StanleyRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:143,
         tfl:W4 .
 
-tfl:StanmoreStation a tfl:TfLStation ;
+tfl:Stanmore a tfl:TfLStation ;
     rdfs:label "Stanmore Station" ;
     tfl:hasAccessibilityFeature tfl:AsdaClickAndCollect,
         tfl:BoardingRamps,
@@ -11273,6 +11240,10 @@ tfl:StockholmWay a tfl:TfLStation ;
     rdfs:label "Stockholm Way" ;
     tfl:servedByLine tfl:100 .
 
+tfl:StokeNewington a tfl:TfLStation ;
+    rdfs:label "Stoke Newington Station" ;
+    tfl:servedByLine tfl:106 .
+
 tfl:StokeNewingtonChurchStreet a tfl:TfLStation ;
     rdfs:label "Stoke Newington Church Street" ;
     tfl:servedByLine tfl:106,
@@ -11286,15 +11257,11 @@ tfl:StokeNewingtonHighStBrookeRoad a tfl:TfLStation ;
     rdfs:label "Stoke Newington High St / Brooke Road" ;
     tfl:servedByLine tfl:106 .
 
-tfl:StokeNewingtonStation a tfl:TfLStation ;
-    rdfs:label "Stoke Newington Station" ;
-    tfl:servedByLine tfl:106 .
-
 tfl:StondonParkHonorOakPark a tfl:TfLStation ;
     rdfs:label "Stondon Park / Honor Oak Park" ;
     tfl:servedByLine tfl:122 .
 
-tfl:StonebridgeParkStation a tfl:TfLStation ;
+tfl:StonebridgePark a tfl:TfLStation ;
     rdfs:label "Stonebridge Park Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Wifi ;
@@ -11312,15 +11279,15 @@ tfl:StratfordBroadway a tfl:TfLStation ;
     rdfs:label "Stratford Broadway" ;
     tfl:servedByLine tfl:104 .
 
-tfl:StratfordBusStation a tfl:TfLStation ;
+tfl:StratfordBus a tfl:TfLStation ;
     rdfs:label "Stratford Bus Station" ;
     tfl:servedByLine tfl:104 .
 
-tfl:StratfordCityBusStation a tfl:TfLStation ;
+tfl:StratfordCityBus a tfl:TfLStation ;
     rdfs:label "Stratford City Bus Station" ;
     tfl:servedByLine tfl:108 .
 
-tfl:StratfordInternationalStation a tfl:TfLStation ;
+tfl:StratfordInternational a tfl:TfLStation ;
     rdfs:label "Stratford International Station" ;
     tfl:servedByLine tfl:108 .
 
@@ -11339,6 +11306,11 @@ tfl:StrathedenRoadShootersHillRoad a tfl:TfLStation ;
 tfl:StrawberryLane a tfl:TfLStation ;
     rdfs:label "Strawberry Lane" ;
     tfl:servedByLine tfl:127 .
+
+tfl:Streatham a tfl:TfLStation ;
+    rdfs:label "Streatham Station" ;
+    tfl:servedByLine tfl:109,
+        tfl:133 .
 
 tfl:StreathamCommonGreyhoundLane a tfl:TfLStation ;
     rdfs:label "Streatham Common / Greyhound Lane" ;
@@ -11362,11 +11334,6 @@ tfl:StreathamHillTelfordAvenue a tfl:TfLStation ;
 tfl:StreathamPlace a tfl:TfLStation ;
     rdfs:label "Streatham Place" ;
     tfl:servedByLine tfl:137 .
-
-tfl:StreathamStation a tfl:TfLStation ;
-    rdfs:label "Streatham Station" ;
-    tfl:servedByLine tfl:109,
-        tfl:133 .
 
 tfl:StreathamUnitedReformedChurch a tfl:TfLStation ;
     rdfs:label "Streatham United Reformed Church" ;
@@ -11395,17 +11362,17 @@ tfl:SunnycroftRoad a tfl:TfLStation ;
     rdfs:label "Sunnycroft Road" ;
     tfl:servedByLine tfl:105 .
 
-tfl:SurreyQuaysRailStation a tfl:TfLStation ;
+tfl:SurreyQuays a tfl:TfLStation ;
+    rdfs:label "Surrey Quays Station" ;
+    tfl:servedByLine tfl:1 .
+
+tfl:SurreyQuaysRail a tfl:TfLStation ;
     rdfs:label "Surrey Quays Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Night ;
     tfl:servedByLine tfl:Windrush .
 
 tfl:SurreyQuaysShoppingCentre a tfl:TfLStation ;
     rdfs:label "Surrey Quays Shopping Centre" ;
-    tfl:servedByLine tfl:1 .
-
-tfl:SurreyQuaysStation a tfl:TfLStation ;
-    rdfs:label "Surrey Quays Station" ;
     tfl:servedByLine tfl:1 .
 
 tfl:SussexRoad a tfl:TfLStation ;
@@ -11429,6 +11396,10 @@ tfl:SwallowStreet a tfl:TfLStation ;
     rdfs:label "Swallow Street" ;
     tfl:servedByLine tfl:129 .
 
+tfl:SwanAndSugarLoaf a tfl:TfLStation ;
+    rdfs:label "Swan & Sugar Loaf" ;
+    tfl:servedByLine tfl:119 .
+
 tfl:SwanClose a tfl:TfLStation ;
     rdfs:label "Swan Close" ;
     tfl:servedByLine tfl:111 .
@@ -11437,15 +11408,11 @@ tfl:SwanLane a tfl:TfLStation ;
     rdfs:label "Swan Lane" ;
     tfl:servedByLine tfl:125 .
 
-tfl:SwanSugarLoaf a tfl:TfLStation ;
-    rdfs:label "Swan & Sugar Loaf" ;
-    tfl:servedByLine tfl:119 .
-
 tfl:SwanageRoad a tfl:TfLStation ;
     rdfs:label "Swanage Road" ;
     tfl:servedByLine tfl:W16 .
 
-tfl:SwissCottageStation a tfl:TfLStation ;
+tfl:SwissCottage a tfl:TfLStation ;
     rdfs:label "Swiss Cottage Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -11472,11 +11439,11 @@ tfl:SydenhamHighSchool a tfl:TfLStation ;
     rdfs:label "Sydenham High School" ;
     tfl:servedByLine tfl:122 .
 
-tfl:SydenhamPoliceStation a tfl:TfLStation ;
+tfl:SydenhamPolice a tfl:TfLStation ;
     rdfs:label "Sydenham Police Station" ;
     tfl:servedByLine tfl:122 .
 
-tfl:SydenhamRailStation a tfl:TfLStation ;
+tfl:SydenhamRail a tfl:TfLStation ;
     rdfs:label "Sydenham Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -11860,7 +11827,7 @@ tfl:TollingtonPark a tfl:TfLStation ;
     tfl:servedByLine tfl:W3,
         tfl:W7 .
 
-tfl:TootingBroadwayStation a tfl:TfLStation ;
+tfl:TootingBroadway a tfl:TfLStation ;
     rdfs:label "Tooting Broadway Station" ;
     tfl:hasAccessibilityFeature tfl:EuroCashMachines,
         tfl:Wifi ;
@@ -11900,11 +11867,11 @@ tfl:TottenhamCemetery a tfl:TfLStation ;
     rdfs:label "Tottenham Cemetery" ;
     tfl:servedByLine tfl:W3 .
 
-tfl:TottenhamCourtRoadStation a tfl:TfLStation ;
+tfl:TottenhamCourtRoad a tfl:TfLStation ;
     rdfs:label "Tottenham Court Road Station" ;
     tfl:servedByLine tfl:14 .
 
-tfl:TottenhamHaleBusStation a tfl:TfLStation ;
+tfl:TottenhamHaleBus a tfl:TfLStation ;
     rdfs:label "Tottenham Hale Bus Station" ;
     tfl:servedByLine tfl:123,
         tfl:W4 .
@@ -11928,7 +11895,7 @@ tfl:TottenhamLaneYMCA a tfl:TfLStation ;
     tfl:servedByLine tfl:W3,
         tfl:W5 .
 
-tfl:TottenhamPoliceStation a tfl:TfLStation ;
+tfl:TottenhamPolice a tfl:TfLStation ;
     rdfs:label "Tottenham Police Station" ;
     tfl:servedByLine tfl:123,
         tfl:W4 .
@@ -11937,11 +11904,11 @@ tfl:TottenhamTownHall a tfl:TfLStation ;
     rdfs:label "Tottenham Town Hall" ;
     tfl:servedByLine tfl:W4 .
 
-tfl:TowerGatewayStation a tfl:TfLStation ;
+tfl:TowerGateway a tfl:TfLStation ;
     rdfs:label "Tower Gateway Station" ;
     tfl:servedByLine tfl:100 .
 
-tfl:TowerHillTowerGatewayStation a tfl:TfLStation ;
+tfl:TowerHillTowerGateway a tfl:TfLStation ;
     rdfs:label "Tower Hill / Tower Gateway Station" ;
     tfl:servedByLine tfl:100 .
 
@@ -12023,12 +11990,12 @@ tfl:TudorRoad a tfl:TfLStation ;
     rdfs:label "Tudor Road" ;
     tfl:servedByLine tfl:104 .
 
-tfl:TufnellParkStation a tfl:TfLStation ;
+tfl:TufnellPark a tfl:TfLStation ;
     rdfs:label "Tufnell Park Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:134 .
 
-tfl:TurkeyStreetStation a tfl:TfLStation ;
+tfl:TurkeyStreet a tfl:TfLStation ;
     rdfs:label "Turkey Street Station" ;
     tfl:servedByLine tfl:121 .
 
@@ -12040,13 +12007,7 @@ tfl:TurnhamGreenChurch a tfl:TfLStation ;
     rdfs:label "Turnham Green Church" ;
     tfl:servedByLine tfl:110 .
 
-tfl:TurnpikeLaneBusStation a tfl:TfLStation ;
-    rdfs:label "Turnpike Lane Bus Station" ;
-    tfl:servedByLine tfl:121,
-        tfl:123,
-        tfl:144 .
-
-tfl:TurnpikeLaneStation a tfl:TfLStation ;
+tfl:TurnpikeLane a tfl:TfLStation ;
     rdfs:label "Turnpike Lane Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:121,
@@ -12054,6 +12015,12 @@ tfl:TurnpikeLaneStation a tfl:TfLStation ;
         tfl:141,
         tfl:144,
         tfl:W4 .
+
+tfl:TurnpikeLaneBus a tfl:TfLStation ;
+    rdfs:label "Turnpike Lane Bus Station" ;
+    tfl:servedByLine tfl:121,
+        tfl:123,
+        tfl:144 .
 
 tfl:TwickenhamRdWestMiddlesexHospital a tfl:TfLStation ;
     rdfs:label "Twickenham Rd / West Middlesex Hospital" ;
@@ -12079,7 +12046,7 @@ tfl:TyrawleyRoad a tfl:TfLStation ;
     rdfs:label "Tyrawley Road" ;
     tfl:servedByLine tfl:11 .
 
-tfl:TyrwhittRoadStJohnsStation a tfl:TfLStation ;
+tfl:TyrwhittRoadStJohns a tfl:TfLStation ;
     rdfs:label "Tyrwhitt Road / St Johns Station" ;
     tfl:servedByLine tfl:136 .
 
@@ -12185,6 +12152,11 @@ tfl:UptonLane a tfl:TfLStation ;
     rdfs:label "Upton Lane" ;
     tfl:servedByLine tfl:104 .
 
+tfl:UptonPark a tfl:TfLStation ;
+    rdfs:label "Upton Park Station" ;
+    tfl:hasAccessibilityFeature tfl:Wifi ;
+    tfl:servedByLine tfl:104 .
+
 tfl:UptonParkBoleyn a tfl:TfLStation ;
     rdfs:label "Upton Park / Boleyn" ;
     tfl:servedByLine tfl:104 .
@@ -12196,11 +12168,6 @@ tfl:UptonParkGreenStreet a tfl:TfLStation ;
 tfl:UptonParkPrioryRoad a tfl:TfLStation ;
     rdfs:label "Upton Park / Priory Road" ;
     tfl:servedByLine tfl:115 .
-
-tfl:UptonParkStation a tfl:TfLStation ;
-    rdfs:label "Upton Park Station" ;
-    tfl:hasAccessibilityFeature tfl:Wifi ;
-    tfl:servedByLine tfl:104 .
 
 tfl:UxbridgeRoad a tfl:TfLStation ;
     rdfs:label "Uxbridge Road" ;
@@ -12268,12 +12235,20 @@ tfl:VictoriaAndAlbertMuseum a tfl:TfLStation ;
     rdfs:label "Victoria and Albert Museum" ;
     tfl:servedByLine tfl:14 .
 
-tfl:VictoriaCoachStation a tfl:TfLStation ;
+tfl:VictoriaCoach a tfl:TfLStation ;
     rdfs:label "Victoria Coach Station" ;
     tfl:servedByLine tfl:11 .
 
-tfl:VictoriaLine a tfl:UndergroundLine ;
-    rdfs:label "Victoria" .
+tfl:VictoriaLine a tfl:TfLStation,
+        tfl:UndergroundLine ;
+    rdfs:label "Victoria",
+        "Victoria Station" ;
+    tfl:hasAccessibilityFeature tfl:BoardingRamps,
+        tfl:EuroCashMachines,
+        tfl:Wifi ;
+    tfl:hasFacility tfl:Toilets ;
+    tfl:servedByLine tfl:11,
+        tfl:13 .
 
 tfl:VictoriaPark a tfl:TfLStation ;
     rdfs:label "Victoria Park" ;
@@ -12291,15 +12266,6 @@ tfl:VictoriaRoad a tfl:TfLStation ;
 tfl:VictoriaRoadChurchStreet a tfl:TfLStation ;
     rdfs:label "Victoria Road / Church Street" ;
     tfl:servedByLine tfl:W6 .
-
-tfl:VictoriaStation a tfl:TfLStation ;
-    rdfs:label "Victoria Station" ;
-    tfl:hasAccessibilityFeature tfl:BoardingRamps,
-        tfl:EuroCashMachines,
-        tfl:Wifi ;
-    tfl:hasFacility tfl:Toilets ;
-    tfl:servedByLine tfl:11,
-        tfl:13 .
 
 tfl:VillaRoad a tfl:TfLStation ;
     rdfs:label "Villa Road" ;
@@ -12346,7 +12312,7 @@ tfl:WaldramParkRoad a tfl:TfLStation ;
     rdfs:label "Waldram Park Road" ;
     tfl:servedByLine tfl:122 .
 
-tfl:WallingtonStation a tfl:TfLStation ;
+tfl:Wallington a tfl:TfLStation ;
     rdfs:label "Wallington Station" ;
     tfl:servedByLine tfl:127 .
 
@@ -12382,12 +12348,12 @@ tfl:WalthamRoad a tfl:TfLStation ;
     rdfs:label "Waltham Road" ;
     tfl:servedByLine tfl:105 .
 
-tfl:WalthamstowBusStation a tfl:TfLStation ;
+tfl:WalthamstowBus a tfl:TfLStation ;
     rdfs:label "Walthamstow Bus Station" ;
     tfl:servedByLine tfl:W15,
         tfl:W19 .
 
-tfl:WalthamstowCentralStation a tfl:TfLStation ;
+tfl:WalthamstowCentral a tfl:TfLStation ;
     rdfs:label "Walthamstow Central Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:servedByLine tfl:W15,
@@ -12413,12 +12379,18 @@ tfl:WandsworthRoad a tfl:TfLStation ;
     rdfs:label "Wandsworth Road" ;
     tfl:servedByLine tfl:137 .
 
-tfl:WandsworthRoadRailStation a tfl:TfLStation ;
+tfl:WandsworthRoadRail a tfl:TfLStation ;
     rdfs:label "Wandsworth Road Rail Station" ;
     tfl:hasAccessibilityFeature tfl:HelpPoints ;
     tfl:servedByLine tfl:Windrush .
 
-tfl:WansteadHighStWansteadStation a tfl:TfLStation ;
+tfl:Wanstead a tfl:TfLStation ;
+    rdfs:label "Wanstead Station" ;
+    tfl:hasAccessibilityFeature tfl:Wifi ;
+    tfl:hasFacility tfl:CarPark ;
+    tfl:servedByLine tfl:101 .
+
+tfl:WansteadHighStWanstead a tfl:TfLStation ;
     rdfs:label "Wanstead High St / Wanstead Station" ;
     tfl:servedByLine tfl:101 .
 
@@ -12427,30 +12399,24 @@ tfl:WansteadParkAvenue a tfl:TfLStation ;
     tfl:servedByLine tfl:101,
         tfl:W19 .
 
-tfl:WansteadStation a tfl:TfLStation ;
-    rdfs:label "Wanstead Station" ;
-    tfl:hasAccessibilityFeature tfl:Wifi ;
-    tfl:hasFacility tfl:CarPark ;
-    tfl:servedByLine tfl:101 .
-
 tfl:WansteadStationGeorgeGreen a tfl:TfLStation ;
     rdfs:label "Wanstead Station  / George Green" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:hasFacility tfl:CarPark ;
     tfl:servedByLine tfl:101 .
 
+tfl:Wapping a tfl:TfLStation ;
+    rdfs:label "Wapping Station" ;
+    tfl:servedByLine tfl:100 .
+
 tfl:WappingHealthCentre a tfl:TfLStation ;
     rdfs:label "Wapping Health Centre" ;
     tfl:servedByLine tfl:100 .
 
-tfl:WappingRailStation a tfl:TfLStation ;
+tfl:WappingRail a tfl:TfLStation ;
     rdfs:label "Wapping Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Night ;
     tfl:servedByLine tfl:Windrush .
-
-tfl:WappingStation a tfl:TfLStation ;
-    rdfs:label "Wapping Station" ;
-    tfl:servedByLine tfl:100 .
 
 tfl:WappingWall a tfl:TfLStation ;
     rdfs:label "Wapping Wall" ;
@@ -12480,7 +12446,7 @@ tfl:WarrenRoad a tfl:TfLStation ;
     rdfs:label "Warren Road" ;
     tfl:servedByLine tfl:110 .
 
-tfl:WarrenStreetStation a tfl:TfLStation ;
+tfl:WarrenStreet a tfl:TfLStation ;
     rdfs:label "Warren Street Station" ;
     tfl:hasAccessibilityFeature tfl:Wifi ;
     tfl:hasFacility tfl:Toilets ;
@@ -12537,12 +12503,12 @@ tfl:WaterlooStationYorkRoad a tfl:TfLStation ;
     rdfs:label "Waterloo Station   / York Road" ;
     tfl:servedByLine tfl:11 .
 
-tfl:WaterlooUndergroundStation a tfl:TfLStation ;
+tfl:WaterlooUnderground a tfl:TfLStation ;
     rdfs:label "Waterloo Underground Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Night,
         tfl:Wifi ;
-    tfl:servedByLine tfl:WaterlooAndCityLine .
+    tfl:servedByLine tfl:WaterlooAndCity .
 
 tfl:WaterlowParkLauderdaleHouse a tfl:TfLStation ;
     rdfs:label "Waterlow Park / Lauderdale House" ;
@@ -12564,11 +12530,11 @@ tfl:WatfordFieldRoad a tfl:TfLStation ;
     rdfs:label "Watford Field Road" ;
     tfl:servedByLine tfl:142 .
 
-tfl:WatfordHighStreetStation a tfl:TfLStation ;
+tfl:WatfordHighStreet a tfl:TfLStation ;
     rdfs:label "Watford High Street Station" ;
     tfl:servedByLine tfl:142 .
 
-tfl:WatfordJunctionStation a tfl:TfLStation ;
+tfl:WatfordJunction a tfl:TfLStation ;
     rdfs:label "Watford Junction Station" ;
     tfl:servedByLine tfl:142 .
 
@@ -12680,11 +12646,15 @@ tfl:WestBarnesLevelCrossing a tfl:TfLStation ;
     rdfs:label "West Barnes Level Crossing" ;
     tfl:servedByLine tfl:131 .
 
-tfl:WestCroydonBusStation a tfl:TfLStation ;
+tfl:WestCroydon a tfl:TfLStation ;
+    rdfs:label "West Croydon Station" ;
+    tfl:servedByLine tfl:109 .
+
+tfl:WestCroydonBus a tfl:TfLStation ;
     rdfs:label "West Croydon Bus Station" ;
     tfl:servedByLine tfl:109 .
 
-tfl:WestCroydonRailStation a tfl:TfLStation ;
+tfl:WestCroydonRail a tfl:TfLStation ;
     rdfs:label "West Croydon Rail Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:HelpPoints,
@@ -12692,10 +12662,6 @@ tfl:WestCroydonRailStation a tfl:TfLStation ;
         tfl:WaitingRoom,
         tfl:Wifi ;
     tfl:servedByLine tfl:Windrush .
-
-tfl:WestCroydonStation a tfl:TfLStation ;
-    rdfs:label "West Croydon Station" ;
-    tfl:servedByLine tfl:109 .
 
 tfl:WestEndGreen a tfl:TfLStation ;
     rdfs:label "West End Green" ;
@@ -12716,14 +12682,14 @@ tfl:WestGrovePrimarySchool a tfl:TfLStation ;
     rdfs:label "West Grove Primary School" ;
     tfl:servedByLine tfl:121 .
 
-tfl:WestHampsteadPoliceStation a tfl:TfLStation ;
-    rdfs:label "West Hampstead Police Station" ;
-    tfl:servedByLine tfl:139 .
-
-tfl:WestHampsteadStation a tfl:TfLStation ;
+tfl:WestHampstead a tfl:TfLStation ;
     rdfs:label "West Hampstead Station" ;
     tfl:hasAccessibilityFeature tfl:WaitingRoom,
         tfl:Wifi ;
+    tfl:servedByLine tfl:139 .
+
+tfl:WestHampsteadPolice a tfl:TfLStation ;
+    rdfs:label "West Hampstead Police Station" ;
     tfl:servedByLine tfl:139 .
 
 tfl:WestHampsteadStnBroadhurstGdns a tfl:TfLStation ;
@@ -12750,7 +12716,7 @@ tfl:WestMiddlesexHospital a tfl:TfLStation ;
     rdfs:label "West Middlesex Hospital" ;
     tfl:servedByLine tfl:117 .
 
-tfl:WestSilvertownStation a tfl:TfLStation ;
+tfl:WestSilvertown a tfl:TfLStation ;
     rdfs:label "West Silvertown Station" ;
     tfl:servedByLine tfl:129 .
 
@@ -12786,7 +12752,7 @@ tfl:WestburyRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:112,
         tfl:W14 .
 
-tfl:WestcombeParkStation a tfl:TfLStation ;
+tfl:WestcombePark a tfl:TfLStation ;
     rdfs:label "Westcombe Park Station" ;
     tfl:servedByLine tfl:108 .
 
@@ -12803,12 +12769,12 @@ tfl:WesternRoad a tfl:TfLStation ;
     tfl:servedByLine tfl:103,
         tfl:128 .
 
-tfl:WestferryCircusCanaryWharfPier a tfl:TfLStation ;
-    rdfs:label "Westferry Circus / Canary Wharf Pier" ;
+tfl:Westferry a tfl:TfLStation ;
+    rdfs:label "Westferry Station" ;
     tfl:servedByLine tfl:135 .
 
-tfl:WestferryStation a tfl:TfLStation ;
-    rdfs:label "Westferry Station" ;
+tfl:WestferryCircusCanaryWharfPier a tfl:TfLStation ;
+    rdfs:label "Westferry Circus / Canary Wharf Pier" ;
     tfl:servedByLine tfl:135 .
 
 tfl:WesthorneAvenueBrisetRoad a tfl:TfLStation ;
@@ -12890,7 +12856,7 @@ tfl:WhippsCrossBusStand a tfl:TfLStation ;
         tfl:W15,
         tfl:W19 .
 
-tfl:WhippsCrossHospitalAE a tfl:TfLStation ;
+tfl:WhippsCrossHospitalAAndE a tfl:TfLStation ;
     rdfs:label "Whipps Cross Hospital / A & E" ;
     tfl:servedByLine tfl:W15,
         tfl:W19 .
@@ -12910,14 +12876,12 @@ tfl:WhitchurchLane a tfl:TfLStation ;
     tfl:servedByLine tfl:142 .
 
 tfl:WhiteHartLane a tfl:TfLStation ;
-    rdfs:label "White Hart Lane" ;
-    tfl:servedByLine tfl:144 .
+    rdfs:label "White Hart Lane",
+        "White Hart Lane Station" ;
+    tfl:servedByLine tfl:144,
+        tfl:W3 .
 
-tfl:WhiteHartLaneStation a tfl:TfLStation ;
-    rdfs:label "White Hart Lane Station" ;
-    tfl:servedByLine tfl:W3 .
-
-tfl:WhitechapelRailStation a tfl:TfLStation ;
+tfl:WhitechapelRail a tfl:TfLStation ;
     rdfs:label "Whitechapel Rail Station" ;
     tfl:hasAccessibilityFeature tfl:Bridge,
         tfl:Night ;
@@ -12949,16 +12913,16 @@ tfl:WhittingtonHospitalMagdalaAvenue a tfl:TfLStation ;
     tfl:servedByLine tfl:143,
         tfl:W5 .
 
-tfl:WhittonCornerHealthSocialCareCtr a tfl:TfLStation ;
+tfl:Whitton a tfl:TfLStation ;
+    rdfs:label "Whitton Station" ;
+    tfl:servedByLine tfl:110 .
+
+tfl:WhittonCornerHealthAndSocialCareCtr a tfl:TfLStation ;
     rdfs:label "Whitton Corner Health & Social Care Ctr" ;
     tfl:servedByLine tfl:110 .
 
 tfl:WhittonHighStreet a tfl:TfLStation ;
     rdfs:label "Whitton High Street" ;
-    tfl:servedByLine tfl:110 .
-
-tfl:WhittonStation a tfl:TfLStation ;
-    rdfs:label "Whitton Station" ;
     tfl:servedByLine tfl:110 .
 
 tfl:WickhamCourtRoad a tfl:TfLStation ;
@@ -13005,16 +12969,16 @@ tfl:WiltonStreet a tfl:TfLStation ;
     rdfs:label "Wilton Street" ;
     tfl:servedByLine tfl:13 .
 
-tfl:WimbledonBusStation a tfl:TfLStation ;
-    rdfs:label "Wimbledon Bus Station" ;
-    tfl:servedByLine tfl:131 .
-
-tfl:WimbledonStation a tfl:TfLStation ;
+tfl:Wimbledon a tfl:TfLStation ;
     rdfs:label "Wimbledon Station" ;
     tfl:hasAccessibilityFeature tfl:BoardingRamps,
         tfl:Bridge,
         tfl:Wifi ;
     tfl:hasFacility tfl:CarPark ;
+    tfl:servedByLine tfl:131 .
+
+tfl:WimbledonBus a tfl:TfLStation ;
+    rdfs:label "Wimbledon Bus Station" ;
     tfl:servedByLine tfl:131 .
 
 tfl:WimbledonTheatre a tfl:TfLStation ;
@@ -13070,6 +13034,16 @@ tfl:WoodEndLane a tfl:TfLStation ;
     rdfs:label "Wood End Lane" ;
     tfl:servedByLine tfl:140 .
 
+tfl:WoodGreen a tfl:TfLStation ;
+    rdfs:label "Wood Green Station" ;
+    tfl:hasAccessibilityFeature tfl:Wifi ;
+    tfl:servedByLine tfl:121,
+        tfl:123,
+        tfl:141,
+        tfl:144,
+        tfl:W3,
+        tfl:W4 .
+
 tfl:WoodGreenBusGarage a tfl:TfLStation ;
     rdfs:label "Wood Green Bus Garage" ;
     tfl:servedByLine tfl:W4 .
@@ -13090,34 +13064,22 @@ tfl:WoodGreenShoppingCity a tfl:TfLStation ;
         tfl:144,
         tfl:W4 .
 
-tfl:WoodGreenStation a tfl:TfLStation ;
-    rdfs:label "Wood Green Station" ;
-    tfl:hasAccessibilityFeature tfl:Wifi ;
-    tfl:servedByLine tfl:121,
-        tfl:123,
-        tfl:141,
-        tfl:144,
-        tfl:W3,
-        tfl:W4 .
-
 tfl:WoodGreenStationRiverParkRoad a tfl:TfLStation ;
     rdfs:label "Wood Green Station / River Park Road" ;
     tfl:servedByLine tfl:W3 .
 
-tfl:WoodLaneHighgateStation a tfl:TfLStation ;
+tfl:WoodLaneHighgate a tfl:TfLStation ;
     rdfs:label "Wood Lane / Highgate Station" ;
     tfl:servedByLine tfl:134 .
 
 tfl:WoodStreet a tfl:TfLStation ;
-    rdfs:label "Wood Street" ;
-    tfl:servedByLine tfl:123 .
+    rdfs:label "Wood Street",
+        "Wood Street Station" ;
+    tfl:servedByLine tfl:123,
+        tfl:W16 .
 
 tfl:WoodStreetMarket a tfl:TfLStation ;
     rdfs:label "Wood Street Market" ;
-    tfl:servedByLine tfl:W16 .
-
-tfl:WoodStreetStation a tfl:TfLStation ;
-    rdfs:label "Wood Street Station" ;
     tfl:servedByLine tfl:W16 .
 
 tfl:WoodberryGrove a tfl:TfLStation ;
@@ -13161,6 +13123,16 @@ tfl:WoodfieldWay a tfl:TfLStation ;
     rdfs:label "Woodfield Way" ;
     tfl:servedByLine tfl:102 .
 
+tfl:Woodford a tfl:TfLStation ;
+    rdfs:label "Woodford Station" ;
+    tfl:hasAccessibilityFeature tfl:BoardingRamps,
+        tfl:Bridge,
+        tfl:EuroCashMachines,
+        tfl:WaitingRoom,
+        tfl:Wifi ;
+    tfl:hasFacility tfl:CarPark ;
+    tfl:servedByLine tfl:W14 .
+
 tfl:WoodfordBridgeRoad a tfl:TfLStation ;
     rdfs:label "Woodford Bridge Road" ;
     tfl:servedByLine tfl:123 .
@@ -13176,16 +13148,6 @@ tfl:WoodfordRodingLaneNorth a tfl:TfLStation ;
 tfl:WoodfordRodingLaneSouth a tfl:TfLStation ;
     rdfs:label "Woodford / Roding Lane South" ;
     tfl:servedByLine tfl:123 .
-
-tfl:WoodfordStation a tfl:TfLStation ;
-    rdfs:label "Woodford Station" ;
-    tfl:hasAccessibilityFeature tfl:BoardingRamps,
-        tfl:Bridge,
-        tfl:EuroCashMachines,
-        tfl:WaitingRoom,
-        tfl:Wifi ;
-    tfl:hasFacility tfl:CarPark ;
-    tfl:servedByLine tfl:W14 .
 
 tfl:WoodfordTradingEstate a tfl:TfLStation ;
     rdfs:label "Woodford Trading Estate" ;
@@ -13230,24 +13192,20 @@ tfl:WoodvilleGardens a tfl:TfLStation ;
     tfl:servedByLine tfl:113 .
 
 tfl:Woolwich a tfl:TfLStation ;
-    rdfs:label "Woolwich" ;
+    rdfs:label "Woolwich",
+        "Woolwich Station" ;
     tfl:hasAccessibilityFeature tfl:HelpPoints,
         tfl:Wifi ;
     tfl:servedByLine tfl:122,
         tfl:Sl11 .
 
-tfl:WoolwichArsenalStation a tfl:TfLStation ;
+tfl:WoolwichArsenal a tfl:TfLStation ;
     rdfs:label "Woolwich Arsenal Station" ;
     tfl:servedByLine tfl:122 .
 
 tfl:WoolwichCommon a tfl:TfLStation ;
     rdfs:label "Woolwich Common" ;
     tfl:servedByLine tfl:122 .
-
-tfl:WoolwichStation a tfl:TfLStation ;
-    rdfs:label "Woolwich Station" ;
-    tfl:servedByLine tfl:122,
-        tfl:Sl11 .
 
 tfl:WorcesterAvenue a tfl:TfLStation ;
     rdfs:label "Worcester Avenue" ;
@@ -13318,7 +13276,7 @@ tfl:YorkStreet a tfl:TfLStation ;
 
 tfl:AmazonLockers rdfs:label "Amazon Lockers" .
 
-tfl:WaterlooAndCityLine a tfl:UndergroundLine ;
+tfl:WaterlooAndCity a tfl:UndergroundLine ;
     rdfs:label "Waterloo & City" .
 
 tfl:Specificentrancerequired rdfs:label "SpecificEntranceRequired" .
@@ -13338,13 +13296,13 @@ tfl:TicketHalls rdfs:label "Ticket Halls" .
 
 tfl:Night rdfs:label "Night" .
 
+tfl:Sl11 a tfl:BusRoute ;
+    rdfs:label "SL11" .
+
 tfl:W7 a tfl:BusRoute ;
     rdfs:label "W7" .
 
 tfl:HelpPoints rdfs:label "Help points" .
-
-tfl:Sl11 a tfl:BusRoute ;
-    rdfs:label "SL11" .
 
 tfl:W6 a tfl:BusRoute ;
     rdfs:label "W6" .
@@ -13378,10 +13336,10 @@ tfl:11 a tfl:BusRoute ;
 
 tfl:Bridge rdfs:label "Bridge" .
 
+tfl:EuroCashMachines rdfs:label "Euro Cash Machines" .
+
 tfl:138 a tfl:BusRoute ;
     rdfs:label "138" .
-
-tfl:EuroCashMachines rdfs:label "Euro Cash Machines" .
 
 tfl:126 a tfl:BusRoute ;
     rdfs:label "126" .
@@ -13397,11 +13355,14 @@ tfl:W5 a tfl:BusRoute ;
 
 tfl:WaitingRoom rdfs:label "Waiting Room" .
 
+tfl:137 a tfl:BusRoute ;
+    rdfs:label "137" .
+
 tfl:W8 a tfl:BusRoute ;
     rdfs:label "W8" .
 
-tfl:137 a tfl:BusRoute ;
-    rdfs:label "137" .
+tfl:108 a tfl:BusRoute ;
+    rdfs:label "108" .
 
 tfl:W16 a tfl:BusRoute ;
     rdfs:label "W16" .
@@ -13409,23 +13370,20 @@ tfl:W16 a tfl:BusRoute ;
 tfl:W3 a tfl:BusRoute ;
     rdfs:label "W3" .
 
-tfl:108 a tfl:BusRoute ;
-    rdfs:label "108" .
-
 tfl:120 a tfl:BusRoute ;
     rdfs:label "120" .
 
 tfl:106 a tfl:BusRoute ;
     rdfs:label "106" .
 
+tfl:14 a tfl:BusRoute ;
+    rdfs:label "14" .
+
 tfl:W14 a tfl:BusRoute ;
     rdfs:label "W14" .
 
 tfl:109 a tfl:BusRoute ;
     rdfs:label "109" .
-
-tfl:14 a tfl:BusRoute ;
-    rdfs:label "14" .
 
 tfl:131 a tfl:BusRoute ;
     rdfs:label "131" .
@@ -13496,11 +13454,11 @@ tfl:114 a tfl:BusRoute ;
 tfl:125 a tfl:BusRoute ;
     rdfs:label "125" .
 
-tfl:W15 a tfl:BusRoute ;
-    rdfs:label "W15" .
-
 tfl:141 a tfl:BusRoute ;
     rdfs:label "141" .
+
+tfl:W15 a tfl:BusRoute ;
+    rdfs:label "W15" .
 
 tfl:119 a tfl:BusRoute ;
     rdfs:label "119" .
@@ -13517,11 +13475,11 @@ tfl:128 a tfl:BusRoute ;
 tfl:136 a tfl:BusRoute ;
     rdfs:label "136" .
 
-tfl:102 a tfl:BusRoute ;
-    rdfs:label "102" .
-
 tfl:110 a tfl:BusRoute ;
     rdfs:label "110" .
+
+tfl:102 a tfl:BusRoute ;
+    rdfs:label "102" .
 
 tfl:117 a tfl:BusRoute ;
     rdfs:label "117" .
