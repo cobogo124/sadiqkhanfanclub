@@ -11,10 +11,10 @@ PROV = Namespace("http://www.w3.org/ns/prov#")
 #map common predicate strings from LLM output → ontology properties
 #using output of this script (unmapped preds are printed) and an LLM i made this map
 PREDICATE_MAP = {
-    #hasStop
+    # ── hasStop ──
+    "hasstop":             TFL.hasStop,
     "operatesthrough":     TFL.hasStop,
     "operatesvia":         TFL.hasStop,
-    "hasstop":             TFL.hasStop,
     "stopsat":             TFL.hasStop,
     "passesthrough":       TFL.hasStop,
     "passesby":            TFL.hasStop,
@@ -34,8 +34,9 @@ PREDICATE_MAP = {
     "serveshospital":      TFL.hasStop,
     "hasimprovedaccessat": TFL.hasStop,
     "hasstopon":           TFL.hasStop,
-
-    #hasTerminus
+ 
+    # ── hasTerminus ──
+    "hasterminus":         TFL.hasTerminus,
     "startsat":            TFL.hasTerminus,
     "endsat":              TFL.hasTerminus,
     "terminatesat":        TFL.hasTerminus,
@@ -43,9 +44,9 @@ PREDICATE_MAP = {
     "startsatstation":     TFL.hasTerminus,
     "endsatstation":       TFL.hasTerminus,
     "terminatesatoriginally": TFL.hasTerminus,
-    "terminatesatcurrently": TFL.hasTerminus,
-
-    #operatedBy
+    "terminatesatcurrently":  TFL.hasTerminus,
+ 
+    # ── operatedBy ──
     "operatedby":          TFL.operatedBy,
     "hasoperator":         TFL.operatedBy,
     "providedby":          TFL.operatedBy,
@@ -67,38 +68,64 @@ PREDICATE_MAP = {
     "commissionedby":      TFL.operatedBy,
     "foundedby":           TFL.operatedBy,
     "subsidizedby":        TFL.operatedBy,
-
-    #connectsTo
+ 
+    # ── connectsTo ──
     "connectsto":          TFL.connectsTo,
     "connectedtoviaroute": TFL.connectsTo,
     "connectswith":        TFL.connectsTo,
     "connectedby":         TFL.connectsTo,
     "connectedviaroute":   TFL.connectsTo,
     "connectswithoutside": TFL.connectsTo,
-
-    #inFareZone
-    "haszones":            TFL.inFareZone,
-    "includeszone":        TFL.inFareZone,
-    "operatesinzone":      TFL.inFareZone,
-    "applicableforzones":  TFL.inFareZone,
-
-    #isServedBy
-    "servedby":            TFL.isServedBy,
-    "servedbyroute":       TFL.isServedBy,
-    "servedbyline":        TFL.isServedBy,
-
-    #isNightService
-    "operatesnightservice": TFL.isNightService,
-    "isnighttube":         TFL.isNightService,
-    "operatesnightserviceon": TFL.isNightService,
-
-    #isStepFree
-    "hasstepfreeaccess":   TFL.isStepFree,
-    "madestepfree":        TFL.isStepFree,
-    "willgainstepfreeaccess": TFL.isStepFree,
-    "hasstepfreeaccesstoallplatformsatcostof": TFL.isStepFree,
-
-    #hasAccessibilityFeature
+ 
+    # ── operatesInZone ──
+    "infareZone":          TFL.operatesInZone,
+    "infarezone":          TFL.operatesInZone,
+    "haszones":            TFL.operatesInZone,
+    "includeszone":        TFL.operatesInZone,
+    "operatesinzone":      TFL.operatesInZone,
+    "applicableforzones":  TFL.operatesInZone,
+    "farezoneis":          TFL.operatesInZone,
+    "inzone":              TFL.operatesInZone,
+    "zone":                TFL.operatesInZone,
+ 
+    # ── servedByLine ──
+    "servedby":            TFL.servedByLine,
+    "servedbyroute":       TFL.servedByLine,
+    "servedbyline":        TFL.servedByLine,
+    "isservedby":          TFL.servedByLine,
+ 
+    # ── isNightTube ── 
+    "isnightservice":      TFL.isNightTube,
+    "operatesnightservice": TFL.isNightTube,
+    "isnighttube":         TFL.isNightTube,
+    "operatesnightserviceon": TFL.isNightTube,
+    "nightservice":        TFL.isNightTube,
+ 
+    # ── isFlatFare ── 
+    "isflatfare":          TFL.isFlatFare,
+    "flatfare":            TFL.isFlatFare,
+    "chargesflatfare":     TFL.isFlatFare,
+ 
+    # ── hasFacility ── 
+    "hasfacility":         TFL.hasFacility,
+    "facility":            TFL.hasFacility,
+    "hasfacilities":       TFL.hasFacility,
+ 
+    # ── routeNumber ── 
+    "routenumber":         TFL.routeNumber,
+    "routeno":             TFL.routeNumber,
+    "busnumber":           TFL.routeNumber,
+    "busroute":            TFL.routeNumber,
+ 
+    # ── hasStepFreeStreetToPlatform ──
+    "isstepfree":          TFL.hasStepFreeStreetToPlatform,
+    "hasstepfreeaccess":   TFL.hasStepFreeStreetToPlatform,
+    "madestepfree":        TFL.hasStepFreeStreetToPlatform,
+    "willgainstepfreeaccess": TFL.hasStepFreeStreetToPlatform,
+    "hasstepfreeaccesstoallplatformsatcostof": TFL.hasStepFreeStreetToPlatform,
+    "stepfree":            TFL.hasStepFreeStreetToPlatform,
+ 
+    # ── hasAccessibilityFeature ──
     "hasaccessibilityfeature": TFL.hasAccessibilityFeature,
     "offersfeature":       TFL.hasAccessibilityFeature,
     "hasfeature":          TFL.hasAccessibilityFeature,
@@ -110,16 +137,17 @@ PREDICATE_MAP = {
     "containslifts":       TFL.hasAccessibilityFeature,
     "providesaccessfor":   TFL.hasAccessibilityFeature,
     "providesaccessmethod": TFL.hasAccessibilityFeature,
-
-    #fareAmount
+ 
+    # ── fareAmount ──
+    "fareamount":          TFL.fareAmount,
     "costs":               TFL.fareAmount,
     "cost":                TFL.fareAmount,
     "costofconstruction":  TFL.fareAmount,
     "costofupgrade":       TFL.fareAmount,
     "amount":              TFL.fareAmount,
     "initialbudget":       TFL.fareAmount,
-
-    #operatesOn / general operations
+ 
+    # ── operatesOn / general operations ──
     "operateson":          TFL.operatesOn,
     "operates":            TFL.operatesOn,
     "operatesasauthority": TFL.operatesOn,
@@ -128,14 +156,14 @@ PREDICATE_MAP = {
     "oversees":            TFL.operatesOn,
     "isresponsiblefor":    TFL.operatesOn,
     "owns":                TFL.operatesOn,
-
-    #servesMode
+ 
+    # ── servesMode ──
     "servesmode":          TFL.servesMode,
     "type":                TFL.servesMode,
     "typeof":              TFL.servesMode,
     "linetype":            TFL.servesMode,
-
-    #dates
+ 
+    # ── dates ──
     "opened":              TFL.openedDate,
     "openedin":            TFL.openedDate,
     "openeddate":          TFL.openedDate,
@@ -160,8 +188,8 @@ PREDICATE_MAP = {
     "endedin":             TFL.openedDate,
     "extendedin":          TFL.openedDate,
     "startednightservice": TFL.openedDate,
-
-    #acceptedOn (payment/ticketing)
+ 
+    # ── acceptedOn (payment/ticketing) ──
     "acceptedon":          TFL.acceptedOn,
     "usedon":              TFL.acceptedOn,
     "validon":             TFL.acceptedOn,
@@ -172,8 +200,8 @@ PREDICATE_MAP = {
     "acceptspaymentby":    TFL.acceptedOn,
     "acceptedpaymentmethod": TFL.acceptedOn,
     "usedin":              TFL.acceptedOn,
-
-    #misc
+ 
+    # ── misc ──
     "partof":              TFL.partOf,
     "ispartof":            TFL.partOf,
     "includedin":          TFL.partOf,
@@ -253,6 +281,15 @@ LABEL_CLASS_MAP = {
     "EVENT":   TFL.TransportEvent,
 }
 
+#known tube lines
+TUBE_LINES = {
+    TFL.BakerlooLine, TFL.CentralLine, TFL.CircleLine, TFL.DistrictLine,
+    TFL.HammersmithCityLine, TFL.JubileeLine, TFL.MetropolitanLine,
+    TFL.NorthernLine, TFL.PiccadillyLine, TFL.VictoriaLine,
+    TFL.WaterlooCityLine, TFL.WaterlooAndCityLine,
+    TFL.ElizabethLineRoute, TFL.DLR, TFL.LondonOverground, TFL.Tramlink,
+}
+
 #checks if mention of somewhere outside of london
 def is_london_entity(text):
     t = text.lower()
@@ -263,9 +300,9 @@ CANONICAL = {
     'Dlr': 'DLR',
     'Tfl': 'TfL',
     'DocklandsLightRailway': 'DLR',
-    'Victoria': 'VictoriaLine',
     'Jubilee': 'JubileeLine',
     'Central': 'CentralLine',
+    'Victoria': 'VictoriaLine',
     'Northern': 'NorthernLine',
     'Piccadilly': 'PiccadillyLine',
     'Bakerloo': 'BakerlooLine',
@@ -281,9 +318,27 @@ CANONICAL = {
     'TrafalgarSquare': 'TrafalgarSquareBusTerminus',
 }
 
-#makes pascal case to make modelling team
+def normalize_entity(text: str) -> str:
+    text = text.strip().lower()
+
+    text = text.replace("&", "and")
+
+    #remove common suffixes
+    suffixes = [" line", " railway", " station"]
+    for s in suffixes:
+        if text.endswith(s):
+            text = text[: -len(s)]
+
+    #remove whitespace
+    text = " ".join(text.split())
+
+    return text
+
+#makes pascal case to match modelling team
 def slugify(text):
-    text = text.strip()
+    
+    text = normalize_entity(text) 
+
     text = re.sub(r"[^\w\s-]", "", text)
     text = "".join(word.capitalize() for word in text.split())
     return CANONICAL.get(text, text)
@@ -314,7 +369,7 @@ def build_wiki_graph(all_resuTFLs):
     #metrics
     valid = 0
     skipped = 0
-
+    labelled = set() 
     for article in all_resuTFLs:
         source_url = f"https://en.wikipedia.org/wiki/{article['title'].replace(' ', '_')}"
         source_uri = URIRef(source_url)
@@ -338,7 +393,10 @@ def build_wiki_graph(all_resuTFLs):
             if cls:
                 ent_uri = label_to_uri(text)
                 g.add((ent_uri, RDF.type, cls))
-                g.add((ent_uri, RDFS.label, Literal(text)))
+                if ent_uri not in labelled: 
+                    
+                    g.add((ent_uri, RDFS.label, Literal(text)))
+                    labelled.add(ent_uri)
         
         for triple in article["triples"]:
 
@@ -372,16 +430,21 @@ def build_wiki_graph(all_resuTFLs):
                     obj_node = Literal(obj_label, datatype=XSD.gYear)
                 except:
                     obj_node = Literal(obj_label)
+            elif obj_label.lower() in ("true", "false"): 
+                obj_node = Literal(obj_label.lower() == "true")
             elif len(obj_label.split()) <= 5 and not any(c.isdigit() for c in obj_label):
                 obj_node = label_to_uri(obj_label)
-                g.add((obj_node, RDFS.label, Literal(obj_label)))
+                if obj_node not in labelled: 
+                    g.add((obj_node, RDFS.label, Literal(obj_label)))
+                    labelled.add(obj_node)
 
             else:
                 obj_node = Literal(obj_label)
 
             #adds readable rdfs:labels
-            if (subj_uri, RDFS.label, Literal(triple["subject"])) not in g:
+            if subj_uri not in labelled: 
                 g.add((subj_uri, RDFS.label, Literal(triple["subject"])))
+                labelled.add(subj_uri)
             
             #another duplicate check
             if (subj_uri, pred_uri, obj_node) not in g:
@@ -396,6 +459,127 @@ def build_wiki_graph(all_resuTFLs):
     return g
 
 
+
+
+def enrich_graph(g):
+ 
+    enriched = 0
+ 
+    #servedByLine inverse
+    for station, line in g.subject_objects(TFL.servedByLine):
+        if (line, TFL.hasStop, station) not in g:
+            g.add((line, TFL.hasStop, station))
+            enriched += 1
+    for line, station in g.subject_objects(TFL.hasStop):
+        if line in TUBE_LINES and (station, TFL.servedByLine, line) not in g: 
+            g.add((station, TFL.servedByLine, line))
+            enriched += 1
+ 
+    #hasTerminus inverse
+    for s, o in g.subject_objects(TFL.hasTerminus):
+        if o in TUBE_LINES:
+            if (o, TFL.hasTerminalStation, s) not in g:
+                g.add((o, TFL.hasTerminalStation, s))
+                enriched += 1
+        if s in TUBE_LINES: 
+            if (s, TFL.hasTerminalStation, o) not in g:
+                g.add((s, TFL.hasTerminalStation, o))
+                enriched += 1
+ 
+
+    #checks for information on zones
+    zone_pattern = re.compile(r"^Zone\s*(\d+)$", re.IGNORECASE)
+    for s, o in list(g.subject_objects(TFL.operatesInZone)):
+        if isinstance(o, Literal):
+            m = zone_pattern.match(str(o))
+            if m:
+                zone_num = m.group(1)
+                zone_uri = TFL[f"Zone{zone_num}"]
+                if (s, TFL.operatesInZone, zone_uri) not in g:
+                    g.add((s, TFL.operatesInZone, zone_uri))
+                    g.add((zone_uri, RDFS.label, Literal(f"Zone {zone_num}")))
+                    enriched += 1
+
+
+
+    for line in TUBE_LINES:
+        for station in g.subjects(TFL.servedByLine, line):
+            for zone in g.objects(station, TFL.operatesInZone):
+                if (line, TFL.operatesInZone, zone) not in g:
+                    g.add((line, TFL.operatesInZone, zone))
+                    enriched += 1
+ 
+    #nightbus check (checks for n prefix)
+    for s in g.subjects(RDFS.label, None):
+        for label in g.objects(s, RDFS.label):
+            lab = str(label)
+            if re.match(r"^N\d+$", lab):
+                if (s, RDF.type, TFL.NightBusRoute) not in g:
+                    g.add((s, RDF.type, TFL.NightBusRoute))
+                    g.add((s, TFL.routeNumber, Literal(lab)))
+                    enriched += 1
+                break
+ 
+    #elizabeth line specifics
+    for s in g.subjects(TFL.servedByLine, TFL.ElizabethLineRoute):
+        if (s, RDF.type, TFL.ElizabethLineStation) not in g:
+            g.add((s, RDF.type, TFL.ElizabethLineStation))
+            enriched += 1
+
+ 
+    for s, o in g.subject_objects(TFL.hasTerminus):
+        if (s, TFL.terminatesAt, o) not in g:
+            g.add((s, TFL.terminatesAt, o))
+            enriched += 1
+    
+    #add facility types
+    FACILITY_CLASSES = {
+        "toilets": TFL.PublicToilet,
+        "restroom": TFL.PublicToilet,
+        "car park": TFL.CarPark,
+        "parking": TFL.CarPark,
+    }
+
+    for s, o in list(g.subject_objects(TFL.hasFacility)):
+        for label in g.objects(o, RDFS.label):
+            key = str(label).lower()
+            if key in FACILITY_CLASSES:
+                g.add((o, RDF.type, FACILITY_CLASSES[key]))
+
+    #change wiki accesibility terms to namespace specific ones
+    FEATURE_CLASSES = {
+        "audio-visual announcements": TFL.AudioVisualAid,
+        "audio visual announcements": TFL.AudioVisualAid,
+        "audiovisual announcements":  TFL.AudioVisualAid,
+        "audiovisual passenger information": TFL.AudioVisualAid,
+        "audio induction loop":       TFL.AudioVisualAid,
+        "hearing loops":              TFL.AudioVisualAid,
+        "staffed for safety reasons":  TFL.AssistedBoardingService,
+    }
+    for s, o in list(g.subject_objects(TFL.hasAccessibilityFeature)):
+        #check if o has label to classify
+        for feat_label in g.objects(o, RDFS.label):
+            feat_key = str(feat_label).lower().strip()
+            if feat_key in FEATURE_CLASSES:
+                cls = FEATURE_CLASSES[feat_key]
+                if (o, RDF.type, cls) not in g:
+                    g.add((o, RDF.type, cls))
+                    enriched += 1
+
+    for uri in [TFL.FreedomPass, TFL.DisabledPersonsRailcard,
+                TFL.DisabledPersonsFreedomPass, TFL.OlderPersonsFreedomPass,
+                TFL.BusTramDiscountCard, TFL.ZipCard]:
+        if (uri, RDFS.label, None) in g:
+            if (uri, RDF.type, TFL.FareConcession) not in g:
+                g.add((uri, RDF.type, TFL.FareConcession))
+                enriched += 1
+
+    print(f"  Enrichment added {enriched} derived triples")
+    return g
+ 
+
+
+##### MAIN FUNCTIONS
 def run_triples_to_rdf():
     #finds most recent triples output
     processed_dir = os.path.join("data", "processed")
@@ -412,6 +596,7 @@ def run_triples_to_rdf():
 
     print(f"Building RDF graph from {len(all_resuTFLs)} articles...")
     g = build_wiki_graph(all_resuTFLs)
+    g = enrich_graph(g)
 
     out_path = os.path.join("ontologies", "pipeline_output", "unstructured_london_transport.ttl")
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
