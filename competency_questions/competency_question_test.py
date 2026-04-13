@@ -10,7 +10,7 @@ print(f"Graph loaded: {len(g):,} triples\n")
 CQS = [
     (
         "CQ1: Which London Underground lines intersect at King's Cross St Pancras station?",
-        f"""SELECT ?lineName WHERE {{
+        f"""SELECT DISTINCT ?lineName WHERE {{
             <{TFL}KingsCrossStPancras> <{TFL}servedByLine> ?line .
             ?line rdfs:label ?lineName .
         }} ORDER BY ?lineName"""
@@ -74,7 +74,7 @@ CQS = [
         f"""SELECT ?routeNumber WHERE {{
             ?route <{TFL}terminatesAt> <{TFL}TrafalgarSquareBusTerminus> .
             ?route <{TFL}routeNumber> ?routeNumber .
-        }} ORDER BY xsd:integer(?routeNumber)"""
+        }} ORDER BY ?routeNumber"""
     ),
     (
         "CQ10: Which London Underground lines operate the Night Tube service on Fridays and Saturdays?",

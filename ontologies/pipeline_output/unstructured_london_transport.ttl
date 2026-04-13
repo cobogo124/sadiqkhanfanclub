@@ -235,9 +235,6 @@ TFL:AldwychN53RouteN53 a TFL:TransportOperator ;
 TFL:AldwychN89RouteN89 a TFL:TransportOperator ;
     rdfs:label "Aldwych N89 Route N89" .
 
-TFL:AldwychTrafalgarSquareN91RouteN91 a TFL:TransportOperator ;
-    rdfs:label "Aldwych Trafalgar Square N91 Route N91" .
-
 TFL:AlexandraPalaceBranch rdfs:label "Alexandra Palace branch line" ;
     TFL:hasTerminus TFL:Highgate ;
     TFL:partOf TFL:NorthernHeightsPlans ;
@@ -880,9 +877,6 @@ TFL:BrentCross a TFL:TransportOperator ;
     rdfs:label "Brent Cross" .
 
 TFL:BrentfordGarage rdfs:label "Brentford garage" ;
-    TFL:hasStop "route E8",
-        "route H91",
-        "route N9" ;
     TFL:operatedBy TFL:ArmchairPassengerTransport ;
     dcterms:source <https://en.wikipedia.org/wiki/Metroline> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
@@ -1169,8 +1163,8 @@ TFL:CamberwellExtension rdfs:label "Camberwell extension" ;
     dcterms:source <https://en.wikipedia.org/wiki/Bakerloo_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:CamberwellGreen a TFL:TransportOperator ;
-    rdfs:label "Camberwell Green" .
+TFL:CamberwellGreenElephantAndCastle a TFL:TransportOperator ;
+    rdfs:label "Camberwell Green Elephant & Castle" .
 
 TFL:CamberwellGreenOval a TFL:TransportOperator ;
     rdfs:label "Camberwell Green Oval" .
@@ -1215,6 +1209,9 @@ TFL:CandslrMordenExtension rdfs:label "C&SLR Morden extension" ;
     TFL:terminatesAt TFL:Morden ;
     dcterms:source <https://en.wikipedia.org/wiki/Northern_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
+TFL:CapitalCitibus a TFL:TransportOperator ;
+    rdfs:label "Capital Citibus" .
 
 TFL:CapitalTransport a TFL:TransportOperator ;
     rdfs:label "Capital Transport" .
@@ -1421,8 +1418,17 @@ TFL:Chesham-Aldgate a TFL:TransportOperator ;
 TFL:CheshamToChalfontAndLatimer a TFL:TransportOperator ;
     rdfs:label "Chesham to Chalfont & Latimer" .
 
+TFL:Chessington a TFL:Location ;
+    rdfs:label "Chessington" .
+
+TFL:ChessingtonNorth a TFL:TransportOperator ;
+    rdfs:label "Chessington North" .
+
 TFL:ChessingtonWorld a TFL:TransportOperator ;
     rdfs:label "Chessington World" .
+
+TFL:ChessingtonWorldOfAdventures a TFL:TransportOperator ;
+    rdfs:label "Chessington World of Adventures" .
 
 TFL:ChilternCourt a TFL:TransportOperator ;
     rdfs:label "Chiltern Court" ;
@@ -2475,6 +2481,9 @@ TFL:EalingCommonDepotAndUpminsterDepot a TFL:TransportOperator ;
 TFL:EalingCommonWorks a TFL:TransportOperator ;
     rdfs:label "Ealing Common Works" .
 
+TFL:EalingHospital a TFL:TransportOperator ;
+    rdfs:label "Ealing Hospital" .
+
 TFL:EalingHospitalEaling a TFL:TransportOperator ;
     rdfs:label "Ealing Hospital Ealing" .
 
@@ -2483,6 +2492,9 @@ TFL:Earth a TFL:Location ;
 
 TFL:East a TFL:Location ;
     rdfs:label "east" .
+
+TFL:EastActon a TFL:Location ;
+    rdfs:label "East Acton" .
 
 TFL:EastAnglia a TFL:Location ;
     rdfs:label "East Anglia" .
@@ -4829,8 +4841,10 @@ TFL:Metrocomm a TFL:TransportOperator ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:MetrolineManchester a TFL:TransportService ;
-    rdfs:label "Metroline Manchester" ;
-    TFL:operatedBy TFL:Metroline ;
+    rdfs:label "Metroline Manchester" .
+
+TFL:MetrolineTravelLimited rdfs:label "Metroline Travel Limited" ;
+    TFL:partOf TFL:Metroline ;
     dcterms:source <https://en.wikipedia.org/wiki/Metroline> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
@@ -5877,22 +5891,7 @@ TFL:N63RouteN63 a TFL:TransportOperator ;
 TFL:N65 a TFL:NightBusRoute,
         TFL:TransportOperator ;
     rdfs:label "N65" ;
-    TFL:hasStop TFL:ChessingtonNorth,
-        TFL:ChessingtonSouth,
-        TFL:Kingston,
-        TFL:Richmond,
-        TFL:Surbiton ;
-    TFL:hasTerminus TFL:ChessingtonWorldOfAdventures,
-        TFL:EalingBroadway,
-        TFL:KingstonUponThames ;
-    TFL:openedDate "2002"^^xsd:gYear ;
-    TFL:replacedBy "route 65" ;
-    TFL:routeNumber "N65" ;
-    TFL:terminatesAt TFL:ChessingtonWorldOfAdventures,
-        TFL:EalingBroadway,
-        TFL:KingstonUponThames ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+    TFL:routeNumber "N65" .
 
 TFL:N65RouteN65 a TFL:TransportOperator ;
     rdfs:label "N65 Route N65" .
@@ -5900,23 +5899,7 @@ TFL:N65RouteN65 a TFL:TransportOperator ;
 TFL:N68 a TFL:NightBusRoute,
         TFL:TransportOperator ;
     rdfs:label "N68" ;
-    TFL:hasStop TFL:CoulsdonSouth,
-        TFL:EastCroydon,
-        TFL:ElephantAndCastle,
-        TFL:Holborn,
-        TFL:OldCoulsdon,
-        TFL:TottenhamCourtRoad,
-        TFL:Waterloo ;
-    TFL:hasTerminus TFL:PurleyCross,
-        TFL:TrafalgarSquareBusTerminus ;
-    TFL:routeNumber "N68" ;
-    TFL:terminatesAt TFL:PurleyCross,
-        TFL:TrafalgarSquareBusTerminus ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:N68RouteN68 a TFL:TransportOperator ;
-    rdfs:label "N68 Route N68" .
+    TFL:routeNumber "N68" .
 
 TFL:N7 a TFL:NightBusRoute ;
     rdfs:label "N7" ;
@@ -5936,48 +5919,18 @@ TFL:N7 a TFL:NightBusRoute ;
 TFL:N72 a TFL:NightBusRoute,
         TFL:TransportOperator ;
     rdfs:label "N72" ;
-    TFL:hasStop TFL:HammersmithBus,
-        TFL:WhiteCityEstate ;
-    TFL:hasTerminus TFL:EastActon,
-        TFL:Roehampton ;
-    TFL:openedDate "1999"^^xsd:gYear ;
-    TFL:routeNumber "N72" ;
-    TFL:terminatesAt TFL:EastActon,
-        TFL:Roehampton ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:N72RouteN72 a TFL:TransportOperator ;
-    rdfs:label "N72 Route N72" .
+    TFL:routeNumber "N72" .
 
 TFL:N73 a TFL:NightBusRoute,
         TFL:TransportOperator ;
     rdfs:label "N73" ;
-    TFL:hasStop TFL:BlackhorseRoad,
-        TFL:KingsCrossStPancras,
-        TFL:OxfordCircus,
-        TFL:StokeNewington,
-        TFL:TottenhamHale ;
+    TFL:hasStop TFL:StokeNewington ;
     TFL:hasTerminus TFL:OxfordCircus,
-        TFL:VictoriaBus,
         TFL:WalthamstowCentral ;
     TFL:isNightTube true ;
-    TFL:openedDate "1989"^^xsd:gYear ;
-    TFL:replacedBy "route 390" ;
     TFL:routeNumber "N73" ;
     TFL:terminatesAt TFL:OxfordCircus,
-        TFL:VictoriaBus,
         TFL:WalthamstowCentral ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:N74 a TFL:NightBusRoute ;
-    rdfs:label "N74" ;
-    TFL:hasTerminus TFL:BakerStreetStation,
-        TFL:Roehampton ;
-    TFL:routeNumber "N74" ;
-    TFL:terminatesAt TFL:BakerStreetStation,
-        TFL:Roehampton ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
@@ -5987,15 +5940,7 @@ TFL:N74RouteN74 a TFL:TransportOperator ;
 TFL:N77 a TFL:NightBusRoute,
         TFL:TransportService ;
     rdfs:label "N77" ;
-    TFL:hasTerminus TFL:Tolworth,
-        TFL:TrafalgarSquareBusTerminus ;
-    TFL:openedDate "1995"^^xsd:gYear ;
-    TFL:replacedBy "N87" ;
-    TFL:routeNumber "N77" ;
-    TFL:terminatesAt TFL:Tolworth,
-        TFL:TrafalgarSquareBusTerminus ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+    TFL:routeNumber "N77" .
 
 TFL:N8 a TFL:NightBusRoute ;
     rdfs:label "N8" ;
@@ -6022,30 +5967,10 @@ TFL:N8 a TFL:NightBusRoute ;
 TFL:N83 a TFL:NightBusRoute,
         TFL:TransportOperator ;
     rdfs:label "N83" ;
-    TFL:hasStop TFL:Alperton,
-        TFL:EalingBroadway,
-        TFL:GoldersGreen,
-        TFL:HendonCentral,
-        TFL:WembleyCentral ;
-    TFL:hasTerminus TFL:EalingHospital,
-        TFL:GoldersGreen ;
-    TFL:isNightTube true ;
-    TFL:operatedBy TFL:FirstLondon ;
-    TFL:routeNumber "N83" ;
-    TFL:terminatesAt TFL:EalingHospital,
-        TFL:GoldersGreen ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+    TFL:routeNumber "N83" .
 
 TFL:N83RouteN83 a TFL:TransportOperator ;
     rdfs:label "N83 Route N83" .
-
-TFL:N86 a TFL:NightBusRoute ;
-    rdfs:label "N86" ;
-    TFL:replacedBy "N25" ;
-    TFL:routeNumber "N86" ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:N86RouteN86 a TFL:TransportOperator ;
     rdfs:label "N86 Route N86" .
@@ -6053,28 +5978,7 @@ TFL:N86RouteN86 a TFL:TransportOperator ;
 TFL:N87 a TFL:NightBusRoute,
         TFL:TransportOperator ;
     rdfs:label "N87" ;
-    TFL:hasStop TFL:NewMalden,
-        TFL:VauxhallBus,
-        TFL:Wimbledon ;
-    TFL:hasTerminus TFL:FairfieldBus,
-        TFL:Tolworth ;
-    TFL:routeNumber "N87" ;
-    TFL:terminatesAt TFL:FairfieldBus,
-        TFL:Tolworth ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:N87RouteN77 a TFL:TransportOperator ;
-    rdfs:label "N87 Route N77" .
-
-TFL:N89 a TFL:NightBusRoute ;
-    rdfs:label "N89" ;
-    TFL:hasTerminus TFL:Erith ;
-    TFL:openedDate "2002"^^xsd:gYear ;
-    TFL:routeNumber "N89" ;
-    TFL:terminatesAt TFL:Erith ;
-    dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+    TFL:routeNumber "N87" .
 
 TFL:N8RouteN8 a TFL:TransportOperator ;
     rdfs:label "N8 Route N8" .
@@ -6090,23 +5994,9 @@ TFL:N9 a TFL:NightBusRoute ;
 TFL:N91 a TFL:NightBusRoute,
         TFL:TransportOperator ;
     rdfs:label "N91" ;
-    TFL:hasStop TFL:Cockfosters,
-        TFL:KingsCrossStPancras,
-        TFL:TrafalgarSquareBusTerminus ;
-    TFL:hasTerminus TFL:Cockfosters,
-        TFL:HornseyRise,
-        TFL:PottersBar,
-        TFL:TrafalgarSquareBusTerminus ;
-    TFL:openedDate "1994"^^xsd:gYear ;
-    TFL:operatedBy TFL:CapitalCitibus,
-        TFL:FirstLondon,
-        TFL:Metroline,
-        TFL:MtlLondon ;
+    TFL:hasTerminus TFL:Cockfosters ;
     TFL:routeNumber "N91" ;
-    TFL:terminatesAt TFL:Cockfosters,
-        TFL:HornseyRise,
-        TFL:PottersBar,
-        TFL:TrafalgarSquareBusTerminus ;
+    TFL:terminatesAt TFL:Cockfosters ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
@@ -7185,6 +7075,9 @@ TFL:Purley-EmbankmentRoute rdfs:label "Purley - Embankment route" ;
     dcterms:source <https://en.wikipedia.org/wiki/Tramlink> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
+TFL:PurleyCross a TFL:TransportOperator ;
+    rdfs:label "Purley Cross" .
+
 TFL:PurleySouthCroydon a TFL:Location ;
     rdfs:label "Purley South Croydon" .
 
@@ -7444,6 +7337,9 @@ TFL:RoadAccidents a TFL:TransportOperator ;
 
 TFL:RobynHitchcock a TFL:TransportOperator ;
     rdfs:label "Robyn Hitchcock" .
+
+TFL:Roehampton a TFL:Location ;
+    rdfs:label "Roehampton" .
 
 TFL:Rogue a TFL:TransportOperator ;
     rdfs:label "Rogue" .
@@ -7959,7 +7855,8 @@ TFL:RouteN68 a TFL:TransportOperator ;
 TFL:RouteN7 a TFL:TransitStop ;
     rdfs:label "Route N7" .
 
-TFL:RouteN72 a TFL:TransitStop ;
+TFL:RouteN72 a TFL:TransitStop,
+        TFL:TransportOperator ;
     rdfs:label "Route N72" .
 
 TFL:RouteN73 a TFL:TransitStop ;
@@ -7967,6 +7864,9 @@ TFL:RouteN73 a TFL:TransitStop ;
 
 TFL:RouteN74 a TFL:TransitStop ;
     rdfs:label "Route N74" .
+
+TFL:RouteN77 a TFL:TransportOperator ;
+    rdfs:label "Route N77" .
 
 TFL:RouteN8 a TFL:TransitStop ;
     rdfs:label "Route N8" ;
@@ -12122,9 +12022,6 @@ TFL:CanonsPark a TFL:TransportOperator ;
     rdfs:label "Canons Park" ;
     TFL:servedByLine TFL:BakerlooLine .
 
-TFL:CapitalCitibus a TFL:TransportOperator ;
-    rdfs:label "Capital Citibus" .
-
 TFL:Carelink a TFL:TransportOperator ;
     rdfs:label "Carelink" .
 
@@ -12211,11 +12108,6 @@ TFL:CheshamShuttle rdfs:label "Chesham shuttle" ;
 
 TFL:CheshuntService rdfs:label "Cheshunt service" ;
     TFL:hasStop TFL:LiverpoolStreet .
-
-TFL:ChessingtonNorth a TFL:TransportOperator ;
-    rdfs:label "Chessington North" .
-
-TFL:ChessingtonSouth rdfs:label "Chessington South station" .
 
 TFL:ChillerUnits rdfs:label "chiller units" .
 
@@ -12332,8 +12224,6 @@ TFL:ControlRoom rdfs:label "control room" ;
         <https://en.wikipedia.org/wiki/District_line>,
         <https://en.wikipedia.org/wiki/London_Underground> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:CoulsdonSouth rdfs:label "Coulsdon South station" .
 
 TFL:CoventGarden a TFL:Location ;
     rdfs:label "Covent Garden" ;
@@ -13283,11 +13173,6 @@ TFL:Met a TFL:Location,
         <https://en.wikipedia.org/wiki/London_Underground_rolling_stock> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:MetrolineTravelLimited rdfs:label "Metroline Travel Limited" ;
-    TFL:partOf TFL:Metroline ;
-    dcterms:source <https://en.wikipedia.org/wiki/Metroline> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
 TFL:MetropolitanDistrict a TFL:TransitStop ;
     rdfs:label "Metropolitan District Railway" ;
     TFL:hasStop TFL:Blackfriars,
@@ -13389,6 +13274,9 @@ TFL:MordenTube rdfs:label "Morden tube station" ;
 TFL:Mowlem a TFL:Location ;
     rdfs:label "Mowlem" .
 
+TFL:MtlLondon a TFL:TransportOperator ;
+    rdfs:label "MTL London" .
+
 TFL:Mtr rdfs:label "MTR" .
 
 TFL:MtrCorp a TFL:TransportOperator ;
@@ -13472,8 +13360,6 @@ TFL:NewEntrance rdfs:label "new entrance" .
 TFL:NewEntranceAtDevonshireHouse rdfs:label "new entrance at Devonshire House" .
 
 TFL:NewEscalators rdfs:label "new escalators" .
-
-TFL:NewMalden rdfs:label "New Malden" .
 
 TFL:NewOverground-brandedTrains rdfs:label "new Overground-branded trains" .
 
@@ -13591,8 +13477,6 @@ TFL:Ockendon a TFL:Location ;
 TFL:Off-peakCap rdfs:label "off-peak cap" .
 
 TFL:OfficeOfRailAndRoad rdfs:label "Office of Rail and Road" .
-
-TFL:OldCoulsdon rdfs:label "Old Coulsdon" .
 
 TFL:OldKentRoad rdfs:label "Old Kent Road" ;
     TFL:servedByLine TFL:BakerlooLine .
@@ -13815,6 +13699,9 @@ TFL:PortOfLondonAuthority rdfs:label "Port of London Authority" ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:Posters rdfs:label "posters" .
+
+TFL:PottersBar a TFL:TransportOperator ;
+    rdfs:label "Potters Bar" .
 
 TFL:PraedStreetJunction a TFL:TransportOperator ;
     rdfs:label "Praed Street Junction" ;
@@ -14263,8 +14150,6 @@ TFL:SunsetSunriseSunset rdfs:label "Sunset, Sunrise, Sunset" ;
     dcterms:source <https://en.wikipedia.org/wiki/Northern_line_extension_to_Battersea> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:Surbiton rdfs:label "Surbiton station" .
-
 TFL:SurreyDocksNorth rdfs:label "Surrey Docks North" ;
     TFL:servedByLine TFL:JubileeLine .
 
@@ -14376,7 +14261,21 @@ TFL:TiledMurals rdfs:label "tiled murals" .
 TFL:TimesSquare a TFL:TransitStop ;
     rdfs:label "Times Square" .
 
+TFL:Tolworth a TFL:TransportOperator ;
+    rdfs:label "Tolworth" ;
+    TFL:replacedBy TFL:KingstonGarage ;
+    dcterms:source <https://en.wikipedia.org/wiki/London_United_Busways> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
 TFL:Top-upAtNationalRailStations rdfs:label "top-up at National Rail stations" .
+
+TFL:TottenhamHale a TFL:TransportOperator ;
+    rdfs:label "Tottenham Hale" ;
+    TFL:hasAccessibilityFeature TFL:NarrowerThanUsualPlatforms ;
+    TFL:hasStepFreeStreetToPlatform true ;
+    TFL:servedByLine TFL:VictoriaLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/Victoria_line> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:Touch-outRequired rdfs:label "touch-out required" .
 
@@ -14414,8 +14313,6 @@ TFL:TramServices rdfs:label "tram services" .
 TFL:TramStop rdfs:label "tram stop" .
 
 TFL:TramlinkPlatform rdfs:label "Tramlink platform" .
-
-TFL:TransportForGreaterManchester rdfs:label "Transport for Greater Manchester" .
 
 TFL:TransportUkLondonBusLimited a TFL:TransportOperator ;
     rdfs:label "Transport UK London Bus Limited" .
@@ -14651,8 +14548,6 @@ TFL:VariobahnTrams rdfs:label "Variobahn trams" ;
     dcterms:source <https://en.wikipedia.org/wiki/Tramlink> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:VauxhallBus rdfs:label "Vauxhall bus station" .
-
 TFL:VauxhallUnderground a TFL:TransportOperator ;
     rdfs:label "Vauxhall Underground" ;
     TFL:hasAccessibilityFeature TFL:Step-freeAccess ;
@@ -14810,8 +14705,6 @@ TFL:WheelchairLift rdfs:label "wheelchair lift" .
 TFL:WhiteCity a TFL:Location ;
     rdfs:label "White City" .
 
-TFL:WhiteCityEstate rdfs:label "White City Estate" .
-
 TFL:Wi-fiConnectivity rdfs:label "Wi-Fi connectivity" .
 
 TFL:Wi-fiHotspots rdfs:label "Wi-Fi hotspots" .
@@ -14906,6 +14799,15 @@ TFL:AddingtonVillage a TFL:Location ;
 
 TFL:AldgateBus rdfs:label "Aldgate bus station" .
 
+TFL:Alperton a TFL:Location ;
+    rdfs:label "Alperton" ;
+    TFL:operatedBy TFL:Centrewest ;
+    TFL:partOf TFL:FirstLondon ;
+    TFL:replacedBy TFL:Metroline ;
+    TFL:servedByLine TFL:PiccadillyLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/Metroline> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
 TFL:Angel rdfs:label "Angel" .
 
 TFL:ArtDecoUplightersOnEscalators rdfs:label "art deco uplighters on escalators" .
@@ -14968,6 +14870,20 @@ TFL:BethnalGreen a TFL:TransportOperator ;
     rdfs:label "Bethnal Green" .
 
 TFL:BishopsStortford rdfs:label "Bishop's Stortford" .
+
+TFL:BlackhorseRoad a TFL:TransitStop ;
+    rdfs:label "Blackhorse Road" ;
+    TFL:connectsTo TFL:VictoriaLine ;
+    TFL:hasAccessibilityFeature TFL:NarrowerThanUsualPlatforms,
+        TFL:OysterCardReaders ;
+    TFL:openedDate "1981"^^xsd:gYear ;
+    TFL:partOf TFL:LondonOverground ;
+    TFL:servedByLine TFL:VictoriaLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/Hopper_fare>,
+        <https://en.wikipedia.org/wiki/London_Overground>,
+        <https://en.wikipedia.org/wiki/Oyster_card>,
+        <https://en.wikipedia.org/wiki/Victoria_line> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:BlueBadgeExemption rdfs:label "blue badge exemption" .
 
@@ -15037,9 +14953,6 @@ TFL:Charlton a TFL:Location ;
 
 TFL:Chelsea a TFL:TransportOperator ;
     rdfs:label "Chelsea" .
-
-TFL:ChessingtonWorldOfAdventures a TFL:TransportOperator ;
-    rdfs:label "Chessington World of Adventures" .
 
 TFL:ChingfordSidings rdfs:label "Chingford Sidings" .
 
@@ -15166,12 +15079,6 @@ TFL:Docklands a TFL:Location,
 
 TFL:DomeSite rdfs:label "Dome site" .
 
-TFL:EalingHospital a TFL:TransportOperator ;
-    rdfs:label "Ealing Hospital" .
-
-TFL:EastActon a TFL:Location ;
-    rdfs:label "East Acton" .
-
 TFL:EastPutney a TFL:Location ;
     rdfs:label "East Putney" ;
     TFL:connectsTo TFL:WaterlooToReading ;
@@ -15218,6 +15125,8 @@ TFL:EnfieldTown a TFL:TransportOperator ;
 
 TFL:Epsom rdfs:label "Epsom" .
 
+TFL:Erith rdfs:label "Erith" .
+
 TFL:EustonStPancras rdfs:label "Euston St Pancras" .
 
 TFL:Extension rdfs:label "Extension" ;
@@ -15240,8 +15149,6 @@ TFL:Extension rdfs:label "Extension" ;
     dcterms:source <https://en.wikipedia.org/wiki/Docklands_Light_Railway>,
         <https://en.wikipedia.org/wiki/Northern_line_extension_to_Battersea> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:FairfieldBus rdfs:label "Fairfield bus station" .
 
 TFL:Fieldway rdfs:label "Fieldway" .
 
@@ -15427,6 +15334,12 @@ TFL:HeathrowTerminal5 a TFL:TransportOperator ;
 TFL:Hendon a TFL:TransportOperator ;
     rdfs:label "Hendon" .
 
+TFL:HendonCentral a TFL:TransportOperator ;
+    rdfs:label "Hendon Central" ;
+    TFL:openedDate "1923"^^xsd:gYear ;
+    dcterms:source <https://en.wikipedia.org/wiki/Northern_line> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
 TFL:HighContrastGrabHandles rdfs:label "high contrast grab handles" .
 
 TFL:HighgateDepot rdfs:label "Highgate depot" .
@@ -15436,8 +15349,6 @@ TFL:HitherGreen a TFL:TransportService ;
 
 TFL:HomertonUniversityHospital a TFL:TransportOperator ;
     rdfs:label "Homerton University Hospital" .
-
-TFL:HornseyRise rdfs:label "Hornsey Rise" .
 
 TFL:HounslowBranch rdfs:label "Hounslow branch" ;
     TFL:hasTerminus TFL:HounslowTown,
@@ -15488,7 +15399,9 @@ TFL:KilburnPark a TFL:Location ;
 
 TFL:KingsCrossCentralDevelopment rdfs:label "King's Cross Central development" .
 
-TFL:KingstonUponThames rdfs:label "Kingston upon Thames" .
+TFL:Kingston a TFL:Location,
+        TFL:TransportOperator ;
+    rdfs:label "Kingston" .
 
 TFL:Knightsbridge a TFL:Location ;
     rdfs:label "Knightsbridge" ;
@@ -15647,9 +15560,6 @@ TFL:MorningtonCrescent a TFL:TransportOperator ;
 TFL:MovingWalkways rdfs:label "moving walkways" .
 
 TFL:Mr rdfs:label "MR" .
-
-TFL:MtlLondon a TFL:TransportOperator ;
-    rdfs:label "MTL London" .
 
 TFL:MtrCorporation a TFL:TransportOperator ;
     rdfs:label "MTR Corporation" ;
@@ -15813,9 +15723,6 @@ TFL:PríncipePío a TFL:TransportOperator ;
     rdfs:label "Príncipe Pío" .
 
 TFL:PublicAddressSystems rdfs:label "public address systems" .
-
-TFL:PurleyCross a TFL:TransportOperator ;
-    rdfs:label "Purley Cross" .
 
 TFL:PutneyBridge a TFL:TransportOperator ;
     rdfs:label "Putney Bridge" .
@@ -16005,14 +15912,6 @@ TFL:Tooting rdfs:label "Tooting" .
 TFL:TootingBroadway rdfs:label "Tooting Broadway station" ;
     TFL:servedByLine TFL:NorthernLine .
 
-TFL:TottenhamHale a TFL:TransportOperator ;
-    rdfs:label "Tottenham Hale" ;
-    TFL:hasAccessibilityFeature TFL:NarrowerThanUsualPlatforms ;
-    TFL:hasStepFreeStreetToPlatform true ;
-    TFL:servedByLine TFL:VictoriaLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/Victoria_line> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
 TFL:TottenhamHaleBus rdfs:label "Tottenham Hale bus station" .
 
 TFL:TowerHillTube rdfs:label "Tower Hill tube station" .
@@ -16085,6 +15984,9 @@ TFL:WeeklyCapping rdfs:label "weekly capping" ;
 TFL:WelwynGardenCity a TFL:TransitStop ;
     rdfs:label "Welwyn Garden City" .
 
+TFL:WembleyCentral a TFL:TransportOperator ;
+    rdfs:label "Wembley Central" .
+
 TFL:WestAngliaMain rdfs:label "West Anglia Main Line" ;
     TFL:hasStop TFL:StratfordStation .
 
@@ -16124,15 +16026,6 @@ TFL:WoodfordWells a TFL:TransportOperator ;
 
 TFL:Air-conditioning rdfs:label "air-conditioning" .
 
-TFL:Alperton a TFL:Location ;
-    rdfs:label "Alperton" ;
-    TFL:operatedBy TFL:Centrewest ;
-    TFL:partOf TFL:FirstLondon ;
-    TFL:replacedBy TFL:Metroline ;
-    TFL:servedByLine TFL:PiccadillyLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/Metroline> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
 TFL:Arbroath a TFL:Location ;
     rdfs:label "Arbroath" .
 
@@ -16170,20 +16063,6 @@ TFL:BatterseaPowerStationSite rdfs:label "Battersea Power Station site" ;
 TFL:BecktonExtension rdfs:label "Beckton extension" .
 
 TFL:BishopsRoad rdfs:label "Bishop's Road" .
-
-TFL:BlackhorseRoad a TFL:TransitStop ;
-    rdfs:label "Blackhorse Road" ;
-    TFL:connectsTo TFL:VictoriaLine ;
-    TFL:hasAccessibilityFeature TFL:NarrowerThanUsualPlatforms,
-        TFL:OysterCardReaders ;
-    TFL:openedDate "1981"^^xsd:gYear ;
-    TFL:partOf TFL:LondonOverground ;
-    TFL:servedByLine TFL:VictoriaLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/Hopper_fare>,
-        <https://en.wikipedia.org/wiki/London_Overground>,
-        <https://en.wikipedia.org/wiki/Oyster_card>,
-        <https://en.wikipedia.org/wiki/Victoria_line> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:Bletchley a TFL:Location ;
     rdfs:label "Bletchley" .
@@ -16260,6 +16139,9 @@ TFL:Depot rdfs:label "depot" ;
 
 TFL:Dft a TFL:TransportService ;
     rdfs:label "DfT" .
+
+TFL:EastCroydon a TFL:Location ;
+    rdfs:label "East Croydon" .
 
 TFL:Embankment rdfs:label "Embankment" ;
     TFL:hasFacility TFL:MuralsByRobynDenny ;
@@ -16348,12 +16230,6 @@ TFL:HeathrowExpress a TFL:TransportOperator ;
         <https://en.wikipedia.org/wiki/Travelcard> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:HendonCentral a TFL:TransportOperator ;
-    rdfs:label "Hendon Central" ;
-    TFL:openedDate "1923"^^xsd:gYear ;
-    dcterms:source <https://en.wikipedia.org/wiki/Northern_line> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
 TFL:HertfordEast a TFL:TransportOperator ;
     rdfs:label "Hertford East" ;
     TFL:servedByLine TFL:LondonOverground ;
@@ -16392,10 +16268,6 @@ TFL:KingGeorgeV rdfs:label "King George V" ;
     TFL:hasStop TFL:LondonCityAirport ;
     dcterms:source <https://en.wikipedia.org/wiki/Docklands_Light_Railway> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:Kingston a TFL:Location,
-        TFL:TransportOperator ;
-    rdfs:label "Kingston" .
 
 TFL:LeaValleyLines rdfs:label "Lea Valley lines" ;
     TFL:servedByLine "Class 710" ;
@@ -16620,9 +16492,6 @@ TFL:PlatformEdgeDoors rdfs:label "platform edge doors" .
 
 TFL:PlatformStaffDuringExcelExhibitions rdfs:label "platform staff during ExCeL exhibitions" .
 
-TFL:PottersBar a TFL:TransportOperator ;
-    rdfs:label "Potters Bar" .
-
 TFL:PrestonRoad a TFL:TransitStop ;
     rdfs:label "Preston Road" .
 
@@ -16823,9 +16692,6 @@ TFL:WaterlooEast a TFL:Location ;
     dcterms:source <https://en.wikipedia.org/wiki/Waterloo_&_City_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:WembleyCentral a TFL:TransportOperator ;
-    rdfs:label "Wembley Central" .
-
 TFL:WestFinchley a TFL:Location ;
     rdfs:label "West Finchley" .
 
@@ -17002,9 +16868,6 @@ TFL:Comfortdelgro rdfs:label "ComfortDelGro" ;
 TFL:DepartmentForTransport a TFL:TransportOperator ;
     rdfs:label "Department for Transport" .
 
-TFL:EastCroydon a TFL:Location ;
-    rdfs:label "East Croydon" .
-
 TFL:EastHam a TFL:Location ;
     rdfs:label "East Ham" ;
     TFL:operatesInZone TFL:Zone3,
@@ -17017,8 +16880,6 @@ TFL:EastHam a TFL:Location ;
 
 TFL:Ebbsfleet a TFL:TransportOperator ;
     rdfs:label "Ebbsfleet" .
-
-TFL:Erith rdfs:label "Erith" .
 
 TFL:EustonBus rdfs:label "Euston bus station" .
 
@@ -17052,6 +16913,13 @@ TFL:Hampstead a TFL:TransportOperator ;
     TFL:servedByLine TFL:StandardStock ;
     TFL:terminatesAt TFL:Edgware ;
     dcterms:source <https://en.wikipedia.org/wiki/London_Underground_rolling_stock> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
+TFL:Holborn a TFL:Location,
+        TFL:TransportEvent ;
+    rdfs:label "Holborn" ;
+    TFL:hasStepFreeStreetToPlatform false ;
+    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:Hounslow a TFL:Location ;
@@ -17185,9 +17053,6 @@ TFL:PrioritySeats rdfs:label "priority seats" .
 TFL:Public-privatePartnership rdfs:label "public-private partnership" .
 
 TFL:PublicprivatePartnership rdfs:label "public–private partnership" .
-
-TFL:Roehampton a TFL:Location ;
-    rdfs:label "Roehampton" .
 
 TFL:Romfordupminster rdfs:label "Romford–Upminster line" ;
     TFL:servedByLine "Class 710" ;
@@ -17456,6 +17321,10 @@ TFL:FirstBusLondon a TFL:TransportOperator ;
 TFL:Firstgroup a TFL:TransportOperator ;
     rdfs:label "FirstGroup" .
 
+TFL:GoldersGreen a TFL:TransportOperator ;
+    rdfs:label "Golders Green" ;
+    TFL:servedByLine TFL:NorthernLine .
+
 TFL:GospelOakToBarking rdfs:label "Gospel Oak to Barking line" ;
     TFL:connectsTo TFL:Thamesmead ;
     TFL:hasTerminus TFL:BarkingRiverside ;
@@ -17482,13 +17351,6 @@ TFL:HeathrowCentralBus rdfs:label "Heathrow Central bus station" .
 
 TFL:Hertfordshire a TFL:Location ;
     rdfs:label "Hertfordshire" .
-
-TFL:Holborn a TFL:Location,
-        TFL:TransportEvent ;
-    rdfs:label "Holborn" ;
-    TFL:hasStepFreeStreetToPlatform false ;
-    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:HounslowTown rdfs:label "Hounslow Town" ;
     TFL:partOf TFL:HounslowBranch ;
@@ -17681,12 +17543,6 @@ TFL:Thales a TFL:TransportOperator ;
     TFL:partOf TFL:ConnectProject ;
     dcterms:source <https://en.wikipedia.org/wiki/Metropolitan_line>,
         <https://en.wikipedia.org/wiki/Transport_for_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:Tolworth a TFL:TransportOperator ;
-    rdfs:label "Tolworth" ;
-    TFL:replacedBy TFL:KingstonGarage ;
-    dcterms:source <https://en.wikipedia.org/wiki/London_United_Busways> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:TowerGateway a TFL:TransitStop ;
@@ -18107,6 +17963,8 @@ TFL:GreaterLondon a TFL:Location,
         TFL:TransitStop ;
     rdfs:label "Greater London" .
 
+TFL:HammersmithBus rdfs:label "Hammersmith bus station" .
+
 TFL:HounslowWest rdfs:label "Hounslow West" ;
     TFL:hasTerminus TFL:HounslowBarracks ;
     TFL:introducedBy TFL:StanleyHeaps ;
@@ -18237,20 +18095,17 @@ TFL:CannonStreet a TFL:TransitStop ;
     dcterms:source <https://en.wikipedia.org/wiki/Bank_and_Monument_stations> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
+TFL:FirstLondon a TFL:TransportOperator ;
+    rdfs:label "First London" .
+
 TFL:Go-aheadGroup a TFL:TransportOperator ;
     rdfs:label "Go-Ahead Group" ;
     TFL:locatedIn TFL:Newcastle ;
     dcterms:source <https://en.wikipedia.org/wiki/Go-Ahead_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:GoldersGreen a TFL:TransportOperator ;
-    rdfs:label "Golders Green" ;
-    TFL:servedByLine TFL:NorthernLine .
-
 TFL:GreatWestern a TFL:TransitStop ;
     rdfs:label "Great Western Railway" .
-
-TFL:HammersmithBus rdfs:label "Hammersmith bus station" .
 
 TFL:Harrow a TFL:Location,
         TFL:TransportOperator ;
@@ -18587,9 +18442,6 @@ TFL:Beckton a TFL:Location,
         TFL:TransportOperator ;
     rdfs:label "Beckton" .
 
-TFL:FirstLondon a TFL:TransportOperator ;
-    rdfs:label "First London" .
-
 TFL:HarrowAndWealdstone a TFL:TransportOperator ;
     rdfs:label "Harrow & Wealdstone" ;
     TFL:connectsTo TFL:StanmoreBranch ;
@@ -18705,6 +18557,14 @@ TFL:ArrivaLondon a TFL:TransportOperator ;
 TFL:BritishRail a TFL:TransportOperator ;
     rdfs:label "British Rail" .
 
+TFL:Cockfosters rdfs:label "Cockfosters" ;
+    TFL:connectsTo TFL:Northfields,
+        "Heathrow Terminal 4",
+        "Heathrow Terminal 5" ;
+    TFL:servedByLine TFL:PiccadillyLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/Piccadilly_line> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
 TFL:EarlsCourt a TFL:TransportOperator ;
     rdfs:label "Earl's Court" ;
     TFL:connectsTo TFL:DistrictLine,
@@ -18818,15 +18678,25 @@ TFL:Amersham a TFL:Location ;
         <https://en.wikipedia.org/wiki/Metropolitan_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:Cockfosters rdfs:label "Cockfosters" ;
-    TFL:connectsTo TFL:Northfields,
-        "Heathrow Terminal 4",
-        "Heathrow Terminal 5" ;
-    TFL:servedByLine TFL:PiccadillyLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/Piccadilly_line> ;
+TFL:ElephantAndCastle a TFL:TransportOperator ;
+    rdfs:label "Elephant & Castle" ;
+    TFL:hasAccessibilityFeature TFL:Step-freeAccessUnderConstruction ;
+    TFL:servedByLine TFL:BakerlooLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:LondonServicePermit rdfs:label "London Service Permit" .
+
+TFL:TottenhamCourtRoad a TFL:TransitStop,
+        TFL:TransportOperator ;
+    rdfs:label "Tottenham Court Road" ;
+    TFL:hasFacility TFL:RefrigerationUnit,
+        "£1 billion development" ;
+    TFL:partOf TFL:NorthernLineMobileCoverageExpansion ;
+    TFL:servedByLine TFL:NorthernLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/Crossrail>,
+        <https://en.wikipedia.org/wiki/London_Underground> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:WaterlooAndCity a TFL:Location,
         TFL:TransportOperator ;
@@ -18938,6 +18808,17 @@ TFL:CanningTown a TFL:Location,
     dcterms:source <https://en.wikipedia.org/wiki/Docklands_Light_Railway> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
+TFL:EalingBroadway rdfs:label "Ealing Broadway" ;
+    TFL:introducedBy "June 2022" ;
+    TFL:operatesInZone TFL:Zone3,
+        "Zone 3" ;
+    TFL:servedByLine TFL:CentralLine,
+        TFL:DistrictLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/District_line>,
+        <https://en.wikipedia.org/wiki/Hopper_fare>,
+        <https://en.wikipedia.org/wiki/Oyster_card> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
 TFL:EdgwareRoad a TFL:TransitStop ;
     rdfs:label "Edgware Road" ;
     TFL:hasFacility TFL:FourPlatforms,
@@ -18949,13 +18830,6 @@ TFL:EdgwareRoad a TFL:TransitStop ;
         TFL:CircleLine ;
     dcterms:source <https://en.wikipedia.org/wiki/Circle_line_(London_Underground)>,
         <https://en.wikipedia.org/wiki/Jubilee_line> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:ElephantAndCastle a TFL:TransportOperator ;
-    rdfs:label "Elephant & Castle" ;
-    TFL:hasAccessibilityFeature TFL:Step-freeAccessUnderConstruction ;
-    TFL:servedByLine TFL:BakerlooLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:Greenwich a TFL:Location ;
@@ -18982,17 +18856,6 @@ TFL:SouthHarrow a TFL:Location ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:Step-freeAccess rdfs:label "step-free access" .
-
-TFL:TottenhamCourtRoad a TFL:TransitStop,
-        TFL:TransportOperator ;
-    rdfs:label "Tottenham Court Road" ;
-    TFL:hasFacility TFL:RefrigerationUnit,
-        "£1 billion development" ;
-    TFL:partOf TFL:NorthernLineMobileCoverageExpansion ;
-    TFL:servedByLine TFL:NorthernLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/Crossrail>,
-        <https://en.wikipedia.org/wiki/London_Underground> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:AbbeyWood a TFL:TransitStop ;
     rdfs:label "Abbey Wood" ;
@@ -19197,17 +19060,6 @@ TFL:Brixton a TFL:Location,
         <https://en.wikipedia.org/wiki/Victoria_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:EalingBroadway rdfs:label "Ealing Broadway" ;
-    TFL:introducedBy "June 2022" ;
-    TFL:operatesInZone TFL:Zone3,
-        "Zone 3" ;
-    TFL:servedByLine TFL:CentralLine,
-        TFL:DistrictLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/District_line>,
-        <https://en.wikipedia.org/wiki/Hopper_fare>,
-        <https://en.wikipedia.org/wiki/Oyster_card> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
 TFL:Go-aheadLondon a TFL:TransportOperator ;
     rdfs:label "Go-Ahead London" ;
     TFL:locatedIn TFL:GreaterLondon ;
@@ -19259,6 +19111,18 @@ TFL:Stanmore a TFL:Location ;
         TFL:JubileeLine,
         TFL:MetropolitanLine .
 
+TFL:Waterloo rdfs:label "Waterloo" ;
+    TFL:hasFacility TFL:StaticCompressors ;
+    TFL:introducedBy TFL:PerryAndCo ;
+    TFL:locatedIn TFL:London ;
+    TFL:servedByLine TFL:NorthernLine,
+        TFL:OysterSystem,
+        TFL:WaterlooAndCity ;
+    dcterms:source <https://en.wikipedia.org/wiki/Hopper_fare>,
+        <https://en.wikipedia.org/wiki/Oyster_card>,
+        <https://en.wikipedia.org/wiki/Waterloo_&_City_line> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
 TFL:Watford a TFL:Location,
         TFL:TransportOperator ;
     rdfs:label "Watford" ;
@@ -19293,16 +19157,17 @@ TFL:Morden a TFL:Location ;
     dcterms:source <https://en.wikipedia.org/wiki/Northern_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:Waterloo rdfs:label "Waterloo" ;
-    TFL:hasFacility TFL:StaticCompressors ;
-    TFL:introducedBy TFL:PerryAndCo ;
-    TFL:locatedIn TFL:London ;
-    TFL:servedByLine TFL:NorthernLine,
-        TFL:OysterSystem,
-        TFL:WaterlooAndCity ;
-    dcterms:source <https://en.wikipedia.org/wiki/Hopper_fare>,
-        <https://en.wikipedia.org/wiki/Oyster_card>,
-        <https://en.wikipedia.org/wiki/Waterloo_&_City_line> ;
+TFL:Richmond a TFL:Location ;
+    rdfs:label "Richmond" ;
+    TFL:openedDate "1877"^^xsd:gYear ;
+    TFL:operatesInZone TFL:Zone4,
+        "Zone 4" ;
+    TFL:partOf TFL:LondonOverground ;
+    TFL:servedByLine TFL:DistrictLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/District_line>,
+        <https://en.wikipedia.org/wiki/Hopper_fare>,
+        <https://en.wikipedia.org/wiki/Metropolitan_line>,
+        <https://en.wikipedia.org/wiki/Oyster_card> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:CamdenTown a TFL:TransitStop ;
@@ -19420,71 +19285,6 @@ TFL:HammersmithAndCity a TFL:TransportOperator ;
         <https://en.wikipedia.org/wiki/Transport_for_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:Moorgate a TFL:TransportOperator ;
-    rdfs:label "Moorgate" ;
-    TFL:hasFacility TFL:BayPlatforms ;
-    dcterms:source <https://en.wikipedia.org/wiki/Circle_line_(London_Underground)>,
-        <https://en.wikipedia.org/wiki/Hammersmith_&_City_line> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:NationalRail a TFL:TransportOperator ;
-    rdfs:label "National Rail" ;
-    TFL:hasStop TFL:BatterseaPark,
-        TFL:ClaphamJunction,
-        TFL:Wimbledon .
-
-TFL:Richmond a TFL:Location ;
-    rdfs:label "Richmond" ;
-    TFL:openedDate "1877"^^xsd:gYear ;
-    TFL:operatesInZone TFL:Zone4,
-        "Zone 4" ;
-    TFL:partOf TFL:LondonOverground ;
-    TFL:servedByLine TFL:DistrictLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/District_line>,
-        <https://en.wikipedia.org/wiki/Hopper_fare>,
-        <https://en.wikipedia.org/wiki/Metropolitan_line>,
-        <https://en.wikipedia.org/wiki/Oyster_card> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:Whitechapel a TFL:Location ;
-    rdfs:label "Whitechapel" ;
-    TFL:connectsTo TFL:GreatEasternMain,
-        TFL:Windrush ;
-    TFL:hasFacility TFL:NewEntrance ;
-    TFL:hasStepFreeStreetToPlatform true ;
-    TFL:hasStop TFL:JubileeLineConcourse ;
-    TFL:partOf TFL:LondonOverground ;
-    TFL:servedByLine TFL:DistrictLine,
-        TFL:Elizabeth,
-        TFL:LondonOverground,
-        TFL:MetropolitanLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
-        <https://en.wikipedia.org/wiki/Crossrail>,
-        <https://en.wikipedia.org/wiki/District_line>,
-        <https://en.wikipedia.org/wiki/Hammersmith_&_City_line>,
-        <https://en.wikipedia.org/wiki/Hopper_fare>,
-        <https://en.wikipedia.org/wiki/London_Overground>,
-        <https://en.wikipedia.org/wiki/Oyster_card>,
-        <https://en.wikipedia.org/wiki/Stratford_station> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:ClaphamJunction a TFL:TransportOperator ;
-    rdfs:label "Clapham Junction" ;
-    TFL:hasAccessibilityFeature TFL:AccessForAllProgramme ;
-    TFL:hasStop TFL:ClaphamHighStreet,
-        TFL:PeckhamRye,
-        TFL:QueensRoadPeckham,
-        TFL:WandsworthRoad ;
-    TFL:introducedBy "September 2013" ;
-    TFL:operatesInZone TFL:Zone2,
-        "Zone 2" ;
-    TFL:servedByLine TFL:NationalRail ;
-    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
-        <https://en.wikipedia.org/wiki/Hopper_fare>,
-        <https://en.wikipedia.org/wiki/London_Overground>,
-        <https://en.wikipedia.org/wiki/Oyster_card> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
 TFL:KingsCrossStPancras a TFL:TransportOperator ;
     rdfs:label "Kings Cross" ;
     TFL:connectsTo TFL:Angel,
@@ -19535,6 +19335,60 @@ TFL:KingsCrossStPancras a TFL:TransportOperator ;
         <https://en.wikipedia.org/wiki/Victoria_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
+TFL:Moorgate a TFL:TransportOperator ;
+    rdfs:label "Moorgate" ;
+    TFL:hasFacility TFL:BayPlatforms ;
+    dcterms:source <https://en.wikipedia.org/wiki/Circle_line_(London_Underground)>,
+        <https://en.wikipedia.org/wiki/Hammersmith_&_City_line> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
+TFL:NationalRail a TFL:TransportOperator ;
+    rdfs:label "National Rail" ;
+    TFL:hasStop TFL:BatterseaPark,
+        TFL:ClaphamJunction,
+        TFL:Wimbledon .
+
+TFL:VictoriaBus rdfs:label "Victoria bus station" .
+
+TFL:Whitechapel a TFL:Location ;
+    rdfs:label "Whitechapel" ;
+    TFL:connectsTo TFL:GreatEasternMain,
+        TFL:Windrush ;
+    TFL:hasFacility TFL:NewEntrance ;
+    TFL:hasStepFreeStreetToPlatform true ;
+    TFL:hasStop TFL:JubileeLineConcourse ;
+    TFL:partOf TFL:LondonOverground ;
+    TFL:servedByLine TFL:DistrictLine,
+        TFL:Elizabeth,
+        TFL:LondonOverground,
+        TFL:MetropolitanLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
+        <https://en.wikipedia.org/wiki/Crossrail>,
+        <https://en.wikipedia.org/wiki/District_line>,
+        <https://en.wikipedia.org/wiki/Hammersmith_&_City_line>,
+        <https://en.wikipedia.org/wiki/Hopper_fare>,
+        <https://en.wikipedia.org/wiki/London_Overground>,
+        <https://en.wikipedia.org/wiki/Oyster_card>,
+        <https://en.wikipedia.org/wiki/Stratford_station> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
+TFL:ClaphamJunction a TFL:TransportOperator ;
+    rdfs:label "Clapham Junction" ;
+    TFL:hasAccessibilityFeature TFL:AccessForAllProgramme ;
+    TFL:hasStop TFL:ClaphamHighStreet,
+        TFL:PeckhamRye,
+        TFL:QueensRoadPeckham,
+        TFL:WandsworthRoad ;
+    TFL:introducedBy "September 2013" ;
+    TFL:operatesInZone TFL:Zone2,
+        "Zone 2" ;
+    TFL:servedByLine TFL:NationalRail ;
+    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
+        <https://en.wikipedia.org/wiki/Hopper_fare>,
+        <https://en.wikipedia.org/wiki/London_Overground>,
+        <https://en.wikipedia.org/wiki/Oyster_card> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
 TFL:Lewisham a TFL:Location,
         TFL:TransportOperator ;
     rdfs:label "Lewisham" ;
@@ -19545,7 +19399,20 @@ TFL:Lewisham a TFL:Location,
         <https://en.wikipedia.org/wiki/Docklands_Light_Railway> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:VictoriaBus rdfs:label "Victoria bus station" .
+TFL:OxfordCircus a TFL:TransportOperator ;
+    rdfs:label "Oxford Circus" ;
+    TFL:connectsTo TFL:BakerlooLine,
+        TFL:CentralLine ;
+    TFL:hasFacility TFL:ChillerUnits ;
+    TFL:replacedBy TFL:RetailTherapy ;
+    TFL:servedByLine TFL:BakerlooLine,
+        TFL:CentralLine,
+        TFL:VictoriaLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
+        <https://en.wikipedia.org/wiki/Bakerloo_line>,
+        <https://en.wikipedia.org/wiki/London_Underground>,
+        <https://en.wikipedia.org/wiki/Victoria_line> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:WatfordJunction a TFL:Location,
         TFL:TransportOperator ;
@@ -19642,21 +19509,6 @@ TFL:Elizabeth rdfs:label "Elizabeth line" ;
         <https://en.wikipedia.org/wiki/Oyster_card>,
         <https://en.wikipedia.org/wiki/Stratford_station>,
         <https://en.wikipedia.org/wiki/Transport_for_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:OxfordCircus a TFL:TransportOperator ;
-    rdfs:label "Oxford Circus" ;
-    TFL:connectsTo TFL:BakerlooLine,
-        TFL:CentralLine ;
-    TFL:hasFacility TFL:ChillerUnits ;
-    TFL:replacedBy TFL:RetailTherapy ;
-    TFL:servedByLine TFL:BakerlooLine,
-        TFL:CentralLine,
-        TFL:VictoriaLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
-        <https://en.wikipedia.org/wiki/Bakerloo_line>,
-        <https://en.wikipedia.org/wiki/London_Underground>,
-        <https://en.wikipedia.org/wiki/Victoria_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:Zone2 rdfs:label "Zone 2" .
@@ -19891,16 +19743,14 @@ TFL:Metroline a TFL:TransportOperator ;
     rdfs:label "Metroline" ;
     TFL:hasFacility TFL:CentralEngineeringAndLogisticsFacility ;
     TFL:introducedBy TFL:Comfortdelgro,
-        TFL:Privatisation,
-        TFL:TransportForGreaterManchester ;
+        TFL:Privatisation ;
     TFL:openedDate "1989"^^xsd:gYear,
         "1994"^^xsd:gYear ;
     TFL:operatedBy TFL:Comfortdelgro,
         TFL:LondonBuses,
         TFL:TransportForLondon ;
     TFL:partOf TFL:Comfortdelgro,
-        TFL:EdgwareGarage,
-        TFL:MetrolineTravelLimited ;
+        TFL:EdgwareGarage ;
     TFL:replacedBy TFL:AtlasBusAndCoach ;
     dcterms:source <https://en.wikipedia.org/wiki/List_of_bus_routes_in_London>,
         <https://en.wikipedia.org/wiki/Metroline> ;
@@ -20069,26 +19919,6 @@ TFL:Uxbridge a TFL:Location,
         <https://en.wikipedia.org/wiki/Piccadilly_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
-TFL:Paddington a TFL:Location,
-        TFL:TransportOperator ;
-    rdfs:label "Paddington" ;
-    TFL:connectsTo TFL:EdgwareRoad,
-        TFL:PraedStreetJunction ;
-    TFL:openedDate "1854"^^xsd:gYear ;
-    TFL:operatesInZone TFL:Zone1,
-        "Zone 1" ;
-    TFL:partOf TFL:GreatWestern ;
-    TFL:servedByLine TFL:BakerlooLine,
-        TFL:CircleLine,
-        TFL:Elizabeth,
-        TFL:MetropolitanLine ;
-    dcterms:source <https://en.wikipedia.org/wiki/Baker_Street_tube_station>,
-        <https://en.wikipedia.org/wiki/Circle_line_(London_Underground)>,
-        <https://en.wikipedia.org/wiki/Crossrail>,
-        <https://en.wikipedia.org/wiki/Hammersmith_&_City_line>,
-        <https://en.wikipedia.org/wiki/London_Underground> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
 TFL:BakerStreetStation a TFL:TransitStop,
         TFL:TransportOperator ;
     rdfs:label "Baker Street" ;
@@ -20134,6 +19964,26 @@ TFL:BakerStreetStation a TFL:TransitStop,
         <https://en.wikipedia.org/wiki/Jubilee_line>,
         <https://en.wikipedia.org/wiki/London_Underground>,
         <https://en.wikipedia.org/wiki/Metropolitan_line> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
+TFL:Paddington a TFL:Location,
+        TFL:TransportOperator ;
+    rdfs:label "Paddington" ;
+    TFL:connectsTo TFL:EdgwareRoad,
+        TFL:PraedStreetJunction ;
+    TFL:openedDate "1854"^^xsd:gYear ;
+    TFL:operatesInZone TFL:Zone1,
+        "Zone 1" ;
+    TFL:partOf TFL:GreatWestern ;
+    TFL:servedByLine TFL:BakerlooLine,
+        TFL:CircleLine,
+        TFL:Elizabeth,
+        TFL:MetropolitanLine ;
+    dcterms:source <https://en.wikipedia.org/wiki/Baker_Street_tube_station>,
+        <https://en.wikipedia.org/wiki/Circle_line_(London_Underground)>,
+        <https://en.wikipedia.org/wiki/Crossrail>,
+        <https://en.wikipedia.org/wiki/Hammersmith_&_City_line>,
+        <https://en.wikipedia.org/wiki/London_Underground> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:CircleLine a TFL:Location ;
@@ -20207,6 +20057,11 @@ TFL:CircleLine a TFL:Location ;
         <https://en.wikipedia.org/wiki/London_Underground>,
         <https://en.wikipedia.org/wiki/London_Underground_rolling_stock>,
         <https://en.wikipedia.org/wiki/Transport_for_London> ;
+    prov:wasGeneratedBy TFL:UnstructuredPipeline .
+
+TFL:TrafalgarSquareBusTerminus rdfs:label "Trafalgar Square" ;
+    TFL:replacedBy TFL:CharingCross ;
+    dcterms:source <https://en.wikipedia.org/wiki/Jubilee_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:JubileeLine a TFL:Location ;
@@ -20334,11 +20189,6 @@ TFL:JubileeLine a TFL:Location ;
         <https://en.wikipedia.org/wiki/Northern_line>,
         <https://en.wikipedia.org/wiki/Stratford_station>,
         <https://en.wikipedia.org/wiki/Transport_for_London> ;
-    prov:wasGeneratedBy TFL:UnstructuredPipeline .
-
-TFL:TrafalgarSquareBusTerminus rdfs:label "Trafalgar Square" ;
-    TFL:replacedBy TFL:CharingCross ;
-    dcterms:source <https://en.wikipedia.org/wiki/Jubilee_line> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:StratfordStation a TFL:Location,
