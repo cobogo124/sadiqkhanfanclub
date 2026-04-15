@@ -16,37 +16,100 @@ from datetime import date
 ]"""
 
 ARTICLES = [
-    # ticket/fare logic
+    # ── core lines (each has operator, terminus, zone, history facts) ──
+    "London Underground",
+    "Victoria line",
+    "Jubilee line",
+    "Central line",
+    "Northern line",
+    "Piccadilly line",
+    "Bakerloo line",
+    "Circle line (London Underground)",
+    "District line",
+    "Metropolitan line",
+    "Hammersmith & City line",
+    "Waterloo & City line",
+    "Elizabeth line",
+    "Docklands Light Railway",
+    "London Overground",
+    "Tramlink",
+    "London River Services",
+    "IFS Cloud Cable Car",
+ 
+    # ── key interchange stations (CQ1, CQ3) ──
+    "King's Cross St Pancras tube station",
+    "Stratford station",
+    "Baker Street tube station",
+    "Bank and Monument stations",
+    "Canary Wharf tube station",
+    "Brixton tube station",
+    "London terminal stations",
+    # ── ticketing & fares (CQ11, CQ12) ──
     "Oyster card",
-    "Pay-as-you-go",
-    "Contactless payment",
-    "Fare capping",
+    "CPAY",
     "London fare zones",
-
-    #accessibility and acess semantics
-    "Step-free access",
-    "Accessibility of transport in London",  
-    "London Dial-a-Ride",  
-    #"Railway station facilities",
-
-    #night services
+    "Travelcard",
+ 
+    # ── night services (CQ10, CQ17) ──
     "Night Tube",
     "Night buses in London",
-    "Night service (public transport)",
-
-    #system context
+ 
+    # ── accessibility (CQ5, CQ16, CQ18) ──
+    "Step-free access",
+    "Accessibility of transport in London",
+ 
+    # ── operators & governance (CQ8, CQ14) ──
     "Transport for London",
-    "National Rail",
-
-    #conceptual semantics
-    "Rapid transit",
-    "Light rail",
+    "Arriva Rail London",
+ 
+    # ── buses (CQ9, CQ17) ──
     "London Buses",
-    "Bus transport in the United Kingdom",
-    "Transport hub",
-    "Interchange station",
-    "Train station",
-    "Station building"
+    "List of bus routes in London",
+ 
+    # ── concessions (CQ20) ──
+    "Freedom Pass",
+    "Disabled Persons Railcard",
+    
+    # buses
+    "iBus (London)",
+    "Countdown (bus arrival system)",
+    "CentreComm",
+    "List of bus stations in London",
+    "List of bus garages in London",
+    "Superloop (London)",
+    "Go-Ahead London",
+    "Stagecoach London",
+    "Metroline",
+    "Transport UK London Bus",
+    "Hopper fare",
+    # Infrastructure & Nodes for hasStop/hasTerminus
+    "List of bus stations in London",
+    "List of bus garages in London",
+    "Category:Railway termini in London",
+    
+    # Operators for operatedBy/replacedBy
+    "Go-Ahead London",
+    "Stagecoach London",
+    "Metroline",
+    "London United Busways", # High turnover of operators here
+    
+    # Projects for fareAmount (Cost/Budget)
+    "Crossrail", 
+    "Northern line extension to Battersea",
+    "Upgrade of the Jubilee line",
+    
+    # Technology for hasAccessibilityFeature/acceptedOn
+    "iBus (London)",
+    "Lifts on the London Underground",
+    
+    # Vehicles for servesMode/criticisedBy
+    "New Routemaster",
+    "London Underground rolling stock",
+    "British Rail Class 345",
+
+    "Elizabeth line",
+    
+
 ]
 
 #inputs wiki article title, outputs plain text
