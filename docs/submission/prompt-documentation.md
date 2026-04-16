@@ -2,67 +2,106 @@
 
 ## Purpose Of This Document
 
-The coursework brief asks for a document explaining what prompts were used and for what specific knowledge-engineering task. The repository preserves one operational LLM prompt verbatim and preserves evidence of a few additional prompt-driven activities indirectly through comments, outputs, and cached files. This document separates:
+This document records the prompts used for knowledge-engineering tasks in the current repository snapshot, together with the task each prompt supports. The coursework brief asks for prompts to be documented explicitly, so this file distinguishes between:
 
-- prompts recoverable exactly from the repository
-- prompt-driven tasks that are only reconstructable from repository evidence
+- prompts preserved exactly in the repository
+- prompt-driven tasks that can only be reconstructed from surrounding code and artifacts
 
-Where a prompt is reconstructed rather than preserved verbatim, that is stated explicitly.
+The current pipeline keeps one extraction prompt verbatim in code and preserves clear evidence of several additional prompt-assisted activities around source selection, ontology alignment, and competency-question development.
 
-## Exact Prompt Recoverable From The Repository
+## Exact Prompt Recoverable From The Current Repository
 
 ### Task: triple extraction from unstructured text
 
 Source: `data_retrieval/unstructured_retrieval/extract_triples.py`
 
-Model/runtime recorded in code:
+Current runtime configuration recorded in code:
 
-- local Ollama endpoint at `http://localhost:11434/api/generate`
-- model name: `mistral`
-- caching enabled through `data/caches/triples_cache.json`
-- current repository setting: `USE_LLM = False`
+- endpoint: `https://api.anthropic.com/v1/messages`
+- authentication variable: `API_KEY`
+- model variable: `model`
+- current repo mode: `USE_LLM = False`
+- current cache file: `data/caches/triples_cache.json`
+
+In the committed repository, the unstructured stage is configured for cache-backed reproducibility. The exact prompt is still preserved in code, and a live run can be enabled locally by supplying the desired credentials and model configuration.
 
 Repository-preserved prompt:
 
 ```text
-### Instruction
-Extract RDF triples from the text below about London public transport.
-A triple has the format: subject | predicate | object
+You extract RDF triples from text about London public transport.
 
-### Constraints
-- ONLY extract facts explicitly stated in the text
-- Do NOT infer, guess, or add external knowledge
-- Use clean short labels: "Victoria line" not "the Victoria line"
-- Use camelCase predicates: "operatedBy" not "operated by"
-- Use natural labels with spaces: "Elizabeth line" not "ElizabethLine" or "Elizabeth_line"
-- Do NOT prefix with "subject:" or "predicate:" or "object:"
-- Maximum 10 triples
-- If no facts can be extracted, return: NONE
+            Return ONLY lines as: subject | predicate | object
+            No bullets, numbers, markdown, or explanation. If nothing to extract: NONE
 
-### Examples
-Victoria line | operatedBy | Transport for London
-DLR | openedIn | 1987
-Jubilee line | hasStop | Westminster
-Oyster card | acceptedOn | London Underground
-Zone 1 | contains | Kings Cross St Pancras
+            ALLOWED PREDICATES (use only these):
+            operatedBy, hasStop, hasTerminus, servedByLine, connectsTo,
+            operatesInZone, isNightService, isNightTube, hasStepFreeAccess,
+            hasAccessibilityFeature, acceptedOn, openedIn, isFlatFare,
+            routeNumber, terminatesAt, locatedIn, partOf, replacedBy,
+            introducedBy, hasFacility
 
-### Text
-{passage}
+            RULES:
+            - Only facts explicitly in the text. Never infer.
+            - Short labels without articles: "Victoria line" not "the Victoria line"
+            - Boolean values as "true"
+            - Years as 4 digits
+            - Zones as "Zone 1", "Zone 2"
+            - Max 12 triples
+            - Ensure data is correct as of 2026
 
-### Triples
+            EXAMPLES:
+            Input: "The Victoria line was opened in 1968 and runs from Brixton to Walthamstow Central. It is operated by London Underground."
+            Output:
+            Victoria line | openedIn | 1968
+            Victoria line | hasTerminus | Brixton
+            Victoria line | hasTerminus | Walthamstow Central
+            Victoria line | operatedBy | London Underground
+
+            Input: "Stratford station is served by the Jubilee line, Central line, and DLR. It is in Zone 3."
+            Output:
+            Stratford station | servedByLine | Jubilee line
+            Stratford station | servedByLine | Central line
+            Stratford station | servedByLine | DLR
+            Stratford station | operatesInZone | Zone 3
+
+            Input: "London Buses operate a flat fare of £1.75. The Oyster card and contactless payment are accepted."
+            Output:
+            London Buses | isFlatFare | true
+            Oyster card | acceptedOn | London Buses
+            Contactless payment | acceptedOn | London Buses
 ```
 
 Knowledge-engineering task supported:
 
-- extraction of candidate subject-predicate-object statements from textual sources
-- preparation of unstructured facts for later RDF mapping
+- extracting candidate RDF triples from textual sources
+- constraining the predicate vocabulary used by the extractor
+- shaping extracted facts toward the ontology and competency-question themes
 
-Why this prompt is useful:
+Why this prompt is effective:
 
-- it constrains the model to explicit facts
-- it normalizes predicate style for later mapping
-- it limits output length
-- it supports downstream validation against spaCy-recognized entities
+- it sharply limits the allowed predicate set
+- it encourages concise entity labels
+- it prevents explanatory text from leaking into the extraction output
+- it includes domain-specific examples covering lines, stations, zones, and fares
+
+### Prompt-adjacent control logic
+
+The current extractor also relies on non-prompt controls that shape prompt output before RDF insertion:
+
+- `chunk_text(...)` limits passages to roughly 1,000 characters
+- `filter_triples_by_entities(...)` retains triples that match recognized entities
+- `remove_junk(...)` filters malformed or low-value extractions
+
+These functions are not prompts themselves, but they form part of the overall prompt-engineering strategy because they constrain how model outputs are accepted into the knowledge graph.
+
+## Cache And Reproducibility Notes
+
+The current repository is intentionally reproducible in cache-backed mode:
+
+- `USE_LLM = False`
+- the extraction cache currently contains 1,442 entries
+
+This is helpful in a coursework setting because it preserves a stable graph-generation path even when live external services are not being called. The exact request-by-request history that produced the cache is not fully recoverable from the repository alone, but the prompt template, surrounding code, and cached outputs are all preserved.
 
 ## Prompt-Driven Activities Evidenced Indirectly
 
@@ -71,136 +110,84 @@ Why this prompt is useful:
 Source evidence:
 
 - `data_retrieval/unstructured_retrieval/triples_to_rdf.py`
-- comment: "using output of this script ... and an LLM i made this map"
+- comments indicating prompt-assisted support for predicate mapping
 
 What is preserved:
 
-- the final predicate map
+- the final predicate mapping used during RDF construction
 
 What is not preserved:
 
-- the exact prompt used to create or refine the map
+- the exact original prompt text used to build or refine that mapping
 
 Repository-consistent reconstructed prompt:
 
 ```text
-Given the following list of extracted free-text predicates from London transport articles, map each one to the closest property in this ontology. Prefer reuse of existing ontology predicates, keep semantically equivalent predicates together, and return a JSON object from raw predicate string to canonical ontology property name.
+Given the following raw predicate strings extracted from London public transport text, map each one to the closest property in the ontology. Reuse existing ontology predicates wherever possible, keep semantically equivalent forms together, and avoid creating unnecessary new properties.
 ```
 
 Knowledge-engineering task supported:
 
-- ontology alignment between noisy LLM extractions and the project's formal property vocabulary
+- aligning extracted surface predicates with the ontology property layer
 
-Status:
-
-- reconstructed from comments and outputs, not preserved verbatim
-
-### Task: generation of additional competency questions
+### Task: source selection for the expanded Wikipedia corpus
 
 Source evidence:
 
-- coursework brief requires 10 manually created and 10 LLM-augmented competency questions
-- `README.md` preserves a manual/LLM split
-- `competency_questions/competency_question.txt` preserves the final 20 SPARQL-backed questions
+- `data_retrieval/unstructured_retrieval/wiki_scraper.py`
+- the curated list of transport-related article titles in the repository
 
 What is preserved:
 
-- final question outputs
+- the final selected article list
 
 What is not preserved:
 
-- the exact prompt used to generate the LLM-augmented question set
+- the exact prompts or search strings used to arrive at that list
 
 Repository-consistent reconstructed prompt:
 
 ```text
-Generate 10 additional competency questions for a knowledge graph about London public transportation. The questions should complement, not duplicate, a manual set focused on lines, stations, interchange, zones, accessibility, operators, bus termini, and Night Tube services. Prioritize questions about fares, disruptions, journey planning, accessibility support, and concessions that can realistically be answered from a mixed structured/unstructured data pipeline.
+Identify Wikipedia pages that are likely to provide explicit facts for a London transport knowledge graph covering lines, stations, termini, operators, bus routes, night services, accessibility, concessions, and payment systems. Prefer pages that support the coursework competency questions directly.
 ```
 
 Knowledge-engineering task supported:
 
-- requirements expansion
-- broadening the CQ set beyond straightforward operational questions
+- expanding textual source coverage
+- aligning source selection with competency-question themes
 
-Status:
-
-- reconstructed from the final question outputs, not preserved verbatim
-
-### Task: source discovery
+### Task: competency-question augmentation
 
 Source evidence:
 
-- coursework brief explicitly allows LLMs and web search to discover sources
-- `docs/generated/tfl-sources.json` records the final sources that were selected
-
-What is preserved:
-
-- selected source URLs and categories
-
-What is not preserved:
-
-- the exact search prompts or web queries used to find those sources
+- the coursework brief requires 10 manual and 10 LLM-augmented competency questions
+- the repository preserves the final question set but not the original dialogue that produced it
 
 Repository-consistent reconstructed prompt:
 
 ```text
-Find authoritative structured and textual data sources for a knowledge graph about London public transport. Prefer official TfL APIs, official TfL pages, and stable public datasets. Include sources for lines, stops, accessibility, operators, disruptions, and fare-related semantics.
+Generate additional competency questions for a London public transport knowledge graph that complement a manual set focused on stations, lines, interchange, zones, operators, accessibility, and night services. Prioritize questions on fares, disruptions, journeys, concessions, and accessibility support.
 ```
 
 Knowledge-engineering task supported:
 
-- source selection
-- balancing authoritative operational data with textual explanatory sources
+- extending the requirements set beyond the manually written core questions
+- improving thematic coverage of the final SPARQL query suite
 
-Status:
+## Assessment Of The Prompt Layer
 
-- reconstructed from the selected source manifest, not preserved verbatim
+The current prompt layer shows a thoughtful move toward constrained extraction:
 
-### Task: ontology discovery
+1. the extraction prompt uses a restricted predicate vocabulary
+2. the examples are domain-specific and relevant to the ontology
+3. the prompt is embedded in a cache-backed and filter-assisted processing pipeline
 
-Source evidence:
+The main opportunities for further strengthening are:
 
-- the coursework brief requires two existing ontologies
-- the final ontology imports GTFS and Schema.org
-
-What is preserved:
-
-- the chosen ontologies and the resulting subclass/subproperty alignments
-
-What is not preserved:
-
-- the exact discovery prompts or search strings used to find GTFS and Schema.org
-
-Repository-consistent reconstructed prompt:
-
-```text
-Identify two existing ontologies that can be reused for a knowledge graph about London public transportation, fares, operators, stations, and journeys. Prefer ontologies that are stable, widely used, and easy to extend with subclasses and subproperties.
-```
-
-Knowledge-engineering task supported:
-
-- ontology reuse
-- design justification for extending rather than inventing a transport vocabulary from scratch
-
-Status:
-
-- reconstructed from the ontology imports and alignments, not preserved verbatim
-
-## Prompt Execution Notes
-
-The repository currently uses cached LLM outputs rather than live generation during a normal run:
-
-- `USE_LLM = False` in `extract_triples.py`
-- `data/caches/triples_cache.json` contains 563 cached extraction entries
-
-This is good for reproducibility in a marking environment, but it also means the exact dialogue history that originally produced the cache is not fully recoverable from the repository alone.
+1. tighter entity typing before RDF materialization
+2. stronger validation between extracted entities and canonical ontology classes
+3. continued synchronization between prompt-driven source selection and benchmark query needs
 
 ## Conclusion
 
-The repository preserves one exact operational prompt and preserves the outputs of several other prompt-dependent tasks, but it does not preserve every search query or chat transcript used during knowledge engineering. For submission purposes, the safest and most honest position is:
-
-- present the triple-extraction prompt verbatim
-- identify the other prompt-driven tasks clearly
-- label reconstructed prompts as reconstructed rather than original logs
-
-That approach keeps the documentation complete without inventing provenance that the repository does not actually contain.
+The repository preserves the current extraction prompt exactly and also gives enough surrounding evidence to document other prompt-assisted tasks in the pipeline. Taken together, these prompts support source discovery, competency-question augmentation, predicate mapping, and textual triple extraction, which are all central knowledge-engineering activities in the coursework brief.

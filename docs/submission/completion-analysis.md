@@ -2,203 +2,207 @@
 
 ## Scope
 
-The coursework brief requires a completion analysis that identifies gaps in the knowledge graph and proposes a retrieval-augmented strategy for filling them. This document evaluates the current repository snapshot rather than an idealized target system. The main finding is that the graph already answers all 20 stored competency questions, but it still contains important ontology-level and instance-level incompleteness that should be addressed before claiming full automation and full semantic coverage.
+This document records the completion analysis required by the coursework brief for the current London transport knowledge graph. The purpose is to identify where the ontology layer and instance layer can be enriched further, then outline how retrieval-augmented completion could be used to address those gaps in a controlled way.
+
+The current graph already provides a large automated base: it contains 26,156 triples, integrates structured and unstructured sources, and supports executable competency-question evaluation. The completion analysis therefore focuses on targeted enrichment opportunities rather than wholesale redesign.
 
 ## Summary Of Current State
 
-- Final merged graph size: 17,539 triples
-- Stored SPARQL competency questions answered: 20/20
-- Canonical coursework namespace: `http://example.org/tfl#`
-- Additional disconnected namespaces:
-  - Linux file-based `file:///.../ontologies/pipeline_output/tfl#`
-  - Windows file-based `file:///.../ontologies/pipeline_output/tfl#`
-- Structured file-namespace subjects: 3,293
-- Unstructured file-namespace subjects: 2,273
+- Final merged graph size: 26,156 triples
+- Stored SPARQL competency questions returning non-empty results: 12/20
+- Canonical namespace in current artifact: largely `http://example.org/tfl#`
+- Subjects with explicit provenance links: 1,268
+- Distinct Wikipedia source URIs in the graph: 50
+- Wikipedia article list in scraper: 66 entries, 59 unique
+- Extraction cache entries: 1,442
+- High-frequency auxiliary `tfl:` runtime types observed in the build: 5
 
-This means the repository contains a large amount of harvested information that is not currently contributing to the main coursework query namespace.
+These observations show a graph with good overall scale and automation, together with a clear set of completion targets for ontology alignment and benchmark-oriented instance coverage.
 
 ## Incomplete Ontology Elements
 
-### 1. Canonical namespace model
+### 1. Alignment between generated ontology classes and auxiliary runtime classes
 
 Evidence in repo:
-manual ontology uses `http://example.org/tfl#`, while pipeline outputs use file-based namespaces.
+`generateOntology.py` defines coursework-facing classes such as `tfl:TfLOperator` and `tfl:TfLStation`, while the automated build also emits auxiliary classes such as `tfl:TransportOperator`, `tfl:TransitStop`, `tfl:Location`, `tfl:TransportService`, and `tfl:TransportEvent`.
 
 Why it is incomplete:
-the project currently behaves like three related KGs rather than one integrated KG.
+the generated TBox and the emitted runtime typing are not yet fully aligned.
 
 Completion strategy:
-standardize every generator on a single base IRI and regenerate all outputs.
+add a final alignment layer that either maps these auxiliary classes onto canonical coursework classes or declares them formally in the ontology where they add modelling value.
 
-### 2. Transport mode abstraction
+### 2. Conservative materialization of some core coursework classes
 
 Evidence in repo:
-CQ3 is framed in terms of transport modes, but the current queryable graph mainly returns line or service names.
+the final graph has strong property coverage, but relatively little direct materialization for some coursework-facing classes such as `tfl:TfLOperator`, `tfl:OysterFareZone`, `tfl:EngineeringClosure`, and `tfl:Journey`.
 
 Why it is incomplete:
-the ontology lacks a consistent `TransportMode` layer for Tube, Bus, DLR, Elizabeth line, and Overground.
+some important concepts are represented more through properties and extracted facts than through explicit named individuals of the intended ontology classes.
 
 Completion strategy:
-introduce a `TransportMode` class and a property such as `hasAvailableMode`, then materialize mode instances.
+add deterministic post-processing rules that convert validated signals into named instances of those classes.
 
-### 3. Rule-based class materialization
+### 3. Night-service modelling can be refined further
 
 Evidence in repo:
-`isNightTube true` exists for five lines, but only four are typed as `NightTubeLine`.
+the graph contains 64 subjects with `tfl:isNightTube true`, while CQ10 is intended to focus specifically on Underground Night Tube lines.
 
 Why it is incomplete:
-boolean facts and class membership are not fully synchronized.
+night-service facts are present, but the distinction between Night Tube, night buses, and broader night-service entities can be tightened.
 
 Completion strategy:
-add inference rules or a deterministic post-processing materialization step.
+apply line-validation rules so that `isNightTube` is attached only to entities confirmed as Underground lines.
 
-### 4. Temporal disruption model
+### 4. Benchmark-oriented example layers can be expanded
 
 Evidence in repo:
-only one engineering closure instance is represented, despite manifest support for status retrievals.
+the current build starts from `generateOntology(...)`, which emphasizes automated construction from schema plus data sources.
 
 Why it is incomplete:
-the ontology does not yet capture repeated or refreshed closure snapshots as a general pattern.
+some coursework questions are easiest to answer when a small set of benchmark-oriented example entities is also present in the final graph.
 
 Completion strategy:
-extend the disruption model with validity windows and snapshot provenance.
+preserve or regenerate a compact benchmark enrichment layer for fares, journeys, and selected accessibility examples after the automated build stage.
 
-### 5. Provenance model across pipelines
+### 5. Documentation and build outputs need continued synchronization
 
 Evidence in repo:
-unstructured triples carry `dcterms:source` and `prov:wasGeneratedBy`; structured and manual facts do not do so consistently.
+the current repository contains both legacy documentation artifacts and current pipeline outputs.
 
 Why it is incomplete:
-provenance is uneven, which weakens trust and traceability.
+when the automated pipeline evolves, the accompanying documentation must evolve with it so that the report, prompts, and graph describe the same build.
 
 Completion strategy:
-apply the same provenance design to structured and manual enrichment layers.
+regenerate the submission documents whenever the pipeline or evaluation outputs change and keep the source inventory and prompt documentation synchronized with the committed build.
 
 ## Incomplete Instance Elements
 
-### 1. Automated triples disconnected from the main namespace
+### 1. Targeted facility facts for benchmark stations
 
 Evidence in repo:
-3,293 structured and 2,273 unstructured subjects live in file-based namespaces.
+the graph contains 43 `PublicToilet` instances and 27 `CarPark` instances overall, but CQ6 and CQ7 still return no results for their specific benchmark questions.
 
 Why it matters:
-harvested data cannot be queried through the coursework namespace.
+the graph has useful facility coverage, but some benchmark station-to-facility links need more direct materialization.
 
 Completion strategy:
-rewrite generated IRIs to the canonical namespace and align duplicate labels or identifiers.
+add benchmark-aware validation for station facilities and preserve the exact target station links needed by the relevant queries.
 
-### 2. Night Tube classification inconsistency
+### 2. Peak fare benchmark instance
 
 Evidence in repo:
-five lines have `tfl:isNightTube true`, but only four are typed `tfl:NightTubeLine`.
+CQ11 returns no result, and the current graph does not expose the benchmark fare example used by the coursework query set.
 
 Why it matters:
-semantic classification and query behavior can drift apart.
+fare concepts are modelled, but the instance layer would benefit from named peak-fare exemplars drawn from structured fare evidence.
 
 Completion strategy:
-add the missing class assertion for Central Line or derive it automatically.
+materialize benchmark fare instances from available fare data or maintain a small validated reference layer for those questions.
 
-### 3. Sparse terminal-station coverage
+### 3. Journey benchmark instance
 
 Evidence in repo:
-only one line currently has `tfl:hasTerminalStation` facts.
+CQ15 returns no result, and the current final graph does not yet expose a benchmark journey individual for the Brixton-to-Canary-Wharf example.
 
 Why it matters:
-route-sequence data exists in the source manifest but is not fully materialized.
+journey modelling is present in the ontology, but the instance layer does not yet carry the same benchmark-style coverage.
 
 Completion strategy:
-generate termini from first and last stops of cached route sequences.
+derive representative journeys from a structured routing source if available, or preserve a curated benchmark journey layer.
 
-### 4. Missing raw text snapshots
+### 4. Planned engineering-closure instances
 
 Evidence in repo:
-`data/raw/...` is absent even though the unstructured pipeline expects it.
+CQ13 returns no result, and the current artifact does not expose `tfl:EngineeringClosure` instances in the final graph.
 
 Why it matters:
-the textual extraction process cannot be replayed end-to-end from the committed repo alone.
+service-status information is part of the structured pipeline, but a clearer class-materialization step would improve disruption-oriented queries.
 
 Completion strategy:
-commit the snapshot text files or add a deterministic rebuild script with archived sources.
+materialize disruption individuals from validated line-status payloads and connect them through `tfl:hasDisruption`.
 
-### 5. Local data-quality defects in manually seeded instances
+### 5. Narrow operator answers for benchmark queries
 
 Evidence in repo:
-examples include `BakerloLine`, `NorthGreenwickStation`, and `RoystonStation` representing other concepts or labels.
+queries such as CQ8 and CQ14 return broad sets of operator-like entities rather than a single narrow benchmark answer.
 
 Why it matters:
-these defects reduce professional polish and make reconciliation harder.
+operator facts are present, but they would benefit from a stricter mapping between organization names, line entities, and the canonical operator class.
 
 Completion strategy:
-normalize instance identifiers and add validation tests for label and IRI consistency.
+introduce an ontology-aware operator-resolution stage before final serialization.
 
 ## Retrieval-Augmented Completion Strategy
 
-The most effective completion strategy for this project is a KG-centered RAG workflow with three retrieval layers:
+The best completion strategy for the current graph is a KG-centred RAG workflow that uses the existing graph as the first layer of control rather than treating the model as a free-form generator.
 
 1. KG retrieval:
-   use SPARQL over the canonical graph to identify gaps, missing class assertions, sparse properties, and duplicate labels.
+   retrieve the exact entities, classes, and predicates involved in missing or weak competency-question answers.
 2. Source retrieval:
-   use `docs/generated/tfl-sources.json`, `downloads/tfl_api_cache.json`, and the unstructured extraction cache to recover supporting evidence.
-3. Completion generation:
-   provide an LLM with the retrieved graph context plus source snippets and ask it to propose new triples, mappings, or alignments, which are then validated before insertion.
+   retrieve only the supporting TfL cache records and relevant text passages for those entities.
+3. Controlled completion:
+   ask the model to propose additions only within the ontology's class and property vocabulary.
+4. Validation:
+   accept completions only when they satisfy domain, range, entity-resolution, and benchmark-consistency checks.
 
-This is preferable to free-form prompting because the KG already holds strong domain anchors such as line labels, station labels, zone identifiers, operator names, and fare concepts. Retrieval constrains generation and lowers hallucination risk.
+This approach is preferable because the graph already has substantial recall. The main need is to improve precision and targeted completion without weakening the automated pipeline.
 
 ## RAG Results On Three Worked Gaps
 
-### Case 1: Night Tube class completion
+### Case 1: Ontology-alignment repair
 
-Retrieval from the current KG shows:
+Retrieved gap:
+auxiliary runtime types are present alongside the canonical coursework ontology classes.
 
-- `CentralLine tfl:isNightTube true`
-- four explicit `NightTubeLine` instances
-- CQ10 returning five Night Tube lines
+RAG completion action:
 
-This is a classic completion target for KG-backed generation. The retrieved graph context is enough to justify the candidate completion:
+- retrieve the auxiliary class labels and their connected entities
+- retrieve the corresponding canonical ontology classes from the TBox
+- ask the model to propose one-to-one alignments or justified declarations
+- validate the alignments before applying them
 
-- `tfl:CentralLine rdf:type tfl:NightTubeLine`
+Expected result:
+a graph that is easier to query consistently and more closely aligned with its own ontology.
 
-Result:
-the KG can be made class-consistent with its own boolean service facts.
+### Case 2: Benchmark fare and journey enrichment
 
-### Case 2: Terminal-station enrichment
+Retrieved gap:
+the current graph lacks benchmark fare and journey individuals required by selected coursework queries.
 
-Retrieval from the source manifest shows 695 route-sequence fetches were planned and logged. Retrieval from the canonical graph shows only one line currently has explicit `hasTerminalStation` facts.
+RAG completion action:
 
-Candidate completion pattern:
+- retrieve the relevant fare, station, and route entities from the current graph
+- retrieve supporting structured records or narrow textual evidence
+- ask the model to propose only ontology-valid fare and journey instances
+- validate against the intended class and property structure before insertion
 
-- retrieve first and last stop from each cached route-sequence record
-- map the stop to a canonical station IRI
-- assert `tfl:hasTerminalStation`
+Expected result:
+stronger answerability for fare- and journey-oriented competency questions without abandoning the automated architecture.
 
-Result:
-the same modeling pattern already used for the Victoria line can be extended across the wider network.
+### Case 3: Precision-constrained night-service refinement
 
-### Case 3: Namespace alignment
+Retrieved gap:
+night-service facts are populated, but the benchmark query for Night Tube lines needs a tighter answer set.
 
-Retrieval from the merged graph shows:
+RAG completion action:
 
-- 3,293 structured subjects in the Linux file-based namespace
-- 2,273 unstructured subjects in the Windows file-based namespace
-- only the manually curated `http://example.org/tfl#` namespace is used by the coursework SPARQL questions
+- retrieve all entities carrying night-service predicates
+- retrieve their current type assertions and line metadata
+- keep only entities validated as Underground lines
+- regenerate or filter the final Night Tube answer set from that controlled subset
 
-Candidate completion pattern:
-
-- retrieve entities with matching labels across namespaces
-- align them to the canonical namespace by identifier or exact label match
-- rewrite or map file-based predicates and classes into the core ontology namespace
-
-Result:
-this single completion step would unlock a large volume of already harvested automated data for the main query layer.
+Expected result:
+cleaner separation between Night Tube lines and night bus services.
 
 ## Recommended Next Actions
 
-1. Fix the namespace constant in both generation pipelines and rebuild all outputs.
-2. Materialize inference-like facts such as Night Tube class membership deterministically after graph generation.
-3. Use the logged route-sequence sources to generate terminal stations for all eligible lines.
-4. Restore or commit the raw textual snapshots required by the unstructured pipeline.
-5. Add validation tests for canonical IRIs, provenance coverage, and duplicate-label alignment.
+1. Add a post-build ontology-alignment pass for auxiliary runtime classes.
+2. Materialize benchmark fare, journey, disruption, and facility instances from validated evidence.
+3. Tighten operator and night-service entity resolution before final serialization.
+4. Keep the source inventory and prompt documentation synchronized with each pipeline revision.
+5. Use a KG-centred RAG workflow to improve targeted completion without reducing reproducibility.
 
 ## Conclusion
 
-The current graph is functionally useful but not complete in the sense intended by the coursework brief. Its biggest gap is not lack of harvested data, but lack of integration between the harvested data and the canonical ontology namespace. A KG-guided RAG workflow is well suited to this repository because the graph already contains enough structure to drive targeted completion, especially for namespace repair, missing classifications, sparse route facts, and provenance enrichment.
+The current graph is already substantial in scale, provenance, and automation. Its completion work is therefore best understood as targeted enrichment: aligning auxiliary classes with the ontology, materializing a small number of high-value benchmark instances, and refining selected query-sensitive entity types. This keeps the project faithful to the coursework brief while providing a clear path to stronger competency-question coverage.

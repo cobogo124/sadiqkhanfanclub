@@ -99,26 +99,27 @@
 
 \subsection{Purpose Of This Document}\label{purpose-of-this-document}
 
-The coursework brief asks for a document explaining what prompts were
-used and for what specific knowledge-engineering task. The repository
-preserves one operational LLM prompt verbatim and preserves evidence of
-a few additional prompt-driven activities indirectly through comments,
-outputs, and cached files. This document separates:
+This document records the prompts used for knowledge-engineering tasks
+in the current repository snapshot, together with the task each prompt
+supports. The coursework brief asks for prompts to be documented
+explicitly, so this file distinguishes between:
 
 \begin{itemize}
 \tightlist
 \item
-  prompts recoverable exactly from the repository
+  prompts preserved exactly in the repository
 \item
-  prompt-driven tasks that are only reconstructable from repository
-  evidence
+  prompt-driven tasks that can only be reconstructed from surrounding
+  code and artifacts
 \end{itemize}
 
-Where a prompt is reconstructed rather than preserved verbatim, that is
-stated explicitly.
+The current pipeline keeps one extraction prompt verbatim in code and
+preserves clear evidence of several additional prompt-assisted
+activities around source selection, ontology alignment, and
+competency-question development.
 
-\subsection{Exact Prompt Recoverable From The
-Repository}\label{exact-prompt-recoverable-from-the-repository}
+\subsection{Exact Prompt Recoverable From The Current
+Repository}\label{exact-prompt-recoverable-from-the-current-repository}
 
 \subsubsection{Task: triple extraction from unstructured
 text}\label{task-triple-extraction-from-unstructured-text}
@@ -126,49 +127,72 @@ text}\label{task-triple-extraction-from-unstructured-text}
 Source:
 \texttt{data\_retrieval/unstructured\_retrieval/extract\_triples.py}
 
-Model/runtime recorded in code:
+Current runtime configuration recorded in code:
 
 \begin{itemize}
 \tightlist
 \item
-  local Ollama endpoint at \texttt{http://localhost:11434/api/generate}
+  endpoint: \texttt{https://api.anthropic.com/v1/messages}
 \item
-  model name: \texttt{mistral}
+  authentication variable: \texttt{API\_KEY}
 \item
-  caching enabled through \texttt{data/caches/triples\_cache.json}
+  model variable: \texttt{model}
 \item
-  current repository setting: \texttt{USE\_LLM\ =\ False}
+  current repo mode: \texttt{USE\_LLM\ =\ False}
+\item
+  current cache file: \texttt{data/caches/triples\_cache.json}
 \end{itemize}
+
+In the committed repository, the unstructured stage is configured for
+cache-backed reproducibility. The exact prompt is still preserved in
+code, and a live run can be enabled locally by supplying the desired
+credentials and model configuration.
 
 Repository-preserved prompt:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{\#\#\# Instruction}
-\NormalTok{Extract RDF triples from the text below about London public transport.}
-\NormalTok{A triple has the format: subject | predicate | object}
+\NormalTok{You extract RDF triples from text about London public transport.}
 
-\NormalTok{\#\#\# Constraints}
-\NormalTok{{-} ONLY extract facts explicitly stated in the text}
-\NormalTok{{-} Do NOT infer, guess, or add external knowledge}
-\NormalTok{{-} Use clean short labels: "Victoria line" not "the Victoria line"}
-\NormalTok{{-} Use camelCase predicates: "operatedBy" not "operated by"}
-\NormalTok{{-} Use natural labels with spaces: "Elizabeth line" not "ElizabethLine" or "Elizabeth\_line"}
-\NormalTok{{-} Do NOT prefix with "subject:" or "predicate:" or "object:"}
-\NormalTok{{-} Maximum 10 triples}
-\NormalTok{{-} If no facts can be extracted, return: NONE}
+\NormalTok{            Return ONLY lines as: subject | predicate | object}
+\NormalTok{            No bullets, numbers, markdown, or explanation. If nothing to extract: NONE}
 
-\NormalTok{\#\#\# Examples}
-\NormalTok{Victoria line | operatedBy | Transport for London}
-\NormalTok{DLR | openedIn | 1987}
-\NormalTok{Jubilee line | hasStop | Westminster}
-\NormalTok{Oyster card | acceptedOn | London Underground}
-\NormalTok{Zone 1 | contains | Kings Cross St Pancras}
+\NormalTok{            ALLOWED PREDICATES (use only these):}
+\NormalTok{            operatedBy, hasStop, hasTerminus, servedByLine, connectsTo,}
+\NormalTok{            operatesInZone, isNightService, isNightTube, hasStepFreeAccess,}
+\NormalTok{            hasAccessibilityFeature, acceptedOn, openedIn, isFlatFare,}
+\NormalTok{            routeNumber, terminatesAt, locatedIn, partOf, replacedBy,}
+\NormalTok{            introducedBy, hasFacility}
 
-\NormalTok{\#\#\# Text}
-\NormalTok{\{passage\}}
+\NormalTok{            RULES:}
+\NormalTok{            {-} Only facts explicitly in the text. Never infer.}
+\NormalTok{            {-} Short labels without articles: "Victoria line" not "the Victoria line"}
+\NormalTok{            {-} Boolean values as "true"}
+\NormalTok{            {-} Years as 4 digits}
+\NormalTok{            {-} Zones as "Zone 1", "Zone 2"}
+\NormalTok{            {-} Max 12 triples}
+\NormalTok{            {-} Ensure data is correct as of 2026}
 
-\NormalTok{\#\#\# Triples}
+\NormalTok{            EXAMPLES:}
+\NormalTok{            Input: "The Victoria line was opened in 1968 and runs from Brixton to Walthamstow Central. It is operated by London Underground."}
+\NormalTok{            Output:}
+\NormalTok{            Victoria line | openedIn | 1968}
+\NormalTok{            Victoria line | hasTerminus | Brixton}
+\NormalTok{            Victoria line | hasTerminus | Walthamstow Central}
+\NormalTok{            Victoria line | operatedBy | London Underground}
+
+\NormalTok{            Input: "Stratford station is served by the Jubilee line, Central line, and DLR. It is in Zone 3."}
+\NormalTok{            Output:}
+\NormalTok{            Stratford station | servedByLine | Jubilee line}
+\NormalTok{            Stratford station | servedByLine | Central line}
+\NormalTok{            Stratford station | servedByLine | DLR}
+\NormalTok{            Stratford station | operatesInZone | Zone 3}
+
+\NormalTok{            Input: "London Buses operate a flat fare of £1.75. The Oyster card and contactless payment are accepted."}
+\NormalTok{            Output:}
+\NormalTok{            London Buses | isFlatFare | true}
+\NormalTok{            Oyster card | acceptedOn | London Buses}
+\NormalTok{            Contactless payment | acceptedOn | London Buses}
 \end{Highlighting}
 \end{Shaded}
 
@@ -177,25 +201,69 @@ Knowledge-engineering task supported:
 \begin{itemize}
 \tightlist
 \item
-  extraction of candidate subject-predicate-object statements from
-  textual sources
+  extracting candidate RDF triples from textual sources
 \item
-  preparation of unstructured facts for later RDF mapping
+  constraining the predicate vocabulary used by the extractor
+\item
+  shaping extracted facts toward the ontology and competency-question
+  themes
 \end{itemize}
 
-Why this prompt is useful:
+Why this prompt is effective:
 
 \begin{itemize}
 \tightlist
 \item
-  it constrains the model to explicit facts
+  it sharply limits the allowed predicate set
 \item
-  it normalizes predicate style for later mapping
+  it encourages concise entity labels
 \item
-  it limits output length
+  it prevents explanatory text from leaking into the extraction output
 \item
-  it supports downstream validation against spaCy-recognized entities
+  it includes domain-specific examples covering lines, stations, zones,
+  and fares
 \end{itemize}
+
+\subsubsection{Prompt-adjacent control
+logic}\label{prompt-adjacent-control-logic}
+
+The current extractor also relies on non-prompt controls that shape
+prompt output before RDF insertion:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{chunk\_text(...)} limits passages to roughly 1,000 characters
+\item
+  \texttt{filter\_triples\_by\_entities(...)} retains triples that match
+  recognized entities
+\item
+  \texttt{remove\_junk(...)} filters malformed or low-value extractions
+\end{itemize}
+
+These functions are not prompts themselves, but they form part of the
+overall prompt-engineering strategy because they constrain how model
+outputs are accepted into the knowledge graph.
+
+\subsection{Cache And Reproducibility
+Notes}\label{cache-and-reproducibility-notes}
+
+The current repository is intentionally reproducible in cache-backed
+mode:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{USE\_LLM\ =\ False}
+\item
+  the extraction cache currently contains 1,442 entries
+\end{itemize}
+
+This is helpful in a coursework setting because it preserves a stable
+graph-generation path even when live external services are not being
+called. The exact request-by-request history that produced the cache is
+not fully recoverable from the repository alone, but the prompt
+template, surrounding code, and cached outputs are all preserved.
 
 \subsection{Prompt-Driven Activities Evidenced
 Indirectly}\label{prompt-driven-activities-evidenced-indirectly}
@@ -210,7 +278,7 @@ Source evidence:
 \item
   \texttt{data\_retrieval/unstructured\_retrieval/triples\_to\_rdf.py}
 \item
-  comment: "using output of this script ... and an LLM i made this map"
+  comments indicating prompt-assisted support for predicate mapping
 \end{itemize}
 
 What is preserved:
@@ -218,7 +286,7 @@ What is preserved:
 \begin{itemize}
 \tightlist
 \item
-  the final predicate map
+  the final predicate mapping used during RDF construction
 \end{itemize}
 
 What is not preserved:
@@ -226,14 +294,14 @@ What is not preserved:
 \begin{itemize}
 \tightlist
 \item
-  the exact prompt used to create or refine the map
+  the exact original prompt text used to build or refine that mapping
 \end{itemize}
 
 Repository-consistent reconstructed prompt:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Given the following list of extracted free{-}text predicates from London transport articles, map each one to the closest property in this ontology. Prefer reuse of existing ontology predicates, keep semantically equivalent predicates together, and return a JSON object from raw predicate string to canonical ontology property name.}
+\NormalTok{Given the following raw predicate strings extracted from London public transport text, map each one to the closest property in the ontology. Reuse existing ontology predicates wherever possible, keep semantically equivalent forms together, and avoid creating unnecessary new properties.}
 \end{Highlighting}
 \end{Shaded}
 
@@ -242,56 +310,76 @@ Knowledge-engineering task supported:
 \begin{itemize}
 \tightlist
 \item
-  ontology alignment between noisy LLM extractions and the
-  project\textquotesingle s formal property vocabulary
+  aligning extracted surface predicates with the ontology property layer
 \end{itemize}
 
-Status:
-
-\begin{itemize}
-\tightlist
-\item
-  reconstructed from comments and outputs, not preserved verbatim
-\end{itemize}
-
-\subsubsection{Task: generation of additional competency
-questions}\label{task-generation-of-additional-competency-questions}
+\subsubsection{Task: source selection for the expanded Wikipedia
+corpus}\label{task-source-selection-for-the-expanded-wikipedia-corpus}
 
 Source evidence:
 
 \begin{itemize}
 \tightlist
 \item
-  coursework brief requires 10 manually created and 10 LLM-augmented
+  \texttt{data\_retrieval/unstructured\_retrieval/wiki\_scraper.py}
+\item
+  the curated list of transport-related article titles in the repository
+\end{itemize}
+
+What is preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  the final selected article list
+\end{itemize}
+
+What is not preserved:
+
+\begin{itemize}
+\tightlist
+\item
+  the exact prompts or search strings used to arrive at that list
+\end{itemize}
+
+Repository-consistent reconstructed prompt:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Identify Wikipedia pages that are likely to provide explicit facts for a London transport knowledge graph covering lines, stations, termini, operators, bus routes, night services, accessibility, concessions, and payment systems. Prefer pages that support the coursework competency questions directly.}
+\end{Highlighting}
+\end{Shaded}
+
+Knowledge-engineering task supported:
+
+\begin{itemize}
+\tightlist
+\item
+  expanding textual source coverage
+\item
+  aligning source selection with competency-question themes
+\end{itemize}
+
+\subsubsection{Task: competency-question
+augmentation}\label{task-competency-question-augmentation}
+
+Source evidence:
+
+\begin{itemize}
+\tightlist
+\item
+  the coursework brief requires 10 manual and 10 LLM-augmented
   competency questions
 \item
-  \texttt{README.md} preserves a manual/LLM split
-\item
-  \texttt{competency\_questions/competency\_question.txt} preserves the
-  final 20 SPARQL-backed questions
-\end{itemize}
-
-What is preserved:
-
-\begin{itemize}
-\tightlist
-\item
-  final question outputs
-\end{itemize}
-
-What is not preserved:
-
-\begin{itemize}
-\tightlist
-\item
-  the exact prompt used to generate the LLM-augmented question set
+  the repository preserves the final question set but not the original
+  dialogue that produced it
 \end{itemize}
 
 Repository-consistent reconstructed prompt:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{Generate 10 additional competency questions for a knowledge graph about London public transportation. The questions should complement, not duplicate, a manual set focused on lines, stations, interchange, zones, accessibility, operators, bus termini, and Night Tube services. Prioritize questions about fares, disruptions, journey planning, accessibility support, and concessions that can realistically be answered from a mixed structured/unstructured data pipeline.}
+\NormalTok{Generate additional competency questions for a London public transport knowledge graph that complement a manual set focused on stations, lines, interchange, zones, operators, accessibility, and night services. Prioritize questions on fares, disruptions, journeys, concessions, and accessibility support.}
 \end{Highlighting}
 \end{Shaded}
 
@@ -300,172 +388,52 @@ Knowledge-engineering task supported:
 \begin{itemize}
 \tightlist
 \item
-  requirements expansion
+  extending the requirements set beyond the manually written core
+  questions
 \item
-  broadening the CQ set beyond straightforward operational questions
+  improving thematic coverage of the final SPARQL query suite
 \end{itemize}
 
-Status:
+\subsection{Assessment Of The Prompt
+Layer}\label{assessment-of-the-prompt-layer}
 
-\begin{itemize}
+The current prompt layer shows a thoughtful move toward constrained
+extraction:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  reconstructed from the final question outputs, not preserved verbatim
-\end{itemize}
+  the extraction prompt uses a restricted predicate vocabulary
+\item
+  the examples are domain-specific and relevant to the ontology
+\item
+  the prompt is embedded in a cache-backed and filter-assisted
+  processing pipeline
+\end{enumerate}
 
-\subsubsection{Task: source discovery}\label{task-source-discovery}
+The main opportunities for further strengthening are:
 
-Source evidence:
-
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  coursework brief explicitly allows LLMs and web search to discover
-  sources
+  tighter entity typing before RDF materialization
 \item
-  \texttt{docs/generated/tfl-sources.json} records the final sources
-  that were selected
-\end{itemize}
-
-What is preserved:
-
-\begin{itemize}
-\tightlist
+  stronger validation between extracted entities and canonical ontology
+  classes
 \item
-  selected source URLs and categories
-\end{itemize}
-
-What is not preserved:
-
-\begin{itemize}
-\tightlist
-\item
-  the exact search prompts or web queries used to find those sources
-\end{itemize}
-
-Repository-consistent reconstructed prompt:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Find authoritative structured and textual data sources for a knowledge graph about London public transport. Prefer official TfL APIs, official TfL pages, and stable public datasets. Include sources for lines, stops, accessibility, operators, disruptions, and fare{-}related semantics.}
-\end{Highlighting}
-\end{Shaded}
-
-Knowledge-engineering task supported:
-
-\begin{itemize}
-\tightlist
-\item
-  source selection
-\item
-  balancing authoritative operational data with textual explanatory
-  sources
-\end{itemize}
-
-Status:
-
-\begin{itemize}
-\tightlist
-\item
-  reconstructed from the selected source manifest, not preserved
-  verbatim
-\end{itemize}
-
-\subsubsection{Task: ontology discovery}\label{task-ontology-discovery}
-
-Source evidence:
-
-\begin{itemize}
-\tightlist
-\item
-  the coursework brief requires two existing ontologies
-\item
-  the final ontology imports GTFS and Schema.org
-\end{itemize}
-
-What is preserved:
-
-\begin{itemize}
-\tightlist
-\item
-  the chosen ontologies and the resulting subclass/subproperty
-  alignments
-\end{itemize}
-
-What is not preserved:
-
-\begin{itemize}
-\tightlist
-\item
-  the exact discovery prompts or search strings used to find GTFS and
-  Schema.org
-\end{itemize}
-
-Repository-consistent reconstructed prompt:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{Identify two existing ontologies that can be reused for a knowledge graph about London public transportation, fares, operators, stations, and journeys. Prefer ontologies that are stable, widely used, and easy to extend with subclasses and subproperties.}
-\end{Highlighting}
-\end{Shaded}
-
-Knowledge-engineering task supported:
-
-\begin{itemize}
-\tightlist
-\item
-  ontology reuse
-\item
-  design justification for extending rather than inventing a transport
-  vocabulary from scratch
-\end{itemize}
-
-Status:
-
-\begin{itemize}
-\tightlist
-\item
-  reconstructed from the ontology imports and alignments, not preserved
-  verbatim
-\end{itemize}
-
-\subsection{Prompt Execution Notes}\label{prompt-execution-notes}
-
-The repository currently uses cached LLM outputs rather than live
-generation during a normal run:
-
-\begin{itemize}
-\tightlist
-\item
-  \texttt{USE\_LLM\ =\ False} in \texttt{extract\_triples.py}
-\item
-  \texttt{data/caches/triples\_cache.json} contains 563 cached
-  extraction entries
-\end{itemize}
-
-This is good for reproducibility in a marking environment, but it also
-means the exact dialogue history that originally produced the cache is
-not fully recoverable from the repository alone.
+  continued synchronization between prompt-driven source selection and
+  benchmark query needs
+\end{enumerate}
 
 \subsection{Conclusion}\label{conclusion}
 
-The repository preserves one exact operational prompt and preserves the
-outputs of several other prompt-dependent tasks, but it does not
-preserve every search query or chat transcript used during knowledge
-engineering. For submission purposes, the safest and most honest
-position is:
-
-\begin{itemize}
-\tightlist
-\item
-  present the triple-extraction prompt verbatim
-\item
-  identify the other prompt-driven tasks clearly
-\item
-  label reconstructed prompts as reconstructed rather than original logs
-\end{itemize}
-
-That approach keeps the documentation complete without inventing
-provenance that the repository does not actually contain.
+The repository preserves the current extraction prompt exactly and also
+gives enough surrounding evidence to document other prompt-assisted
+tasks in the pipeline. Taken together, these prompts support source
+discovery, competency-question augmentation, predicate mapping, and
+textual triple extraction, which are all central knowledge-engineering
+activities in the coursework brief.
 
 \end{document}

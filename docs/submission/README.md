@@ -1,10 +1,16 @@
 # Submission Documentation Index
 
-This folder contains the submission documentation prepared from the current repository snapshot:
+This folder contains the documentation prepared from the current repository snapshot.
+
+Required coursework documents:
 
 - `knowledge-graph-report.md`
 - `completion-analysis.md`
 - `prompt-documentation.md`
+
+Additional supporting engineering note:
+
+- `pipeline-improvement-notes.md`
 
 Public repository link:
 

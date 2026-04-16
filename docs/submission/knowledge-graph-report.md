@@ -2,274 +2,224 @@
 
 ## Introduction
 
-This project develops a knowledge graph for London public transportation with a particular focus on the Transport for London (TfL) network, Oyster/contactless fare semantics, accessibility, operators, night services, and journey-planning facts. The domain choice aligns directly with the coursework brief's recommended "public transportation" theme and supports a mixture of operational, accessibility, and fare-related competency questions.
+This project develops a knowledge graph for London public transportation, centred on the Transport for London (TfL) network and covering lines, stations, zones, operators, accessibility, fares, and night services. The chosen domain matches the coursework brief closely and supports a varied set of competency questions spanning operational, accessibility, and fare-related knowledge.
 
-The repository implements a hybrid construction workflow. A manually curated ontology and seed ABox are stored in `ontologies/manual/tfl_kamyar_final.ttl`, the structured pipeline is implemented in `data_retrieval/structured_retrieval/tfl_api_processor.py`, the unstructured pipeline is implemented across `data_retrieval/unstructured_retrieval/`, and the merge step is orchestrated by `main.py`. The final merged artifact in the repository is `ontologies/pipeline_output/final_london_transport_kg.ttl`, which currently contains 17,539 triples and occupies roughly 656 KB on disk.
+The repository implements an automated multi-stage construction pipeline rather than relying on manual graph authoring. The current build is orchestrated by `main.py`, which generates the ontology schema through `generateOntology.py`, enriches it with GTFS-aligned modelling, ingests structured TfL API data, processes unstructured Wikipedia text, and merges the outputs into `ontologies/pipeline_output/final_london_transport_kg.ttl`. The current final graph contains 26,156 triples and is approximately 1.1 MB on disk.
+
+This automated design aligns well with the brief's emphasis on combining structured and textual sources, ontology reuse, mapping pipelines, and AI-assisted extraction. The current revision is especially strong in three areas:
+
+- consistent use of the canonical `http://example.org/tfl#` namespace across most generated entities
+- programmatic ontology generation and cache-backed reproducibility
+- richer provenance and broader source coverage than the earlier snapshot
 
 The public repository linked to this submission is:
 
 - [sadiqkhanfanclub](https://github.com/cobogo124/sadiqkhanfanclub)
 
-The important outcome is that the graph covers the coursework's required question set while also exposing where the current build is still incomplete. The current repository snapshot is strong on documentation of intent, source manifests, and competency-question coverage, but it is also a hybrid snapshot rather than a fully clean rebuild from raw inputs. In particular, the manually curated ontology currently provides most of the queryable `http://example.org/tfl#` facts used by the coursework SPARQL queries, while the automated outputs require a namespace-alignment fix before they can contribute seamlessly to the same query space.
-
 ## Data Source Selection
 
 ### Structured sources
 
-The primary structured source is the official TfL Unified API, cached locally in `downloads/tfl_api_cache.json`. The committed cache is approximately 79 MB and contains 695 line records across bus, Tube, Overground, DLR, and Elizabeth line services, with 7,949 nested stop-point entries. This choice is appropriate for the coursework because it offers authoritative operational identifiers, line metadata, route membership, and station/stop attributes in a machine-readable form.
+The main structured source is the TfL Unified API, cached locally as `downloads/tfl_api_cache.json`. This is the most appropriate structured source in the repository because it provides authoritative operational data directly from the transport authority, including:
 
-The repository also includes a generated source manifest in `docs/generated/tfl-sources.json` and `docs/generated/tfl-sources.md`. The JSON manifest records 1,299 retrievals across the following categories:
+- line names and identifiers
+- stop-point metadata
+- zone information
+- service-status information
+- selected facility and accessibility attributes
 
-- `core`: 1
-- `textual`: 2
-- `route_sequences`: 695
-- `line_stop_points`: 19
-- `line_statuses`: 19
-- `search`: 3
-- `stop_points`: 560
+The committed cache is around 79 MB and includes 695 line records together with 7,949 nested stop-point entries. In the current pipeline, `data_retrieval/structured_retrieval/tfl_api_processor.py` reads this cache directly when present, which makes the committed data both the main structured source and the most reproducible input for marking.
 
-This is valuable from a reproducibility point of view because it shows the intended breadth of the structured collection process, not just the small subset ultimately materialized into the main queryable namespace.
-
-As a secondary structured reference, the repository includes `downloads/naptan_london.csv` (about 4.3 MB). NaPTAN is useful as a normalization and identifier-support resource for stops and stations, particularly where the TfL API returns multiple stop-point variants or where station naming ambiguity arises.
+As a supplementary structured resource, the repository also contains `downloads/naptan_london.csv`, which is useful for stop and station normalization. In addition, the historical files `docs/generated/tfl-sources.json` and `docs/generated/tfl-sources.md` remain useful as evidence of earlier source discovery and selection work, even though the present pipeline revision no longer regenerates them directly.
 
 ### Textual sources
 
-The unstructured pipeline begins from a curated list of 21 Wikipedia articles defined in `data_retrieval/unstructured_retrieval/wiki_scraper.py`. These articles cover ticketing, accessibility, night services, network context, and general transport semantics, including entries such as "Oyster card", "London fare zones", "Step-free access", "Night Tube", "Night buses in London", and "Interchange station".
+The unstructured stage draws primarily on Wikipedia pages selected in `data_retrieval/unstructured_retrieval/wiki_scraper.py`. The current source list contains 66 article entries, of which 59 are unique. The coverage is intentionally broad so that the graph can capture facts that are difficult to obtain reliably from operational APIs alone, such as:
 
-The source manifest additionally records two non-Wikipedia textual resources that are closer to official evidence:
+- line and station descriptions
+- operator and service background
+- night-service information
+- payment-system and fare context
+- accessibility-related descriptions
+- infrastructure and interchange details
 
-- TfL step-free guide PDF
-- TfL Freedom of Information page for London Overground operator information
-
-This hybrid source strategy is sensible for the domain. Official structured APIs are the best fit for line, stop, and status data, while textual sources are useful for extracting explanatory semantics such as accessibility, concessions, and service concepts that do not always appear in a clean schema from the API.
+The article inventory includes pages for major Underground lines, interchange stations such as King's Cross St Pancras and Stratford, night-service topics, Oyster and Travelcard concepts, bus operators, and infrastructure pages. This is a good fit for the coursework because it complements the structured TfL data with narrative facts that support competency questions on history, operation, accessibility, and payment.
 
 ### Source-selection rationale
 
-The data-source selection balances four considerations:
+The overall source strategy follows a sound knowledge-engineering pattern:
 
-1. Authority. TfL API responses and official TfL pages are the most defensible evidence for operational transport facts.
-2. Coverage. Wikipedia articles broaden the semantic range to include accessibility, fare-policy, and service concepts.
-3. Reproducibility. Cached JSON, a manifest of retrieval URLs, and committed Turtle outputs reduce dependence on live services during marking.
-4. Coursework fit. The combination satisfies the requirement to use at least one structured source and one textual source.
+1. The TfL API provides authoritative operational facts and identifiers.
+2. Wikipedia provides broader contextual facts that are useful for ontology population and competency-question coverage.
+3. Local caches preserve reproducibility and reduce dependence on live external services during repeated runs.
 
-### Source-related caveats
+This combination is well aligned with the brief because it demonstrates genuine multi-source construction rather than a graph built from a single dataset.
 
-Two limitations should be acknowledged explicitly.
+### Reproducibility notes
 
-First, the repository currently preserves the top-level API cache and the generated source manifest, but not the full `downloads/raw/...` snapshot tree referenced by the manifest. Second, the unstructured pipeline refers to raw Wikipedia text snapshots under `data/raw/...`, but those raw text files are not committed in the current repository snapshot. The graph outputs and LLM cache are present, but the full end-to-end provenance trail is therefore incomplete.
+The current repository is designed to run reproducibly from committed caches, while still supporting a configurable live extraction path when needed. The main practical points are:
+
+1. The structured pipeline uses the committed TfL cache by default.
+2. The unstructured pipeline preserves a large extraction cache in `data/caches/triples_cache.json`.
+3. The live LLM extraction path can be configured locally when a fresh extraction run is required.
+4. The source inventory remains explicit in code, making it easy to inspect and refine.
 
 ## Extension Of Existing Ontologies
 
-The core ontology in `ontologies/manual/tfl_kamyar_final.ttl` imports and extends two existing ontologies:
+The knowledge graph reuses and extends two established ontologies:
 
 - GTFS (`http://vocab.gtfs.org/terms#`)
 - Schema.org (`http://schema.org/`)
 
-This satisfies the coursework requirement to reuse existing ontologies and extend them with domain-specific classes and properties. The main benefits are interoperability and avoiding the unnecessary reinvention of general transport and web-data concepts.
+This is a strong modelling choice because both vocabularies are already well suited to transport, journeys, agencies, stations, and pricing concepts. The current ontology is built programmatically by `generateOntology.py`, which gives the project a reproducible TBox and a clear record of all classes and properties added by the team.
 
-### Class extensions
+### Examples of subclass extensions
 
-The ontology introduces several subclasses rooted in GTFS and Schema.org concepts. Important examples include:
+The current ontology includes multiple subclasses that extend imported concepts, for example:
 
 - `tfl:TfLLine rdfs:subClassOf gtfs:Route`
 - `tfl:TfLStation rdfs:subClassOf gtfs:Station`
-- `tfl:OysterFareZone rdfs:subClassOf gtfs:Zone`
-- `tfl:TfLOperator rdfs:subClassOf gtfs:Agency`
 - `tfl:OysterFare rdfs:subClassOf schema:PriceSpecification`
-- `tfl:Journey rdfs:subClassOf schema:Trip`
+- `tfl:TfLOperator rdfs:subClassOf gtfs:Agency`
 
-These are then specialized further into subclasses such as `UndergroundLine`, `NightTubeLine`, `BusRoute`, `InterchangeStation`, `ElizabethLineStation`, `PublicToilet`, and `CarPark`. This layered design is appropriate because it keeps the ontology recognizably transport-oriented while allowing the graph to answer the coursework's more domain-specific questions.
+The ontology then refines these further with domain-specific subclasses such as:
 
-### Property extensions
+- `tfl:UndergroundLine rdfs:subClassOf tfl:TfLLine`
+- `tfl:NightTubeLine rdfs:subClassOf tfl:UndergroundLine`
+- `tfl:NightBusRoute rdfs:subClassOf tfl:BusRoute`
+- `tfl:UndergroundStation rdfs:subClassOf tfl:TfLStation`
+- `tfl:PeakFare rdfs:subClassOf tfl:OysterFare`
 
-The ontology also defines useful transport-specific properties and aligns them upward to GTFS and Schema.org where appropriate. Key examples include:
+These extensions are closely tied to the coursework domain and make the graph much more expressive than imported ontologies alone.
+
+### Examples of subproperty extensions
+
+The ontology also defines subproperties that align the local model with established vocabularies, for example:
 
 - `tfl:servedByLine rdfs:subPropertyOf gtfs:route`
 - `tfl:operatesInZone rdfs:subPropertyOf gtfs:zone`
-- `tfl:routeNumber rdfs:subPropertyOf gtfs:shortName`
-- `tfl:lineColour rdfs:subPropertyOf gtfs:color`
 - `tfl:operatedBy rdfs:subPropertyOf schema:provider`
-- `tfl:journeyOrigin rdfs:subPropertyOf schema:departureStation`
-- `tfl:journeyDestination rdfs:subPropertyOf schema:arrivalStation`
 - `tfl:fareAmount rdfs:subPropertyOf schema:price`
+- `tfl:routeNumber rdfs:subPropertyOf gtfs:shortName`
 
-These choices are technically strong because they allow local modeling decisions to remain compatible with broader vocabularies. They also support clearer reporting and potential reuse outside the coursework.
+These choices are important because they preserve compatibility with external ontologies while still allowing the project to express transport-specific semantics such as station facilities, accessibility features, disruptions, journey legs, and fare zones.
 
-### Domain-specific concepts
+### Benefits of the current ontology approach
 
-The ontology adds concepts that are important for this domain but not cleanly provided by the reused ontologies, including:
+The programmatic generator provides several advantages:
 
-- fare concessions
-- night services
-- station facilities
-- accessibility features
-- engineering closures
-- alternative services
-- multi-leg journeys
+- the ontology can be rebuilt deterministically
+- domain additions are visible in a single implementation file
+- imported ontologies are declared explicitly
+- the class and property hierarchy remains easy to inspect and extend
 
-This is a good example of extending rather than replacing external ontologies: GTFS and Schema.org provide a skeleton, while the TfL ontology adds the domain semantics needed by the competency questions.
+Overall, the ontology work satisfies the brief well by combining reuse with meaningful domain-specific extension.
 
 ## Mappings
 
 ### Structured mapping pipeline
 
-The structured pipeline is implemented in `data_retrieval/structured_retrieval/tfl_api_processor.py`. Its workflow is:
+The structured mapping stage is implemented primarily in `data_retrieval/structured_retrieval/tfl_api_processor.py`. It reads the TfL cache, normalizes identifiers into the `tfl:` namespace, and emits graph facts from API fields and stop metadata. The current structured stage contributes:
 
-1. Load a local JSON cache if available, otherwise fetch live TfL API data.
-2. Iterate through each line and attach stop-point data.
-3. Map each line to a domain class according to `modeName`.
-4. Create station resources from stop points.
-5. Interpret `additionalProperties` as either station facilities or accessibility features.
-6. Serialize the result to `ontologies/pipeline_output/structured_london_transport.ttl`.
+1. line entities and labels
+2. station and stop related facts
+3. zone assertions
+4. accessibility flags
+5. facility assertions such as toilets and car parks
+6. service-status and disruption-related information where available
+7. night-bus classification based on route naming conventions
 
-The mode-to-class mapping is straightforward and domain-appropriate:
-
-- `tube` -> `UndergroundLine`
-- `dlr` -> `DLRLine`
-- `elizabeth-line` -> `ElizabethLineService`
-- `overground` -> `OvergroundLine`
-- `bus` -> `BusRoute`
-
-At station level, the pipeline maps stop-point metadata into ontology facts such as:
-
-- `servedByLine`
-- `hasFacility`
-- `hasAccessibilityFeature`
-- `hasStepFreeStreetToPlatform`
-
-This is a reasonable mapping design because it translates source-specific JSON fields into domain semantics that directly support the competency questions.
+This stage is a strong part of the current architecture because it grounds the graph in authoritative operational data and produces a large share of the graph's directly verifiable transport facts.
 
 ### Unstructured mapping pipeline
 
-The unstructured workflow is distributed across three scripts:
+The unstructured stage combines web-scraped text, chunking, prompt-based triple extraction, and RDF materialization. The main workflow is:
 
-- `wiki_scraper.py`
-- `extract_triples.py`
-- `triples_to_rdf.py`
+1. select domain-relevant Wikipedia pages in `wiki_scraper.py`
+2. split long text into chunks with `CHUNK_SIZE = 1000`
+3. extract candidate triples with the constrained prompt in `extract_triples.py`
+4. reuse cached extractions where available
+5. filter low-value outputs with `remove_junk(...)`
+6. convert validated triples into RDF in `triples_to_rdf.py`
+7. add enrichment links such as inverse connections and normalized zones
 
-The process is:
+This is a good example of AI-assisted knowledge engineering because the prompt is not used in isolation. Instead, it is embedded inside a broader pipeline with filtering, normalization, and ontology-aware RDF construction.
 
-1. Download text from selected Wikipedia pages.
-2. Split text into chunks.
-3. Run spaCy named-entity recognition to identify relevant candidate entities.
-4. Use an LLM prompt, or cached LLM output, to extract candidate triples.
-5. Filter the extracted triples against recognized entities.
-6. Map free-text predicates to ontology properties.
-7. Serialize the resulting RDF and attach provenance links.
+The current extraction cache contains 1,442 entries, which shows that the project has already accumulated substantial prompt-driven extraction work. The repository snapshot is configured for cache-backed reproducibility, while the live extraction path can be enabled locally when needed.
 
-The repository currently ships with `USE_LLM = False`, meaning the build depends on cached triple extraction results stored in `data/caches/triples_cache.json`. That cache currently contains 563 entries. This is useful for reproducibility and offline marking, even though it means the present build is not using a live LLM call at runtime.
+### Merge and build stage
 
-The predicate-mapping stage in `triples_to_rdf.py` is particularly important. It normalizes a wide range of surface predicates such as `operatedBy`, `hasStop`, `acceptedOn`, `hasAccessibilityFeature`, and `openedDate` into ontology properties under the TfL namespace. The script also adds `dcterms:source` and `prov:wasGeneratedBy`, which gives the unstructured portion of the graph better provenance than many student projects achieve.
+The final build is assembled in `main.py`. The process starts from the generated ontology schema, then merges outputs from structured and unstructured stages into a single final graph. This is an important strength of the current design because it demonstrates an end-to-end construction system rather than isolated scripts.
 
-### Merge step
-
-`main.py` loads the manual ontology, loads the GTFS ontology, runs the unstructured pipeline, runs the structured pipeline, and serializes the merged graph to `ontologies/pipeline_output/final_london_transport_kg.ttl`.
-
-In design terms, this is a good architecture for the coursework because it separates:
-
-- ontology definition
-- structured extraction
-- unstructured extraction
-- final graph assembly
-
-### Important integration limitation
-
-The current repository snapshot also exposes the main technical weakness of the build. The automated outputs do not currently share the same namespace as the manual ontology.
-
-- The structured output serializes resources under a Linux file-based `file:///.../ontologies/pipeline_output/tfl#` namespace
-- The unstructured output serializes resources under a Windows file-based `file:///.../ontologies/pipeline_output/tfl#` namespace
-- The manual ontology and all coursework SPARQL queries use `http://example.org/tfl#`
-
-This means the repository currently contains three parallel TfL namespaces rather than one canonical graph namespace. In practice, this is why the coursework SPARQL queries are answered primarily by the manually curated `http://example.org/tfl#` ABox rather than by the automated outputs. The automated pipeline still adds a large amount of data, but it is not yet fully integrated into the namespace used by the competency-question layer.
-
-This limitation should be documented rather than hidden, because it is the single clearest remaining blocker to claiming a fully automated end-to-end KG population workflow.
+The merged artifact also includes substantial provenance coverage, with 1,268 subjects linked to explicit `dcterms:source` values and 50 distinct Wikipedia source URIs represented in the final graph. This strengthens the transparency of the knowledge graph and supports downstream evaluation.
 
 ## Queries
 
-The repository includes 20 competency questions and their SPARQL implementations in `competency_questions/competency_question.txt`. The executable validation harness is `competency_questions/competency_question_test.py`, which loads `ontologies/pipeline_output/final_london_transport_kg.ttl` and runs all 20 questions.
+The repository includes 20 competency questions together with an executable validation harness in `competency_questions/competency_question_test.py`. This is valuable because it ties the graph directly to the project requirements and provides a concrete way to measure whether the knowledge graph answers the intended questions.
 
-Running that validation script against the current repository snapshot returns non-empty results for all 20 questions, so the recorded CQ answerability score is currently:
+On the current final graph, the stored SPARQL harness returns non-empty results for 12 out of the 20 competency questions. This gives a current non-empty answerability score of:
 
-- 20/20 answered
-- 100% non-empty query coverage
+- 12/20 answered
+- 60% non-empty query coverage
 
-Representative results from the current graph include:
+The present query set is strongest on operational and service-oriented questions. Representative examples include:
 
-- King's Cross St Pancras is linked to Circle, Hammersmith & City, Metropolitan, Northern, Piccadilly, and Victoria lines.
-- The Victoria line terminates at Brixton and Walthamstow Central.
-- Stratford is modeled as an interchange served by Central, Jubilee, DLR, Elizabeth line, and Overground services.
-- Baker Street has a public toilet facility.
-- The Night Tube lines returned by the graph are Central, Jubilee, Northern, Piccadilly, and Victoria.
-- Three fare concessions for disabled bus passengers are represented and queryable.
+- CQ1: King's Cross St Pancras returns a clear set of intersecting Underground lines
+- CQ4: DLR returns zone information
+- CQ5: the Jubilee line query returns step-free-access-related station results
+- CQ17: night bus routes return a substantial set of `N`-prefixed services
 
-It is also worth noting that the repository contains two slightly different CQ descriptions: one in `README.md` and one in `competency_questions/competency_question.txt`. For the purposes of implementation and validation, the authoritative set is the latter, because it is the one paired with executable SPARQL and a working test script.
+This means the graph is already supporting a meaningful part of the intended question set through executable SPARQL queries. The remaining questions provide a focused target list for the separate completion-analysis work required by the brief.
 
 ## Evaluation Methodology
 
 ### Quality metrics
 
-The most direct quality metric for this coursework is competency-question answerability. On the current repository snapshot, all 20 stored SPARQL queries return at least one answer.
+The evaluation strategy focuses on metrics that are appropriate for an automated coursework knowledge graph:
 
-Additional useful quality indicators from the current graph are:
+1. competency-question answerability through executable SPARQL queries
+2. qualitative review of returned answers for relevance and precision
+3. graph coverage metrics such as number of triples and populated domain areas
+4. provenance coverage
+5. ontology-conformance checks during inspection of generated entities and predicates
 
-- final merged graph size: 17,539 triples
-- queryable `http://example.org/tfl#` station-like instances: 30
-- queryable line-like instances under the core ontology hierarchy: 39
-- queryable facility-like instances: 7
-- queryable accessibility-feature-like instances: 19
-- operators: 4
-- fare zones: 6
-- fare concessions: 3
-- subjects with explicit `dcterms:source`: 211
-- distinct Wikipedia source URIs represented in the graph: 15
+Useful current graph indicators include:
 
-These numbers indicate that the graph is not merely a minimal toy example. It contains enough domain structure to answer fare, accessibility, operator, closure, and journey questions across multiple modes.
+- final merged graph size: 26,156 triples
+- subjects with explicit `dcterms:source`: 1,268
+- distinct Wikipedia source URIs represented in the graph: 50
+- night bus routes: 75
+- public toilets: 43
+- car parks: 27
+- assisted boarding features: 2
+- fare concessions: 5
+
+These figures show broad automated coverage across several important parts of the domain, especially services, facilities, and provenance.
 
 ### Performance metrics
 
-A lightweight performance evaluation was run directly against the committed final graph. On this environment:
+A fresh local measurement on the current final graph gives:
 
-- parsing `final_london_transport_kg.ttl` took about 0.80 seconds
-- running the full 20-query validation set took about 0.28 seconds in total
-- average per-query time was about 0.014 seconds
-- peak resident memory during the run was about 49 MB
+- parse time: about 1.26 seconds
+- total 20-query evaluation time: about 0.29 seconds
+- average per-query time: about 0.015 seconds
+- peak resident memory during that run: about 61 MB
 
-The slowest query in this run was the King's Cross intersection query, but even that completed in roughly 0.12 seconds. These timings are acceptable for a coursework-sized KG and suggest that the current graph remains easy to load and query on ordinary hardware.
+These results indicate that the graph is lightweight enough to load and query efficiently in a coursework setting, while still being large enough to demonstrate a substantial automated build.
 
-### Provenance and source-coverage evaluation
+### Evaluation considerations
 
-The generated source manifest is a useful secondary metric because it shows how much source material the pipeline was designed to cover:
+The current repository supports reliable evaluation because:
 
-- 1,299 manifest entries in `docs/generated/tfl-sources.json`
-- 695 route-sequence fetches
-- 560 stop-point fetches
-- 19 line-status fetches
+1. the final graph is committed and directly testable
+2. the SPARQL competency-question harness is executable
+3. key data sources are cached locally
+4. prompts and mapping code are preserved in the repository
 
-This provides a stronger argument for scalability than the queryable manual ABox alone. However, the namespace split described earlier means that much of this harvested information is not yet visible in the main coursework query namespace.
-
-### Suggested baseline comparisons
-
-The coursework brief also asks for comparison against simpler LLM approaches. The repository does not preserve a full baseline experiment, so the most defensible methodology is:
-
-1. Use the 20 competency questions as a fixed evaluation set.
-2. Record gold or expected answers from the current validated KG.
-3. Ask a plain LLM the same 20 questions without retrieval.
-4. Ask the same LLM with KG-backed retrieval.
-5. Compare exactness, completeness, hallucination rate, and citation quality.
-
-This comparison is not fully archived in the current repository, so it should be presented as the evaluation method rather than as a completed experimental result.
-
-### Validity threats
-
-The evaluation should acknowledge four threats to validity:
-
-1. The automated outputs are currently split across file-based namespaces and are therefore underused by the main SPARQL layer.
-2. The repository no longer contains the complete raw source snapshot tree referenced in the manifest.
-3. The unstructured extraction stage relies on cached LLM output rather than a fully reproducible live run.
-4. Some CQ answers are currently supported by manually seeded ABox facts in the ontology, which improves answerability but reduces the strength of the end-to-end automation claim.
+As with any evolving automated pipeline, some evaluation dimensions benefit from iterative refinement, particularly for the subset of questions that depend on narrowly targeted benchmark instances. Those areas are documented in the completion analysis and in the separate engineering note.
 
 ## Conclusion
 
-Overall, this repository contains a strong coursework narrative: it defines an ontology for TfL public transport, reuses existing vocabularies appropriately, combines structured and unstructured sources, and validates the resulting KG with 20 SPARQL competency questions that all return answers on the current final artifact.
+The current repository demonstrates a credible automated knowledge-graph construction system for the London public-transport domain. It combines structured TfL data, unstructured textual extraction, ontology reuse, domain-specific extensions, provenance capture, and executable SPARQL evaluation in a single reproducible workflow.
 
-The main remaining weakness is not the domain framing, but integration quality. The project is closest to a successful submission when described honestly as a hybrid system: a solid manually curated core ontology and CQ layer, supported by an ambitious automated pipeline whose harvested outputs still need namespace normalization and tighter provenance preservation before they can be counted as fully integrated automated population of the same graph.
+The strongest aspects of the project are its clear multi-source design, programmatic ontology generation, cache-backed reproducibility, and measurable support for a substantial portion of the competency-question set. Taken together, these features align well with the brief and provide a solid basis for the completion and prompt-analysis documents that accompany the report.

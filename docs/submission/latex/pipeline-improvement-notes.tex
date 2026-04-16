@@ -1,0 +1,417 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Pipeline Improvement Notes},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Pipeline Improvement Notes}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Pipeline Improvement Notes}\label{pipeline-improvement-notes}
+
+\subsection{Purpose}\label{purpose}
+
+This document is an engineering follow-up note for the current pipeline
+revision. It is separate from the submission-facing report and is
+intended to capture the most important technical issues observed in the
+present build, together with direct, concrete steps to fix them.
+
+The goal is not to redesign the project. The goal is to make targeted
+changes that improve the final graph while preserving the strengths of
+the current architecture: automated construction, canonical namespace
+usage, local-cache reproducibility, provenance capture, and broad source
+coverage.
+
+\subsection{Priority 1: Align emitted classes with the generated
+ontology}\label{priority-1-align-emitted-classes-with-the-generated-ontology}
+
+\subsubsection{Current issue}\label{current-issue}
+
+The current final graph contains high-frequency auxiliary \texttt{tfl:}
+types that are not declared in the generated TBox, including:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{tfl:TransportOperator}
+\item
+  \texttt{tfl:TransitStop}
+\item
+  \texttt{tfl:Location}
+\item
+  \texttt{tfl:TransportService}
+\item
+  \texttt{tfl:TransportEvent}
+\end{itemize}
+
+This makes the graph harder to query consistently and weakens the
+relationship between the ontology report and the built artifact.
+
+\subsubsection{Direct fix}\label{direct-fix}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open
+  \texttt{data\_retrieval/unstructured\_retrieval/triples\_to\_rdf.py}.
+\item
+  Add a canonical class-alignment map before any \texttt{rdf:type}
+  assertions are written.
+\item
+  Map at least:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{TransportOperator\ -\textgreater{}\ TfLOperator}
+  \item
+    \texttt{TransitStop\ -\textgreater{}\ TfLStation}
+  \item
+    \texttt{TransportService\ -\textgreater{}\ TfLLine} or a declared
+    service class, depending on local usage
+  \end{itemize}
+\item
+  If \texttt{Location} and \texttt{TransportEvent} are still genuinely
+  useful, declare them explicitly in \texttt{generateOntology.py};
+  otherwise remap or drop them.
+\item
+  Add a validation script that fails the build if undeclared
+  \texttt{tfl:} classes are emitted into the final graph.
+\end{enumerate}
+
+\subsubsection{Files to change}\label{files-to-change}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{data\_retrieval/unstructured\_retrieval/triples\_to\_rdf.py}
+\item
+  \texttt{generateOntology.py}
+\item
+  optionally add \texttt{scripts/check\_ontology\_alignment.py}
+\end{itemize}
+
+\subsection{Priority 2: Restore benchmark-oriented instance coverage for
+missing competency
+questions}\label{priority-2-restore-benchmark-oriented-instance-coverage-for-missing-competency-questions}
+
+\subsubsection{Current issue}\label{current-issue-1}
+
+The graph is broad, but several coursework questions still depend on
+tightly targeted instances that are not yet materialized clearly enough
+in the final artifact. This is most visible in:
+
+\begin{itemize}
+\tightlist
+\item
+  CQ6 and CQ7 for station facilities
+\item
+  CQ11 for the peak Oyster fare example
+\item
+  CQ13 for engineering closures
+\item
+  CQ15 for the benchmark journey
+\item
+  CQ20 for fare concessions
+\end{itemize}
+
+\subsubsection{Direct fix}\label{direct-fix-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Create a small post-build enrichment layer containing only
+  benchmark-sensitive instances.
+\item
+  Merge that layer after the automated structured and unstructured
+  stages in \texttt{main.py}.
+\item
+  Keep this layer intentionally small and evidence-backed so it supports
+  the queries without turning the build back into a hand-authored graph.
+\item
+  Name benchmark instances consistently, for example:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{tfl:PeakFare\_Adult\_Z1to3}
+  \item
+    \texttt{tfl:Journey\_BrixtonToCanaryWharf}
+  \end{itemize}
+\item
+  Re-run the full SPARQL harness after each added benchmark layer
+  change.
+\end{enumerate}
+
+\subsubsection{Files to change}\label{files-to-change-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{main.py}
+\item
+  add \texttt{ontologies/manual/benchmark\_enrichment.ttl} or a
+  generated equivalent
+\item
+  optionally add a script that builds benchmark instances from
+  structured inputs
+\end{itemize}
+
+\subsection{Priority 3: Tighten operator
+resolution}\label{priority-3-tighten-operator-resolution}
+
+\subsubsection{Current issue}\label{current-issue-2}
+
+Operator-related queries currently return broad answer sets with
+multiple plausible organizations instead of one clean benchmark answer.
+
+\subsubsection{Direct fix}\label{direct-fix-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open
+  \texttt{data\_retrieval/unstructured\_retrieval/triples\_to\_rdf.py}
+  and inspect the mapping for \texttt{operatedBy}.
+\item
+  Add an operator canonicalization table so synonyms and historical
+  names resolve to the chosen ontology individual.
+\item
+  Restrict \texttt{operatedBy} assertions so they attach only to
+  validated line entities.
+\item
+  Ensure structured inputs can override noisier text-derived operator
+  assertions when both exist.
+\item
+  Re-run CQ8 and CQ14 after each change.
+\end{enumerate}
+
+\subsubsection{Files to change}\label{files-to-change-2}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{data\_retrieval/unstructured\_retrieval/triples\_to\_rdf.py}
+\item
+  \texttt{data\_retrieval/structured\_retrieval/tfl\_api\_processor.py}
+\end{itemize}
+
+\subsection{Priority 4: Separate Night Tube from night bus evidence more
+strictly}\label{priority-4-separate-night-tube-from-night-bus-evidence-more-strictly}
+
+\subsubsection{Current issue}\label{current-issue-3}
+
+The graph has useful night-service coverage, but the Night Tube query
+pulls in buses, labels, and non-line entities because the current build
+treats several night-service subjects too loosely.
+
+\subsubsection{Direct fix}\label{direct-fix-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Add a validation rule that \texttt{tfl:isNightTube\ true} may only be
+  asserted on entities already typed as Underground lines.
+\item
+  Keep night buses in \texttt{tfl:NightBusRoute} only.
+\item
+  In \texttt{triples\_to\_rdf.py}, filter out generic labels such as
+  \texttt{Night\ Tube}, \texttt{Night\ Bus\ network}, and route-label
+  strings before type assignment.
+\item
+  Re-run CQ10 and compare the answer set before and after the filter.
+\end{enumerate}
+
+\subsubsection{Files to change}\label{files-to-change-3}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{data\_retrieval/unstructured\_retrieval/triples\_to\_rdf.py}
+\item
+  optionally
+  \texttt{data\_retrieval/structured\_retrieval/tfl\_api\_processor.py}
+\end{itemize}
+
+\subsection{Priority 5: Make the live extractor configurable without
+editing source
+code}\label{priority-5-make-the-live-extractor-configurable-without-editing-source-code}
+
+\subsubsection{Current issue}\label{current-issue-4}
+
+The current repository is intentionally cache-backed, which is good for
+reproducibility, but local reruns are harder than they need to be
+because \texttt{API\_KEY}, \texttt{model}, and \texttt{USE\_LLM} are
+controlled directly in source code.
+
+\subsubsection{Direct fix}\label{direct-fix-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Read \texttt{API\_KEY}, \texttt{model}, and \texttt{USE\_LLM} from
+  environment variables with sensible defaults.
+\item
+  Preserve the current default behaviour so the repo still runs in
+  cache-backed mode out of the box.
+\item
+  Document the environment-variable names in the prompt documentation
+  and README.
+\item
+  Add a short smoke-test command for local live extraction runs.
+\end{enumerate}
+
+\subsubsection{Files to change}\label{files-to-change-4}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{data\_retrieval/unstructured\_retrieval/extract\_triples.py}
+\item
+  \texttt{docs/submission/prompt-documentation.md}
+\item
+  optionally the repository root \texttt{README.md}
+\end{itemize}
+
+\subsection{Priority 6: Add a post-build validation
+gate}\label{priority-6-add-a-post-build-validation-gate}
+
+\subsubsection{Current issue}\label{current-issue-5}
+
+The project already has a competency-question harness, but it would
+benefit from a second automated gate focused on graph integrity and
+coursework-sensitive targets.
+
+\subsubsection{Direct fix}\label{direct-fix-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Add a validation script that checks:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    undeclared \texttt{tfl:} classes
+  \item
+    presence of key benchmark instances
+  \item
+    counts for core classes such as operators, zones, disruptions, and
+    journeys
+  \item
+    non-empty results for selected high-value SPARQL queries
+  \end{itemize}
+\item
+  Run this script automatically after graph serialization in
+  \texttt{main.py} or as a separate verification command.
+\item
+  Keep the checks simple and deterministic so they are easy to trust.
+\end{enumerate}
+
+\subsubsection{Files to change}\label{files-to-change-5}
+
+\begin{itemize}
+\tightlist
+\item
+  add \texttt{scripts/validate\_final\_graph.py}
+\item
+  \texttt{main.py}
+\item
+  optionally
+  \texttt{competency\_questions/competency\_question\_test.py}
+\end{itemize}
+
+\subsection{Suggested Order Of Work}\label{suggested-order-of-work}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Fix ontology alignment for emitted classes.
+\item
+  Tighten Night Tube and operator precision.
+\item
+  Add benchmark enrichment for fares, journeys, facilities, and
+  disruptions.
+\item
+  Add the post-build validation gate.
+\item
+  Move live extractor configuration to environment variables.
+\end{enumerate}
+
+\subsection{Expected Payoff}\label{expected-payoff}
+
+If these steps are implemented, the most likely benefits are:
+
+\begin{itemize}
+\tightlist
+\item
+  cleaner ontology-to-instance alignment
+\item
+  stronger competency-question precision
+\item
+  better coverage on missing benchmark queries
+\item
+  easier local reruns of the unstructured extraction stage
+\item
+  more confidence that future pipeline changes do not silently reduce
+  graph quality
+\end{itemize}
+
+\end{document}

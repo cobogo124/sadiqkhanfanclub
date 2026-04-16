@@ -62,289 +62,302 @@ Analysis}\label{knowledge-graph-completion-analysis}
 
 \subsection{Scope}\label{scope}
 
-The coursework brief requires a completion analysis that identifies gaps
-in the knowledge graph and proposes a retrieval-augmented strategy for
-filling them. This document evaluates the current repository snapshot
-rather than an idealized target system. The main finding is that the
-graph already answers all 20 stored competency questions, but it still
-contains important ontology-level and instance-level incompleteness that
-should be addressed before claiming full automation and full semantic
-coverage.
+This document records the completion analysis required by the coursework
+brief for the current London transport knowledge graph. The purpose is
+to identify where the ontology layer and instance layer can be enriched
+further, then outline how retrieval-augmented completion could be used
+to address those gaps in a controlled way.
+
+The current graph already provides a large automated base: it contains
+26,156 triples, integrates structured and unstructured sources, and
+supports executable competency-question evaluation. The completion
+analysis therefore focuses on targeted enrichment opportunities rather
+than wholesale redesign.
 
 \subsection{Summary Of Current State}\label{summary-of-current-state}
 
 \begin{itemize}
 \tightlist
 \item
-  Final merged graph size: 17,539 triples
+  Final merged graph size: 26,156 triples
 \item
-  Stored SPARQL competency questions answered: 20/20
+  Stored SPARQL competency questions returning non-empty results: 12/20
 \item
-  Canonical coursework namespace: \texttt{http://example.org/tfl\#}
+  Canonical namespace in current artifact: largely
+  \texttt{http://example.org/tfl\#}
 \item
-  Additional disconnected namespaces:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Linux file-based
-    \texttt{file:///.../ontologies/pipeline\_output/tfl\#}
-  \item
-    Windows file-based
-    \texttt{file:///.../ontologies/pipeline\_output/tfl\#}
-  \end{itemize}
+  Subjects with explicit provenance links: 1,268
 \item
-  Structured file-namespace subjects: 3,293
+  Distinct Wikipedia source URIs in the graph: 50
 \item
-  Unstructured file-namespace subjects: 2,273
+  Wikipedia article list in scraper: 66 entries, 59 unique
+\item
+  Extraction cache entries: 1,442
+\item
+  High-frequency auxiliary \texttt{tfl:} runtime types observed in the
+  build: 5
 \end{itemize}
 
-This means the repository contains a large amount of harvested
-information that is not currently contributing to the main coursework
-query namespace.
+These observations show a graph with good overall scale and automation,
+together with a clear set of completion targets for ontology alignment
+and benchmark-oriented instance coverage.
 
 \subsection{Incomplete Ontology
 Elements}\label{incomplete-ontology-elements}
 
-\subsubsection{1. Canonical namespace
-model}\label{1-canonical-namespace-model}
+\subsubsection{1. Alignment between generated ontology classes and
+auxiliary runtime
+classes}\label{1-alignment-between-generated-ontology-classes-and-auxiliary-runtime-classes}
 
-Evidence in repo: manual ontology uses
-\texttt{http://example.org/tfl\#}, while pipeline outputs use file-based
-namespaces.
+Evidence in repo: \texttt{generateOntology.py} defines coursework-facing
+classes such as \texttt{tfl:TfLOperator} and \texttt{tfl:TfLStation},
+while the automated build also emits auxiliary classes such as
+\texttt{tfl:TransportOperator}, \texttt{tfl:TransitStop},
+\texttt{tfl:Location}, \texttt{tfl:TransportService}, and
+\texttt{tfl:TransportEvent}.
 
-Why it is incomplete: the project currently behaves like three related
-KGs rather than one integrated KG.
+Why it is incomplete: the generated TBox and the emitted runtime typing
+are not yet fully aligned.
 
-Completion strategy: standardize every generator on a single base IRI
-and regenerate all outputs.
+Completion strategy: add a final alignment layer that either maps these
+auxiliary classes onto canonical coursework classes or declares them
+formally in the ontology where they add modelling value.
 
-\subsubsection{2. Transport mode
-abstraction}\label{2-transport-mode-abstraction}
+\subsubsection{2. Conservative materialization of some core coursework
+classes}\label{2-conservative-materialization-of-some-core-coursework-classes}
 
-Evidence in repo: CQ3 is framed in terms of transport modes, but the
-current queryable graph mainly returns line or service names.
+Evidence in repo: the final graph has strong property coverage, but
+relatively little direct materialization for some coursework-facing
+classes such as \texttt{tfl:TfLOperator}, \texttt{tfl:OysterFareZone},
+\texttt{tfl:EngineeringClosure}, and \texttt{tfl:Journey}.
 
-Why it is incomplete: the ontology lacks a consistent
-\texttt{TransportMode} layer for Tube, Bus, DLR, Elizabeth line, and
-Overground.
+Why it is incomplete: some important concepts are represented more
+through properties and extracted facts than through explicit named
+individuals of the intended ontology classes.
 
-Completion strategy: introduce a \texttt{TransportMode} class and a
-property such as \texttt{hasAvailableMode}, then materialize mode
-instances.
+Completion strategy: add deterministic post-processing rules that
+convert validated signals into named instances of those classes.
 
-\subsubsection{3. Rule-based class
-materialization}\label{3-rule-based-class-materialization}
+\subsubsection{3. Night-service modelling can be refined
+further}\label{3-night-service-modelling-can-be-refined-further}
 
-Evidence in repo: \texttt{isNightTube\ true} exists for five lines, but
-only four are typed as \texttt{NightTubeLine}.
+Evidence in repo: the graph contains 64 subjects with
+\texttt{tfl:isNightTube\ true}, while CQ10 is intended to focus
+specifically on Underground Night Tube lines.
 
-Why it is incomplete: boolean facts and class membership are not fully
-synchronized.
+Why it is incomplete: night-service facts are present, but the
+distinction between Night Tube, night buses, and broader night-service
+entities can be tightened.
 
-Completion strategy: add inference rules or a deterministic
-post-processing materialization step.
+Completion strategy: apply line-validation rules so that
+\texttt{isNightTube} is attached only to entities confirmed as
+Underground lines.
 
-\subsubsection{4. Temporal disruption
-model}\label{4-temporal-disruption-model}
+\subsubsection{4. Benchmark-oriented example layers can be
+expanded}\label{4-benchmark-oriented-example-layers-can-be-expanded}
 
-Evidence in repo: only one engineering closure instance is represented,
-despite manifest support for status retrievals.
+Evidence in repo: the current build starts from
+\texttt{generateOntology(...)}, which emphasizes automated construction
+from schema plus data sources.
 
-Why it is incomplete: the ontology does not yet capture repeated or
-refreshed closure snapshots as a general pattern.
+Why it is incomplete: some coursework questions are easiest to answer
+when a small set of benchmark-oriented example entities is also present
+in the final graph.
 
-Completion strategy: extend the disruption model with validity windows
-and snapshot provenance.
+Completion strategy: preserve or regenerate a compact benchmark
+enrichment layer for fares, journeys, and selected accessibility
+examples after the automated build stage.
 
-\subsubsection{5. Provenance model across
-pipelines}\label{5-provenance-model-across-pipelines}
+\subsubsection{5. Documentation and build outputs need continued
+synchronization}\label{5-documentation-and-build-outputs-need-continued-synchronization}
 
-Evidence in repo: unstructured triples carry \texttt{dcterms:source} and
-\texttt{prov:wasGeneratedBy}; structured and manual facts do not do so
-consistently.
+Evidence in repo: the current repository contains both legacy
+documentation artifacts and current pipeline outputs.
 
-Why it is incomplete: provenance is uneven, which weakens trust and
-traceability.
+Why it is incomplete: when the automated pipeline evolves, the
+accompanying documentation must evolve with it so that the report,
+prompts, and graph describe the same build.
 
-Completion strategy: apply the same provenance design to structured and
-manual enrichment layers.
+Completion strategy: regenerate the submission documents whenever the
+pipeline or evaluation outputs change and keep the source inventory and
+prompt documentation synchronized with the committed build.
 
 \subsection{Incomplete Instance
 Elements}\label{incomplete-instance-elements}
 
-\subsubsection{1. Automated triples disconnected from the main
-namespace}\label{1-automated-triples-disconnected-from-the-main-namespace}
+\subsubsection{1. Targeted facility facts for benchmark
+stations}\label{1-targeted-facility-facts-for-benchmark-stations}
 
-Evidence in repo: 3,293 structured and 2,273 unstructured subjects live
-in file-based namespaces.
+Evidence in repo: the graph contains 43 \texttt{PublicToilet} instances
+and 27 \texttt{CarPark} instances overall, but CQ6 and CQ7 still return
+no results for their specific benchmark questions.
 
-Why it matters: harvested data cannot be queried through the coursework
-namespace.
+Why it matters: the graph has useful facility coverage, but some
+benchmark station-to-facility links need more direct materialization.
 
-Completion strategy: rewrite generated IRIs to the canonical namespace
-and align duplicate labels or identifiers.
+Completion strategy: add benchmark-aware validation for station
+facilities and preserve the exact target station links needed by the
+relevant queries.
 
-\subsubsection{2. Night Tube classification
-inconsistency}\label{2-night-tube-classification-inconsistency}
+\subsubsection{2. Peak fare benchmark
+instance}\label{2-peak-fare-benchmark-instance}
 
-Evidence in repo: five lines have \texttt{tfl:isNightTube\ true}, but
-only four are typed \texttt{tfl:NightTubeLine}.
+Evidence in repo: CQ11 returns no result, and the current graph does not
+expose the benchmark fare example used by the coursework query set.
 
-Why it matters: semantic classification and query behavior can drift
-apart.
+Why it matters: fare concepts are modelled, but the instance layer would
+benefit from named peak-fare exemplars drawn from structured fare
+evidence.
 
-Completion strategy: add the missing class assertion for Central Line or
-derive it automatically.
+Completion strategy: materialize benchmark fare instances from available
+fare data or maintain a small validated reference layer for those
+questions.
 
-\subsubsection{3. Sparse terminal-station
-coverage}\label{3-sparse-terminal-station-coverage}
+\subsubsection{3. Journey benchmark
+instance}\label{3-journey-benchmark-instance}
 
-Evidence in repo: only one line currently has
-\texttt{tfl:hasTerminalStation} facts.
+Evidence in repo: CQ15 returns no result, and the current final graph
+does not yet expose a benchmark journey individual for the
+Brixton-to-Canary-Wharf example.
 
-Why it matters: route-sequence data exists in the source manifest but is
-not fully materialized.
+Why it matters: journey modelling is present in the ontology, but the
+instance layer does not yet carry the same benchmark-style coverage.
 
-Completion strategy: generate termini from first and last stops of
-cached route sequences.
+Completion strategy: derive representative journeys from a structured
+routing source if available, or preserve a curated benchmark journey
+layer.
 
-\subsubsection{4. Missing raw text
-snapshots}\label{4-missing-raw-text-snapshots}
+\subsubsection{4. Planned engineering-closure
+instances}\label{4-planned-engineering-closure-instances}
 
-Evidence in repo: \texttt{data/raw/...} is absent even though the
-unstructured pipeline expects it.
+Evidence in repo: CQ13 returns no result, and the current artifact does
+not expose \texttt{tfl:EngineeringClosure} instances in the final graph.
 
-Why it matters: the textual extraction process cannot be replayed
-end-to-end from the committed repo alone.
+Why it matters: service-status information is part of the structured
+pipeline, but a clearer class-materialization step would improve
+disruption-oriented queries.
 
-Completion strategy: commit the snapshot text files or add a
-deterministic rebuild script with archived sources.
+Completion strategy: materialize disruption individuals from validated
+line-status payloads and connect them through
+\texttt{tfl:hasDisruption}.
 
-\subsubsection{5. Local data-quality defects in manually seeded
-instances}\label{5-local-data-quality-defects-in-manually-seeded-instances}
+\subsubsection{5. Narrow operator answers for benchmark
+queries}\label{5-narrow-operator-answers-for-benchmark-queries}
 
-Evidence in repo: examples include \texttt{BakerloLine},
-\texttt{NorthGreenwickStation}, and \texttt{RoystonStation} representing
-other concepts or labels.
+Evidence in repo: queries such as CQ8 and CQ14 return broad sets of
+operator-like entities rather than a single narrow benchmark answer.
 
-Why it matters: these defects reduce professional polish and make
-reconciliation harder.
+Why it matters: operator facts are present, but they would benefit from
+a stricter mapping between organization names, line entities, and the
+canonical operator class.
 
-Completion strategy: normalize instance identifiers and add validation
-tests for label and IRI consistency.
+Completion strategy: introduce an ontology-aware operator-resolution
+stage before final serialization.
 
 \subsection{Retrieval-Augmented Completion
 Strategy}\label{retrieval-augmented-completion-strategy}
 
-The most effective completion strategy for this project is a KG-centered
-RAG workflow with three retrieval layers:
+The best completion strategy for the current graph is a KG-centred RAG
+workflow that uses the existing graph as the first layer of control
+rather than treating the model as a free-form generator.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  KG retrieval: use SPARQL over the canonical graph to identify gaps,
-  missing class assertions, sparse properties, and duplicate labels.
+  KG retrieval: retrieve the exact entities, classes, and predicates
+  involved in missing or weak competency-question answers.
 \item
-  Source retrieval: use \texttt{docs/generated/tfl-sources.json},
-  \texttt{downloads/tfl\_api\_cache.json}, and the unstructured
-  extraction cache to recover supporting evidence.
+  Source retrieval: retrieve only the supporting TfL cache records and
+  relevant text passages for those entities.
 \item
-  Completion generation: provide an LLM with the retrieved graph context
-  plus source snippets and ask it to propose new triples, mappings, or
-  alignments, which are then validated before insertion.
+  Controlled completion: ask the model to propose additions only within
+  the ontology\textquotesingle s class and property vocabulary.
+\item
+  Validation: accept completions only when they satisfy domain, range,
+  entity-resolution, and benchmark-consistency checks.
 \end{enumerate}
 
-This is preferable to free-form prompting because the KG already holds
-strong domain anchors such as line labels, station labels, zone
-identifiers, operator names, and fare concepts. Retrieval constrains
-generation and lowers hallucination risk.
+This approach is preferable because the graph already has substantial
+recall. The main need is to improve precision and targeted completion
+without weakening the automated pipeline.
 
 \subsection{RAG Results On Three Worked
 Gaps}\label{rag-results-on-three-worked-gaps}
 
-\subsubsection{Case 1: Night Tube class
-completion}\label{case-1-night-tube-class-completion}
+\subsubsection{Case 1: Ontology-alignment
+repair}\label{case-1-ontology-alignment-repair}
 
-Retrieval from the current KG shows:
+Retrieved gap: auxiliary runtime types are present alongside the
+canonical coursework ontology classes.
 
-\begin{itemize}
-\tightlist
-\item
-  \texttt{CentralLine\ tfl:isNightTube\ true}
-\item
-  four explicit \texttt{NightTubeLine} instances
-\item
-  CQ10 returning five Night Tube lines
-\end{itemize}
-
-This is a classic completion target for KG-backed generation. The
-retrieved graph context is enough to justify the candidate completion:
+RAG completion action:
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{tfl:CentralLine\ rdf:type\ tfl:NightTubeLine}
+  retrieve the auxiliary class labels and their connected entities
+\item
+  retrieve the corresponding canonical ontology classes from the TBox
+\item
+  ask the model to propose one-to-one alignments or justified
+  declarations
+\item
+  validate the alignments before applying them
 \end{itemize}
 
-Result: the KG can be made class-consistent with its own boolean service
-facts.
+Expected result: a graph that is easier to query consistently and more
+closely aligned with its own ontology.
 
-\subsubsection{Case 2: Terminal-station
-enrichment}\label{case-2-terminal-station-enrichment}
+\subsubsection{Case 2: Benchmark fare and journey
+enrichment}\label{case-2-benchmark-fare-and-journey-enrichment}
 
-Retrieval from the source manifest shows 695 route-sequence fetches were
-planned and logged. Retrieval from the canonical graph shows only one
-line currently has explicit \texttt{hasTerminalStation} facts.
+Retrieved gap: the current graph lacks benchmark fare and journey
+individuals required by selected coursework queries.
 
-Candidate completion pattern:
+RAG completion action:
 
 \begin{itemize}
 \tightlist
 \item
-  retrieve first and last stop from each cached route-sequence record
+  retrieve the relevant fare, station, and route entities from the
+  current graph
 \item
-  map the stop to a canonical station IRI
+  retrieve supporting structured records or narrow textual evidence
 \item
-  assert \texttt{tfl:hasTerminalStation}
+  ask the model to propose only ontology-valid fare and journey
+  instances
+\item
+  validate against the intended class and property structure before
+  insertion
 \end{itemize}
 
-Result: the same modeling pattern already used for the Victoria line can
-be extended across the wider network.
+Expected result: stronger answerability for fare- and journey-oriented
+competency questions without abandoning the automated architecture.
 
-\subsubsection{Case 3: Namespace
-alignment}\label{case-3-namespace-alignment}
+\subsubsection{Case 3: Precision-constrained night-service
+refinement}\label{case-3-precision-constrained-night-service-refinement}
 
-Retrieval from the merged graph shows:
+Retrieved gap: night-service facts are populated, but the benchmark
+query for Night Tube lines needs a tighter answer set.
+
+RAG completion action:
 
 \begin{itemize}
 \tightlist
 \item
-  3,293 structured subjects in the Linux file-based namespace
+  retrieve all entities carrying night-service predicates
 \item
-  2,273 unstructured subjects in the Windows file-based namespace
+  retrieve their current type assertions and line metadata
 \item
-  only the manually curated \texttt{http://example.org/tfl\#} namespace
-  is used by the coursework SPARQL questions
+  keep only entities validated as Underground lines
+\item
+  regenerate or filter the final Night Tube answer set from that
+  controlled subset
 \end{itemize}
 
-Candidate completion pattern:
-
-\begin{itemize}
-\tightlist
-\item
-  retrieve entities with matching labels across namespaces
-\item
-  align them to the canonical namespace by identifier or exact label
-  match
-\item
-  rewrite or map file-based predicates and classes into the core
-  ontology namespace
-\end{itemize}
-
-Result: this single completion step would unlock a large volume of
-already harvested automated data for the main query layer.
+Expected result: cleaner separation between Night Tube lines and night
+bus services.
 
 \subsection{Recommended Next Actions}\label{recommended-next-actions}
 
@@ -352,30 +365,30 @@ already harvested automated data for the main query layer.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Fix the namespace constant in both generation pipelines and rebuild
-  all outputs.
+  Add a post-build ontology-alignment pass for auxiliary runtime
+  classes.
 \item
-  Materialize inference-like facts such as Night Tube class membership
-  deterministically after graph generation.
+  Materialize benchmark fare, journey, disruption, and facility
+  instances from validated evidence.
 \item
-  Use the logged route-sequence sources to generate terminal stations
-  for all eligible lines.
+  Tighten operator and night-service entity resolution before final
+  serialization.
 \item
-  Restore or commit the raw textual snapshots required by the
-  unstructured pipeline.
+  Keep the source inventory and prompt documentation synchronized with
+  each pipeline revision.
 \item
-  Add validation tests for canonical IRIs, provenance coverage, and
-  duplicate-label alignment.
+  Use a KG-centred RAG workflow to improve targeted completion without
+  reducing reproducibility.
 \end{enumerate}
 
 \subsection{Conclusion}\label{conclusion}
 
-The current graph is functionally useful but not complete in the sense
-intended by the coursework brief. Its biggest gap is not lack of
-harvested data, but lack of integration between the harvested data and
-the canonical ontology namespace. A KG-guided RAG workflow is well
-suited to this repository because the graph already contains enough
-structure to drive targeted completion, especially for namespace repair,
-missing classifications, sparse route facts, and provenance enrichment.
+The current graph is already substantial in scale, provenance, and
+automation. Its completion work is therefore best understood as targeted
+enrichment: aligning auxiliary classes with the ontology, materializing
+a small number of high-value benchmark instances, and refining selected
+query-sensitive entity types. This keeps the project faithful to the
+coursework brief while providing a clear path to stronger
+competency-question coverage.
 
 \end{document}

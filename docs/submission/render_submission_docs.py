@@ -18,6 +18,7 @@ DOCS = [
     ("knowledge-graph-report.md", "Knowledge Graph Report"),
     ("completion-analysis.md", "Knowledge Graph Completion Analysis"),
     ("prompt-documentation.md", "Prompt Documentation"),
+    ("pipeline-improvement-notes.md", "Pipeline Improvement Notes"),
 ]
 
 
