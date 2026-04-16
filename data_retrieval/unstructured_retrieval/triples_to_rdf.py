@@ -519,6 +519,11 @@ def enrich_graph(g):
                     g.add((s, TFL.routeNumber, Literal(lab)))
                     enriched += 1
                 break
+    #make sure bus lines arent counted as tube lines
+    for s, o in list(g.subject_objects(TFL.isNightTube)):
+        if s not in TUBE_LINES:
+            g.remove((s, TFL.isNightTube, o))
+ 
  
     #elizabeth line specifics
     for s in g.subjects(TFL.servedByLine, TFL.ElizabethLineRoute):

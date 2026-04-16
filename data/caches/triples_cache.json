@@ -28929,11 +28929,6 @@
       "object": "South London"
     },
     {
-      "subject": "DLR",
-      "predicate": "operatedBy",
-      "object": "Keolis and Amey joint venture"
-    },
-    {
       "subject": "London Buses",
       "predicate": "hasFacility",
       "object": "CentreComm"

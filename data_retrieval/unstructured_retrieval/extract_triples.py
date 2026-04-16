@@ -120,9 +120,9 @@ def extract_triples_llm(passage, cache):
     #only uses cache if USE_LLM is false, otherwise runs FULL process
     ############ DELETE, THIS IS TO SAVE TIME ON 05/04/26
     
-    if key in cache:
-            print("Using cached triples.")
-            return cache[key]
+    #if key in cache:
+    #        print("Using cached triples.")
+    #        return cache[key]
     
     ############
     if not USE_LLM:

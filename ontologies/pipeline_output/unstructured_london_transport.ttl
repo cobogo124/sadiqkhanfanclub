@@ -40,7 +40,6 @@ TFL:9September2019 a TFL:TransportEvent ;
     rdfs:label "9 September 2019" .
 
 TFL:A rdfs:label "a" ;
-    TFL:isNightTube true ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
@@ -3513,7 +3512,6 @@ TFL:HollowayGarage rdfs:label "Holloway garage" ;
         "route 43",
         "route 46",
         "route N20" ;
-    TFL:isNightTube true ;
     TFL:operatedBy TFL:LondonNorthern,
         TFL:Metroline,
         TFL:MtlLondon ;
@@ -4322,7 +4320,6 @@ TFL:LondonMotorOmnibusCompany rdfs:label "London Motor Omnibus Company" ;
 
 TFL:LondonNightBusNetwork rdfs:label "London Night Bus network" ;
     TFL:hasStop TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:locatedIn TFL:GreaterLondon ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
@@ -4338,7 +4335,6 @@ TFL:LondonOvergroundAndTflRail a TFL:TransportOperator ;
 
 TFL:LondonOvergroundNightService a TFL:TransportOperator ;
     rdfs:label "London Overground Night Service" ;
-    TFL:isNightTube true ;
     TFL:operatedBy TFL:TfL ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_Tube> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
@@ -5098,7 +5094,6 @@ TFL:N1 a TFL:NightBusRoute ;
     TFL:hasTerminus TFL:PlumsteadGarage,
         TFL:Thamesmead,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1995"^^xsd:gYear ;
     TFL:operatedBy TFL:EastThamesBuses,
         TFL:FirstLondon,
@@ -5123,7 +5118,6 @@ TFL:N109 a TFL:Location,
         TFL:Coulsdon,
         TFL:Croydon,
         TFL:OxfordCircus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1994"^^xsd:gYear ;
     TFL:operatedBy TFL:AbellioLondon,
         TFL:ArrivaLondon ;
@@ -5155,7 +5149,6 @@ TFL:N11 a TFL:NightBusRoute,
         TFL:LiverpoolStreet,
         TFL:ShepherdsBushGreen,
         TFL:Whitehall ;
-    TFL:isNightTube true ;
     TFL:openedDate "1984"^^xsd:gYear ;
     TFL:operatedBy TFL:LondonGeneral,
         TFL:LondonUnited ;
@@ -5192,7 +5185,6 @@ TFL:N118 a TFL:NightBusRoute,
         TFL:WembleyCentral ;
     TFL:hasTerminus TFL:Ruislip,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "2026"^^xsd:gYear ;
     TFL:partOf "N18" ;
     TFL:replacedBy "114" ;
@@ -5212,7 +5204,6 @@ TFL:N13 a TFL:NightBusRoute,
     TFL:hasTerminus TFL:Aldwych,
         TFL:NorthFinchley,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1984"^^xsd:gYear ;
     TFL:operatedBy TFL:LondonSovereign,
         TFL:Metroline ;
@@ -5259,7 +5250,6 @@ TFL:N15 a TFL:NightBusRoute ;
         TFL:RomfordMarket ;
     TFL:hasTerminus TFL:BecontreeHeath,
         TFL:Paddington ;
-    TFL:isNightTube true ;
     TFL:openedDate "1995"^^xsd:gYear ;
     TFL:operatedBy TFL:EastLondon,
         TFL:Go-aheadLondon ;
@@ -5282,7 +5272,6 @@ TFL:N16 a TFL:NightBusRoute ;
         TFL:TrafalgarSquareBusTerminus ;
     TFL:hasTerminus TFL:EdgwareBus,
         TFL:VictoriaBus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1991"^^xsd:gYear ;
     TFL:operatedBy TFL:Metroline ;
     TFL:replacedBy "N32" ;
@@ -5304,7 +5293,6 @@ TFL:N18 a TFL:NightBusRoute,
         TFL:HarrowWeald,
         TFL:LiverpoolStreet,
         TFL:Sudbury ;
-    TFL:isNightTube true ;
     TFL:openedDate "1984"^^xsd:gYear ;
     TFL:operatedBy TFL:FirstLondon,
         TFL:LondonUnited,
@@ -5374,7 +5362,6 @@ TFL:N20 a TFL:NightBusRoute,
         TFL:HighBarnet,
         TFL:TrafalgarSquareBusTerminus ;
     TFL:hasTerminus TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1989"^^xsd:gYear ;
     TFL:routeNumber "N20" ;
     TFL:terminatesAt TFL:TrafalgarSquareBusTerminus ;
@@ -5393,7 +5380,6 @@ TFL:N205 a TFL:NightBusRoute ;
         TFL:Paddington,
         TFL:StratfordCityBus ;
     TFL:introducedBy "2013" ;
-    TFL:isNightTube true ;
     TFL:operatedBy TFL:EastLondon ;
     TFL:routeNumber "N205" ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
@@ -5408,7 +5394,6 @@ TFL:N207 a TFL:NightBusRoute ;
         TFL:Southall ;
     TFL:hasTerminus TFL:Uxbridge,
         TFL:VictoriaBus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1996"^^xsd:gYear ;
     TFL:operatedBy TFL:AbellioLondon,
         TFL:FirstLondon,
@@ -5466,7 +5451,6 @@ TFL:N242 a TFL:NightBusRoute,
         TFL:StPauls ;
     TFL:hasTerminus TFL:HomertonUniversityHospital,
         TFL:TottenhamCourtRoad ;
-    TFL:isNightTube true ;
     TFL:routeNumber "N242" ;
     TFL:terminatesAt TFL:HomertonUniversityHospital,
         TFL:TottenhamCourtRoad ;
@@ -5482,7 +5466,6 @@ TFL:N25 a TFL:NightBusRoute,
         TFL:Whitechapel ;
     TFL:hasTerminus TFL:Romford,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1995"^^xsd:gYear ;
     TFL:operatedBy TFL:EastLondon,
         TFL:FirstLondon,
@@ -5499,7 +5482,6 @@ TFL:N250 a TFL:NightBusRoute ;
     TFL:hasStop TFL:Brixton,
         TFL:StreathamHill ;
     TFL:hasTerminus TFL:Brixton ;
-    TFL:isNightTube true ;
     TFL:routeNumber "N250" ;
     TFL:terminatesAt TFL:Brixton ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
@@ -5543,7 +5525,6 @@ TFL:N263 a TFL:NightBusRoute,
         TFL:OldStreet,
         TFL:TallyHoCorner,
         TFL:UpperHolloway ;
-    TFL:isNightTube true ;
     TFL:openedDate "2025"^^xsd:gYear ;
     TFL:routeNumber "N263" ;
     dcterms:source <https://en.wikipedia.org/wiki/Metroline>,
@@ -5580,7 +5561,6 @@ TFL:N27 a TFL:NightBusRoute,
     TFL:hasTerminus TFL:ChalkFarm,
         TFL:TurnhamGreen ;
     TFL:introducedBy TFL:FirstLondon ;
-    TFL:isNightTube true ;
     TFL:operatedBy TFL:AbellioLondon,
         TFL:LondonUnited ;
     TFL:routeNumber "N27" ;
@@ -5619,7 +5599,6 @@ TFL:N279 a TFL:NightBusRoute ;
         TFL:TottenhamCourtRoad ;
     TFL:hasTerminus TFL:TrafalgarSquareBusTerminus,
         TFL:WalthamCross ;
-    TFL:isNightTube true ;
     TFL:routeNumber "N279" ;
     TFL:terminatesAt TFL:TrafalgarSquareBusTerminus,
         TFL:WalthamCross ;
@@ -5649,7 +5628,6 @@ TFL:N29 a TFL:NightBusRoute ;
         TFL:WoodGreen ;
     TFL:hasTerminus TFL:EnfieldTown,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1980"^^xsd:gYear ;
     TFL:routeNumber "N29" ;
     TFL:terminatesAt TFL:EnfieldTown,
@@ -5667,7 +5645,6 @@ TFL:N3 a TFL:NightBusRoute ;
     TFL:hasTerminus TFL:BeckenhamJunction,
         TFL:BromleyNorth,
         TFL:VictoriaBus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1989"^^xsd:gYear ;
     TFL:operatedBy TFL:AbellioLondon,
         TFL:Connex,
@@ -5690,7 +5667,6 @@ TFL:N31 a TFL:NightBusRoute ;
     TFL:hasTerminus TFL:CamdenTown,
         TFL:ClaphamJunction,
         TFL:NottingHillGate ;
-    TFL:isNightTube true ;
     TFL:openedDate "1989"^^xsd:gYear ;
     TFL:operatedBy TFL:Metroline ;
     TFL:routeNumber "N31" ;
@@ -5783,7 +5759,6 @@ TFL:N472 a TFL:NightBusRoute ;
         TFL:WoolwichArsenal ;
     TFL:hasTerminus TFL:AbbeyWood,
         TFL:NorthGreenwichBus ;
-    TFL:isNightTube true ;
     TFL:openedDate "2026"^^xsd:gYear ;
     TFL:replacedBy "night service on route 472" ;
     TFL:routeNumber "N472" ;
@@ -5796,7 +5771,6 @@ TFL:N5 a TFL:NightBusRoute ;
     rdfs:label "N5" ;
     TFL:hasTerminus TFL:Edgware,
         TFL:VictoriaBus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1989"^^xsd:gYear ;
     TFL:operatedBy TFL:LondonSovereign,
         TFL:Metroline ;
@@ -5823,7 +5797,6 @@ TFL:N53 a TFL:NightBusRoute ;
         TFL:WoolwichArsenal ;
     TFL:hasTerminus TFL:Erith,
         TFL:VictoriaBus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1989"^^xsd:gYear ;
     TFL:routeNumber "N53" ;
     TFL:terminatesAt TFL:Erith,
@@ -5840,7 +5813,6 @@ TFL:N550 a TFL:NightBusRoute ;
         TFL:TrafalgarSquareBusTerminus ;
     TFL:hasTerminus TFL:CanningTownBus,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "2008"^^xsd:gYear ;
     TFL:operatedBy TFL:StagecoachLondon ;
     TFL:partOf TFL:DlrNetwork ;
@@ -5855,7 +5827,6 @@ TFL:N551 a TFL:NightBusRoute ;
     rdfs:label "N551" ;
     TFL:hasTerminus TFL:GallionsReachShoppingPark,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "2008"^^xsd:gYear ;
     TFL:operatedBy TFL:StagecoachLondon ;
     TFL:partOf TFL:DlrNetwork ;
@@ -5922,7 +5893,6 @@ TFL:N7 a TFL:NightBusRoute ;
     rdfs:label "N7" ;
     TFL:hasTerminus TFL:Northolt,
         TFL:RussellSquare ;
-    TFL:isNightTube true ;
     TFL:openedDate "2003"^^xsd:gYear ;
     TFL:operatedBy TFL:FirstLondon,
         TFL:Metroline ;
@@ -5961,7 +5931,6 @@ TFL:N73 a TFL:NightBusRoute,
     TFL:hasTerminus TFL:OxfordCircus,
         TFL:VictoriaBus,
         TFL:WalthamstowCentral ;
-    TFL:isNightTube true ;
     TFL:openedDate "1989"^^xsd:gYear ;
     TFL:replacedBy "route 390" ;
     TFL:routeNumber "N73" ;
@@ -6007,7 +5976,6 @@ TFL:N8 a TFL:NightBusRoute ;
         TFL:Queensbury,
         TFL:TrafalgarSquareBusTerminus,
         TFL:VictoriaBus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1988"^^xsd:gYear ;
     TFL:replacedBy "C2" ;
     TFL:routeNumber "N8" ;
@@ -6029,7 +5997,6 @@ TFL:N83 a TFL:NightBusRoute,
         TFL:WembleyCentral ;
     TFL:hasTerminus TFL:EalingHospital,
         TFL:GoldersGreen ;
-    TFL:isNightTube true ;
     TFL:operatedBy TFL:FirstLondon ;
     TFL:routeNumber "N83" ;
     TFL:terminatesAt TFL:EalingHospital,
@@ -6122,7 +6089,6 @@ TFL:N97 a TFL:NightBusRoute,
         "N91" ;
     TFL:hasTerminus TFL:Hammersmith,
         TFL:PiccadillyCircus ;
-    TFL:isNightTube true ;
     TFL:operatedBy TFL:TowerTransit ;
     TFL:replacedBy TFL:PiccadillyLine ;
     TFL:routeNumber "N97" ;
@@ -6355,7 +6321,6 @@ TFL:NightBus rdfs:label "night bus" ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:NightOverground rdfs:label "Night Overground" ;
-    TFL:isNightTube true ;
     dcterms:source <https://en.wikipedia.org/wiki/Transport_for_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
@@ -6366,7 +6331,6 @@ TFL:NightTube a TFL:TransportOperator ;
     TFL:hasTerminus TFL:Cockfosters,
         "Heathrow Terminal 5" ;
     TFL:introducedBy TFL:TfL ;
-    TFL:isNightTube true ;
     TFL:openedDate "2014"^^xsd:gYear,
         "2016"^^xsd:gYear ;
     TFL:operatedBy TFL:LondonOverground,
@@ -6385,7 +6349,6 @@ TFL:NightTubeNetwork rdfs:label "Night Tube network" ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
 TFL:NightTubeServices rdfs:label "Night Tube services" ;
-    TFL:isNightTube true ;
     TFL:openedDate "2020"^^xsd:gYear ;
     dcterms:source <https://en.wikipedia.org/wiki/London_Underground> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
@@ -7625,7 +7588,6 @@ TFL:RouteN10 a TFL:TransportOperator ;
         TFL:KingsCrossStPancras ;
     TFL:hasTerminus TFL:Archway,
         TFL:Richmond ;
-    TFL:isNightTube true ;
     TFL:openedDate "2001"^^xsd:gYear ;
     TFL:operatedBy TFL:LondonUnited ;
     TFL:replacedBy "N390",
@@ -7660,7 +7622,6 @@ TFL:RouteN133 a TFL:TransitStop,
         TFL:Morden ;
     TFL:hasTerminus TFL:LiverpoolStreetBus,
         TFL:Tooting ;
-    TFL:isNightTube true ;
     TFL:openedDate "2003"^^xsd:gYear ;
     TFL:operatedBy TFL:ArrivaLondon ;
     TFL:routeNumber "N133" ;
@@ -7689,7 +7650,6 @@ TFL:RouteN140 a TFL:TransitStop ;
         TFL:Wealdstone ;
     TFL:hasTerminus TFL:HarrowWealdBusGarage,
         TFL:HeathrowCentralBus ;
-    TFL:isNightTube true ;
     TFL:openedDate "2000"^^xsd:gYear ;
     TFL:terminatesAt TFL:HarrowWealdBusGarage,
         TFL:HeathrowCentralBus ;
@@ -7710,7 +7670,6 @@ TFL:RouteN155 a TFL:TransportEvent,
     TFL:hasTerminus TFL:Aldwych,
         TFL:Sutton,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1995"^^xsd:gYear ;
     TFL:operatedBy TFL:LondonGeneral ;
     TFL:replacedBy "Route N44" ;
@@ -7728,7 +7687,6 @@ TFL:RouteN171 a TFL:TransitStop ;
         TFL:Waterloo ;
     TFL:hasTerminus TFL:HitherGreen,
         TFL:TottenhamCourtRoad ;
-    TFL:isNightTube true ;
     TFL:openedDate "1996"^^xsd:gYear ;
     TFL:operatedBy TFL:Go-aheadLondon ;
     TFL:routeNumber "N171" ;
@@ -7786,7 +7744,6 @@ TFL:RouteN26 a TFL:TransitStop,
     TFL:hasTerminus TFL:Chingford,
         TFL:VictoriaBus,
         TFL:WalthamstowCentral ;
-    TFL:isNightTube true ;
     TFL:openedDate "1992"^^xsd:gYear ;
     TFL:replacedBy "route N6" ;
     TFL:terminatesAt TFL:Chingford,
@@ -7820,7 +7777,6 @@ TFL:RouteN28 a TFL:TransitStop ;
         TFL:SwissCottage,
         TFL:WandsworthTown,
         TFL:WestbournePark ;
-    TFL:isNightTube true ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
 
@@ -7844,7 +7800,6 @@ TFL:RouteN35 a TFL:TransportOperator ;
     TFL:hasTerminus TFL:ClaphamJunction,
         TFL:TottenhamCourtRoad,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1997"^^xsd:gYear ;
     TFL:operatedBy TFL:AbellioLondon,
         TFL:LondonCentral,
@@ -7864,7 +7819,6 @@ TFL:RouteN38 rdfs:label "route N38" ;
         TFL:TrafalgarSquareBusTerminus,
         TFL:VictoriaBus,
         TFL:WalthamstowBus ;
-    TFL:isNightTube true ;
     TFL:openedDate "1995"^^xsd:gYear ;
     TFL:operatedBy TFL:ArrivaLondon,
         TFL:EastLondon ;
@@ -7885,7 +7839,6 @@ TFL:RouteN41 a TFL:TransportOperator ;
     rdfs:label "Route N41" ;
     TFL:hasTerminus TFL:TottenhamHaleBus,
         TFL:TrafalgarSquareBusTerminus ;
-    TFL:isNightTube true ;
     TFL:openedDate "2000"^^xsd:gYear ;
     TFL:operatedBy TFL:ArrivaLondon ;
     TFL:routeNumber "N41" ;
@@ -7898,7 +7851,6 @@ TFL:RouteN44 a TFL:TransportOperator ;
     rdfs:label "Route N44" ;
     TFL:hasTerminus TFL:Aldwych,
         TFL:Sutton ;
-    TFL:isNightTube true ;
     TFL:openedDate "1995"^^xsd:gYear ;
     TFL:operatedBy TFL:LondonGeneral ;
     TFL:routeNumber "N44" ;
@@ -7921,7 +7873,6 @@ TFL:RouteN55 a TFL:TransportOperator ;
     TFL:hasTerminus TFL:OxfordCircus,
         TFL:WhippsCross,
         TFL:WoodfordWells ;
-    TFL:isNightTube true ;
     TFL:openedDate "2001"^^xsd:gYear ;
     TFL:operatedBy TFL:StagecoachLondon ;
     TFL:routeNumber "N55" ;
@@ -7980,7 +7931,6 @@ TFL:RouteN8 a TFL:TransitStop ;
         TFL:StratfordBus ;
     TFL:hasTerminus TFL:Hainault,
         TFL:OxfordCircus ;
-    TFL:isNightTube true ;
     TFL:operatedBy TFL:StagecoachLondon ;
     TFL:terminatesAt TFL:Hainault,
         TFL:OxfordCircus ;
@@ -8004,7 +7954,6 @@ TFL:RouteN9 a TFL:TransitStop ;
         TFL:Kingston,
         TFL:TrafalgarSquareBusTerminus,
         "Heathrow Terminal 5" ;
-    TFL:isNightTube true ;
     TFL:openedDate "1994"^^xsd:gYear ;
     TFL:operatedBy TFL:LondonUnited,
         TFL:Metroline ;
@@ -8541,7 +8490,6 @@ TFL:StPancrasInternational a TFL:TransportOperator ;
 TFL:StaffOysterCard rdfs:label "Staff Oyster card" ;
     TFL:acceptedOn TFL:TflModes ;
     TFL:introducedBy TFL:TransportForLondon ;
-    TFL:isNightTube false ;
     dcterms:source <https://en.wikipedia.org/wiki/Hopper_fare>,
         <https://en.wikipedia.org/wiki/Oyster_card> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
@@ -13036,8 +12984,6 @@ TFL:KenningtonLoop rdfs:label "Kennington Loop" .
 TFL:KentCountyCouncil a TFL:TransportOperator ;
     rdfs:label "Kent County Council" .
 
-TFL:KeolisAndAmeyJointVenture rdfs:label "Keolis and Amey joint venture" .
-
 TFL:Kew rdfs:label "Kew" .
 
 TFL:KewBridge rdfs:label "Kew Bridge station" .
@@ -13487,7 +13433,6 @@ TFL:Newcastle a TFL:Location ;
     rdfs:label "Newcastle" .
 
 TFL:NightBusNetwork rdfs:label "Night Bus network" ;
-    TFL:isNightTube true ;
     TFL:operatedBy TFL:PrivateOperators ;
     dcterms:source <https://en.wikipedia.org/wiki/Night_buses_in_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
@@ -13495,7 +13440,6 @@ TFL:NightBusNetwork rdfs:label "Night Bus network" ;
 TFL:NightTubeScheme rdfs:label "Night Tube scheme" ;
     TFL:hasStop TFL:LondonOverground,
         TFL:LondonUnderground ;
-    TFL:isNightTube true ;
     TFL:openedDate "2016"^^xsd:gYear ;
     dcterms:source <https://en.wikipedia.org/wiki/Transport_for_London> ;
     prov:wasGeneratedBy TFL:UnstructuredPipeline .
@@ -18857,7 +18801,6 @@ TFL:WaterlooAndCity a TFL:Location,
         TFL:WaterlooAndCityRailwayCompany,
         "1994",
         "Railways Act 1921" ;
-    TFL:isNightTube true ;
     TFL:openedDate "1898"^^xsd:gYear,
         "1906"^^xsd:gYear,
         "1915"^^xsd:gYear,
@@ -19333,7 +19276,6 @@ TFL:EastLondon a TFL:Location ;
         TFL:NewCrossGate,
         TFL:WestCroydon ;
     TFL:introducedBy TFL:TetraRadio ;
-    TFL:isNightTube true ;
     TFL:openedDate "1968"^^xsd:gYear,
         "2010"^^xsd:gYear ;
     TFL:operatedBy "London Underground A60 and A62 Stock" ;
@@ -20706,8 +20648,7 @@ TFL:DLR a TFL:TransportOperator ;
         TFL:SouthLondon ;
     TFL:openedDate "1987"^^xsd:gYear,
         "2005"^^xsd:gYear ;
-    TFL:operatedBy TFL:KeolisAndAmeyJointVenture,
-        TFL:KeolisameyDocklands,
+    TFL:operatedBy TFL:KeolisameyDocklands,
         TFL:LondonDocklandsDevelopmentCorporation,
         TFL:LondonRegionalTransport,
         TFL:PassengerServiceAgent,

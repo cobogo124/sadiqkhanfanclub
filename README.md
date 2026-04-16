@@ -2,17 +2,19 @@
 
 ## Build the TfL snapshot
 
-Run:
+Decide whether to run with cached LLM output:
 
-`python3 data_retrieval/fetch_tfl_sources.py`
+1. Change USE_LLM to True and enter a valid anthropic API key and model ID in 'extract_triples.py
+2. `python main.py`
 
-This downloads a dated snapshot of the official TfL sources into `downloads/raw/<date>/`.
+Otherwise to run with cached output:
 
-## Build the ontology outputs
+1. `python main.py`
 
-Run:
 
-`python3 data_retrieval/build_tfl_ontology.py`
+
+
+# check below is correct before submission
 
 This generates:
 
