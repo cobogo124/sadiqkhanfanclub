@@ -8,6 +8,7 @@ g.parse(TTL_PATH, format="turtle")
 print(f"Graph loaded: {len(g):,} triples\n")
 
 CQS = [
+    # --- STRUCTURED TOPOLOGY QUERIES (12) ---
     (
         "CQ1: Which London Underground lines intersect at King's Cross St Pancras station?",
         f"""SELECT DISTINCT ?lineName WHERE {{
@@ -30,14 +31,7 @@ CQS = [
         }} ORDER BY ?lineName"""
     ),
     (
-        "CQ4: Which stations are served by the Bakerloo Line?",
-        f"""SELECT ?stationName WHERE {{
-            ?station <{TFL}servedByLine> <{TFL}BakerlooLine> .
-            ?station rdfs:label ?stationName .
-        }} ORDER BY ?stationName"""
-    ),
-    (
-        "CQ5: Which stations on the Jubilee Line feature step-free access from the street to the train?",
+        "CQ4: Which stations on the Jubilee Line feature step-free access from the street to the train?",
         f"""SELECT ?stationName WHERE {{
             ?station <{TFL}servedByLine> <{TFL}JubileeLine> .
             ?station <{TFL}hasStepFreeStreetToPlatform> true .
@@ -45,7 +39,7 @@ CQS = [
         }} ORDER BY ?stationName"""
     ),
     (
-        "CQ6: Does Baker Street station have public restroom facilities available?",
+        "CQ5: Does Baker Street station have public restroom facilities available?",
         f"""SELECT ?facilityLabel WHERE {{
             <{TFL}BakerStreetStation> <{TFL}hasFacility> ?fac .
             ?fac a <{TFL}PublicToilet> .
@@ -53,42 +47,7 @@ CQS = [
         }}"""
     ),
     (
-        "CQ7: Which TfL lines serve Baker Street station?",
-        f"""SELECT ?lineName WHERE {{
-            <{TFL}BakerStreetStation> <{TFL}servedByLine> ?line .
-            ?line rdfs:label ?lineName .
-        }} ORDER BY ?lineName"""
-    ),
-    (
-        "CQ8: Who is the designated operating company for the London Overground network?",
-        f"""SELECT ?opName WHERE {{
-            <{TFL}LondonOverground> <{TFL}operatedBy> ?op .
-            ?op rdfs:label ?opName .
-        }}"""
-    ),
-    (
-        "CQ9: Which specific bus routes terminate at Trafalgar Square?",
-        f"""SELECT ?routeNumber WHERE {{
-            ?route <{TFL}terminatesAt> <{TFL}TrafalgarSquareBusTerminus> .
-            ?route <{TFL}routeNumber> ?routeNumber .
-        }} ORDER BY ?routeNumber"""
-    ),
-    (
-        "CQ10: Which London Underground lines operate the Night Tube service on Fridays and Saturdays?",
-        f"""SELECT ?lineName WHERE {{
-            ?line <{TFL}isNightTube> true .
-            ?line rdfs:label ?lineName .
-        }} ORDER BY ?lineName"""
-    ),
-    (
-        "CQ11: Which stations are served by the Piccadilly Line?",
-        f"""SELECT ?stationName WHERE {{
-            ?station <{TFL}servedByLine> <{TFL}PiccadillyLine> .
-            ?station rdfs:label ?stationName .
-        }} ORDER BY ?stationName"""
-    ),
-    (
-        "CQ12: Which transport modes in the TfL network charge a flat fare regardless of distance travelled?",
+        "CQ6: Which transport modes in the TfL network charge a flat fare regardless of distance travelled?",
         f"""SELECT DISTINCT ?typeLabel WHERE {{
             ?line <{TFL}isFlatFare> true .
             ?line a ?type .
@@ -96,7 +55,7 @@ CQS = [
         }} ORDER BY ?typeLabel"""
     ),
     (
-        "CQ13: Which TfL lines serve Paddington station?",
+        "CQ7: Which TfL lines serve Paddington station?",
         f"""SELECT DISTINCT ?lineName WHERE {{
             ?station <{TFL}servedByLine> ?line .
             ?station rdfs:label ?stationLabel .
@@ -105,22 +64,7 @@ CQS = [
         }} ORDER BY ?lineName"""
     ),
     (
-        "CQ14: What is the official operator of the Docklands Light Railway?",
-        f"""SELECT ?opName WHERE {{
-            <{TFL}DLR> <{TFL}operatedBy> ?op .
-            ?op rdfs:label ?opName .
-        }}"""
-    ),
-    (
-        "CQ15: Which stations on the Victoria Line feature step-free access from the street to the train?",
-        f"""SELECT ?stationName WHERE {{
-            ?station <{TFL}servedByLine> <{TFL}VictoriaLine> .
-            ?station <{TFL}hasStepFreeStreetToPlatform> true .
-            ?station rdfs:label ?stationName .
-        }} ORDER BY ?stationName"""
-    ),
-    (
-        "CQ16: Which TfL lines operate within Zone 1?",
+        "CQ8: Which TfL lines operate within Zone 1?",
         f"""SELECT DISTINCT ?lineName WHERE {{
             ?line <{TFL}operatesInZone> <{TFL}Zone1> .
             ?stop <{TFL}servedByLine> ?line .
@@ -128,14 +72,14 @@ CQS = [
         }} ORDER BY ?lineName"""
     ),
     (
-        "CQ17: Which specific bus routes operate as night bus services with an N-prefix in the TfL network?",
+        "CQ9: Which specific bus routes operate as night bus services with an N-prefix in the TfL network?",
         f"""SELECT ?routeNumber WHERE {{
             ?route a <{TFL}NightBusRoute> .
             ?route <{TFL}routeNumber> ?routeNumber .
         }} ORDER BY ?routeNumber"""
     ),
     (
-        "CQ18: Which TfL lines operate within Zone 4?",
+        "CQ10: Which TfL lines operate within Zone 4?",
         f"""SELECT DISTINCT ?lineName WHERE {{
             ?line <{TFL}operatesInZone> <{TFL}Zone4> .
             ?stop <{TFL}servedByLine> ?line .
@@ -143,7 +87,7 @@ CQS = [
         }} ORDER BY ?lineName"""
     ),
     (
-        "CQ19: Which TfL lines serve stations located in both zone 2 and zone 3?",
+        "CQ11: Which TfL lines serve stations located in both zone 2 and zone 3?",
         f"""SELECT DISTINCT ?lineName WHERE {{
             ?s1 <{TFL}servedByLine> ?line .
             ?s1 <{TFL}operatesInZone> <{TFL}Zone2> .
@@ -154,12 +98,67 @@ CQS = [
         }} ORDER BY ?lineName"""
     ),
     (
-        "CQ20: Which TfL lines terminate at Stratford station?",
+        "CQ12: Which TfL lines terminate at Stratford station?",
         f"""SELECT DISTINCT ?lineName WHERE {{
             ?line <{TFL}hasTerminalStation> <{TFL}StratfordStation> .
             ?line rdfs:label ?lineName .
         }} ORDER BY ?lineName"""
     ),
+
+    # --- UNSTRUCTURED WIKIPEDIA QUERIES (8) ---
+    (
+        "CQ13: Who is the designated operating company for the London Overground network?",
+        f"""SELECT ?opName WHERE {{
+            <{TFL}LondonOverground> <{TFL}operatedBy> ?op .
+            ?op rdfs:label ?opName .
+        }}"""
+    ),
+    (
+        "CQ14: What is the official operator of the Docklands Light Railway?",
+        f"""SELECT ?opName WHERE {{
+            <{TFL}DLR> <{TFL}operatedBy> ?op .
+            ?op rdfs:label ?opName .
+        }}"""
+    ),
+    (
+        "CQ15: In what year did the Bakerloo line open?",
+        f"""SELECT ?year WHERE {{
+            <{TFL}BakerlooLine> <{TFL}openedDate> ?year .
+        }}"""
+    ),
+    (
+        "CQ16: In what year did the Victoria line open?",
+        f"""SELECT ?year WHERE {{
+            <{TFL}VictoriaLine> <{TFL}openedDate> ?year .
+        }}"""
+    ),
+    (
+        "CQ17: On which transport networks is the Oyster card accepted?",
+        f"""SELECT DISTINCT ?networkName WHERE {{
+            <{TFL}OysterCard> <{TFL}acceptedOn> ?network .
+            ?network rdfs:label ?networkName .
+        }} ORDER BY ?networkName"""
+    ),
+    (
+        "CQ18: Which transport networks accept the Freedom Pass?",
+        f"""SELECT DISTINCT ?networkName WHERE {{
+            <{TFL}FreedomPass> <{TFL}acceptedOn> ?network .
+            ?network rdfs:label ?networkName .
+        }} ORDER BY ?networkName"""
+    ),
+    (
+        "CQ19: What accessibility features are available on the Docklands Light Railway (DLR)?",
+        f"""SELECT DISTINCT ?featureName WHERE {{
+            <{TFL}DLR> <{TFL}hasAccessibilityFeature> ?feature .
+            ?feature rdfs:label ?featureName .
+        }} ORDER BY ?featureName"""
+    ),
+    (
+        "CQ20: In what year did the Jubilee Line Extension open?",
+        f"""SELECT ?year WHERE {{
+            <{TFL}JubileeLineExtension> <{TFL}openedDate> ?year .
+        }}"""
+    )
 ]
 
 passed = 0 
