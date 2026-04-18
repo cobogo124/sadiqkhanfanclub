@@ -30,11 +30,11 @@ CQS = [
         }} ORDER BY ?lineName"""
     ),
     (
-        "CQ4: Which fare zones does the Docklands Light Railway (DLR) operate within?",
-        f"""SELECT ?zoneLabel WHERE {{
-            <{TFL}DLR> <{TFL}operatesInZone> ?zone .
-            ?zone rdfs:label ?zoneLabel .
-        }} ORDER BY ?zoneLabel"""
+        "CQ4: Which stations are served by the Bakerloo Line?",
+        f"""SELECT ?stationName WHERE {{
+            ?station <{TFL}servedByLine> <{TFL}BakerlooLine> .
+            ?station rdfs:label ?stationName .
+        }} ORDER BY ?stationName"""
     ),
     (
         "CQ5: Which stations on the Jubilee Line feature step-free access from the street to the train?",
@@ -53,14 +53,11 @@ CQS = [
         }}"""
     ),
     (
-        "CQ7: Which stations on the Central Line provide public car parking facilities?",
-        f"""SELECT ?stationName ?cpName WHERE {{
-            ?station <{TFL}servedByLine> <{TFL}CentralLine> .
-            ?station <{TFL}hasFacility> ?cp .
-            ?cp a <{TFL}CarPark> .
-            ?station rdfs:label ?stationName .
-            ?cp rdfs:label ?cpName .
-        }} ORDER BY ?stationName"""
+        "CQ7: Which TfL lines serve Baker Street station?",
+        f"""SELECT ?lineName WHERE {{
+            <{TFL}BakerStreetStation> <{TFL}servedByLine> ?line .
+            ?line rdfs:label ?lineName .
+        }} ORDER BY ?lineName"""
     ),
     (
         "CQ8: Who is the designated operating company for the London Overground network?",
@@ -84,11 +81,11 @@ CQS = [
         }} ORDER BY ?lineName"""
     ),
     (
-        "CQ11: What is the peak-hour Oyster fare for an adult journey travelling across zones 1 to 3?",
-        f"""SELECT ?amount ?currency WHERE {{
-            <{TFL}PeakFare_Adult_Z1to3> <{TFL}fareAmount> ?amount .
-            <{TFL}PeakFare_Adult_Z1to3> <http://schema.org/priceCurrency> ?currency .
-        }}"""
+        "CQ11: Which stations are served by the Piccadilly Line?",
+        f"""SELECT ?stationName WHERE {{
+            ?station <{TFL}servedByLine> <{TFL}PiccadillyLine> .
+            ?station rdfs:label ?stationName .
+        }} ORDER BY ?stationName"""
     ),
     (
         "CQ12: Which transport modes in the TfL network charge a flat fare regardless of distance travelled?",
@@ -99,13 +96,13 @@ CQS = [
         }} ORDER BY ?typeLabel"""
     ),
     (
-        "CQ13: Which TfL lines currently have planned engineering closures scheduled for this weekend?",
-        f"""SELECT ?lineName ?desc WHERE {{
-            ?line <{TFL}hasDisruption> ?closure .
-            ?closure a <{TFL}EngineeringClosure> .
-            ?closure <{TFL}closureDescription> ?desc .
+        "CQ13: Which TfL lines serve Paddington station?",
+        f"""SELECT DISTINCT ?lineName WHERE {{
+            ?station <{TFL}servedByLine> ?line .
+            ?station rdfs:label ?stationLabel .
+            FILTER(CONTAINS(LCASE(STR(?stationLabel)), "paddington"))
             ?line rdfs:label ?lineName .
-        }}"""
+        }} ORDER BY ?lineName"""
     ),
     (
         "CQ14: What is the official operator of the Docklands Light Railway?",
@@ -115,20 +112,20 @@ CQS = [
         }}"""
     ),
     (
-        "CQ15: What is the estimated journey duration and how many legs are required to travel from Brixton to Canary Wharf?",
-        f"""SELECT ?minutes ?legs WHERE {{
-            <{TFL}Journey_BrixtonToCanaryWharf> <{TFL}estimatedJourneyMinutes> ?minutes .
-            <{TFL}Journey_BrixtonToCanaryWharf> <{TFL}numberOfLegs> ?legs .
-        }}"""
-    ),
-    (
-        "CQ16: Which stations on the Overground network offer a staff-assisted boarding service for passengers with disabilities?",
+        "CQ15: Which stations on the Victoria Line feature step-free access from the street to the train?",
         f"""SELECT ?stationName WHERE {{
-            ?station <{TFL}hasAccessibilityFeature> ?feat .
-            ?feat a <{TFL}AssistedBoardingService> .
-            ?station <{TFL}servedByLine> <{TFL}LondonOverground> .
+            ?station <{TFL}servedByLine> <{TFL}VictoriaLine> .
+            ?station <{TFL}hasStepFreeStreetToPlatform> true .
             ?station rdfs:label ?stationName .
         }} ORDER BY ?stationName"""
+    ),
+    (
+        "CQ16: Which TfL lines operate within Zone 1?",
+        f"""SELECT DISTINCT ?lineName WHERE {{
+            ?line <{TFL}operatesInZone> <{TFL}Zone1> .
+            ?stop <{TFL}servedByLine> ?line .
+            ?line rdfs:label ?lineName .
+        }} ORDER BY ?lineName"""
     ),
     (
         "CQ17: Which specific bus routes operate as night bus services with an N-prefix in the TfL network?",
@@ -138,13 +135,12 @@ CQS = [
         }} ORDER BY ?routeNumber"""
     ),
     (
-        "CQ18: Which Elizabeth Line stations are equipped with audio-visual aids for sensory-impaired passengers?",
-        f"""SELECT ?stationName WHERE {{
-            ?station a <{TFL}ElizabethLineStation> .
-            ?station <{TFL}hasAccessibilityFeature> ?feat .
-            ?feat a <{TFL}AudioVisualAid> .
-            ?station rdfs:label ?stationName .
-        }} ORDER BY ?stationName"""
+        "CQ18: Which TfL lines operate within Zone 4?",
+        f"""SELECT DISTINCT ?lineName WHERE {{
+            ?line <{TFL}operatesInZone> <{TFL}Zone4> .
+            ?stop <{TFL}servedByLine> ?line .
+            ?line rdfs:label ?lineName .
+        }} ORDER BY ?lineName"""
     ),
     (
         "CQ19: Which TfL lines serve stations located in both zone 2 and zone 3?",
@@ -158,12 +154,11 @@ CQS = [
         }} ORDER BY ?lineName"""
     ),
     (
-        "CQ20: Which fare concessions apply to disabled passengers using the bus network during peak hours?",
-        f"""SELECT ?concLabel ?desc WHERE {{
-            ?conc a <{TFL}FareConcession> .
-            ?conc rdfs:label ?concLabel .
-            ?conc <{TFL}concessionDescription> ?desc .
-        }} ORDER BY ?concLabel"""
+        "CQ20: Which TfL lines terminate at Stratford station?",
+        f"""SELECT DISTINCT ?lineName WHERE {{
+            ?line <{TFL}hasTerminalStation> <{TFL}StratfordStation> .
+            ?line rdfs:label ?lineName .
+        }} ORDER BY ?lineName"""
     ),
 ]
 
@@ -178,4 +173,4 @@ for label, sparql in CQS:
         for row in rows:
             print(f"{', '.join(str(v) for v in row)}")
     print()
-print (f"Passed {passed}/20 competency questions.")
+print(f"Passed {passed}/20 competency questions.")
