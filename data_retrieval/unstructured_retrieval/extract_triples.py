@@ -14,7 +14,7 @@ USE_LLM = False
 
 #claude setup
 API_KEY = ""
-model = ""
+model = "claude-sonnet-4-20250514"
 url = "https://api.anthropic.com/v1/messages"
 
 CACHE_FILE = "data/caches/triples_cache.json"
