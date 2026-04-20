@@ -1,0 +1,190 @@
+5CCSAKNE CW2 Competency Question SPARQL queries
+
+Namespace: PREFIX tfl1: <http://example.org/tfl#>
+
+##########################################################################################
+
+1. Which London Underground lines intersect at King's Cross St Pancras station?
+
+SELECT ?lineName WHERE {
+    tfl1:KingsCrossStPancras tfl1:servedByLine ?line .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName
+
+##########################################################################################
+QuaintonRoad
+2. What are the terminal stations for the Victoria Line?
+
+SELECT ?stationName WHERE {
+    tfl1:VictoriaLine tfl1:hasTerminalStation ?station .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+3. Which transport modes (e.g., Tube, Bus, DLR, Elizabeth Line) are available for interchange at Stratford station?
+
+SELECT ?lineName WHERE {
+    tfl1:StratfordStation tfl1:servedByLine ?line .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName
+
+##########################################################################################
+
+4. Which stations are served by the Bakerloo Line?
+
+SELECT ?stationName WHERE {
+    ?station tfl1:servedByLine tfl1:BakerlooLine .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+5. Which stations on the Jubilee Line feature step-free access from the street to the train?
+
+SELECT ?stationName WHERE {
+    ?station tfl1:servedByLine tfl1:JubileeLine .
+    ?station tfl1:hasStepFreeStreetToPlatform true .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+6. Does Baker Street station have public restroom facilities available?
+
+SELECT ?facilityLabel WHERE {
+    tfl1:BakerStreetStation tfl1:hasFacility ?fac .
+    ?fac a tfl1:PublicToilet .
+    ?fac rdfs:label ?facilityLabel .
+}
+
+##########################################################################################
+
+7. Which TfL lines serve Baker Street station?
+
+SELECT ?lineName WHERE {
+    tfl1:BakerStreetStation tfl1:servedByLine ?line .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName
+
+##########################################################################################
+
+8. Who is the designated operating company for the London Overground network?
+
+SELECT ?opName WHERE {
+    tfl1:LondonOverground tfl1:operatedBy ?op .
+    ?op rdfs:label ?opName .
+}
+
+##########################################################################################
+
+9. Which specific bus routes terminate at Trafalgar Square?
+
+SELECT ?routeNumber WHERE {
+    ?route tfl1:terminatesAt tfl1:TrafalgarSquareBusTerminus .
+    ?route tfl1:routeNumber ?routeNumber .
+} ORDER BY xsd:integer(?routeNumber)
+
+##########################################################################################
+
+10. Which London Underground lines operate the Night Tube service on Fridays and Saturdays?
+
+SELECT ?lineName WHERE {
+    ?line tfl1:isNightTube true .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName
+
+##########################################################################################
+
+11. What are the terminal stations for the Central Line?
+
+SELECT ?stationName WHERE {
+    tfl1:CentralLine tfl1:hasTerminalStation ?station .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+12. Which transport modes in the TfL network charge a flat fare regardless of distance travelled?
+
+SELECT DISTINCT ?typeLabel WHERE {
+    ?line tfl1:isFlatFare true .
+    ?line a ?type .
+    ?type rdfs:label ?typeLabel .
+} ORDER BY ?typeLabel
+
+##########################################################################################
+
+13. Which TfL lines serve Canary Wharf station?
+
+SELECT ?lineName WHERE {
+    tfl1:CanaryWharfStation tfl1:servedByLine ?line .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName
+
+##########################################################################################
+
+14. What is the official operator of the Docklands Light Railway?
+
+SELECT ?opName WHERE {
+    tfl1:DLR tfl1:operatedBy ?op .
+    ?op rdfs:label ?opName .
+}
+
+##########################################################################################
+
+15. What are the terminal stations for the Jubilee Line?
+
+SELECT ?stationName WHERE {
+    tfl1:JubileeLine tfl1:hasTerminalStation ?station .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+16. Which TfL lines operate within Zone 1?
+
+SELECT DISTINCT ?lineName WHERE {
+    ?line tfl1:operatesInZone tfl1:Zone1 .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName
+
+##########################################################################################
+
+17. Which specific bus routes operate as night bus services with an N-prefix in the TfL network?
+
+SELECT ?routeNumber WHERE {
+    ?route a tfl1:NightBusRoute .
+    ?route tfl1:routeNumber ?routeNumber .
+} ORDER BY ?routeNumber
+
+##########################################################################################
+
+18. What are the terminal stations for the Northern Line?
+
+SELECT ?stationName WHERE {
+    tfl1:NorthernLine tfl1:hasTerminalStation ?station .
+    ?station rdfs:label ?stationName .
+} ORDER BY ?stationName
+
+##########################################################################################
+
+19. Which TfL lines serve stations located in both zone 2 and zone 3?
+
+SELECT DISTINCT ?lineName WHERE {
+    ?s1 tfl1:servedByLine ?line .
+    ?s1 tfl1:operatesInZone tfl1:Zone2 .
+    ?s2 tfl1:servedByLine ?line .
+    ?s2 tfl1:operatesInZone tfl1:Zone3 .
+    ?line rdfs:label ?lineName .
+    FILTER(?s1 != ?s2)
+} ORDER BY ?lineName
+
+##########################################################################################
+
+20. Which TfL lines terminate at Stratford station?
+
+SELECT ?lineName WHERE {
+    ?line tfl1:hasTerminalStation tfl1:StratfordStation .
+    ?line rdfs:label ?lineName .
+} ORDER BY ?lineName

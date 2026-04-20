@@ -1,0 +1,10 @@
+requests
+beautifulsoup4
+rdflib
+pandas
+spacy
+transformers
+python-dotenv
+pypdf
+pytest
+slugify

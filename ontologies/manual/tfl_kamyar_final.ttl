@@ -1,0 +1,369 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gtfs: <http://vocab.gtfs.org/terms#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix tfl: <http://example.org/tfl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/tfl> a owl:Ontology ;
+    rdfs:label "TfL London Public Transport Ontology"@en ;
+    dct:creator "Los Caballos – 5CCSAKNE CW2" ;
+    dct:date "2025-03-01"^^xsd:date ;
+    owl:imports schema1:,
+        gtfs: .
+
+tfl:AssistedBoardingService a owl:Class ;
+    rdfs:label "Assisted Boarding Service"@en ;
+    rdfs:subClassOf tfl:AccessibilityFeature .
+
+tfl:AudioVisualAid a owl:Class ;
+    rdfs:label "Audio-Visual Aid"@en ;
+    rdfs:subClassOf tfl:AccessibilityFeature .
+
+tfl:CarPark a owl:Class ;
+    rdfs:label "Station Car Park"@en ;
+    rdfs:subClassOf tfl:StationFacility .
+
+tfl:DLRLine a owl:Class ;
+    rdfs:label "Docklands Light Railway Line"@en ;
+    rdfs:subClassOf tfl:TfLLine .
+
+tfl:DLRStation a owl:Class ;
+    rdfs:label "DLR Station"@en ;
+    rdfs:subClassOf tfl:TfLStation .
+
+tfl:ElizabethLineService a owl:Class ;
+    rdfs:label "Elizabeth Line Service"@en ;
+    rdfs:subClassOf tfl:TfLLine .
+
+tfl:ElizabethLineStation a owl:Class ;
+    rdfs:label "Elizabeth Line Station"@en ;
+    rdfs:subClassOf tfl:TfLStation .
+
+tfl:FlatFare a owl:Class ;
+    rdfs:label "Flat Fare"@en ;
+    rdfs:subClassOf tfl:OysterFare .
+
+tfl:InterchangeStation a owl:Class ;
+    rdfs:label "Interchange Station"@en ;
+    rdfs:subClassOf tfl:TfLStation .
+
+tfl:NightBusRoute a owl:Class ;
+    rdfs:label "Night Bus Route"@en ;
+    rdfs:subClassOf tfl:BusRoute .
+
+tfl:OffPeakFare a owl:Class ;
+    rdfs:label "Off-Peak Oyster Fare"@en ;
+    rdfs:subClassOf tfl:OysterFare .
+
+tfl:OvergroundLine a owl:Class ;
+    rdfs:label "London Overground Line"@en ;
+    rdfs:subClassOf tfl:TfLLine .
+
+tfl:OvergroundStation a owl:Class ;
+    rdfs:label "London Overground Station"@en ;
+    rdfs:subClassOf tfl:TfLStation .
+
+tfl:PeakFare a owl:Class ;
+    rdfs:label "Peak Hour Oyster Fare"@en ;
+    rdfs:subClassOf tfl:OysterFare .
+
+tfl:PublicToilet a owl:Class ;
+    rdfs:label "Public Toilet"@en ;
+    rdfs:subClassOf tfl:StationFacility .
+
+tfl:StepFreeAccess a owl:Class ;
+    rdfs:label "Step-Free Access"@en ;
+    rdfs:subClassOf tfl:AccessibilityFeature .
+
+tfl:TramLine a owl:Class ;
+    rdfs:label "TfL Tram Line"@en ;
+    rdfs:subClassOf tfl:TfLLine .
+
+tfl:UndergroundStation a owl:Class ;
+    rdfs:label "London Underground Station"@en ;
+    rdfs:subClassOf tfl:TfLStation .
+
+tfl:alternativeUsing a owl:ObjectProperty ;
+    rdfs:comment "Links recommendation to a replacement line."@en ;
+    rdfs:domain tfl:AlternativeService ;
+    rdfs:range tfl:TfLLine .
+
+tfl:appliesInZoneFrom a owl:ObjectProperty ;
+    rdfs:comment "Lowest zone in fare range."@en ;
+    rdfs:domain tfl:OysterFare ;
+    rdfs:range tfl:OysterFareZone .
+
+tfl:appliesInZoneTo a owl:ObjectProperty ;
+    rdfs:comment "Highest zone in fare range."@en ;
+    rdfs:domain tfl:OysterFare ;
+    rdfs:range tfl:OysterFareZone .
+
+tfl:closureDescription a owl:DatatypeProperty ;
+    rdfs:comment "Details of closure."@en ;
+    rdfs:domain tfl:EngineeringClosure ;
+    rdfs:range xsd:string .
+
+tfl:closureEndDate a owl:DatatypeProperty ;
+    rdfs:comment "End of closure."@en ;
+    rdfs:domain tfl:EngineeringClosure ;
+    rdfs:range xsd:dateTime .
+
+tfl:closureStartDate a owl:DatatypeProperty ;
+    rdfs:comment "Start of closure."@en ;
+    rdfs:domain tfl:EngineeringClosure ;
+    rdfs:range xsd:dateTime .
+
+tfl:concessionAppliesTo a owl:ObjectProperty ;
+    rdfs:comment "Links concession to valid lines."@en ;
+    rdfs:domain tfl:FareConcession ;
+    rdfs:range tfl:TfLLine .
+
+tfl:concessionDescription a owl:DatatypeProperty ;
+    rdfs:comment "Benefits of concession."@en ;
+    rdfs:domain tfl:FareConcession ;
+    rdfs:range xsd:string .
+
+tfl:estimatedJourneyMinutes a owl:DatatypeProperty ;
+    rdfs:comment "Total travel time."@en ;
+    rdfs:domain tfl:Journey ;
+    rdfs:range xsd:nonNegativeInteger .
+
+tfl:fareAmount a owl:DatatypeProperty ;
+    rdfs:comment "Fare amount in GBP."@en ;
+    rdfs:domain tfl:OysterFare ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf schema1:price .
+
+tfl:fareAppliesTo a owl:ObjectProperty ;
+    rdfs:comment "Links fare to transport mode."@en ;
+    rdfs:domain tfl:OysterFare .
+
+tfl:farePassengerType a owl:DatatypeProperty ;
+    rdfs:comment "Passenger category (e.g. Adult)."@en ;
+    rdfs:domain tfl:OysterFare ;
+    rdfs:range xsd:string .
+
+tfl:hasAlternativeService a owl:ObjectProperty ;
+    rdfs:comment "Links disruption to recommended alternatives."@en ;
+    rdfs:domain tfl:ServiceDisruption ;
+    rdfs:range tfl:AlternativeService .
+
+tfl:hasJourneyLeg a owl:ObjectProperty ;
+    rdfs:comment "Links a journey to its segments."@en ;
+    rdfs:domain tfl:Journey ;
+    rdfs:range tfl:JourneyLeg .
+
+tfl:hasStepFreeStreetToPlatform a owl:DatatypeProperty ;
+    rdfs:comment "Full step-free access status."@en ;
+    rdfs:domain tfl:TfLStation ;
+    rdfs:range xsd:boolean .
+
+tfl:isFlatFare a owl:DatatypeProperty ;
+    rdfs:comment "Charges fixed fare regardless of distance?"@en ;
+    rdfs:domain tfl:TfLLine ;
+    rdfs:range xsd:boolean .
+
+tfl:isNightTube a owl:DatatypeProperty ;
+    rdfs:comment "Is 24-hour weekend service?"@en ;
+    rdfs:domain tfl:UndergroundLine ;
+    rdfs:range xsd:boolean .
+
+tfl:journeyDestination a owl:ObjectProperty ;
+    rdfs:comment "Arrival station."@en ;
+    rdfs:domain tfl:Journey ;
+    rdfs:range tfl:TfLStation ;
+    rdfs:subPropertyOf schema1:arrivalStation .
+
+tfl:journeyOrigin a owl:ObjectProperty ;
+    rdfs:comment "Departure station."@en ;
+    rdfs:domain tfl:Journey ;
+    rdfs:range tfl:TfLStation ;
+    rdfs:subPropertyOf schema1:departureStation .
+
+tfl:legAlightsAt a owl:ObjectProperty ;
+    rdfs:comment "Alighting station for leg."@en ;
+    rdfs:domain tfl:JourneyLeg ;
+    rdfs:range tfl:TfLStation .
+
+tfl:legBoardsAt a owl:ObjectProperty ;
+    rdfs:comment "Boarding station for leg."@en ;
+    rdfs:domain tfl:JourneyLeg ;
+    rdfs:range tfl:TfLStation .
+
+tfl:legSequence a owl:DatatypeProperty ;
+    rdfs:comment "Ordinal position in journey."@en ;
+    rdfs:domain tfl:JourneyLeg ;
+    rdfs:range xsd:positiveInteger .
+
+tfl:legUsesLine a owl:ObjectProperty ;
+    rdfs:comment "Links a leg to the line used."@en ;
+    rdfs:domain tfl:JourneyLeg ;
+    rdfs:range tfl:TfLLine .
+
+tfl:lineColour a owl:DatatypeProperty ;
+    rdfs:comment "Hex colour code."@en ;
+    rdfs:domain tfl:TfLLine ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gtfs:color .
+
+tfl:nightTubeOperatingDays a owl:DatatypeProperty ;
+    rdfs:comment "Description of operating days."@en ;
+    rdfs:domain tfl:NightTubeLine ;
+    rdfs:range xsd:string .
+
+tfl:numberOfLegs a owl:DatatypeProperty ;
+    rdfs:comment "Total number of segments."@en ;
+    rdfs:domain tfl:Journey ;
+    rdfs:range xsd:nonNegativeInteger .
+
+tfl:operatesInZone a owl:ObjectProperty ;
+    rdfs:comment "Links a line or station to an Oyster fare zone."@en ;
+    rdfs:range tfl:OysterFareZone ;
+    rdfs:subPropertyOf gtfs:zone .
+
+tfl:routeNumber a owl:DatatypeProperty ;
+    rdfs:comment "Bus route alphanumeric code."@en ;
+    rdfs:domain tfl:BusRoute ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf gtfs:shortName .
+
+tfl:terminatesAt a owl:ObjectProperty ;
+    rdfs:comment "Links a bus route to its terminus."@en ;
+    rdfs:domain tfl:BusRoute ;
+    rdfs:range tfl:BusTerminus .
+
+tfl:zoneNumber a owl:DatatypeProperty ;
+    rdfs:comment "Integer zone ID."@en ;
+    rdfs:domain tfl:OysterFareZone ;
+    rdfs:range xsd:positiveInteger .
+
+tfl:BusTerminus a owl:Class ;
+    rdfs:label "Bus Terminus"@en ;
+    rdfs:subClassOf tfl:TfLStation .
+
+tfl:NightTubeLine a owl:Class ;
+    rdfs:label "Night Tube Line"@en ;
+    rdfs:subClassOf tfl:UndergroundLine .
+
+tfl:TerminalStation a owl:Class ;
+    rdfs:label "Terminal Station"@en ;
+    rdfs:subClassOf tfl:TfLStation .
+
+tfl:TfLOperator a owl:Class ;
+    rdfs:label "TfL Operator"@en ;
+    rdfs:subClassOf gtfs:Agency .
+
+tfl:accessibilityFeatureAt a owl:ObjectProperty ;
+    owl:inverseOf tfl:hasAccessibilityFeature .
+
+tfl:affectsLine a owl:ObjectProperty ;
+    owl:inverseOf tfl:hasDisruption .
+
+tfl:contains a owl:ObjectProperty ;
+    owl:inverseOf tfl:locatedIn .
+
+tfl:facilityAt a owl:ObjectProperty ;
+    owl:inverseOf tfl:hasFacility .
+
+tfl:hasAccessibilityFeature a owl:ObjectProperty ;
+    rdfs:comment "Links a station to an accessibility feature."@en ;
+    rdfs:domain tfl:TfLStation ;
+    rdfs:range tfl:AccessibilityFeature ;
+    owl:inverseOf tfl:accessibilityFeatureAt .
+
+tfl:hasDisruption a owl:ObjectProperty ;
+    rdfs:comment "Links a line to a service disruption."@en ;
+    rdfs:domain tfl:TfLLine ;
+    rdfs:range tfl:ServiceDisruption ;
+    owl:inverseOf tfl:affectsLine .
+
+tfl:hasFacility a owl:ObjectProperty ;
+    rdfs:comment "Links a station to a physical facility."@en ;
+    rdfs:domain tfl:TfLStation ;
+    rdfs:range tfl:StationFacility ;
+    owl:inverseOf tfl:facilityAt .
+
+tfl:hasStop a owl:ObjectProperty ;
+    owl:inverseOf tfl:servedByLine .
+
+tfl:hasTerminalStation a owl:ObjectProperty ;
+    rdfs:comment "Links a TfL line to one of its terminal stations."@en ;
+    rdfs:domain tfl:TfLLine ;
+    rdfs:range tfl:TerminalStation ;
+    owl:inverseOf tfl:isTerminalOf .
+
+tfl:isTerminalOf a owl:ObjectProperty ;
+    owl:inverseOf tfl:hasTerminalStation .
+
+tfl:locatedIn a owl:ObjectProperty ;
+    owl:inverseOf tfl:contains .
+
+tfl:operatedBy a owl:ObjectProperty ;
+    rdfs:comment "Links a line to its operator."@en ;
+    rdfs:domain tfl:TfLLine ;
+    rdfs:range tfl:TfLOperator ;
+    rdfs:subPropertyOf schema1:provider ;
+    owl:inverseOf tfl:operates .
+
+tfl:operates a owl:ObjectProperty ;
+    owl:inverseOf tfl:operatedBy .
+
+tfl:servedByLine a owl:ObjectProperty ;
+    rdfs:comment "Links a TfL station to one of the lines that calls at it."@en ;
+    rdfs:domain tfl:TfLStation ;
+    rdfs:range tfl:TfLLine ;
+    rdfs:subPropertyOf gtfs:route ;
+    owl:inverseOf tfl:hasStop .
+
+tfl:AlternativeService a owl:Class ;
+    rdfs:label "Alternative Service"@en .
+
+tfl:FareConcession a owl:Class ;
+    rdfs:label "Fare Concession"@en .
+
+tfl:UndergroundLine a owl:Class ;
+    rdfs:label "London Underground Line"@en ;
+    rdfs:subClassOf tfl:TfLLine .
+
+tfl:BusRoute a owl:Class ;
+    rdfs:label "TfL Bus Route"@en ;
+    rdfs:subClassOf tfl:TfLLine .
+
+tfl:EngineeringClosure a owl:Class ;
+    rdfs:label "Engineering Closure"@en ;
+    rdfs:subClassOf tfl:ServiceDisruption .
+
+tfl:ServiceDisruption a owl:Class ;
+    rdfs:label "Service Disruption"@en .
+
+tfl:StationFacility a owl:Class ;
+    rdfs:label "Station Facility"@en .
+
+tfl:AccessibilityFeature a owl:Class ;
+    rdfs:label "Accessibility Feature"@en .
+
+tfl:OysterFareZone a owl:Class ;
+    rdfs:label "Oyster Fare Zone"@en ;
+    rdfs:subClassOf gtfs:Zone .
+
+tfl:Journey a owl:Class ;
+    rdfs:label "TfL Journey"@en ;
+    rdfs:subClassOf schema1:Trip .
+
+tfl:JourneyLeg a owl:Class ;
+    rdfs:label "Journey Leg"@en .
+
+tfl:OysterFare a owl:Class ;
+    rdfs:label "Oyster Fare"@en ;
+    rdfs:subClassOf schema1:PriceSpecification .
+
+tfl:TfLLine a owl:Class ;
+    rdfs:label "TfL Line"@en ;
+    rdfs:subClassOf gtfs:Route .
+
+tfl:TfLStation a owl:Class ;
+    rdfs:label "TfL Station"@en ;
+    rdfs:subClassOf gtfs:Station .
+

@@ -1,0 +1,8 @@
+.env
+downloads/processed/*
+downloads/raw/*
+data/processed/*
+data/raw/*
+.venv
+.worktrees/
+__pycache__/
