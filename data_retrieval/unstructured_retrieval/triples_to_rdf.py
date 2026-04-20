@@ -8,17 +8,17 @@ from rdflib.namespace import DCTERMS
 TFL = Namespace("http://example.org/tfl#")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 
-# Priority 1: Align emitted classes with the generated ontology
+#align labels
 LABEL_CLASS_MAP = {
-    "ORG":     TFL.TfLOperator,      # TransportOperator -> TfLOperator
-    "FAC":     TFL.TfLStation,       # TransitStop -> TfLStation
-    "GPE":     TFL.TfLStation,       # Location -> TfLStation (Contextual)
+    "ORG":     TFL.TfLOperator,     
+    "FAC":     TFL.TfLStation,       #transit stop is a station
+    "GPE":     TFL.TfLStation,       #location is a station
     "LOC":     TFL.TfLStation,       
-    "PRODUCT": TFL.TfLLine,          # TransportService -> TfLLine
-    "EVENT":   TFL.ServiceDisruption # TransportEvent -> ServiceDisruption
+    "PRODUCT": TFL.TfLLine,          
+    "EVENT":   TFL.ServiceDisruption 
 }
 
-# Known tube lines for Night Tube validation
+#known tube lines
 TUBE_LINES = {
     TFL.BakerlooLine, TFL.CentralLine, TFL.CircleLine, TFL.DistrictLine,
     TFL.HammersmithCityLine, TFL.JubileeLine, TFL.MetropolitanLine,
@@ -27,6 +27,7 @@ TUBE_LINES = {
     TFL.LondonOverground, TFL.Tramlink,
 }
 
+#map predicates outside the spec to those within
 PREDICATE_MAP = {
     "hasstop": TFL.hasStop,
     "hasterminus": TFL.hasTerminus,
@@ -51,6 +52,7 @@ PREDICATE_MAP = {
     "terminatesat": TFL.terminatesAt,
 }
 
+#canonical names of entities
 CANONICAL = {
     'Dlr': 'DLR',
     'Tfl': 'TfL',
@@ -72,6 +74,7 @@ CANONICAL = {
     'TrafalgarSquare': 'TrafalgarSquareBusTerminus',
 }
 
+#### URI creation
 def normalize_entity(text: str) -> str:
     text = text.strip().lower().replace("&", "and")
     for s in [" line", " railway", " station"]:
@@ -86,6 +89,8 @@ def slugify(text):
 
 def label_to_uri(label):
     return TFL[slugify(label)]
+####
+
 
 def map_predicate(raw):
     key = raw.lower().replace(" ", "").replace("_", "")
@@ -139,17 +144,17 @@ def build_wiki_graph(all_results):
     return g
 
 def enrich_graph(g):
-    # Priority 4: Tighten Night Tube Precision
-    # Only Underground Lines can be Night Tube
+    
+    #check only underground lines can be night tube (not night busses)
     for line in list(g.subjects(TFL.isNightTube, Literal(True))):
         if (line, RDF.type, TFL.UndergroundLine) not in g:
             g.remove((line, TFL.isNightTube, Literal(True)))
 
-    # Derived inversions
+    #inverse relationships
     for station, line in g.subject_objects(TFL.servedByLine):
         g.add((line, TFL.hasStop, station))
     
-    # Facility classification
+    #facility check
     FACILITY_CLASSES = {"toilets": TFL.PublicToilet, "car park": TFL.CarPark}
     for s, o in list(g.subject_objects(TFL.hasFacility)):
         for label in g.objects(o, RDFS.label):
@@ -159,14 +164,20 @@ def enrich_graph(g):
     return g
 
 def run_triples_to_rdf():
+
     processed_dir = os.path.join("data", "processed")
     latest = sorted(os.listdir(processed_dir))[-1]
+
     with open(os.path.join(processed_dir, latest, "wiki_triples.json"), encoding="utf-8") as f:
         all_results = json.load(f)
+
     g = build_wiki_graph(all_results)
     g = enrich_graph(g)
+
     out_path = "ontologies/pipeline_output/unstructured_london_transport.ttl"
+
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
+
     g.serialize(out_path, format="turtle")
 
 if __name__ == "__main__":

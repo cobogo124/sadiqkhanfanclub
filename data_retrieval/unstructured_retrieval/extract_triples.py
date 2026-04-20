@@ -119,11 +119,11 @@ def extract_triples_llm(passage, cache):
         
     #only uses cache if USE_LLM is false, otherwise runs FULL process
     ############ DELETE, THIS IS TO SAVE TIME ON 05/04/26
-    
+    """
     if key in cache:
             print("Using cached triples.")
             return cache[key]
-    
+    """
     ############
     if not USE_LLM:
         if key in cache:
@@ -155,7 +155,7 @@ def extract_triples_llm(passage, cache):
                             {"role": "user", "content": f"{PROMPT} Extract triples from this passage:\n{passage}"}
                         ],
                         "max_tokens": 1024,
-                        "temperature": 0.1,
+                        "temperature": 0.1, #low temp for reproducibility
                     },
                     timeout=30,
                 )
