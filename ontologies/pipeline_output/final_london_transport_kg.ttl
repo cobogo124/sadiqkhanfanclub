@@ -23656,25 +23656,10 @@ tfl:farePassengerType a owl:DatatypeProperty ;
     rdfs:domain tfl:OysterFare ;
     rdfs:range xsd:string .
 
-tfl:hasAccessibilityFeature a owl:ObjectProperty ;
-    rdfs:comment "Links a station to an accessibility feature."@en ;
-    rdfs:domain tfl:TfLStation ;
-    rdfs:range tfl:AccessibilityFeature .
-
 tfl:hasAlternativeService a owl:ObjectProperty ;
     rdfs:comment "Links disruption to recommended alternatives."@en ;
     rdfs:domain tfl:ServiceDisruption ;
     rdfs:range tfl:AlternativeService .
-
-tfl:hasDisruption a owl:ObjectProperty ;
-    rdfs:comment "Links a line to a service disruption."@en ;
-    rdfs:domain tfl:TfLLine ;
-    rdfs:range tfl:ServiceDisruption .
-
-tfl:hasFacility a owl:ObjectProperty ;
-    rdfs:comment "Links a station to a physical facility."@en ;
-    rdfs:domain tfl:TfLStation ;
-    rdfs:range tfl:StationFacility .
 
 tfl:hasJourneyLeg a owl:ObjectProperty ;
     rdfs:comment "Links a journey to its segments."@en ;
@@ -23685,11 +23670,6 @@ tfl:hasStepFreeStreetToPlatform a owl:DatatypeProperty ;
     rdfs:comment "Full step-free access status."@en ;
     rdfs:domain tfl:TfLStation ;
     rdfs:range xsd:boolean .
-
-tfl:hasTerminalStation a owl:ObjectProperty ;
-    rdfs:comment "Links a TfL line to one of its terminal stations."@en ;
-    rdfs:domain tfl:TfLLine ;
-    rdfs:range tfl:TerminalStation .
 
 tfl:isFlatFare a owl:DatatypeProperty ;
     rdfs:comment "Charges fixed fare regardless of distance?"@en ;
@@ -23749,12 +23729,6 @@ tfl:numberOfLegs a owl:DatatypeProperty ;
     rdfs:domain tfl:Journey ;
     rdfs:range xsd:nonNegativeInteger .
 
-tfl:operatedBy a owl:ObjectProperty ;
-    rdfs:comment "Links a line to its operator."@en ;
-    rdfs:domain tfl:TfLLine ;
-    rdfs:range tfl:TfLOperator ;
-    rdfs:subPropertyOf schema1:provider .
-
 tfl:operatesInZone a owl:ObjectProperty ;
     rdfs:comment "Links a line or station to an Oyster fare zone."@en ;
     rdfs:range tfl:OysterFareZone ;
@@ -23765,12 +23739,6 @@ tfl:routeNumber a owl:DatatypeProperty ;
     rdfs:domain tfl:BusRoute ;
     rdfs:range xsd:string ;
     rdfs:subPropertyOf gtfs:shortName .
-
-tfl:servedByLine a owl:ObjectProperty ;
-    rdfs:comment "Links a TfL station to one of the lines that calls at it."@en ;
-    rdfs:domain tfl:TfLStation ;
-    rdfs:range tfl:TfLLine ;
-    rdfs:subPropertyOf gtfs:route .
 
 tfl:terminatesAt a owl:ObjectProperty ;
     rdfs:comment "Links a bus route to its terminus."@en ;
@@ -28564,6 +28532,68 @@ tfl:Zone1-4 rdfs:label "Zone 1-4" .
 tfl:Zone23 rdfs:label "Zone 2/3" .
 
 tfl:ZoneA rdfs:label "Zone A" .
+
+tfl:accessibilityFeatureAt a owl:ObjectProperty ;
+    owl:inverseOf tfl:hasAccessibilityFeature .
+
+tfl:affectsLine a owl:ObjectProperty ;
+    owl:inverseOf tfl:hasDisruption .
+
+tfl:contains a owl:ObjectProperty ;
+    owl:inverseOf tfl:locatedIn .
+
+tfl:facilityAt a owl:ObjectProperty ;
+    owl:inverseOf tfl:hasFacility .
+
+tfl:hasAccessibilityFeature a owl:ObjectProperty ;
+    rdfs:comment "Links a station to an accessibility feature."@en ;
+    rdfs:domain tfl:TfLStation ;
+    rdfs:range tfl:AccessibilityFeature ;
+    owl:inverseOf tfl:accessibilityFeatureAt .
+
+tfl:hasDisruption a owl:ObjectProperty ;
+    rdfs:comment "Links a line to a service disruption."@en ;
+    rdfs:domain tfl:TfLLine ;
+    rdfs:range tfl:ServiceDisruption ;
+    owl:inverseOf tfl:affectsLine .
+
+tfl:hasFacility a owl:ObjectProperty ;
+    rdfs:comment "Links a station to a physical facility."@en ;
+    rdfs:domain tfl:TfLStation ;
+    rdfs:range tfl:StationFacility ;
+    owl:inverseOf tfl:facilityAt .
+
+tfl:hasStop a owl:ObjectProperty ;
+    owl:inverseOf tfl:servedByLine .
+
+tfl:hasTerminalStation a owl:ObjectProperty ;
+    rdfs:comment "Links a TfL line to one of its terminal stations."@en ;
+    rdfs:domain tfl:TfLLine ;
+    rdfs:range tfl:TerminalStation ;
+    owl:inverseOf tfl:isTerminalOf .
+
+tfl:isTerminalOf a owl:ObjectProperty ;
+    owl:inverseOf tfl:hasTerminalStation .
+
+tfl:locatedIn a owl:ObjectProperty ;
+    owl:inverseOf tfl:contains .
+
+tfl:operatedBy a owl:ObjectProperty ;
+    rdfs:comment "Links a line to its operator."@en ;
+    rdfs:domain tfl:TfLLine ;
+    rdfs:range tfl:TfLOperator ;
+    rdfs:subPropertyOf schema1:provider ;
+    owl:inverseOf tfl:operates .
+
+tfl:operates a owl:ObjectProperty ;
+    owl:inverseOf tfl:operatedBy .
+
+tfl:servedByLine a owl:ObjectProperty ;
+    rdfs:comment "Links a TfL station to one of the lines that calls at it."@en ;
+    rdfs:domain tfl:TfLStation ;
+    rdfs:range tfl:TfLLine ;
+    rdfs:subPropertyOf gtfs:route ;
+    owl:inverseOf tfl:hasStop .
 
 gtfs:color a rdf:Property ;
     rdfs:label "Color"@en,

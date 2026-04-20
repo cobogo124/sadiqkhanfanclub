@@ -130,6 +130,24 @@ def generateOntology(output_path="ontologies/manual/tfl_kamyar_final.ttl"):
         if domain: g.add((prop, RDFS.domain, domain))
         if range_type: g.add((prop, RDFS.range, range_type))
 
+    
+    inverses = [
+        (TFL.hasStop, TFL.servedByLine),
+        (TFL.operatedBy, TFL.operates),
+        (TFL.hasFacility, TFL.facilityAt),
+        (TFL.hasTerminalStation, TFL.isTerminalOf),
+        (TFL.hasAccessibilityFeature, TFL.accessibilityFeatureAt),
+        (TFL.locatedIn, TFL.contains),
+        (TFL.hasDisruption, TFL.affectsLine),
+    ]
+    
+    for prop, inv in inverses:
+        g.add((prop, OWL.inverseOf, inv))
+        g.add((inv, OWL.inverseOf, prop))
+        # ensure both are declared as object properties
+        g.add((prop, RDF.type, OWL.ObjectProperty))
+        g.add((inv, RDF.type, OWL.ObjectProperty))
+
     # Save to file
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     g.serialize(destination=output_path, format="turtle")
