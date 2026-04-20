@@ -12,9 +12,14 @@ g.parse("ontologies/pipeline_output/final_london_transport_kg.ttl", format="turt
 
 GAPS = [
     {
-        "label": "CQ4: DLR fare zones",
+        "label": "CQ4: Which fare zones does the DLR operate in?",
         "question": "Which fare zones does the Docklands Light Railway operate in?",
         "context_query": "SELECT ?p ?o WHERE { <http://example.org/tfl#DLR> ?p ?o . } LIMIT 20",
+    },
+    {
+    "label": "CQ2: What are the Victoria line's terminal stations?",
+    "question": "What are the terminal stations for the Victoria line?",
+    "context_query": "SELECT ?p ?o WHERE { <http://example.org/tfl#VictoriaLine> ?p ?o . } LIMIT 20",
     },
     #list as many gaps as found
 ]
