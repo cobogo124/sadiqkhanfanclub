@@ -17,16 +17,12 @@ def main():
     print("\n--- 2. Unstructured Pipeline ---")
     unstructured_path = "ontologies/pipeline_output/unstructured_london_transport.ttl"
     
+    print("  -> Running full Wikipedia extraction...")
+    wiki_scraper.run_wiki_scraper()
+    extract_triples.run_extract_triples()
+    triples_to_rdf.run_triples_to_rdf()
     if os.path.exists(unstructured_path):
-        print(f"  -> Cache hit! Found {unstructured_path}.")
         final_graph.parse(unstructured_path, format="turtle")
-    else:
-        print("  -> Running full Wikipedia extraction...")
-        wiki_scraper.run_wiki_scraper()
-        extract_triples.run_extract_triples()
-        triples_to_rdf.run_triples_to_rdf()
-        if os.path.exists(unstructured_path):
-            final_graph.parse(unstructured_path, format="turtle")
 
     print("\n--- 3. Structured Pipeline ---")
     # Pure extraction. No manual layers.

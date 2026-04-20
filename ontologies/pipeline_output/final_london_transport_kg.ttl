@@ -29623,6 +29623,8 @@ tfl:NationalRailServices rdfs:label "National Rail services" ;
 tfl:NewCrossGateDepot a tfl:TfLOperator ;
     rdfs:label "New Cross Gate depot" .
 
+tfl:NewTubeForLondonProject rdfs:label "New Tube for London Project" .
+
 tfl:Newbarnetstation rdfs:label "New Barnet Station",
         "New Barnet Station  / Station Road" ;
     tfl:servedByLine tfl:107 .
@@ -30578,8 +30580,6 @@ tfl:NewRoutemaster a tfl:TfLOperator,
         tfl:N8 ;
     dcterms:source <https://en.wikipedia.org/wiki/New_Routemaster> ;
     prov:wasGeneratedBy tfl:UnstructuredPipeline .
-
-tfl:NewTubeForLondonProject rdfs:label "New Tube for London Project" .
 
 tfl:Newaddingtontramstopstation rdfs:label "New Addington Tram Stop" ;
     tfl:servedByLine tfl:130 .
@@ -32492,10 +32492,8 @@ tfl:Lifts rdfs:label "lifts" .
 tfl:LondonTransport a tfl:TfLOperator ;
     rdfs:label "London Transport" ;
     tfl:hasAccessibilityFeature "accessible guide to public transport network" ;
-    tfl:openedDate "1933"^^xsd:gYear,
-        "1934"^^xsd:gYear ;
+    tfl:openedDate "1933"^^xsd:gYear ;
     dcterms:source <https://en.wikipedia.org/wiki/Accessibility_of_transport_in_London>,
-        <https://en.wikipedia.org/wiki/List_of_bus_routes_in_London>,
         <https://en.wikipedia.org/wiki/London_Underground> ;
     prov:wasGeneratedBy tfl:UnstructuredPipeline .
 
@@ -33320,12 +33318,10 @@ tfl:CentralLine a tfl:TfLLine,
     tfl:openedDate "1920"^^xsd:gYear,
         "1946"^^xsd:gYear,
         "1949"^^xsd:gYear,
-        "1990s"^^xsd:gYear,
         "2016"^^xsd:gYear ;
     tfl:operatedBy tfl:LondonUnderground ;
     tfl:partOf tfl:LondonUndergroundDeepTube,
         tfl:NewTubeForLondon,
-        tfl:NewTubeForLondonProject,
         tfl:NewWorksProgramme,
         tfl:TflRollingStockReplacementProgramme,
         tfl:Underground ;
